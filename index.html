@@ -37,7 +37,7 @@ tr:hover td{background:#1c2130}.pill{display:inline-flex;border:1px solid var(--
 .oldSong{color:var(--muted)}.newSong{color:var(--accent);font-weight:900}.changedLine td{background:rgba(255,211,106,.08)!important}
 .legend{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 4px}.legendItem{border-radius:999px;padding:7px 11px;font-size:12px;font-weight:900;border:1px solid var(--line)}
 .legendItem.common{background:rgba(126,231,200,.16);color:var(--accent2);border-color:rgba(126,231,200,.5)}.legendItem.sat{background:rgba(255,211,106,.16);color:var(--accent);border-color:rgba(255,211,106,.55)}.legendItem.sun{background:rgba(133,170,255,.17);color:#a9beff;border-color:rgba(133,170,255,.55)}.legendItem.first{background:rgba(255,125,125,.20);color:#ffb1b1;border-color:rgba(255,125,125,.65)}
-.cellCommon{background:rgba(126,231,200,.13)!important;border-left:3px solid rgba(126,231,200,.65)}.cellSaturday{background:rgba(255,211,106,.16)!important;border-left:3px solid rgba(255,211,106,.75)}.cellSunday{background:rgba(133,170,255,.18)!important;border-left:3px solid rgba(133,170,255,.75)}.cellFirstSunday12{background:linear-gradient(90deg,rgba(255,125,125,.32),rgba(255,211,106,.16))!important;border-left:4px solid rgba(255,125,125,.9)}
+.cellCommon{background:rgba(126,231,200,.13)!important;border-left:3px solid rgba(126,231,200,.65)}.cellSaturday{background:rgba(255,211,106,.16)!important;border-left:3px solid rgba(255,211,106,.75)}.cellSunday{background:rgba(133,170,255,.18)!important;border-left:3px solid rgba(133,170,255,.75)}.cellFirstSunday12{background:linear-gradient(90deg,rgba(255,125,125,.32),rgba(255,211,106,.16))!important;border-left:4px solid rgba(255,125,125,.9);font-weight:900}
 .firstMark{display:inline-block;margin-left:8px;color:#ffb1b1;font-size:12px;font-weight:900}.danger{color:#ffb1b1;border-color:rgba(255,125,125,.45)}
 .formgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.formgrid label{display:flex;flex-direction:column;gap:5px;color:var(--muted);font-size:12px}.formgrid input,.formgrid select{min-width:0;width:100%}
 .notice{background:rgba(255,211,106,.08);border:1px solid rgba(255,211,106,.25);border-radius:14px;padding:12px;margin:12px 0;color:#f5d98f}
@@ -2806,7 +2806,7 @@ function saveLocal(){ localStorage.setItem("bzData_v4", JSON.stringify(data)); }
 function tours(){return data.tours || []}
 function visibleShows(){return data.shows.filter(s=>selectedTour==="ALL" || s.tour===selectedTour).sort((a,b)=>a.id.localeCompare(b.id))}
 function visibleIds(){return new Set(visibleShows().map(s=>s.id))}
-function rows(){const ids=visibleIds(); return data.setlists.filter(r=>ids.has(r.showId)&&r.song&&r.song.trim()).sort((a,b)=>a.showId.localeCompare(b.showId)||a.order-b.order)}
+function rows(){const ids=visibleIds(); return data.setlists.filter(r=>ids.has(r.showId)&&r.song&&r.song.trim()).map(r=>({...r,song:normalizeSongName(r.song)})).sort((a,b)=>a.showId.localeCompare(b.showId)||a.order-b.order)}
 function showMap(){return Object.fromEntries(data.shows.map(s=>[s.id,s]))}
 function setApp(html){app.innerHTML = tourBar()+html; bindTourBar();}
 function tourBar(){
@@ -2819,14 +2819,14 @@ function bindTourBar(){
 function normalizeSongName(song){
   return String(song || "")
     .trim()
-    .replace(/The ⅢRD Eye/g, "The IIIRD Eye")
-    .replace(/The IIIrd Eye/g, "The IIIRD Eye")
-    .replace(/The Ⅲrd Eye/g, "The IIIRD Eye")
+    .replace(/The\s*Ⅲ\s*RD\s*Eye/gi, "The IIIRD Eye")
+    .replace(/The\s*III\s*rd\s*Eye/gi, "The IIIRD Eye")
+    .replace(/The\s*IIIRD\s*Eye/gi, "The IIIRD Eye")
     .replace(/^shower$/i, "Shower")
     .replace(/#1090\s*[～〜~]\s*Million Dreams\s*[～〜~]?\s*\/?\s*(Tak Matsumoto|松本孝弘)?/i, "#1090~Million Dreams~ / 松本孝弘")
+    .replace(/EPIC MATCH\s*\/\s*Tak Matsumoto/i, "EPIC MATCH / Tak Matsumoto")
     .replace(/ミエナイチカラ\s*[～〜~]\s*INVISIBLE ONE\s*[～〜~]/g, "ミエナイチカラ 〜INVISIBLE ONE〜");
 }
-
 function songCounts(){
  const m={};
  rows().forEach(r=>{
@@ -2835,7 +2835,7 @@ function songCounts(){
  });
  return Object.entries(m).map(([song,count])=>({song,count})).sort((a,b)=>b.count-a.count||a.song.localeCompare(b.song,'ja'));
 }
-function songAt(showId, order){const x=data.setlists.find(r=>r.showId===showId && r.order===order); return x?x.song:""}
+function songAt(showId, order){const x=data.setlists.find(r=>r.showId===showId && r.order===order); return x?normalizeSongName(x.song):""}
 function changesFromPrev(showId){
  const shows=visibleShows().map(s=>s.id); const i=shows.indexOf(showId); if(i<=0)return [];
  const prevId=shows[i-1], out=[];
@@ -2865,7 +2865,7 @@ function renderShows(){
  const sel=document.querySelector("#showSel"); sel.onchange=()=>drawShow(sel.value); drawShow(sel.value);
 }
 function drawShow(id){
- const s=showMap()[id], r=data.setlists.filter(x=>x.showId===id).sort((a,b)=>a.order-b.order), changes=changesFromPrev(id);
+ const s=showMap()[id], r=data.setlists.filter(x=>x.showId===id).map(x=>({...x,song:normalizeSongName(x.song)})).sort((a,b)=>a.order-b.order), changes=changesFromPrev(id);
  const max=Math.max(20, ...r.map(x=>x.order), 0);
  const changesHtml=changes.length?`<div class="changeBox"><h3>前公演から変更があった曲</h3><table><thead><tr><th>曲順</th><th>前公演</th><th>今回</th></tr></thead><tbody>${changes.map(x=>`<tr><td>${x.order}</td><td class="oldSong">${x.before}</td><td class="newSong">${x.after}</td></tr>`).join("")}</tbody></table></div>`:`<div class="changeBox muted">前公演からの曲順変更はありません。</div>`;
  document.querySelector("#showBox").innerHTML=`<div class="card"><h2>${s.label} ${s.venue}</h2><div class="muted">${s.date} / ${s.area} / ${s.tour} / ${s.status}</div>${changesHtml}<table><thead><tr><th>曲順</th><th>曲名</th><th>区分</th></tr></thead><tbody>${Array.from({length:max},(_,i)=>{const x=r.find(y=>y.order===i+1)||{song:"",section:i>=18?"Encore":"Main"}; const changed=changes.some(c=>c.order===i+1); return `<tr class="${changed?'changedLine':''}"><td>${i+1}</td><td>${x.song||"<span class='blank'>未入力</span>"}</td><td>${x.section||""}</td></tr>`}).join("")}</tbody></table></div>`;
@@ -2897,7 +2897,7 @@ function renderPairs(){
  const sel=document.querySelector("#pairSel"); sel.onchange=()=>drawPair(groups[Number(sel.value)]); drawPair(groups[0]);
 }
 function drawPair(pair){
- const [sat,sun]=pair, satSongs=new Set(data.setlists.filter(r=>r.showId===sat.id).map(r=>r.song)), sunSongs=new Set(data.setlists.filter(r=>r.showId===sun.id).map(r=>r.song));
+ const [sat,sun]=pair, satSongs=new Set(data.setlists.filter(r=>r.showId===sat.id).map(r=>normalizeSongName(r.song))), sunSongs=new Set(data.setlists.filter(r=>r.showId===sun.id).map(r=>normalizeSongName(r.song)));
  const max=Math.max(20, ...data.setlists.filter(r=>r.showId===sat.id||r.showId===sun.id).map(r=>r.order), 0);
  let common=0,satOnly=0,sunOnly=0,sunday12=0;
  const body=Array.from({length:max},(_,i)=>{const order=i+1, sa=songAt(sat.id,order), sb=songAt(sun.id,order); const same=sa&&sb&&sa===sb, sof=sa&&!sunSongs.has(sa), suof=sb&&!satSongs.has(sb), f=order===12&&sb&&suof; let label=same?"共通枠":(f?"日曜12曲目・初登場枠":"日替わり枠"), sc=same?"cellCommon":(sof?"cellSaturday":""), uc=same?"cellCommon":(f?"cellFirstSunday12":(suof?"cellSunday":"")); if(same)common++; if(sof)satOnly++; if(suof)sunOnly++; if(f)sunday12++; return `<tr><td>${order}</td><td><span class="pill">${label}</span></td><td class="${sc}">${sa||"<span class='blank'>未入力</span>"}</td><td class="${uc}">${sb||"<span class='blank'>未入力</span>"}${order===10&&sb?` <span class="firstMark">★日曜10曲目</span>`:""}</td></tr>`;}).join("");
@@ -2908,8 +2908,8 @@ function parseSongs(text, showId){
  for(const line of lines){
    if(/^(SHOWCASE|FYOP|FYOD|B'z|アンコール|Encore|ENCORE)/i.test(line)) continue;
    const m=line.match(/^(\d+)[\.．\)）\s、-]+(.+)$/);
-   if(m) out.push({showId,order:Number(m[1]),song:m[2].trim(),section:Number(m[1])>=19?"Encore":"Main"});
-   else out.push({showId,order:n++,song:line,section:n>=20?"Encore":"Main"});
+   if(m) out.push({showId,order:Number(m[1]),song:normalizeSongName(m[2].trim()),section:Number(m[1])>=19?"Encore":"Main"});
+   else out.push({showId,order:n++,song:normalizeSongName(line),section:n>=20?"Encore":"Main"});
  }
  return out;
 }
