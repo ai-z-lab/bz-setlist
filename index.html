@@ -1,50 +1,99 @@
 <!doctype html>
 <html lang="ja">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>B'z Live Setlist DB</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>B'z FYOP＋ Setlist Tracker</title>
+
 <style>
-:root{--bg:#0f1117;--panel:#171a23;--panel2:#202432;--text:#f5f7fb;--muted:#a9b0c3;--line:#313749;--accent:#ffd36a;--accent2:#7ee7c8;--danger:#ff7d7d;--blue:#9fb8ff}
+:root{
+  --bg:#0f1117;--panel:#171a23;--panel2:#202432;--text:#f5f7fb;--muted:#a9b0c3;
+  --line:#313749;--accent:#ffd36a;--accent2:#7ee7c8;--danger:#ff7d7d;
+}
 *{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:linear-gradient(180deg,#0f1117,#141824);color:var(--text)}
-header{padding:22px 18px 14px;border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(15,17,23,.92);backdrop-filter:blur(12px);z-index:10}
-h1{font-size:24px;margin:0 0 6px;letter-spacing:.03em}h2{margin:0 0 10px}h3{margin:8px 0}
-.sub{color:var(--muted);font-size:13px}
+header{padding:24px 18px 16px;border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(15,17,23,.9);backdrop-filter:blur(12px);z-index:10}
+h1{font-size:24px;margin:0 0 6px;letter-spacing:.03em}.sub{color:var(--muted);font-size:13px}
 nav{display:flex;gap:8px;overflow-x:auto;padding:12px 18px;border-bottom:1px solid var(--line)}
 button,.btn{background:var(--panel2);border:1px solid var(--line);color:var(--text);border-radius:999px;padding:9px 13px;font-weight:700;cursor:pointer;white-space:nowrap}
-button.active,.btn.active{background:var(--accent);color:#151515;border-color:var(--accent)}
-main{padding:18px;max-width:1180px;margin:auto}
-.tourbar{display:flex;gap:8px;overflow-x:auto;margin:0 0 16px;padding:4px 0 12px;border-bottom:1px solid var(--line)}
-.tourBtn{border-radius:14px;padding:10px 14px;background:#11141d;color:var(--text);border:1px solid var(--line);font-weight:900}
-.tourBtn.active{background:var(--accent);color:#151515;border-color:var(--accent)}
-.tourBtn small{display:block;font-size:10px;font-weight:700;opacity:.72;margin-top:2px}
-.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+button.active{background:var(--accent);color:#151515;border-color:var(--accent)}
+main{padding:18px;max-width:1180px;margin:auto}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
 .card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:16px;box-shadow:0 10px 30px rgba(0,0,0,.18)}
-.big{font-size:28px;font-weight:900}.muted{color:var(--muted);font-size:13px}.controls{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0}
-select,input,textarea{background:#0c0e14;color:var(--text);border:1px solid var(--line);border-radius:12px;padding:10px;font-size:14px;min-width:260px}
-textarea{width:100%;min-width:0;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;line-height:1.55}
+.big{font-size:28px;font-weight:900}.muted{color:var(--muted);font-size:13px}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0}
+select,input,textarea{background:#0c0e14;color:var(--text);border:1px solid var(--line);border-radius:12px;padding:10px;font-size:14px;min-width:320px}
 table{width:100%;border-collapse:separate;border-spacing:0;margin-top:12px;overflow:hidden;border-radius:14px}
-th,td{border-bottom:1px solid var(--line);padding:11px 13px;text-align:left;font-size:14px;vertical-align:middle}
+th,td{border-bottom:1px solid var(--line);padding:12px 14px;text-align:left;font-size:14px;vertical-align:middle}
 th{color:var(--accent);background:#11141d}
 tr:hover td{background:#1c2130}.pill{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:4px 9px;font-size:12px;color:var(--muted)}
 .matrix-wrap{overflow:auto;border:1px solid var(--line);border-radius:16px}.matrix td,.matrix th{min-width:74px;text-align:center}.matrix th:first-child,.matrix td:first-child{position:sticky;left:0;background:#121620;text-align:left;min-width:210px;z-index:3}
 .hit{font-weight:900;color:var(--accent2)}.blank{color:#555}.rank{display:flex;flex-direction:column;gap:8px}.bar{height:9px;background:#2a3040;border-radius:999px;overflow:hidden}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2))}
-.footer{color:var(--muted);font-size:12px;margin-top:24px;line-height:1.7}
+.importer{display:grid;grid-template-columns:1fr;gap:10px}.footer{color:var(--muted);font-size:12px;margin-top:24px;line-height:1.7}
+@media(max-width:780px){.grid{grid-template-columns:repeat(2,1fr)}h1{font-size:20px}th,td{font-size:12px;padding:8px}.card{padding:13px}}
+
+.sameRow td{background:rgba(126,231,200,.04)}
+.diffRow td{background:rgba(255,211,106,.08)}
+.samePill{color:var(--accent2);border-color:rgba(126,231,200,.45)}
+.diffPill{color:var(--accent);border-color:rgba(255,211,106,.55);font-weight:900}
+
+
+.legend{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 4px}
+.legendItem{border-radius:999px;padding:7px 11px;font-size:12px;font-weight:900;border:1px solid var(--line)}
+.legendItem.common{background:rgba(126,231,200,.16);color:var(--accent2);border-color:rgba(126,231,200,.5)}
+.legendItem.sat{background:rgba(255,211,106,.16);color:var(--accent);border-color:rgba(255,211,106,.55)}
+.legendItem.sun{background:rgba(133,170,255,.17);color:#a9beff;border-color:rgba(133,170,255,.55)}
+.legendItem.first{background:rgba(255,125,125,.20);color:#ffb1b1;border-color:rgba(255,125,125,.65)}
+.commonRow td{background:rgba(126,231,200,.045)!important}
+.satRow td{background:rgba(255,211,106,.095)!important}
+.sunRow td{background:rgba(133,170,255,.105)!important}
+.swapRow td{background:rgba(255,255,255,.035)!important}
+.firstRow td{background:linear-gradient(90deg,rgba(255,125,125,.20),rgba(255,211,106,.10))!important;border-top:1px solid rgba(255,125,125,.35);border-bottom:1px solid rgba(255,125,125,.35)}
+.commonRowPill{color:var(--accent2);border-color:rgba(126,231,200,.55);font-weight:900}
+.satRowPill{color:var(--accent);border-color:rgba(255,211,106,.65);font-weight:900}
+.sunRowPill{color:#a9beff;border-color:rgba(133,170,255,.65);font-weight:900}
+.swapRowPill{color:var(--muted);border-color:var(--line);font-weight:900}
+.firstRowPill{color:#ffb1b1;border-color:rgba(255,125,125,.75);font-weight:900}
+.firstMark{display:inline-block;margin-left:8px;color:#ffb1b1;font-size:12px;font-weight:900}
+.commonBorder{border-color:rgba(126,231,200,.45)!important}
+.satBorder{border-color:rgba(255,211,106,.50)!important}
+.sunBorder{border-color:rgba(133,170,255,.50)!important}
+.firstBorder{border-color:rgba(255,125,125,.65)!important}
+
+
+/* 2days comparison v2: cell based coloring */
+.rowCommon td{background:transparent!important}
+.rowSwap td{background:transparent!important}
+.rowFirst td{background:transparent!important}
+.cellCommon{background:rgba(126,231,200,.13)!important;border-left:3px solid rgba(126,231,200,.65)}
+.cellSaturday{background:rgba(255,211,106,.16)!important;border-left:3px solid rgba(255,211,106,.75)}
+.cellSunday{background:rgba(133,170,255,.18)!important;border-left:3px solid rgba(133,170,255,.75)}
+.cellFirstSunday12{background:linear-gradient(90deg,rgba(255,125,125,.32),rgba(255,211,106,.16))!important;border-left:4px solid rgba(255,125,125,.9);font-weight:900}
+.rowCommonPill{color:var(--accent2);border-color:rgba(126,231,200,.55);font-weight:900}
+.rowSwapPill{color:var(--muted);border-color:var(--line);font-weight:900}
+.rowFirstPill{color:#ffb1b1;border-color:rgba(255,125,125,.75);font-weight:900}
+
+
 .changeBox{margin:16px 0;padding:14px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.025)}
-.oldSong{color:var(--muted)}.newSong{color:var(--accent);font-weight:900}.changedLine td{background:rgba(255,211,106,.08)!important}
-.legend{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 4px}.legendItem{border-radius:999px;padding:7px 11px;font-size:12px;font-weight:900;border:1px solid var(--line)}
-.legendItem.common{background:rgba(126,231,200,.16);color:var(--accent2);border-color:rgba(126,231,200,.5)}.legendItem.sat{background:rgba(255,211,106,.16);color:var(--accent);border-color:rgba(255,211,106,.55)}.legendItem.sun{background:rgba(133,170,255,.17);color:#a9beff;border-color:rgba(133,170,255,.55)}.legendItem.first{background:rgba(255,125,125,.20);color:#ffb1b1;border-color:rgba(255,125,125,.65)}
-.cellCommon{background:rgba(126,231,200,.13)!important;border-left:3px solid rgba(126,231,200,.65)}.cellSaturday{background:rgba(255,211,106,.16)!important;border-left:3px solid rgba(255,211,106,.75)}.cellSunday{background:rgba(133,170,255,.18)!important;border-left:3px solid rgba(133,170,255,.75)}.cellFirstSunday12{background:linear-gradient(90deg,rgba(255,125,125,.32),rgba(255,211,106,.16))!important;border-left:4px solid rgba(255,125,125,.9);font-weight:900}
-.firstMark{display:inline-block;margin-left:8px;color:#ffb1b1;font-size:12px;font-weight:900}.danger{color:#ffb1b1;border-color:rgba(255,125,125,.45)}
-.formgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.formgrid label{display:flex;flex-direction:column;gap:5px;color:var(--muted);font-size:12px}.formgrid input,.formgrid select{min-width:0;width:100%}
-.notice{background:rgba(255,211,106,.08);border:1px solid rgba(255,211,106,.25);border-radius:14px;padding:12px;margin:12px 0;color:#f5d98f}
-@media(max-width:780px){.grid{grid-template-columns:repeat(2,1fr)}.formgrid{grid-template-columns:1fr}h1{font-size:20px}th,td{font-size:12px;padding:8px}.card{padding:13px}}
+.changeBox h3{margin:0 0 8px;font-size:16px}
+.miniTable th,.miniTable td{font-size:13px;padding:8px 10px}
+.oldSong{color:var(--muted)}
+.newSong{color:var(--accent);font-weight:900}
+.changedLine td{background:rgba(255,211,106,.08)!important}
+#import .danger{background:var(--danger)}
+#replaceBtn,#clearBtn{margin-top:0}
+#clearBtn{color:#ffb1b1;border-color:rgba(255,125,125,.45)}
+
+
+.tourbar{display:flex;gap:8px;overflow-x:auto;margin:0 0 16px;padding:4px 0 12px;border-bottom:1px solid var(--line)}
+.tourBtn{border-radius:14px;padding:10px 14px;background:#11141d;color:var(--text);border:1px solid var(--line);font-weight:900}
+.tourBtn.active{background:var(--accent);color:#151515;border-color:var(--accent)}
+.tourBtn small{display:block;font-size:10px;font-weight:700;opacity:.72;margin-top:2px}
+
 </style>
 </head>
 <body>
 <header>
-  <h1>B'z Live Setlist DB</h1>
-  <div class="sub">公演別・曲別ランキング・2days比較・追記整形まで使えるセットリスト管理アプリ</div>
+  <h1>B'z FYOP＋ Setlist Tracker</h1>
+  <div class="sub">B'zライブのセットリストを公演別・ツアー別に見やすく整理</div>
 </header>
 <nav>
   <button data-tab="dash" class="active">Dashboard</button>
@@ -53,44 +102,10 @@ tr:hover td{background:#1c2130}.pill{display:inline-flex;border:1px solid var(--
   <button data-tab="matrix">マトリクス</button>
   <button data-tab="pairs">1日目/2日目比較</button>
   <button data-tab="import">追記・整形</button>
-  <button data-tab="data">データ管理</button>
 </nav>
 <main id="app"></main>
 <script>
 window.BZ_DATA = {
-  "appVersion": "2.0",
-  "updated": "2026-05-03",
-  "source": "1000wave.net: FYOP / FYOD / SHOWCASE / FYOP+",
-  "tours": [
-    {
-      "id": "FYOP+",
-      "label": "FYOP+",
-      "year": "2026",
-      "type": "LIVE-GYM / ARENA",
-      "note": "2026年ツアー"
-    },
-    {
-      "id": "FYOP",
-      "label": "FYOP",
-      "year": "2025",
-      "type": "LIVE-GYM",
-      "note": "2025年ツアー"
-    },
-    {
-      "id": "FYOD",
-      "label": "FYOD",
-      "year": "",
-      "type": "FC限定",
-      "note": "ファンクラブ限定"
-    },
-    {
-      "id": "SHOWCASE",
-      "label": "SHOWCASE",
-      "year": "",
-      "type": "SHOWCASE",
-      "note": "情熱GIGSなど"
-    }
-  ],
   "shows": [
     {
       "id": "2026-04-11",
@@ -206,7 +221,7 @@ window.BZ_DATA = {
       "id": "2026-05-16",
       "date": "2026/5/16",
       "label": "5.16（土）",
-      "venue": "真駒内セキスイハイムアイスアリーナ",
+      "venue": "北海道 真駒内セキスイハイムアイスアリーナ",
       "area": "北海道",
       "status": "未入力",
       "tour": "FYOP+",
@@ -217,7 +232,7 @@ window.BZ_DATA = {
       "id": "2026-05-17",
       "date": "2026/5/17",
       "label": "5.17（日）",
-      "venue": "真駒内セキスイハイムアイスアリーナ",
+      "venue": "北海道 真駒内セキスイハイムアイスアリーナ",
       "area": "北海道",
       "status": "未入力",
       "tour": "FYOP+",
@@ -250,7 +265,7 @@ window.BZ_DATA = {
       "id": "2026-05-30",
       "date": "2026/5/30",
       "label": "5.30（土）",
-      "venue": "横浜アリーナ",
+      "venue": "神奈川 横浜アリーナ",
       "area": "神奈川",
       "status": "未入力",
       "tour": "FYOP+",
@@ -261,7 +276,7 @@ window.BZ_DATA = {
       "id": "2026-05-31",
       "date": "2026/5/31",
       "label": "5.31（日）",
-      "venue": "横浜アリーナ",
+      "venue": "神奈川 横浜アリーナ",
       "area": "神奈川",
       "status": "未入力",
       "tour": "FYOP+",
@@ -272,7 +287,7 @@ window.BZ_DATA = {
       "id": "2026-06-06",
       "date": "2026/6/6",
       "label": "6.6（土）",
-      "venue": "LaLa arena TOKYO-BAY",
+      "venue": "千葉 LaLa arena TOKYO-BAY",
       "area": "千葉",
       "status": "未入力",
       "tour": "FYOP+",
@@ -283,7 +298,7 @@ window.BZ_DATA = {
       "id": "2026-06-07",
       "date": "2026/6/7",
       "label": "6.7（日）",
-      "venue": "LaLa arena TOKYO-BAY",
+      "venue": "千葉 LaLa arena TOKYO-BAY",
       "area": "千葉",
       "status": "未入力",
       "tour": "FYOP+",
@@ -294,7 +309,7 @@ window.BZ_DATA = {
       "id": "2026-06-13",
       "date": "2026/6/13",
       "label": "6.13（土）",
-      "venue": "IGアリーナ",
+      "venue": "愛知 IGアリーナ",
       "area": "愛知",
       "status": "未入力",
       "tour": "FYOP+",
@@ -305,144 +320,12 @@ window.BZ_DATA = {
       "id": "2026-06-14",
       "date": "2026/6/14",
       "label": "6.14（日）",
-      "venue": "IGアリーナ",
+      "venue": "愛知 IGアリーナ",
       "area": "愛知",
       "status": "未入力",
       "tour": "FYOP+",
       "series": "LIVE-GYM",
       "type": "ARENA"
-    },
-    {
-      "id": "2025-11-15-fyop-nagoya1",
-      "date": "2025/11/15",
-      "label": "11.15（土）",
-      "venue": "バンテリンドーム ナゴヤ",
-      "area": "名古屋",
-      "status": "入力済",
-      "tour": "FYOP",
-      "series": "LIVE-GYM",
-      "type": "DOME"
-    },
-    {
-      "id": "2025-11-16-fyop-nagoya2",
-      "date": "2025/11/16",
-      "label": "11.16（日）",
-      "venue": "バンテリンドーム ナゴヤ",
-      "area": "名古屋",
-      "status": "入力済",
-      "tour": "FYOP",
-      "series": "LIVE-GYM",
-      "type": "DOME"
-    },
-    {
-      "id": "2025-11-29-fyop-fukuoka1",
-      "date": "2025/11/29",
-      "label": "11.29（土）",
-      "venue": "みずほPayPayドーム福岡",
-      "area": "福岡",
-      "status": "入力済",
-      "tour": "FYOP",
-      "series": "LIVE-GYM",
-      "type": "DOME"
-    },
-    {
-      "id": "2025-11-30-fyop-fukuoka2",
-      "date": "2025/11/30",
-      "label": "11.30（日）",
-      "venue": "みずほPayPayドーム福岡",
-      "area": "福岡",
-      "status": "入力済",
-      "tour": "FYOP",
-      "series": "LIVE-GYM",
-      "type": "DOME"
-    },
-    {
-      "id": "2025-12-06-fyop-tokyo1",
-      "date": "2025/12/6",
-      "label": "12.6（土）",
-      "venue": "東京ドーム",
-      "area": "東京",
-      "status": "入力済",
-      "tour": "FYOP",
-      "series": "LIVE-GYM",
-      "type": "DOME"
-    },
-    {
-      "id": "2025-12-07-fyop-tokyo2",
-      "date": "2025/12/7",
-      "label": "12.7（日）",
-      "venue": "東京ドーム",
-      "area": "東京",
-      "status": "入力済",
-      "tour": "FYOP",
-      "series": "LIVE-GYM",
-      "type": "DOME"
-    },
-    {
-      "id": "2025-12-20-fyop-osaka1",
-      "date": "2025/12/20",
-      "label": "12.20（土）",
-      "venue": "京セラドーム大阪",
-      "area": "大阪",
-      "status": "入力済",
-      "tour": "FYOP",
-      "series": "LIVE-GYM",
-      "type": "DOME"
-    },
-    {
-      "id": "2025-12-21-fyop-osaka2",
-      "date": "2025/12/21",
-      "label": "12.21（日）",
-      "venue": "京セラドーム大阪",
-      "area": "大阪",
-      "status": "入力済",
-      "tour": "FYOP",
-      "series": "LIVE-GYM",
-      "type": "DOME"
-    },
-    {
-      "id": "2026-03-28-fyod-ariake1",
-      "date": "2026/3/28",
-      "label": "3.28（土）",
-      "venue": "SGCホール有明",
-      "area": "東京",
-      "status": "入力済",
-      "tour": "FYOD",
-      "series": "FC",
-      "type": "FC"
-    },
-    {
-      "id": "2026-03-29-fyod-ariake2",
-      "date": "2026/3/29",
-      "label": "3.29（日）",
-      "venue": "SGCホール有明",
-      "area": "東京",
-      "status": "入力済",
-      "tour": "FYOD",
-      "series": "FC",
-      "type": "FC"
-    },
-    {
-      "id": "2026-04-04-showcase-sendai1",
-      "date": "2026/4/4",
-      "label": "4.4（土）",
-      "venue": "SENDAI GIGS",
-      "area": "宮城",
-      "status": "入力済",
-      "tour": "SHOWCASE",
-      "series": "SHOWCASE",
-      "type": "SHOWCASE"
-    },
-    {
-      "id": "2026-04-05-showcase-sendai2",
-      "date": "2026/4/5",
-      "label": "4.5（日）",
-      "venue": "SENDAI GIGS",
-      "area": "宮城",
-      "status": "入力済",
-      "tour": "SHOWCASE",
-      "series": "SHOWCASE",
-      "type": "SHOWCASE"
     }
   ],
   "setlists": [
@@ -545,7 +428,7 @@ window.BZ_DATA = {
     {
       "showId": "2026-04-11",
       "order": 17,
-      "song": "Liar! Liar!",
+      "song": "Lair! Lair!",
       "section": "Main"
     },
     {
@@ -785,7 +668,7 @@ window.BZ_DATA = {
     {
       "showId": "2026-04-18",
       "order": 17,
-      "song": "Liar! Liar!",
+      "song": "Lair! Lair!",
       "section": "Main"
     },
     {
@@ -1025,7 +908,7 @@ window.BZ_DATA = {
     {
       "showId": "2026-04-25",
       "order": 17,
-      "song": "Liar! Liar!",
+      "song": "Lair! Lair!",
       "section": "Main"
     },
     {
@@ -1265,7 +1148,7 @@ window.BZ_DATA = {
     {
       "showId": "2026-05-02",
       "order": 17,
-      "song": "Liar! Liar!",
+      "song": "Lair! Lair!",
       "section": "Main"
     },
     {
@@ -1285,1500 +1168,285 @@ window.BZ_DATA = {
       "order": 20,
       "song": "ミエナイチカラ 〜INVISIBLE ONE〜",
       "section": "Encore"
-    },
-    {
-      "showId": "2025-11-15-fyop-nagoya1",
-      "order": 1,
-      "song": "FMP",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-15-fyop-nagoya1",
-      "order": 2,
-      "song": "兵、走る",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-15-fyop-nagoya1",
-      "order": 3,
-      "song": "声明",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-15-fyop-nagoya1",
-      "order": 4,
-      "song": "MY LONELY TOWN",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-15-fyop-nagoya1",
-      "order": 5,
-      "song": "DIVE",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-15-fyop-nagoya1",
-      "order": 6,
-      "song": "恐るるなかれ灰は灰に",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-15-fyop-nagoya1",
-      "order": 7,
-      "song": "INTO THE BLUE",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-15-fyop-nagoya1",
-      "order": 8,
-      "song": "The ⅢRD Eye",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-15-fyop-nagoya1",
-      "order": 9,
-      "song": "東京",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-15-fyop-nagoya1",
-      "order": 10,
-      "song": "消えない虹",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-15-fyop-nagoya1",
-      "order": 11,
-      "song": "EPIC MATCH / Tak Matsumoto",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-15-fyop-nagoya1",
-      "order": 12,
-      "song": "LOVE PHANTOM",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-15-fyop-nagoya1",
-      "order": 13,
-      "song": "ultra soul",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-15-fyop-nagoya1",
-      "order": 14,
-      "song": "鞭",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-15-fyop-nagoya1",
-      "order": 15,
-      "song": "Still Alive",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-15-fyop-nagoya1",
-      "order": 16,
-      "song": "juice",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-15-fyop-nagoya1",
-      "order": 17,
-      "song": "Brotherhood",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-15-fyop-nagoya1",
-      "order": 18,
-      "song": "いつかのメリークリスマス",
-      "section": "Encore"
-    },
-    {
-      "showId": "2025-11-15-fyop-nagoya1",
-      "order": 19,
-      "song": "イルミネーション",
-      "section": "Encore"
-    },
-    {
-      "showId": "2025-11-15-fyop-nagoya1",
-      "order": 20,
-      "song": "愛のバクダン",
-      "section": "Encore"
-    },
-    {
-      "showId": "2025-11-16-fyop-nagoya2",
-      "order": 1,
-      "song": "FMP",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-16-fyop-nagoya2",
-      "order": 2,
-      "song": "兵、走る",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-16-fyop-nagoya2",
-      "order": 3,
-      "song": "声明",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-16-fyop-nagoya2",
-      "order": 4,
-      "song": "MY LONELY TOWN",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-16-fyop-nagoya2",
-      "order": 5,
-      "song": "DIVE",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-16-fyop-nagoya2",
-      "order": 6,
-      "song": "恐るるなかれ灰は灰に",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-16-fyop-nagoya2",
-      "order": 7,
-      "song": "INTO THE BLUE",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-16-fyop-nagoya2",
-      "order": 8,
-      "song": "The IIIRD Eye",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-16-fyop-nagoya2",
-      "order": 9,
-      "song": "となりでねむらせて",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-16-fyop-nagoya2",
-      "order": 10,
-      "song": "キレイな愛じゃなくても",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-16-fyop-nagoya2",
-      "order": 11,
-      "song": "EPIC MATCH / Tak Matsumoto",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-16-fyop-nagoya2",
-      "order": 12,
-      "song": "LOVE PHANTOM",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-16-fyop-nagoya2",
-      "order": 13,
-      "song": "ultra soul",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-16-fyop-nagoya2",
-      "order": 14,
-      "song": "鞭",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-16-fyop-nagoya2",
-      "order": 15,
-      "song": "Still Alive",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-16-fyop-nagoya2",
-      "order": 16,
-      "song": "ギリギリchop",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-16-fyop-nagoya2",
-      "order": 17,
-      "song": "Brotherhood",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-16-fyop-nagoya2",
-      "order": 18,
-      "song": "いつかのメリークリスマス",
-      "section": "Encore"
-    },
-    {
-      "showId": "2025-11-16-fyop-nagoya2",
-      "order": 19,
-      "song": "イルミネーション",
-      "section": "Encore"
-    },
-    {
-      "showId": "2025-11-16-fyop-nagoya2",
-      "order": 20,
-      "song": "イチブトゼンブ",
-      "section": "Encore"
-    },
-    {
-      "showId": "2025-11-29-fyop-fukuoka1",
-      "order": 1,
-      "song": "FMP",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-29-fyop-fukuoka1",
-      "order": 2,
-      "song": "兵、走る",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-29-fyop-fukuoka1",
-      "order": 3,
-      "song": "声明",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-29-fyop-fukuoka1",
-      "order": 4,
-      "song": "MY LONELY TOWN",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-29-fyop-fukuoka1",
-      "order": 5,
-      "song": "DIVE",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-29-fyop-fukuoka1",
-      "order": 6,
-      "song": "恐るるなかれ灰は灰に",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-29-fyop-fukuoka1",
-      "order": 7,
-      "song": "INTO THE BLUE",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-29-fyop-fukuoka1",
-      "order": 8,
-      "song": "The ⅢRD Eye",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-29-fyop-fukuoka1",
-      "order": 9,
-      "song": "shower",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-29-fyop-fukuoka1",
-      "order": 10,
-      "song": "消えない虹",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-29-fyop-fukuoka1",
-      "order": 11,
-      "song": "#1090 ～Million Dreams～ / Tak Matsumoto",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-29-fyop-fukuoka1",
-      "order": 12,
-      "song": "LOVE PHANTOM",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-29-fyop-fukuoka1",
-      "order": 13,
-      "song": "ultra soul",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-29-fyop-fukuoka1",
-      "order": 14,
-      "song": "鞭",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-29-fyop-fukuoka1",
-      "order": 15,
-      "song": "Still Alive",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-29-fyop-fukuoka1",
-      "order": 16,
-      "song": "juice",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-29-fyop-fukuoka1",
-      "order": 17,
-      "song": "Brotherhood",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-29-fyop-fukuoka1",
-      "order": 18,
-      "song": "いつかのメリークリスマス",
-      "section": "Encore"
-    },
-    {
-      "showId": "2025-11-29-fyop-fukuoka1",
-      "order": 19,
-      "song": "イルミネーション",
-      "section": "Encore"
-    },
-    {
-      "showId": "2025-11-29-fyop-fukuoka1",
-      "order": 20,
-      "song": "愛のバクダン",
-      "section": "Encore"
-    },
-    {
-      "showId": "2025-11-30-fyop-fukuoka2",
-      "order": 1,
-      "song": "FMP",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-30-fyop-fukuoka2",
-      "order": 2,
-      "song": "兵、走る",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-30-fyop-fukuoka2",
-      "order": 3,
-      "song": "声明",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-30-fyop-fukuoka2",
-      "order": 4,
-      "song": "MY LONELY TOWN",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-30-fyop-fukuoka2",
-      "order": 5,
-      "song": "DIVE",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-30-fyop-fukuoka2",
-      "order": 6,
-      "song": "恐るるなかれ灰は灰に",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-30-fyop-fukuoka2",
-      "order": 7,
-      "song": "INTO THE BLUE",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-30-fyop-fukuoka2",
-      "order": 8,
-      "song": "The IIIRD Eye",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-30-fyop-fukuoka2",
-      "order": 9,
-      "song": "Homebound",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-30-fyop-fukuoka2",
-      "order": 10,
-      "song": "キレイな愛じゃなくても",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-30-fyop-fukuoka2",
-      "order": 11,
-      "song": "#1090 ～Million Dreams～ / Tak Matsumoto",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-30-fyop-fukuoka2",
-      "order": 12,
-      "song": "LOVE PHANTOM",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-30-fyop-fukuoka2",
-      "order": 13,
-      "song": "ultra soul",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-30-fyop-fukuoka2",
-      "order": 14,
-      "song": "鞭",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-30-fyop-fukuoka2",
-      "order": 15,
-      "song": "Still Alive",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-30-fyop-fukuoka2",
-      "order": 16,
-      "song": "ギリギリchop",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-30-fyop-fukuoka2",
-      "order": 17,
-      "song": "Brotherhood",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-11-30-fyop-fukuoka2",
-      "order": 18,
-      "song": "いつかのメリークリスマス",
-      "section": "Encore"
-    },
-    {
-      "showId": "2025-11-30-fyop-fukuoka2",
-      "order": 19,
-      "song": "イルミネーション",
-      "section": "Encore"
-    },
-    {
-      "showId": "2025-11-30-fyop-fukuoka2",
-      "order": 20,
-      "song": "イチブトゼンブ",
-      "section": "Encore"
-    },
-    {
-      "showId": "2025-12-06-fyop-tokyo1",
-      "order": 1,
-      "song": "FMP",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-06-fyop-tokyo1",
-      "order": 2,
-      "song": "兵、走る",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-06-fyop-tokyo1",
-      "order": 3,
-      "song": "声明",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-06-fyop-tokyo1",
-      "order": 4,
-      "song": "MY LONELY TOWN",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-06-fyop-tokyo1",
-      "order": 5,
-      "song": "DIVE",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-06-fyop-tokyo1",
-      "order": 6,
-      "song": "恐るるなかれ灰は灰に",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-06-fyop-tokyo1",
-      "order": 7,
-      "song": "INTO THE BLUE",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-06-fyop-tokyo1",
-      "order": 8,
-      "song": "The ⅢRD Eye",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-06-fyop-tokyo1",
-      "order": 9,
-      "song": "となりでねむらせて",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-06-fyop-tokyo1",
-      "order": 10,
-      "song": "消えない虹",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-06-fyop-tokyo1",
-      "order": 11,
-      "song": "#1090 ～Million Dreams～ / Tak Matsumoto",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-06-fyop-tokyo1",
-      "order": 12,
-      "song": "LOVE PHANTOM",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-06-fyop-tokyo1",
-      "order": 13,
-      "song": "ultra soul",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-06-fyop-tokyo1",
-      "order": 14,
-      "song": "鞭",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-06-fyop-tokyo1",
-      "order": 15,
-      "song": "Still Alive",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-06-fyop-tokyo1",
-      "order": 16,
-      "song": "juice",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-06-fyop-tokyo1",
-      "order": 17,
-      "song": "Brotherhood",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-06-fyop-tokyo1",
-      "order": 18,
-      "song": "いつかのメリークリスマス",
-      "section": "Encore"
-    },
-    {
-      "showId": "2025-12-06-fyop-tokyo1",
-      "order": 19,
-      "song": "イルミネーション",
-      "section": "Encore"
-    },
-    {
-      "showId": "2025-12-06-fyop-tokyo1",
-      "order": 20,
-      "song": "愛のバクダン",
-      "section": "Encore"
-    },
-    {
-      "showId": "2025-12-07-fyop-tokyo2",
-      "order": 1,
-      "song": "FMP",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-07-fyop-tokyo2",
-      "order": 2,
-      "song": "兵、走る",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-07-fyop-tokyo2",
-      "order": 3,
-      "song": "声明",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-07-fyop-tokyo2",
-      "order": 4,
-      "song": "MY LONELY TOWN",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-07-fyop-tokyo2",
-      "order": 5,
-      "song": "DIVE",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-07-fyop-tokyo2",
-      "order": 6,
-      "song": "恐るるなかれ灰は灰に",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-07-fyop-tokyo2",
-      "order": 7,
-      "song": "INTO THE BLUE",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-07-fyop-tokyo2",
-      "order": 8,
-      "song": "The IIIRD Eye",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-07-fyop-tokyo2",
-      "order": 9,
-      "song": "東京",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-07-fyop-tokyo2",
-      "order": 10,
-      "song": "キレイな愛じゃなくても",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-07-fyop-tokyo2",
-      "order": 11,
-      "song": "#1090 ～Million Dreams～ / Tak Matsumoto",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-07-fyop-tokyo2",
-      "order": 12,
-      "song": "LOVE PHANTOM",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-07-fyop-tokyo2",
-      "order": 13,
-      "song": "ultra soul",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-07-fyop-tokyo2",
-      "order": 14,
-      "song": "鞭",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-07-fyop-tokyo2",
-      "order": 15,
-      "song": "Still Alive",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-07-fyop-tokyo2",
-      "order": 16,
-      "song": "ギリギリchop",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-07-fyop-tokyo2",
-      "order": 17,
-      "song": "Brotherhood",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-07-fyop-tokyo2",
-      "order": 18,
-      "song": "いつかのメリークリスマス",
-      "section": "Encore"
-    },
-    {
-      "showId": "2025-12-07-fyop-tokyo2",
-      "order": 19,
-      "song": "イルミネーション",
-      "section": "Encore"
-    },
-    {
-      "showId": "2025-12-07-fyop-tokyo2",
-      "order": 20,
-      "song": "イチブトゼンブ",
-      "section": "Encore"
-    },
-    {
-      "showId": "2025-12-20-fyop-osaka1",
-      "order": 1,
-      "song": "FMP",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-20-fyop-osaka1",
-      "order": 2,
-      "song": "兵、走る",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-20-fyop-osaka1",
-      "order": 3,
-      "song": "声明",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-20-fyop-osaka1",
-      "order": 4,
-      "song": "MY LONELY TOWN",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-20-fyop-osaka1",
-      "order": 5,
-      "song": "DIVE",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-20-fyop-osaka1",
-      "order": 6,
-      "song": "恐るるなかれ灰は灰に",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-20-fyop-osaka1",
-      "order": 7,
-      "song": "INTO THE BLUE",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-20-fyop-osaka1",
-      "order": 8,
-      "song": "The ⅢRD Eye",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-20-fyop-osaka1",
-      "order": 9,
-      "song": "Shower",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-20-fyop-osaka1",
-      "order": 10,
-      "song": "消えない虹",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-20-fyop-osaka1",
-      "order": 11,
-      "song": "Tiger's Eye / Tak Matsumoto",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-20-fyop-osaka1",
-      "order": 12,
-      "song": "LOVE PHANTOM",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-20-fyop-osaka1",
-      "order": 13,
-      "song": "ultra soul",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-20-fyop-osaka1",
-      "order": 14,
-      "song": "鞭",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-20-fyop-osaka1",
-      "order": 15,
-      "song": "Still Alive",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-20-fyop-osaka1",
-      "order": 16,
-      "song": "juice",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-20-fyop-osaka1",
-      "order": 17,
-      "song": "Brotherhood",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-20-fyop-osaka1",
-      "order": 18,
-      "song": "いつかのメリークリスマス",
-      "section": "Encore"
-    },
-    {
-      "showId": "2025-12-20-fyop-osaka1",
-      "order": 19,
-      "song": "イルミネーション",
-      "section": "Encore"
-    },
-    {
-      "showId": "2025-12-20-fyop-osaka1",
-      "order": 20,
-      "song": "愛のバクダン",
-      "section": "Encore"
-    },
-    {
-      "showId": "2025-12-21-fyop-osaka2",
-      "order": 1,
-      "song": "FMP",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-21-fyop-osaka2",
-      "order": 2,
-      "song": "兵、走る",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-21-fyop-osaka2",
-      "order": 3,
-      "song": "声明",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-21-fyop-osaka2",
-      "order": 4,
-      "song": "MY LONELY TOWN",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-21-fyop-osaka2",
-      "order": 5,
-      "song": "DIVE",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-21-fyop-osaka2",
-      "order": 6,
-      "song": "恐るるなかれ灰は灰に",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-21-fyop-osaka2",
-      "order": 7,
-      "song": "INTO THE BLUE",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-21-fyop-osaka2",
-      "order": 8,
-      "song": "The IIIRD Eye",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-21-fyop-osaka2",
-      "order": 9,
-      "song": "Homebound",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-21-fyop-osaka2",
-      "order": 10,
-      "song": "キレイな愛じゃなくても",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-21-fyop-osaka2",
-      "order": 11,
-      "song": "Tiger's Eye / Tak Matsumoto",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-21-fyop-osaka2",
-      "order": 12,
-      "song": "LOVE PHANTOM",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-21-fyop-osaka2",
-      "order": 13,
-      "song": "ultra soul",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-21-fyop-osaka2",
-      "order": 14,
-      "song": "鞭",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-21-fyop-osaka2",
-      "order": 15,
-      "song": "Still Alive",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-21-fyop-osaka2",
-      "order": 16,
-      "song": "ギリギリchop",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-21-fyop-osaka2",
-      "order": 17,
-      "song": "Brotherhood",
-      "section": "Main"
-    },
-    {
-      "showId": "2025-12-21-fyop-osaka2",
-      "order": 18,
-      "song": "いつかのメリークリスマス",
-      "section": "Encore"
-    },
-    {
-      "showId": "2025-12-21-fyop-osaka2",
-      "order": 19,
-      "song": "イルミネーション",
-      "section": "Encore"
-    },
-    {
-      "showId": "2025-12-21-fyop-osaka2",
-      "order": 20,
-      "song": "イチブトゼンブ",
-      "section": "Encore"
-    },
-    {
-      "showId": "2026-03-28-fyod-ariake1",
-      "order": 1,
-      "song": "濁流BOY",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-03-28-fyod-ariake1",
-      "order": 2,
-      "song": "ZERO",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-03-28-fyod-ariake1",
-      "order": 3,
-      "song": "love me, I love you",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-03-28-fyod-ariake1",
-      "order": 4,
-      "song": "今夜月の見える丘に",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-03-28-fyod-ariake1",
-      "order": 5,
-      "song": "春",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-03-28-fyod-ariake1",
-      "order": 6,
-      "song": "ペインキラー",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-03-28-fyod-ariake1",
-      "order": 7,
-      "song": "INTO THE BLUE",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-03-28-fyod-ariake1",
-      "order": 8,
-      "song": "今では...今なら...今も...",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-03-28-fyod-ariake1",
-      "order": 9,
-      "song": "Tokyo Dream Park (Tak Matsumoto)",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-03-28-fyod-ariake1",
-      "order": 10,
-      "song": "イルミネーション",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-03-28-fyod-ariake1",
-      "order": 11,
-      "song": "FMP",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-03-28-fyod-ariake1",
-      "order": 12,
-      "song": "有頂天",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-03-28-fyod-ariake1",
-      "order": 13,
-      "song": "Heaven Knows",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-03-28-fyod-ariake1",
-      "order": 14,
-      "song": "Lair!Lair!",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-03-28-fyod-ariake1",
-      "order": 15,
-      "song": "ultra soul",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-03-28-fyod-ariake1",
-      "order": 16,
-      "song": "ハピネス",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-03-28-fyod-ariake1",
-      "order": 17,
-      "song": "ミエナイチカラ〜INVISIBLE ONE〜",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-03-28-fyod-ariake1",
-      "order": 18,
-      "song": "Heaven Knows (観客とMV撮影)",
-      "section": "Encore"
-    },
-    {
-      "showId": "2026-03-29-fyod-ariake2",
-      "order": 1,
-      "song": "濁流BOY",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-03-29-fyod-ariake2",
-      "order": 2,
-      "song": "IT'S SHOWTIME!!",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-03-29-fyod-ariake2",
-      "order": 3,
-      "song": "ねがい",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-03-29-fyod-ariake2",
-      "order": 4,
-      "song": "イチブトゼンブ",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-03-29-fyod-ariake2",
-      "order": 5,
-      "song": "春",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-03-29-fyod-ariake2",
-      "order": 6,
-      "song": "ペインキラー",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-03-29-fyod-ariake2",
-      "order": 7,
-      "song": "INTO THE BLUE",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-03-29-fyod-ariake2",
-      "order": 8,
-      "song": "今では...今なら...今も...",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-03-29-fyod-ariake2",
-      "order": 9,
-      "song": "Tokyo Dream Park (Tak Matsumoto)",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-03-29-fyod-ariake2",
-      "order": 10,
-      "song": "イルミネーション",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-03-29-fyod-ariake2",
-      "order": 11,
-      "song": "FMP",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-03-29-fyod-ariake2",
-      "order": 12,
-      "song": "有頂天",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-03-29-fyod-ariake2",
-      "order": 13,
-      "song": "Heaven Knows",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-03-29-fyod-ariake2",
-      "order": 14,
-      "song": "Lair!Lair!",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-03-29-fyod-ariake2",
-      "order": 15,
-      "song": "ultra soul",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-03-29-fyod-ariake2",
-      "order": 16,
-      "song": "ハピネス",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-03-29-fyod-ariake2",
-      "order": 17,
-      "song": "ミエナイチカラ〜INVISIBLE ONE〜",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-03-29-fyod-ariake2",
-      "order": 18,
-      "song": "Heaven Knows (観客とMV撮影)",
-      "section": "Encore"
-    },
-    {
-      "showId": "2026-04-04-showcase-sendai1",
-      "order": 1,
-      "song": "濁流BOY",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-04-04-showcase-sendai1",
-      "order": 2,
-      "song": "ZERO",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-04-04-showcase-sendai1",
-      "order": 3,
-      "song": "love me, I love you",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-04-04-showcase-sendai1",
-      "order": 4,
-      "song": "今夜月の見える丘に",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-04-04-showcase-sendai1",
-      "order": 5,
-      "song": "ペインキラー",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-04-04-showcase-sendai1",
-      "order": 6,
-      "song": "片翼の風景",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-04-04-showcase-sendai1",
-      "order": 7,
-      "song": "鞭",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-04-04-showcase-sendai1",
-      "order": 8,
-      "song": "今では....今なら...今も...",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-04-04-showcase-sendai1",
-      "order": 9,
-      "song": "#1090 〜Million Dreams〜 / 松本孝弘",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-04-04-showcase-sendai1",
-      "order": 10,
-      "song": "イルミネーション",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-04-04-showcase-sendai1",
-      "order": 11,
-      "song": "FMP",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-04-04-showcase-sendai1",
-      "order": 12,
-      "song": "有頂天",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-04-04-showcase-sendai1",
-      "order": 13,
-      "song": "Heaven Knows",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-04-04-showcase-sendai1",
-      "order": 14,
-      "song": "Liar!Liar!",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-04-04-showcase-sendai1",
-      "order": 15,
-      "song": "ultra soul",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-04-04-showcase-sendai1",
-      "order": 16,
-      "song": "ハピネス",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-04-04-showcase-sendai1",
-      "order": 17,
-      "song": "ミエナイチカラ〜INVISIBLE ONE~",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-04-05-showcase-sendai2",
-      "order": 1,
-      "song": "濁流BOY",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-04-05-showcase-sendai2",
-      "order": 2,
-      "song": "IT'S SHOWTIME!!",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-04-05-showcase-sendai2",
-      "order": 3,
-      "song": "ねがい",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-04-05-showcase-sendai2",
-      "order": 4,
-      "song": "イチブトゼンブ",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-04-05-showcase-sendai2",
-      "order": 5,
-      "song": "ペインキラー",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-04-05-showcase-sendai2",
-      "order": 6,
-      "song": "INTO THE BLUE",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-04-05-showcase-sendai2",
-      "order": 7,
-      "song": "The IIIRD Eye",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-04-05-showcase-sendai2",
-      "order": 8,
-      "song": "今では....今なら...今も...",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-04-05-showcase-sendai2",
-      "order": 9,
-      "song": "#1090 〜Million Dreams〜 / 松本孝弘",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-04-05-showcase-sendai2",
-      "order": 10,
-      "song": "イルミネーション",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-04-05-showcase-sendai2",
-      "order": 11,
-      "song": "FMP",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-04-05-showcase-sendai2",
-      "order": 12,
-      "song": "有頂天",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-04-05-showcase-sendai2",
-      "order": 13,
-      "song": "Heaven Knows",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-04-05-showcase-sendai2",
-      "order": 14,
-      "song": "さまよえる蒼い弾丸",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-04-05-showcase-sendai2",
-      "order": 15,
-      "song": "ultra soul",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-04-05-showcase-sendai2",
-      "order": 16,
-      "song": "ハピネス",
-      "section": "Main"
-    },
-    {
-      "showId": "2026-04-05-showcase-sendai2",
-      "order": 17,
-      "song": "ミエナイチカラ〜INVISIBLE ONE~",
-      "section": "Main"
     }
+  ],
+  "source": "1000wave.net / B’z LIVE-GYM 2026 -FYOP＋- ライブ感想まとめ",
+  "updated": "2026-05-03",
+  "tours": [
+    {"id":"FYOP+","label":"FYOP+","year":"2026","type":"LIVE-GYM / ARENA","note":"2026年ツアー"},
+    {"id":"FYOP","label":"FYOP","year":"2025","type":"LIVE-GYM","note":"2025年ツアー"},
+    {"id":"FYOD","label":"FYOD","year":"","type":"FC限定","note":"ファンクラブ限定"},
+    {"id":"SHOWCASE","label":"SHOWCASE","year":"","type":"SHOWCASE","note":"情熱GIGSなど"}
   ]
 };
-
-let data = JSON.parse(localStorage.getItem("bzData_v4") || JSON.stringify(window.BZ_DATA));
-let selectedTour = localStorage.getItem("selectedTour_v4") || "FYOP+";
-const app = document.querySelector("#app");
-const navBtns = document.querySelectorAll("nav button");
-navBtns.forEach(b=>b.onclick=()=>{navBtns.forEach(x=>x.classList.remove("active"));b.classList.add("active");render(b.dataset.tab)});
-
-function saveLocal(){ localStorage.setItem("bzData_v4", JSON.stringify(data)); }
-function tours(){return data.tours || []}
-function visibleShows(){return data.shows.filter(s=>selectedTour==="ALL" || s.tour===selectedTour).sort((a,b)=>a.id.localeCompare(b.id))}
-function visibleIds(){return new Set(visibleShows().map(s=>s.id))}
-function rows(){const ids=visibleIds(); return data.setlists.filter(r=>ids.has(r.showId)&&r.song&&r.song.trim()).sort((a,b)=>a.showId.localeCompare(b.showId)||a.order-b.order)}
-function showMap(){return Object.fromEntries(data.shows.map(s=>[s.id,s]))}
-function setApp(html){app.innerHTML = tourBar()+html; bindTourBar();}
-function tourBar(){
- const items=[{id:"ALL",label:"全部",year:""}].concat(tours());
- return `<div class="tourbar">${items.map(t=>`<button class="tourBtn ${selectedTour===t.id?'active':''}" data-tour="${t.id}">${t.label}${t.year?`<small>${t.year}</small>`:""}</button>`).join("")}</div>`;
+</script>
+<script>
+let data = JSON.parse(localStorage.getItem("bzData") || JSON.stringify(window.BZ_DATA));
+let selectedTour = localStorage.getItem("selectedTour") || "FYOP+";
+function allTours(){ return data.tours || []; }
+function visibleShows(){ return data.shows.filter(s => selectedTour==="ALL" || (s.tour || "FYOP+")===selectedTour); }
+function visibleShowIds(){ return new Set(visibleShows().map(s=>s.id)); }
+function renderTourBar(){
+  const items=[{id:"ALL",label:"全部",year:""}].concat(allTours());
+  return `<div class="tourbar">${items.map(t=>`<button class="tourBtn ${selectedTour===t.id?'active':''}" data-tour="${t.id}">${t.label}${t.year?`<small>${t.year}</small>`:""}</button>`).join("")}</div>`;
 }
 function bindTourBar(){
- document.querySelectorAll(".tourBtn").forEach(btn=>btn.onclick=()=>{selectedTour=btn.dataset.tour; localStorage.setItem("selectedTour_v4", selectedTour); const active=document.querySelector("nav button.active"); render(active?active.dataset.tab:"dash");});
+  document.querySelectorAll(".tourBtn").forEach(btn=>btn.onclick=()=>{
+    selectedTour=btn.dataset.tour;
+    localStorage.setItem("selectedTour", selectedTour);
+    const active=document.querySelector("nav button.active");
+    render(active ? active.dataset.tab : "dash");
+  });
 }
+function setApp(html){ app.innerHTML = renderTourBar() + html; bindTourBar(); }
+const app = document.querySelector("#app");
+const tabs = document.querySelectorAll("nav button");
+tabs.forEach(b=>b.onclick=()=>{tabs.forEach(x=>x.classList.remove("active"));b.classList.add("active");render(b.dataset.tab)});
+function showMap(){return Object.fromEntries(data.shows.map(s=>[s.id,s]))}
+function rows(){ const ids=visibleShowIds(); return data.setlists.filter(r=>ids.has(r.showId) && r.song && r.song.trim())}
 function songCounts(){
- const m={}; rows().forEach(r=>m[r.song]=(m[r.song]||0)+1);
- return Object.entries(m).map(([song,count])=>({song,count})).sort((a,b)=>b.count-a.count||a.song.localeCompare(b.song,'ja'));
+  const m={}; rows().forEach(r=>m[r.song]=(m[r.song]||0)+1);
+  return Object.entries(m).map(([song,count])=>({song,count})).sort((a,b)=>b.count-a.count||a.song.localeCompare(b.song,'ja'));
 }
-function songAt(showId, order){const x=data.setlists.find(r=>r.showId===showId && r.order===order); return x?x.song:""}
 function changesFromPrev(showId){
- const shows=visibleShows().map(s=>s.id); const i=shows.indexOf(showId); if(i<=0)return [];
- const prevId=shows[i-1], out=[];
- for(let order=1;order<=30;order++){const before=songAt(prevId,order), after=songAt(showId,order); if(after&&before&&before!==after)out.push({order,before,after}); else if(after&&!before)out.push({order,before:"未入力",after});}
- return out;
+  const shows = visibleShows().map(s=>s.id);
+  const i = shows.indexOf(showId);
+  if(i <= 0) return [];
+  const prevId = shows[i-1];
+  const out = [];
+  for(let order=1; order<=20; order++){
+    const before = songAt(prevId, order);
+    const after = songAt(showId, order);
+    if(after && before && before !== after){
+      out.push({order, before, after});
+    }else if(after && !before){
+      out.push({order, before:"未入力", after});
+    }
+  }
+  return out;
 }
-function render(tab="dash"){ if(tab==="dash")renderDash(); if(tab==="shows")renderShows(); if(tab==="songs")renderSongs(); if(tab==="matrix")renderMatrix(); if(tab==="pairs")renderPairs(); if(tab==="import")renderImport(); if(tab==="data")renderData(); }
-
+function render(tab="dash"){
+ if(tab==="dash") return renderDash();
+ if(tab==="shows") return renderShows();
+ if(tab==="songs") return renderSongs();
+ if(tab==="matrix") return renderMatrix();
+ if(tab==="pairs") return renderPairs();
+ if(tab==="import") return renderImport();
+}
 function renderDash(){
- const done=visibleShows().filter(s=>s.status==="入力済").length, total=visibleShows().length, totalSongs=songCounts().length, top=songCounts().slice(0,8);
+ const done = visibleShows().filter(s=>s.status==="入力済").length;
+ const totalSongs = songCounts().length;
+ const top = songCounts().slice(0,8);
  setApp(`
  <div class="grid">
-  <div class="card"><div class="muted">登録公演</div><div class="big">${done}/${total}</div></div>
+  <div class="card"><div class="muted">登録公演</div><div class="big">${done}/${visibleShows().length}</div></div>
   <div class="card"><div class="muted">曲数</div><div class="big">${totalSongs}</div></div>
   <div class="card"><div class="muted">総演奏データ</div><div class="big">${rows().length}</div></div>
-  <div class="card"><div class="muted">最終更新</div><div class="big" style="font-size:20px">${data.updated||""}</div></div>
+  <div class="card"><div class="muted">最終更新</div><div class="big" style="font-size:20px">${data.updated}</div></div>
  </div>
- <div class="card" style="margin-top:14px"><h2>出現回数 上位</h2>
- ${top.length?`<div class="rank">${top.map(x=>`<div><b>${x.song}</b> <span class="pill">${x.count}回</span><div class="bar"><i style="width:${done?Math.min(100,x.count/done*100):0}%"></i></div></div>`).join("")}</div>`:`<div class="muted">このツアーのデータはまだありません。</div>`}
- </div>
- <div class="footer">公開ページを見る人は閲覧用です。追記・整形で保存した内容は、その端末内だけに保存されます。</div>`);
+ <div class="card" style="margin-top:14px"><h2>出現回数 上位</h2><div class="rank">
+ ${top.map(x=>`<div><b>${x.song}</b> <span class="pill">${x.count}回</span><div class="bar"><i style="width:${x.count/done*100}%"></i></div></div>`).join("")}
+ </div></div>
+ <div class="footer">出典メモ：${data.source}。公開する場合は、元ページへのリンク・出典表記を添えるのがおすすめです。</div>`);
 }
 function renderShows(){
- const list=visibleShows(); if(!list.length){setApp(`<div class="card">このツアーの公演データはまだありません。「追記・整形」で公演を追加できます。</div>`);return;}
- const opts=list.map(s=>`<option value="${s.id}">${s.label}｜${s.area}｜${s.venue}</option>`).join("");
+ const list=visibleShows();
+ const opts=list.map(s=>`<option value="${s.id}">${s.label} ${s.venue}</option>`).join("");
+ if(!list.length){ setApp(`<div class="card">このツアーの公演データはまだありません。</div>`); return; }
  setApp(`<div class="controls"><select id="showSel">${opts}</select></div><div id="showBox"></div>`);
  const sel=document.querySelector("#showSel"); sel.onchange=()=>drawShow(sel.value); drawShow(sel.value);
 }
 function drawShow(id){
- const s=showMap()[id], r=data.setlists.filter(x=>x.showId===id).sort((a,b)=>a.order-b.order), changes=changesFromPrev(id);
- const max=Math.max(20, ...r.map(x=>x.order), 0);
- const changesHtml=changes.length?`<div class="changeBox"><h3>前公演から変更があった曲</h3><table><thead><tr><th>曲順</th><th>前公演</th><th>今回</th></tr></thead><tbody>${changes.map(x=>`<tr><td>${x.order}</td><td class="oldSong">${x.before}</td><td class="newSong">${x.after}</td></tr>`).join("")}</tbody></table></div>`:`<div class="changeBox muted">前公演からの曲順変更はありません。</div>`;
- document.querySelector("#showBox").innerHTML=`<div class="card"><h2>${s.label} ${s.venue}</h2><div class="muted">${s.date} / ${s.area} / ${s.tour} / ${s.status}</div>${changesHtml}<table><thead><tr><th>曲順</th><th>曲名</th><th>区分</th></tr></thead><tbody>${Array.from({length:max},(_,i)=>{const x=r.find(y=>y.order===i+1)||{song:"",section:i>=18?"Encore":"Main"}; const changed=changes.some(c=>c.order===i+1); return `<tr class="${changed?'changedLine':''}"><td>${i+1}</td><td>${x.song||"<span class='blank'>未入力</span>"}</td><td>${x.section||""}</td></tr>`}).join("")}</tbody></table></div>`;
+ const s=showMap()[id], r=data.setlists.filter(x=>x.showId===id).sort((a,b)=>a.order-b.order);
+ const changes=changesFromPrev(id);
+ const changesHtml = changes.length ? `
+ <div class="changeBox">
+   <h3>前公演から変更があった曲</h3>
+   <table class="miniTable"><thead><tr><th>曲順</th><th>前公演</th><th>今回</th></tr></thead><tbody>
+   ${changes.map(x=>`<tr><td>${x.order}</td><td class="oldSong">${x.before}</td><td class="newSong">${x.after}</td></tr>`).join("")}
+   </tbody></table>
+ </div>` : `<div class="changeBox muted">前公演からの曲順変更はありません。</div>`;
+
+ document.querySelector("#showBox").innerHTML=`<div class="card"><h2>${s.label} ${s.venue}</h2><div class="muted">${s.date} / ${s.area} / ${s.status}</div>
+ ${changesHtml}
+ <table><thead><tr><th>曲順</th><th>曲名</th><th>区分</th></tr></thead><tbody>
+ ${Array.from({length:20},(_,i)=>{
+  const x=r.find(y=>y.order===i+1)||{song:"",section:i>=18?"Encore":"Main"};
+  const changed = changes.some(c=>c.order===i+1);
+  return `<tr class="${changed?'changedLine':''}"><td>${i+1}</td><td>${x.song||"<span class='blank'>未入力</span>"}</td><td>${x.section}</td></tr>`
+ }).join("")}</tbody></table></div>`;
 }
 function renderSongs(){
  const done=visibleShows().filter(s=>s.status==="入力済").length;
- setApp(`<div class="card"><h2>曲別ランキング</h2>${songCounts().length?`<table><thead><tr><th>#</th><th>曲名</th><th>回数</th><th>出現率</th></tr></thead><tbody>${songCounts().map((x,i)=>`<tr><td>${i+1}</td><td>${x.song}</td><td>${x.count}</td><td>${done?Math.round(x.count/done*100):0}%</td></tr>`).join("")}</tbody></table>`:`<div class="muted">データがありません。</div>`}</div>`);
+ setApp(`<div class="card"><h2>曲別ランキング</h2><table><thead><tr><th>#</th><th>曲名</th><th>回数</th><th>出現率</th></tr></thead><tbody>
+ ${songCounts().map((x,i)=>`<tr><td>${i+1}</td><td>${x.song}</td><td>${x.count}</td><td>${Math.round(x.count/done*100)}%</td></tr>`).join("")}
+ </tbody></table></div>`);
 }
 function renderMatrix(){
- const songs=songCounts().map(x=>x.song), doneShows=visibleShows().filter(s=>s.status==="入力済");
- if(!songs.length){setApp(`<div class="card">マトリクス表示できるデータがありません。</div>`);return;}
- setApp(`<div class="matrix-wrap"><table class="matrix"><thead><tr><th>曲名</th>${doneShows.map(s=>`<th>${s.label}<br>${s.area}</th>`).join("")}<th>計</th></tr></thead><tbody>${songs.map(song=>{const cells=doneShows.map(s=>rows().some(r=>r.showId===s.id&&r.song===song)?`<td class="hit">●</td>`:`<td class="blank">—</td>`).join(""); const c=songCounts().find(x=>x.song===song).count; return `<tr><td>${song}</td>${cells}<td>${c}</td></tr>`}).join("")}</tbody></table></div>`);
+ const songs=songCounts().map(x=>x.song);
+ const doneShows=visibleShows().filter(s=>s.status==="入力済");
+ setApp(`<div class="matrix-wrap"><table class="matrix"><thead><tr><th>曲名</th>${doneShows.map(s=>`<th>${s.label}<br>${s.area}</th>`).join("")}<th>計</th></tr></thead><tbody>
+ ${songs.map(song=>{
+  const cells=doneShows.map(s=>rows().some(r=>r.showId===s.id&&r.song===song)?`<td class="hit">●</td>`:`<td class="blank">—</td>`).join("");
+  const c=songCounts().find(x=>x.song===song).count;
+  return `<tr><td>${song}</td>${cells}<td>${c}</td></tr>`;
+ }).join("")}</tbody></table></div>`;
+}
+
+
+
+function showPairs(){
+ const done=visibleShows().filter(s=>s.status==="入力済");
+ const groups=[];
+ for(let i=0;i<done.length;i++){
+   const a=done[i], b=done[i+1];
+   if(b && a.venue===b.venue){
+     groups.push([a,b]); i++;
+   }
+ }
+ return groups;
+}
+function songAt(showId, order){
+ const x=data.setlists.find(r=>r.showId===showId && r.order===order);
+ return x && x.song ? x.song : "";
 }
 function renderPairs(){
- const done=visibleShows().filter(s=>s.status==="入力済"), groups=[];
- for(let i=0;i<done.length;i++){const a=done[i],b=done[i+1]; if(b&&a.venue===b.venue){groups.push([a,b]);i++;}}
- if(!groups.length){setApp(`<div class="card">比較できる2days公演がありません。</div>`);return;}
- const opts=groups.map((g,i)=>`<option value="${i}">${g[0].area}｜${g[0].label}・${g[1].label}｜${g[0].venue}</option>`).join("");
+ const groups=showPairs();
+ if(!groups.length){setApp('<div class="card">比較できる2days公演がありません。</div>');return;}
+ const opts=groups.map((g,idx)=>`<option value="${idx}">${g[0].area}｜${g[0].label}・${g[1].label}｜${g[0].venue}</option>`).join("");
  setApp(`<div class="controls"><select id="pairSel">${opts}</select></div><div id="pairBox"></div>`);
  const sel=document.querySelector("#pairSel"); sel.onchange=()=>drawPair(groups[Number(sel.value)]); drawPair(groups[0]);
 }
 function drawPair(pair){
- const [sat,sun]=pair, satSongs=new Set(data.setlists.filter(r=>r.showId===sat.id).map(r=>r.song)), sunSongs=new Set(data.setlists.filter(r=>r.showId===sun.id).map(r=>r.song));
- const max=Math.max(20, ...data.setlists.filter(r=>r.showId===sat.id||r.showId===sun.id).map(r=>r.order), 0);
- let common=0,satOnly=0,sunOnly=0,sunday12=0;
- const body=Array.from({length:max},(_,i)=>{const order=i+1, sa=songAt(sat.id,order), sb=songAt(sun.id,order); const same=sa&&sb&&sa===sb, sof=sa&&!sunSongs.has(sa), suof=sb&&!satSongs.has(sb), f=order===12&&sb&&suof; let label=same?"共通枠":(f?"日曜12曲目・初登場枠":"日替わり枠"), sc=same?"cellCommon":(sof?"cellSaturday":""), uc=same?"cellCommon":(f?"cellFirstSunday12":(suof?"cellSunday":"")); if(same)common++; if(sof)satOnly++; if(suof)sunOnly++; if(f)sunday12++; return `<tr><td>${order}</td><td><span class="pill">${label}</span></td><td class="${sc}">${sa||"<span class='blank'>未入力</span>"}</td><td class="${uc}">${sb||"<span class='blank'>未入力</span>"}${f?` <span class="firstMark">★日曜12曲目</span>`:""}</td></tr>`;}).join("");
- document.querySelector("#pairBox").innerHTML=`<div class="card"><h2>${sat.area} 2days分析</h2><div class="muted">${sat.label} / ${sun.label}　${sat.venue}</div><div class="legend"><span class="legendItem common">土日共通</span><span class="legendItem sat">土曜だけ</span><span class="legendItem sun">日曜だけ</span><span class="legendItem first">日曜12曲目</span></div><div class="grid" style="margin-top:14px"><div class="card"><div class="muted">土日共通曲</div><div class="big">${common}</div></div><div class="card"><div class="muted">土曜だけ</div><div class="big">${satOnly}</div></div><div class="card"><div class="muted">日曜だけ</div><div class="big">${sunOnly}</div></div><div class="card"><div class="muted">日曜12曲目</div><div class="big">${sunday12}</div></div></div><table><thead><tr><th>曲順</th><th>分類</th><th>土曜日</th><th>日曜日</th></tr></thead><tbody>${body}</tbody></table></div>`;
-}
-function parseSongs(text, showId){
- const lines=text.split(/\n/).map(x=>x.trim()).filter(Boolean), out=[]; let n=1;
- for(const line of lines){
-   if(/^(SHOWCASE|FYOP|FYOD|B'z|アンコール|Encore|ENCORE)/i.test(line)) continue;
-   const m=line.match(/^(\d+)[\.．\)）\s、-]+(.+)$/);
-   if(m) out.push({showId,order:Number(m[1]),song:m[2].trim(),section:Number(m[1])>=19?"Encore":"Main"});
-   else out.push({showId,order:n++,song:line,section:n>=20?"Encore":"Main"});
- }
- return out;
+ const [sat,sun]=pair;
+ const satSongs = new Set(rows().filter(r=>r.showId===sat.id).map(r=>r.song));
+ const sunSongs = new Set(rows().filter(r=>r.showId===sun.id).map(r=>r.song));
+
+ let common=0, satOnly=0, sunOnly=0, sunday12=0;
+
+ const rowsHtml=Array.from({length:20},(_,i)=>{
+   const order=i+1;
+   const sa=songAt(sat.id,order);
+   const sb=songAt(sun.id,order);
+
+   const same = sa && sb && sa===sb;
+   const satOnlyFlag = sa && !sunSongs.has(sa);
+   const sunOnlyFlag = sb && !satSongs.has(sb);
+   const sunday12Flag = order===12 && sb && sunOnlyFlag;
+
+   let rowLabel = "";
+   let satClass = "";
+   let sunClass = "";
+   let rowClass = "";
+
+   if(same){
+     common++;
+     rowLabel="共通枠";
+     rowClass="rowCommon";
+     satClass="cellCommon";
+     sunClass="cellCommon";
+   }else{
+     rowLabel="日替わり枠";
+     rowClass="rowSwap";
+     if(satOnlyFlag){ satOnly++; satClass="cellSaturday"; }
+     if(sunOnlyFlag){ sunOnly++; sunClass="cellSunday"; }
+     if(sunday12Flag){ sunday12++; sunClass="cellFirstSunday12"; rowLabel="日曜12曲目・初登場枠"; rowClass="rowFirst"; }
+   }
+
+   return `<tr class="${rowClass}">
+     <td>${order}</td>
+     <td><span class="pill ${rowClass}Pill">${rowLabel}</span></td>
+     <td class="${satClass}">${sa||"<span class='blank'>未入力</span>"}</td>
+     <td class="${sunClass}">${sb||"<span class='blank'>未入力</span>"}${sunday12Flag?` <span class="firstMark">★日曜12曲目</span>`:""}</td>
+   </tr>`;
+ }).join("");
+
+ document.querySelector("#pairBox").innerHTML=`<div class="card">
+   <h2>${sat.area} 2days分析</h2>
+   <div class="muted">${sat.label} / ${sun.label}　${sat.venue}</div>
+
+   <div class="legend">
+     <span class="legendItem common">土日共通</span>
+     <span class="legendItem sat">土曜だけ</span>
+     <span class="legendItem sun">日曜だけ</span>
+     <span class="legendItem first">日曜12曲目</span>
+   </div>
+
+   <div class="grid" style="margin-top:14px">
+     <div class="card miniCard commonBorder"><div class="muted">土日共通曲</div><div class="big">${common}</div></div>
+     <div class="card miniCard satBorder"><div class="muted">土曜だけ</div><div class="big">${satOnly}</div></div>
+     <div class="card miniCard sunBorder"><div class="muted">日曜だけ</div><div class="big">${sunOnly}</div></div>
+     <div class="card miniCard firstBorder"><div class="muted">日曜12曲目</div><div class="big">${sunday12}</div></div>
+   </div>
+
+   <table><thead><tr><th>曲順</th><th>分類</th><th>土曜日</th><th>日曜日</th></tr></thead><tbody>${rowsHtml}</tbody></table>
+
+   <div class="footer">
+     見方：同じ曲は「土日共通」。片方だけ出る曲は、土曜側・日曜側のセルだけ色を付けています。日曜12曲目は特別枠として強調しています。
+   </div>
+ </div>`;
 }
 function renderImport(){
- const tourOpts=tours().map(t=>`<option value="${t.id}" ${selectedTour===t.id?'selected':''}>${t.label} ${t.year||""}</option>`).join("");
- const showOpts=visibleShows().map(s=>`<option value="${s.id}">${s.label}｜${s.area}｜${s.venue}</option>`).join("");
- setApp(`<div class="card"><h2>追記・整形</h2><div class="notice">既存公演を選んで追記できます。公演が無いツアーは、下の「新規公演追加」で作れます。</div><h3>既存公演に追加・更新</h3><div class="controls"><select id="existingShow">${showOpts||'<option value="">先に新規公演を追加してください</option>'}</select></div><textarea id="paste" rows="10" placeholder="1. FAITH?\n2. 濁流BOY\nまたは曲名だけを1行ずつ"></textarea><div class="controls"><button id="parseBtn">整形する</button><button id="saveMergeBtn">保存（追記・更新）</button><button id="saveReplaceBtn">この公演を全上書き</button></div><textarea id="out" rows="8" placeholder="整形結果"></textarea></div><div class="card" style="margin-top:14px"><h2>新規公演追加</h2><div class="formgrid"><label>ツアー<select id="newTour">${tourOpts}</select></label><label>日付<input id="newDate" placeholder="2026/5/3"></label><label>表示ラベル<input id="newLabel" placeholder="5.3（日）"></label><label>エリア<input id="newArea" placeholder="仙台"></label><label>会場<input id="newVenue" placeholder="SENDAI GIGS"></label><label>種別<select id="newType"><option>ARENA</option><option>SHOWCASE</option><option>FC</option></select></label></div><div class="controls"><button id="addShowBtn">公演を追加</button></div></div>`);
- const p=document.querySelector("#parseBtn"), out=document.querySelector("#out"), paste=document.querySelector("#paste"), sel=document.querySelector("#existingShow");
- p.onclick=()=>{ if(!sel.value){alert("先に公演を選ぶか、新規公演を追加してください");return;} out.value=JSON.stringify(parseSongs(paste.value,sel.value),null,2); };
- function readParsed(){try{return JSON.parse(out.value).filter(x=>x.showId&&x.order&&x.song)}catch(e){alert("先に整形してください");return null}}
- document.querySelector("#saveMergeBtn").onclick=()=>{const parsed=readParsed(); if(!parsed)return; const id=sel.value; data.setlists=data.setlists.filter(r=>!(r.showId===id&&parsed.some(p=>p.order===r.order))).concat(parsed); data.shows=data.shows.map(s=>s.id===id?{...s,status:"入力済"}:s); data.updated=new Date().toISOString().slice(0,10); saveLocal(); alert("追記・更新しました"); render("shows");};
- document.querySelector("#saveReplaceBtn").onclick=()=>{const parsed=readParsed(); if(!parsed)return; const id=sel.value; data.setlists=data.setlists.filter(r=>r.showId!==id).concat(parsed); data.shows=data.shows.map(s=>s.id===id?{...s,status:"入力済"}:s); data.updated=new Date().toISOString().slice(0,10); saveLocal(); alert("全上書きしました"); render("shows");};
- document.querySelector("#addShowBtn").onclick=()=>{const t=document.querySelector("#newTour").value, date=document.querySelector("#newDate").value.trim(), label=document.querySelector("#newLabel").value.trim()||date, area=document.querySelector("#newArea").value.trim(), venue=document.querySelector("#newVenue").value.trim(), type=document.querySelector("#newType").value; if(!date||!area||!venue){alert("日付・エリア・会場を入れてください");return;} const id=(date.replaceAll("/","-")+"-"+area+"-"+Math.random().toString(36).slice(2,6)).replace(/\s/g,""); data.shows.push({id,date,label,area,venue,status:"未入力",tour:t,series:t==="SHOWCASE"?"SHOWCASE":(t==="FYOD"?"FC":"LIVE-GYM"),type}); selectedTour=t; localStorage.setItem("selectedTour_v4",selectedTour); saveLocal(); alert("公演を追加しました。次にセトリを貼って保存できます。"); render("import");};
-}
-function renderData(){
- setApp(`<div class="card"><h2>データ管理</h2><p class="muted">ここでローカル保存データを書き出せます。公開ページ全体に反映するには、GitHubのindex.html側にデータを反映する必要があります。</p><div class="controls"><button id="exportBtn">JSONを書き出し</button><button id="resetBtn" class="danger">ローカル保存をリセット</button></div><textarea id="dataOut" rows="14"></textarea></div>`);
- document.querySelector("#exportBtn").onclick=()=>{document.querySelector("#dataOut").value=JSON.stringify(data,null,2)};
- document.querySelector("#resetBtn").onclick=()=>{if(confirm("この端末のローカル保存を消します。よろしいですか？")){localStorage.removeItem("bzData_v4"); location.reload();}};
+ const opts=visibleShows().map(s=>`<option value="${s.id}">${s.label} ${s.venue}</option>`).join("");
+ if(!visibleShows().length){ setApp(`<div class="card">このツアーの公演データはまだありません。</div>`); return; }
+ setApp(`<div class="card importer"><h2>追記・整形</h2>
+ <p class="muted">セトリを貼り付けて「整形」→「このブラウザに保存」。保存は追記・更新式です。同じ曲順だけ上書きし、他の曲順は残します。</p>
+ <select id="importShow">${opts}</select>
+ <textarea id="paste" rows="10" placeholder="1. FAITH?\n2. 濁流BOY\n...\nアンコール\n19. その先へ"></textarea>
+ <button id="parseBtn">整形する</button>
+ <textarea id="out" rows="10" placeholder="ここに整形結果が出ます"></textarea>
+ <button id="saveBtn">このブラウザに保存（追記・更新）</button>
+ <button id="replaceBtn">この公演を全上書き</button>
+ <button id="clearBtn">この公演を空にする</button>
+ <p class="muted">保存後はDashboard/公演別/マトリクスに反映されます。</p></div>`);
+ document.querySelector("#parseBtn").onclick=()=>{
+  const id=document.querySelector("#importShow").value;
+  const lines=document.querySelector("#paste").value.split(/\n/);
+  const parsed=[];
+  for(const line of lines){
+    const m=line.trim().match(/^(\d+)[\.\s、\)]\s*(.+)$/);
+    if(m && m[2].trim() && !m[2].includes("B'zのLIVE-GYM")){
+      parsed.push({showId:id,order:Number(m[1]),song:m[2].trim(),section:Number(m[1])>=19?"Encore":"Main"});
+    }
+  }
+  document.querySelector("#out").value=JSON.stringify(parsed,null,2);
+ };
+ function readParsed(){
+  let parsed=[]; 
+  try{parsed=JSON.parse(document.querySelector("#out").value)}
+  catch(e){alert("整形結果がJSONではありません");return null}
+  return parsed.filter(x=>x && x.showId && x.order && x.song);
+ }
+ function persist(id){
+  data.shows=data.shows.map(s=>s.id===id?{...s,status:"入力済"}:s);
+  data.updated=new Date().toISOString().slice(0,10);
+  localStorage.setItem("bzData",JSON.stringify(data));
+ }
+ document.querySelector("#saveBtn").onclick=()=>{
+  const parsed=readParsed(); if(!parsed)return;
+  const id=document.querySelector("#importShow").value;
+  const keep=data.setlists.filter(r=>!(r.showId===id && parsed.some(p=>p.order===r.order)));
+  data.setlists=keep.concat(parsed);
+  persist(id);
+  alert("追記・更新しました。同じ曲順は新しい内容に置き換え、他の曲順は残しています。");
+ };
+ document.querySelector("#replaceBtn").onclick=()=>{
+  const parsed=readParsed(); if(!parsed)return;
+  const id=document.querySelector("#importShow").value;
+  data.setlists=data.setlists.filter(r=>r.showId!==id).concat(parsed);
+  persist(id);
+  alert("この公演を全上書きしました。");
+ };
+ document.querySelector("#clearBtn").onclick=()=>{
+  const id=document.querySelector("#importShow").value;
+  if(!confirm("この公演のセトリを空にします。よろしいですか？"))return;
+  data.setlists=data.setlists.filter(r=>r.showId!==id);
+  data.shows=data.shows.map(s=>s.id===id?{...s,status:"未入力"}:s);
+  data.updated=new Date().toISOString().slice(0,10);
+  localStorage.setItem("bzData",JSON.stringify(data));
+  alert("この公演を空にしました。");
+ };
 }
 render();
 </script>
-</body>
-</html>
+</body></html>
