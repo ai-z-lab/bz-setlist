@@ -77,13 +77,6 @@ window.BZ_DATA = {
       "note": "2026年ツアー"
     },
     {
-      "id": "ULTRA MISSION",
-      "label": "ULTRA MISSION",
-      "year": "2026",
-      "type": "SPECIAL",
-      "note": "SPECIAL"
-    },
-    {
       "id": "FYOP",
       "label": "FYOP",
       "year": "2025",
@@ -103,6 +96,13 @@ window.BZ_DATA = {
       "year": "",
       "type": "SHOWCASE",
       "note": "情熱GIGSなど"
+    },
+    {
+      "id": "ULTRA MISSION",
+      "label": "ULTRA MISSION",
+      "year": "2026",
+      "type": "SPECIAL",
+      "note": "SPECIAL"
     }
   ],
   "shows": [
@@ -3604,6 +3604,21 @@ function saveLocal(){ localStorage.setItem("bzData_v4", JSON.stringify(data)); }
 function tours(){return data.tours || []}
 function visibleShows(){return data.shows.filter(s=>selectedTour==="ALL" || s.tour===selectedTour).sort((a,b)=>a.id.localeCompare(b.id))}
 function visibleIds(){return new Set(visibleShows().map(s=>s.id))}
+function showDateKey(show){
+ const match=String(show.id||"").match(/\d{4}-\d{2}-\d{2}/);
+ if(match)return match[0];
+ const date=String(show.date||"").replace(/\//g,"-");
+ return /^\d{4}-\d{1,2}-\d{1,2}$/.test(date)
+  ? date.split("-").map((part,i)=>i===0?part:part.padStart(2,"0")).join("-")
+  : "";
+}
+function latestShowDate(shows){
+ return shows
+  .filter(s=>s.status==="入力済")
+  .map(showDateKey)
+  .filter(Boolean)
+  .sort((a,b)=>b.localeCompare(a))[0] || "";
+}
 function rows(){const ids=visibleIds(); return data.setlists.filter(r=>ids.has(r.showId)&&r.song&&r.song.trim()).map(r=>({...r,song:normalizeSongName(r.song)})).sort((a,b)=>a.showId.localeCompare(b.showId)||a.order-b.order)}
 function showMap(){return Object.fromEntries(data.shows.map(s=>[s.id,s]))}
 function setApp(html){app.innerHTML = tourBar()+html; bindTourBar();}
@@ -3642,13 +3657,14 @@ function changesFromPrev(showId){
 function render(tab="dash"){ if(tab==="dash")renderDash(); if(tab==="shows")renderShows(); if(tab==="songs")renderSongs(); if(tab==="matrix")renderMatrix(); if(tab==="pairs")renderPairs(); if(tab==="import")renderImport(); }
 
 function renderDash(){
- const done=visibleShows().filter(s=>s.status==="入力済").length, total=visibleShows().length, totalSongs=songCounts().length, top=songCounts().slice(0,8);
+ const currentShows=visibleShows();
+ const done=currentShows.filter(s=>s.status==="入力済").length, total=currentShows.length, totalSongs=songCounts().length, top=songCounts().slice(0,8), latest=latestShowDate(currentShows);
  setApp(`
  <div class="grid">
   <div class="card"><div class="muted">登録公演</div><div class="big">${done}/${total}</div></div>
   <div class="card"><div class="muted">曲数</div><div class="big">${totalSongs}</div></div>
   <div class="card"><div class="muted">総演奏データ</div><div class="big">${rows().length}</div></div>
-  <div class="card"><div class="muted">最終更新</div><div class="big" style="font-size:20px">${data.updated||""}</div></div>
+  <div class="card"><div class="muted">最新公演</div><div class="big" style="font-size:20px">${latest||"—"}</div></div>
  </div>
  <div class="card" style="margin-top:14px"><h2>出現回数 上位</h2>
  ${top.length?`<div class="rank">${top.map(x=>`<div><b>${x.song}</b> <span class="pill">${x.count}回</span><div class="bar"><i style="width:${done?Math.min(100,x.count/done*100):0}%"></i></div></div>`).join("")}</div>`:`<div class="muted">このツアーのデータはまだありません。</div>`}
