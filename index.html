@@ -34,7 +34,7 @@ tr:hover td{background:#1c2130}.pill{display:inline-flex;border:1px solid var(--
 .hit{font-weight:900;color:var(--accent2)}.blank{color:#555}.rank{display:flex;flex-direction:column;gap:8px}.bar{height:9px;background:#2a3040;border-radius:999px;overflow:hidden}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2))}
 .footer{color:var(--muted);font-size:12px;margin-top:24px;line-height:1.7}
 .changeBox{margin:16px 0;padding:14px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.025)}
-.oldSong{color:var(--muted)}.newSong{color:var(--accent);font-weight:900}.changedLine td{background:rgba(255,211,106,.08)!important}
+.oldSong{color:var(--muted)}.newSong{color:var(--accent);font-weight:900}.newSongBadge{display:inline-flex;align-items:center;margin-left:7px;border-radius:999px;padding:2px 7px;background:#ffcf4a;color:#1a1a1a;font-size:11px;font-weight:900;line-height:1.25;vertical-align:middle}.changedLine td{background:rgba(255,211,106,.08)!important}
 .legend{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 4px}.legendItem{border-radius:999px;padding:7px 11px;font-size:12px;font-weight:900;border:1px solid var(--line)}
 .legendItem.common{background:rgba(126,231,200,.16);color:var(--accent2);border-color:rgba(126,231,200,.5)}.legendItem.sat{background:rgba(255,211,106,.16);color:var(--accent);border-color:rgba(255,211,106,.55)}.legendItem.sun{background:rgba(133,170,255,.17);color:#a9beff;border-color:rgba(133,170,255,.55)}.legendItem.first{background:rgba(255,125,125,.20);color:#ffb1b1;border-color:rgba(255,125,125,.65)}
 .cellCommon{background:rgba(126,231,200,.13)!important;border-left:3px solid rgba(126,231,200,.65)}.cellSaturday{background:rgba(255,211,106,.16)!important;border-left:3px solid rgba(255,211,106,.75)}.cellSunday{background:rgba(133,170,255,.18)!important;border-left:3px solid rgba(133,170,255,.75)}
@@ -3888,7 +3888,7 @@ function songCounts(){
  return Object.entries(m).map(([song,count])=>({song,count})).sort((a,b)=>b.count-a.count||a.song.localeCompare(b.song,'ja'));
 }
 function songAt(showId, order){const x=data.setlists.find(r=>r.showId===showId && r.order===order); return x?normalizeSongName(x.song):""}
-function displaySongName(song){return song==="完全無欠"?`${song} 🆕新曲`:song}
+function displaySongName(song){return song==="完全無欠"?`${song}<span class="newSongBadge">新曲</span>`:song}
 function changesFromPrev(showId){
  const shows=visibleShows().map(s=>s.id); const i=shows.indexOf(showId); if(i<=0)return [];
  const prevId=shows[i-1], out=[];
