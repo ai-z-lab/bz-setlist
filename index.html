@@ -3888,6 +3888,7 @@ function songCounts(){
  return Object.entries(m).map(([song,count])=>({song,count})).sort((a,b)=>b.count-a.count||a.song.localeCompare(b.song,'ja'));
 }
 function songAt(showId, order){const x=data.setlists.find(r=>r.showId===showId && r.order===order); return x?normalizeSongName(x.song):""}
+function displaySongName(song){return song==="完全無欠"?`${song} 🆕新曲`:song}
 function changesFromPrev(showId){
  const shows=visibleShows().map(s=>s.id); const i=shows.indexOf(showId); if(i<=0)return [];
  const prevId=shows[i-1], out=[];
@@ -3921,7 +3922,7 @@ function drawShow(id){
  const s=showMap()[id], r=data.setlists.filter(x=>x.showId===id).map(x=>({...x,song:normalizeSongName(x.song)})).sort((a,b)=>a.order-b.order), changes=changesFromPrev(id);
  const max=Math.max(20, ...r.map(x=>x.order), 0);
  const changesHtml=changes.length?`<div class="changeBox"><h3>前公演から変更があった曲</h3><table><thead><tr><th>曲順</th><th>前公演</th><th>今回</th></tr></thead><tbody>${changes.map(x=>`<tr><td>${x.order}</td><td class="oldSong">${x.before}</td><td class="newSong">${x.after}</td></tr>`).join("")}</tbody></table></div>`:`<div class="changeBox muted">前公演からの曲順変更はありません。</div>`;
- document.querySelector("#showBox").innerHTML=`<div class="card"><h2>${s.label} ${s.venue}</h2><div class="muted">${s.date} / ${s.area} / ${s.tour} / ${s.status}</div>${changesHtml}<table><thead><tr><th>曲順</th><th>曲名</th><th>区分</th></tr></thead><tbody>${Array.from({length:max},(_,i)=>{const x=r.find(y=>y.order===i+1)||{song:"",section:i>=18?"Encore":"Main"}; const changed=changes.some(c=>c.order===i+1); return `<tr class="${changed?'changedLine':''}"><td>${i+1}</td><td>${x.song||"<span class='blank'>未入力</span>"}</td><td>${x.section||""}</td></tr>`}).join("")}</tbody></table></div>`;
+ document.querySelector("#showBox").innerHTML=`<div class="card"><h2>${s.label} ${s.venue}</h2><div class="muted">${s.date} / ${s.area} / ${s.tour} / ${s.status}</div>${changesHtml}<table><thead><tr><th>曲順</th><th>曲名</th><th>区分</th></tr></thead><tbody>${Array.from({length:max},(_,i)=>{const x=r.find(y=>y.order===i+1)||{song:"",section:i>=18?"Encore":"Main"}; const changed=changes.some(c=>c.order===i+1); return `<tr class="${changed?'changedLine':''}"><td>${i+1}</td><td>${x.song?displaySongName(x.song):"<span class='blank'>未入力</span>"}</td><td>${x.section||""}</td></tr>`}).join("")}</tbody></table></div>`;
 }
 function renderSongs(){
  const done=visibleShows().filter(s=>s.status==="入力済").length;
@@ -3954,7 +3955,7 @@ function drawPair(pair){
  const max=Math.max(20, ...data.setlists.filter(r=>r.showId===sat.id||r.showId===sun.id).map(r=>r.order), 0);
  const hasSunday10Rule = sat.tour === "FYOP+" && sun.tour === "FYOP+";
  let common=0,satOnly=0,sunOnly=0;
- const body=Array.from({length:max},(_,i)=>{const order=i+1, sa=songAt(sat.id,order), sb=songAt(sun.id,order); const same=sa&&sb&&sa===sb, sof=sa&&!sunSongs.has(sa), suof=sb&&!satSongs.has(sb); let label=same?"共通枠":"日替わり枠", sc=same?"cellCommon":(sof?"cellSaturday":""), uc=same?"cellCommon":(suof?"cellSunday":""); if(same)common++; if(sof)satOnly++; if(suof)sunOnly++; return `<tr><td>${order}</td><td><span class="pill">${label}</span></td><td class="${sc}">${sa||"<span class='blank'>未入力</span>"}</td><td class="${uc}">${sb||"<span class='blank'>未入力</span>"}${hasSunday10Rule&&order===10&&sb?` <span class="firstMark">★日曜10曲目</span>`:""}</td></tr>`;}).join("");
+ const body=Array.from({length:max},(_,i)=>{const order=i+1, sa=songAt(sat.id,order), sb=songAt(sun.id,order); const same=sa&&sb&&sa===sb, sof=sa&&!sunSongs.has(sa), suof=sb&&!satSongs.has(sb); let label=same?"共通枠":"日替わり枠", sc=same?"cellCommon":(sof?"cellSaturday":""), uc=same?"cellCommon":(suof?"cellSunday":""); if(same)common++; if(sof)satOnly++; if(suof)sunOnly++; return `<tr><td>${order}</td><td><span class="pill">${label}</span></td><td class="${sc}">${sa?displaySongName(sa):"<span class='blank'>未入力</span>"}</td><td class="${uc}">${sb?displaySongName(sb):"<span class='blank'>未入力</span>"}${hasSunday10Rule&&order===10&&sb?` <span class="firstMark">★日曜10曲目</span>`:""}</td></tr>`;}).join("");
  const totalUnique=common+satOnly+sunOnly;
  const sunday10Legend = hasSunday10Rule ? `<span class="legendItem first">★日曜10曲目</span>` : "";
  document.querySelector("#pairBox").innerHTML=`<div class="card"><h2>${sat.area} 2days分析</h2><div class="muted">${sat.label} / ${sun.label}　${sat.venue}</div><div class="legend"><span class="legendItem common">土日共通</span><span class="legendItem sat">土曜だけ</span><span class="legendItem sun">日曜だけ</span>${sunday10Legend}</div><div class="grid" style="margin-top:14px"><div class="card"><div class="muted">土日共通曲</div><div class="big">${common}</div></div><div class="card"><div class="muted">土曜だけ</div><div class="big">${satOnly}</div></div><div class="card"><div class="muted">日曜だけ</div><div class="big">${sunOnly}</div></div><div class="card"><div class="muted">2日間の曲種類</div><div class="big">${totalUnique}</div></div></div><table><thead><tr><th>曲順</th><th>分類</th><th>土曜日</th><th>日曜日</th></tr></thead><tbody>${body}</tbody></table></div>`;
