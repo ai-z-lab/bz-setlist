@@ -5222,12 +5222,14 @@ window.BZ_DATA = {
 
 let data = JSON.parse(localStorage.getItem("bzData_v4") || JSON.stringify(window.BZ_DATA));
 const OFFICIAL_CALENDAR_TOURS = ["Koshi Inaba LIVE 2026-2027 ～enV～", "TMG LIVE 2026 “SAYONARA”"];
+const UNUSED_CALENDAR_IMPORT_ARTISTS = ["B'z"];
 function syncOfficialCalendarEvents(){
  const official = window.BZ_DATA.calendarEvents || [];
  const officialIds = new Set(official.map(event=>event.id));
  const officialTours = new Set(OFFICIAL_CALENDAR_TOURS);
+ const unusedImportArtists = new Set(UNUSED_CALENDAR_IMPORT_ARTISTS);
  const customEvents = (Array.isArray(data.calendarEvents) ? data.calendarEvents : [])
-  .filter(event=>!officialIds.has(event.id) && !officialTours.has(event.tour));
+  .filter(event=>!officialIds.has(event.id) && !officialTours.has(event.tour) && !unusedImportArtists.has(event.artist));
  data.calendarEvents = customEvents.concat(official);
 }
 let selectedTour = localStorage.getItem("selectedTour_v4") || "FYOP+";
