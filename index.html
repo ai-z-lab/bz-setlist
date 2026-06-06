@@ -41,6 +41,9 @@ tr:hover td{background:#1c2130}.pill{display:inline-flex;border:1px solid var(--
 .firstMark{display:inline-block;margin-left:8px;color:#ffb1b1;font-size:12px;font-weight:900}.danger{color:#ffb1b1;border-color:rgba(255,125,125,.45)}
 .formgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.formgrid label{display:flex;flex-direction:column;gap:5px;color:var(--muted);font-size:12px}.formgrid input,.formgrid select{min-width:0;width:100%}
 .notice{background:rgba(255,211,106,.08);border:1px solid rgba(255,211,106,.25);border-radius:14px;padding:12px;margin:12px 0;color:#f5d98f}
+
+.calendarHero{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:14px}.calendarHero h2{margin-bottom:6px}.calendarFilters{display:grid;grid-template-columns:1fr;gap:12px;margin:14px 0}.filterGroup{display:flex;flex-wrap:wrap;gap:8px}.filterGroupTitle{width:100%;color:var(--muted);font-size:12px;font-weight:900;letter-spacing:.06em}.filterBtn{font-size:13px;padding:8px 11px}.calendarList{display:grid;gap:12px}.calendarCard{position:relative;display:grid;grid-template-columns:126px 1fr;gap:14px;overflow:hidden;border-left:6px solid var(--line)}.calendarCard.isPast{opacity:.48}.calendarDate{display:flex;flex-direction:column;gap:5px;align-items:flex-start}.calendarDay{font-size:22px;font-weight:900;letter-spacing:.02em}.calendarTime{color:var(--muted);font-size:13px;font-weight:800}.calendarBadgeRow{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:8px}.eventTypeBadge,.artistBadge{display:inline-flex;align-items:center;border-radius:999px;padding:4px 9px;font-size:12px;font-weight:900;border:1px solid currentColor}.artistBadge{color:var(--text);border-color:var(--line);background:rgba(255,255,255,.04)}.calendarTitle{font-size:18px;font-weight:900;margin-bottom:6px}.calendarMeta{color:var(--muted);font-size:13px;line-height:1.6}.calendarDesc{margin-top:9px;line-height:1.7}.calendarLink{display:inline-flex;margin-top:10px;color:var(--accent);font-weight:900;text-decoration:none}.calendarLink:hover{text-decoration:underline}.calendarEmpty{text-align:center;padding:28px}.event-live{border-left-color:#ff6b6b}.event-live .eventTypeBadge{color:#ff9a9a;background:rgba(255,107,107,.14)}.event-entry_start{border-left-color:#6fa8ff}.event-entry_start .eventTypeBadge{color:#9ec2ff;background:rgba(111,168,255,.14)}.event-entry_deadline{border-left-color:#ffd36a}.event-entry_deadline .eventTypeBadge{color:#ffe099;background:rgba(255,211,106,.16)}.event-lottery_result{border-left-color:#69d99b}.event-lottery_result .eventTypeBadge{color:#9cf0bf;background:rgba(105,217,155,.14)}.event-general_sale{border-left-color:#c79cff}.event-general_sale .eventTypeBadge{color:#d8baff;background:rgba(199,156,255,.14)}.event-door_sale{border-left-color:#ffad5f}.event-door_sale .eventTypeBadge{color:#ffc58a;background:rgba(255,173,95,.14)}.event-notice{border-left-color:#9aa3b5}.event-notice .eventTypeBadge{color:#c4cad6;background:rgba(154,163,181,.14)}
+@media(max-width:620px){.calendarHero{display:block}.calendarCard{grid-template-columns:1fr;gap:10px}.calendarDate{flex-direction:row;align-items:baseline}.calendarDay{font-size:20px}.filterBtn{flex:1 1 auto}.calendarTitle{font-size:16px}}
 @media(max-width:780px){.grid{grid-template-columns:repeat(2,1fr)}.formgrid{grid-template-columns:1fr}h1{font-size:20px}th,td{font-size:12px;padding:8px}.card{padding:13px}}
 
 /* Performance tweaks */
@@ -60,6 +63,7 @@ tr:hover td{background:#1c2130}.pill{display:inline-flex;border:1px solid var(--
   <button data-tab="songs">曲別ランキング</button>
   <button data-tab="matrix">マトリクス</button>
   <button data-tab="pairs">1日目/2日目比較</button>
+  <button data-tab="calendar">カレンダー</button>
   <button data-tab="import">追記・整形</button>
 </nav>
 <main id="app"></main>
@@ -468,6 +472,83 @@ window.BZ_DATA = {
       "tour": "SHOWCASE",
       "series": "SHOWCASE",
       "type": "SHOWCASE"
+    }
+  ],
+  "calendarEvents": [
+    {
+      "id": "2026-06-29-env-ichihaya-entry-start",
+      "date": "2026-06-29",
+      "endDate": "",
+      "time": "12:00",
+      "type": "entry_start",
+      "artist": "Koshi Inaba",
+      "tour": "Koshi Inaba LIVE 2026-2027 ～enV～",
+      "title": "いち早プレリザーブ先行 受付開始",
+      "area": "",
+      "venue": "",
+      "description": "申込受付期間 2026/6/29 12:00 ～ 2026/7/5 23:59",
+      "url": "",
+      "status": "scheduled"
+    },
+    {
+      "id": "2026-07-05-env-ichihaya-entry-deadline",
+      "date": "2026-07-05",
+      "endDate": "",
+      "time": "23:59",
+      "type": "entry_deadline",
+      "artist": "Koshi Inaba",
+      "tour": "Koshi Inaba LIVE 2026-2027 ～enV～",
+      "title": "いち早プレリザーブ先行 受付締切",
+      "area": "",
+      "venue": "",
+      "description": "",
+      "url": "",
+      "status": "scheduled"
+    },
+    {
+      "id": "2026-07-09-env-ichihaya-lottery-result",
+      "date": "2026-07-09",
+      "endDate": "",
+      "time": "20:00",
+      "type": "lottery_result",
+      "artist": "Koshi Inaba",
+      "tour": "Koshi Inaba LIVE 2026-2027 ～enV～",
+      "title": "いち早プレリザーブ先行 抽選結果発表",
+      "area": "",
+      "venue": "",
+      "description": "",
+      "url": "",
+      "status": "scheduled"
+    },
+    {
+      "id": "2026-10-05-tmg-sayonara-tokyo",
+      "date": "2026-10-05",
+      "endDate": "",
+      "time": "18:00",
+      "type": "live",
+      "artist": "TMG",
+      "tour": "TMG LIVE 2026 “SAYONARA”",
+      "title": "TMG LIVE 2026 “SAYONARA” 東京公演",
+      "area": "東京",
+      "venue": "Zepp Haneda (TOKYO)",
+      "description": "OPEN 17:00 / START 18:00",
+      "url": "",
+      "status": "scheduled"
+    },
+    {
+      "id": "2026-09-18-env-hiroshima",
+      "date": "2026-09-18",
+      "endDate": "",
+      "time": "18:00",
+      "type": "live",
+      "artist": "Koshi Inaba",
+      "tour": "Koshi Inaba LIVE 2026-2027 ～enV～",
+      "title": "広島公演",
+      "area": "広島",
+      "venue": "広島文化学園HBGホール",
+      "description": "",
+      "url": "",
+      "status": "scheduled"
     }
   ],
   "setlists": [
@@ -3956,6 +4037,9 @@ window.BZ_DATA = {
 
 let data = JSON.parse(localStorage.getItem("bzData_v4") || JSON.stringify(window.BZ_DATA));
 let selectedTour = localStorage.getItem("selectedTour_v4") || "FYOP+";
+let selectedCalendarType = "ALL";
+let selectedCalendarArtist = "ALL";
+if(!Array.isArray(data.calendarEvents)) data.calendarEvents = window.BZ_DATA.calendarEvents || [];
 const app = document.querySelector("#app");
 const navBtns = document.querySelectorAll("nav button");
 navBtns.forEach(b=>b.onclick=()=>{navBtns.forEach(x=>x.classList.remove("active"));b.classList.add("active");render(b.dataset.tab)});
@@ -3981,7 +4065,11 @@ function latestShowDate(shows){
 }
 function rows(){const ids=visibleIds(); return data.setlists.filter(r=>ids.has(r.showId)&&r.song&&r.song.trim()).map(r=>({...r,song:normalizeSongName(r.song)})).sort((a,b)=>a.showId.localeCompare(b.showId)||a.order-b.order)}
 function showMap(){return Object.fromEntries(data.shows.map(s=>[s.id,s]))}
-function setApp(html){app.innerHTML = tourBar()+html; bindTourBar();}
+function setApp(html, options={}){
+ const showTourBar = options.showTourBar !== false;
+ app.innerHTML = (showTourBar ? tourBar() : "") + html;
+ if(showTourBar) bindTourBar();
+}
 function tourBar(){
  const items=[{id:"ALL",label:"全部",year:""}].concat(tours());
  return `<div class="tourbar">${items.map(t=>`<button class="tourBtn ${selectedTour===t.id?'active':''}" data-tour="${t.id}">${t.label}${t.year?`<small>${t.year}</small>`:""}</button>`).join("")}</div>`;
@@ -3989,6 +4077,106 @@ function tourBar(){
 function bindTourBar(){
  document.querySelectorAll(".tourBtn").forEach(btn=>btn.onclick=()=>{selectedTour=btn.dataset.tour; localStorage.setItem("selectedTour_v4", selectedTour); const active=document.querySelector("nav button.active"); render(active?active.dataset.tab:"dash");});
 }
+
+const CALENDAR_TYPE_LABELS = {
+ ALL: "すべて",
+ live: "公演",
+ entry_start: "受付開始",
+ entry_deadline: "受付締切",
+ lottery_result: "当落発表",
+ general_sale: "一般発売",
+ door_sale: "直前販売",
+ notice: "注意事項"
+};
+const CALENDAR_TYPE_ORDER = ["ALL","live","entry_start","entry_deadline","lottery_result","general_sale","door_sale"];
+const CALENDAR_ARTIST_ORDER = ["ALL","B'z","Koshi Inaba","TMG"];
+
+function calendarEvents(){
+ return (data.calendarEvents || [])
+  .map(normalizeCalendarEvent)
+  .sort((a,b)=>calendarSortKey(a).localeCompare(calendarSortKey(b)) || a.title.localeCompare(b.title,'ja'));
+}
+function normalizeCalendarEvent(event){
+ return {
+  id: event.id || `${event.date}-${event.type}-${event.title}`,
+  date: event.date || "",
+  endDate: event.endDate || "",
+  time: event.time || "",
+  type: event.type || "notice",
+  artist: event.artist || "B'z",
+  tour: event.tour || "",
+  title: event.title || "Untitled",
+  area: event.area || "",
+  venue: event.venue || "",
+  description: event.description || "",
+  url: event.url || "",
+  status: event.status || "scheduled"
+ };
+}
+function calendarSortKey(event){return `${event.date || "9999-99-99"}T${event.time || "99:99"}`;}
+function todayKey(){return new Date().toISOString().slice(0,10);}
+function isCalendarPast(event){
+ if(event.status === "ended") return true;
+ const endKey = event.endDate || event.date;
+ return Boolean(endKey) && endKey < todayKey();
+}
+function calendarDateLabel(event){
+ const date = event.date ? event.date.replaceAll("-","/") : "日付未定";
+ const end = event.endDate ? ` 〜 ${event.endDate.replaceAll("-","/")}` : "";
+ return date + end;
+}
+function calendarMeta(event){
+ return [event.tour, event.area, event.venue].filter(Boolean).join(" / ");
+}
+function filteredCalendarEvents(){
+ return calendarEvents().filter(event=>
+  (selectedCalendarType === "ALL" || event.type === selectedCalendarType) &&
+  (selectedCalendarArtist === "ALL" || event.artist === selectedCalendarArtist)
+ );
+}
+function escapeHtml(value){
+ return String(value ?? "").replace(/[&<>'"]/g, ch=>({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[ch]));
+}
+function renderCalendarFilterButtons(items, selected, dataName){
+ return items.map(value=>`<button class="filterBtn ${selected===value?'active':''}" data-${dataName}="${escapeHtml(value)}">${escapeHtml(CALENDAR_TYPE_LABELS[value] || value)}</button>`).join("");
+}
+function renderCalendarCard(event){
+ const typeLabel = CALENDAR_TYPE_LABELS[event.type] || event.type;
+ const meta = calendarMeta(event);
+ const past = isCalendarPast(event);
+ return `<article class="card calendarCard event-${escapeHtml(event.type)} ${past?'isPast':''}" data-event-id="${escapeHtml(event.id)}">
+  <div class="calendarDate"><div class="calendarDay">${escapeHtml(calendarDateLabel(event))}</div>${event.time?`<div class="calendarTime">${escapeHtml(event.time)}</div>`:""}</div>
+  <div>
+   <div class="calendarBadgeRow"><span class="eventTypeBadge">${escapeHtml(typeLabel)}</span><span class="artistBadge">${escapeHtml(event.artist)}</span>${past?'<span class="pill">終了済み</span>':''}</div>
+   <div class="calendarTitle">${escapeHtml(event.title)}</div>
+   ${meta?`<div class="calendarMeta">${escapeHtml(meta)}</div>`:""}
+   ${event.description?`<div class="calendarDesc">${escapeHtml(event.description)}</div>`:""}
+   ${event.url?`<a class="calendarLink" href="${escapeHtml(event.url)}" target="_blank" rel="noopener">詳細を見る</a>`:""}
+  </div>
+ </article>`;
+}
+function bindCalendarFilters(){
+ document.querySelectorAll("[data-calendar-type]").forEach(btn=>btn.onclick=()=>{selectedCalendarType=btn.dataset.calendarType; renderCalendar();});
+ document.querySelectorAll("[data-calendar-artist]").forEach(btn=>btn.onclick=()=>{selectedCalendarArtist=btn.dataset.calendarArtist; renderCalendar();});
+}
+function renderCalendar(){
+ const events = filteredCalendarEvents();
+ setApp(`<section class="calendarHero card">
+   <div><h2>カレンダー</h2><div class="muted">B'z / Koshi Inaba / TMG 関連の公演・チケット受付・発売スケジュールを日付順に確認できます。</div></div>
+   <span class="pill">サンプルデータ ${calendarEvents().length}件</span>
+  </section>
+  <section class="card">
+   <div class="calendarFilters">
+    <div class="filterGroup"><div class="filterGroupTitle">イベント種別</div>${renderCalendarFilterButtons(CALENDAR_TYPE_ORDER, selectedCalendarType, "calendar-type")}</div>
+    <div class="filterGroup"><div class="filterGroupTitle">アーティスト</div>${renderCalendarFilterButtons(CALENDAR_ARTIST_ORDER, selectedCalendarArtist, "calendar-artist")}</div>
+   </div>
+  </section>
+  <section class="calendarList" style="margin-top:14px">
+   ${events.length ? events.map(renderCalendarCard).join("") : '<div class="card calendarEmpty muted">条件に一致するイベントはありません。</div>'}
+  </section>`, {showTourBar:false});
+ bindCalendarFilters();
+}
+
 function normalizeSongName(song){
   let normalized = String(song || "").trim();
   normalized = normalized
@@ -4015,7 +4203,7 @@ function changesFromPrev(showId){
  for(let order=1;order<=30;order++){const before=songAt(prevId,order), after=songAt(showId,order); if(after&&before&&before!==after)out.push({order,before,after}); else if(after&&!before)out.push({order,before:"未入力",after});}
  return out;
 }
-function render(tab="dash"){ if(tab==="dash")renderDash(); if(tab==="shows")renderShows(); if(tab==="songs")renderSongs(); if(tab==="matrix")renderMatrix(); if(tab==="pairs")renderPairs(); if(tab==="import")renderImport(); }
+function render(tab="dash"){ if(tab==="dash")renderDash(); if(tab==="shows")renderShows(); if(tab==="songs")renderSongs(); if(tab==="matrix")renderMatrix(); if(tab==="pairs")renderPairs(); if(tab==="calendar")renderCalendar(); if(tab==="import")renderImport(); }
 
 function renderDash(){
  const currentShows=visibleShows();
