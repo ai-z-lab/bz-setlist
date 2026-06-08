@@ -47,14 +47,31 @@ tr:hover td{background:#1c2130}.pill{display:inline-flex;border:1px solid var(--
 @media(max-width:780px){.grid{grid-template-columns:repeat(2,1fr)}.formgrid{grid-template-columns:1fr}h1{font-size:20px}th,td{font-size:12px;padding:8px}.card{padding:13px}}
 
 /* Calendar readability restoration */
-.calendarStateBar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0 0 12px;padding:9px 11px;border-radius:15px;white-space:normal;overflow:visible;text-overflow:clip;font-size:13px;line-height:1.35}
-.calendarStateChip{display:inline-flex;align-items:center;min-height:30px;border:1px solid var(--line);border-radius:999px;padding:6px 12px;background:rgba(255,255,255,.05);color:var(--text);font-size:13px;font-weight:900;line-height:1.25;box-shadow:0 0 0 1px rgba(255,255,255,.02) inset}
-.calendarStateChip.artist-all{color:#ddd6fe;border-color:rgba(139,92,246,.58);background:rgba(139,92,246,.14)}
-.calendarStateChip.artist-koshi{color:#ffb3b6;border-color:rgba(229,72,77,.72);background:rgba(229,72,77,.16)}
-.calendarStateChip.artist-tak{color:#bfdbfe;border-color:rgba(59,130,246,.72);background:rgba(59,130,246,.16)}
-.calendarStateChip.artist-bz{color:#ddd6fe;border-color:rgba(139,92,246,.76);background:rgba(139,92,246,.18)}
-.calendarStateChip.past-visible{color:var(--accent2);border-color:rgba(126,231,200,.55);background:rgba(126,231,200,.14)}
-.calendarStateChip.past-hidden{color:var(--muted);border-color:rgba(169,176,195,.45);background:rgba(169,176,195,.10)}
+.calendarStateBar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0 0 12px;padding:10px 12px;border-color:rgba(255,255,255,.16);border-radius:15px;background:rgba(15,17,23,.98);white-space:normal;overflow:visible;text-overflow:clip;font-size:13px;line-height:1.35}
+.calendarStateChip{display:inline-flex;align-items:center;min-height:31px;border:1px solid var(--line);border-radius:999px;padding:6px 12px;background:rgba(255,255,255,.07);color:#f7f9ff;font-size:13px;font-weight:900;line-height:1.25;box-shadow:0 0 0 1px rgba(255,255,255,.04) inset}
+.calendarStateChip.calendarTypeFilter{border-color:var(--event-border,var(--event-color));background:var(--event-bg);color:var(--event-text)}
+.calendarStateChip.artist-all{color:#f0eaff;border-color:rgba(167,139,250,.82);background:rgba(139,92,246,.24)}
+.calendarStateChip.artist-koshi{color:#ffd6d8;border-color:rgba(255,122,126,.86);background:rgba(229,72,77,.26)}
+.calendarStateChip.artist-tak{color:#dbeafe;border-color:rgba(123,176,255,.86);background:rgba(59,130,246,.26)}
+.calendarStateChip.artist-bz{color:#f0eaff;border-color:rgba(177,151,255,.88);background:rgba(139,92,246,.28)}
+.calendarStateChip.past-visible{color:#d9fff3;border-color:rgba(126,231,200,.72);background:rgba(126,231,200,.22)}
+.calendarTypeFilter{color:var(--event-text);background:var(--event-bg);border-color:var(--event-border,var(--event-color))}
+.calendarTypeFilter.active{color:var(--event-active-text,#151515);background:linear-gradient(180deg,var(--event-active,#ffffff),var(--event-color));border-color:var(--event-active,var(--event-color));box-shadow:0 0 0 2px var(--event-ring),0 8px 18px rgba(0,0,0,.24)}
+.calendarTypeFilter.type-ALL{--event-color:var(--accent);--event-active:#ffe099;--event-border:rgba(255,224,153,.78);--event-text:#fff0bd;--event-bg:rgba(255,211,106,.18);--event-ring:rgba(255,211,106,.28)}
+.type-live,.event-live{--event-color:#ff6b6b;--event-active:#ff8585;--event-border:rgba(255,133,133,.82);--event-text:#ffd1d1;--event-bg:rgba(255,107,107,.24);--event-ring:rgba(255,107,107,.30);--event-active-text:#fff}
+.type-entry_start,.event-entry_start{--event-color:#6fa8ff;--event-active:#93bdff;--event-border:rgba(147,189,255,.82);--event-text:#d8e7ff;--event-bg:rgba(111,168,255,.24);--event-ring:rgba(111,168,255,.30);--event-active-text:#06111f}
+.type-entry_deadline,.event-entry_deadline{--event-color:#ffd36a;--event-active:#ffe099;--event-border:rgba(255,224,153,.82);--event-text:#fff0bd;--event-bg:rgba(255,211,106,.24);--event-ring:rgba(255,211,106,.32);--event-active-text:#1d1600}
+.type-lottery_result,.event-lottery_result{--event-color:#69d99b;--event-active:#8be7b0;--event-border:rgba(139,231,176,.82);--event-text:#d7ffe6;--event-bg:rgba(105,217,155,.23);--event-ring:rgba(105,217,155,.30);--event-active-text:#06190f}
+.type-general_sale,.event-general_sale{--event-color:#c79cff;--event-active:#d8baff;--event-border:rgba(216,186,255,.84);--event-text:#f0ddff;--event-bg:rgba(199,156,255,.25);--event-ring:rgba(199,156,255,.30);--event-active-text:#180927}
+.type-door_sale,.event-door_sale{--event-color:#ffad5f;--event-active:#ffc58a;--event-border:rgba(255,197,138,.84);--event-text:#ffe0bd;--event-bg:rgba(255,173,95,.25);--event-ring:rgba(255,173,95,.30);--event-active-text:#241000}
+.type-notice,.event-notice{--event-color:#aeb6c7;--event-active:#c7ceda;--event-border:rgba(199,206,218,.82);--event-text:#eef2f8;--event-bg:rgba(174,182,199,.22);--event-ring:rgba(174,182,199,.26);--event-active-text:#11141d}
+.artistBadge.artist-koshi,.filterBtn.artist-koshi{color:#ffd6d8;border-color:rgba(255,122,126,.86);background:rgba(229,72,77,.26)}
+.artistBadge.artist-tak,.filterBtn.artist-tak{color:#dbeafe;border-color:rgba(123,176,255,.86);background:rgba(59,130,246,.26)}
+.artistBadge.artist-bz,.filterBtn.artist-bz{color:#f0eaff;border-color:rgba(177,151,255,.88);background:rgba(139,92,246,.28)}
+.filterBtn.artist-koshi.active{color:#fff;background:linear-gradient(180deg,#ff6b70,#E5484D);border-color:#ff9a9d;box-shadow:0 0 0 2px rgba(229,72,77,.28),0 8px 18px rgba(0,0,0,.24)}
+.filterBtn.artist-tak.active{color:#fff;background:linear-gradient(180deg,#66a3ff,#3B82F6);border-color:#9bc4ff;box-shadow:0 0 0 2px rgba(59,130,246,.28),0 8px 18px rgba(0,0,0,.24)}
+.filterBtn.artist-bz.active{color:#fff;background:linear-gradient(180deg,#a78bfa,#8B5CF6);border-color:#c4b5fd;box-shadow:0 0 0 2px rgba(139,92,246,.30),0 8px 18px rgba(0,0,0,.24)}
+.pill{color:#d5dbea;background:rgba(169,176,195,.12);border-color:rgba(169,176,195,.52)}
 .calendarList{gap:12px}
 .calendarCard{grid-template-columns:136px 1fr;gap:14px;padding:16px}
 .calendarDate{gap:6px}.calendarDay{font-size:23px}.calendarTime{font-size:13px}
@@ -5479,12 +5496,14 @@ function filteredCalendarEvents(){
 function calendarFilterSummaryItems(){
  const typeLabel = CALENDAR_TYPE_LABELS[selectedCalendarType] || selectedCalendarType;
  const artistLabel = selectedCalendarArtist === "ALL" ? "全アーティスト" : selectedCalendarArtist;
- const pastLabel = selectedCalendarShowPast ? "終了済み表示" : "終了済み非表示";
- return [
+ const items = [
   {label:typeLabel, className:`calendarStateChip calendarTypeFilter type-${selectedCalendarType}`},
-  {label:artistLabel, className:`calendarStateChip ${selectedCalendarArtist === "ALL" ? "artist-all" : calendarArtistClass(selectedCalendarArtist)}`},
-  {label:pastLabel, className:`calendarStateChip ${selectedCalendarShowPast ? "past-visible" : "past-hidden"}`}
+  {label:artistLabel, className:`calendarStateChip ${selectedCalendarArtist === "ALL" ? "artist-all" : calendarArtistClass(selectedCalendarArtist)}`}
  ];
+ if(selectedCalendarShowPast){
+  items.push({label:"終了済み含む", className:"calendarStateChip past-visible"});
+ }
+ return items;
 }
 function renderCalendarStateBar(){
  return `<div class="calendarStateBar" aria-label="現在の絞り込み条件">${calendarFilterSummaryItems().map(item=>`<span class="${escapeHtml(item.className)}">${escapeHtml(item.label)}</span>`).join("")}</div>`;
