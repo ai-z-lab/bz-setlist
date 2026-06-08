@@ -46,6 +46,22 @@ tr:hover td{background:#1c2130}.pill{display:inline-flex;border:1px solid var(--
 @media(max-width:620px){.calendarHero{display:block;margin-bottom:8px}.calendarHero .pill{margin-top:8px}.calendarFilterPanel{margin:0 -8px 8px;padding:10px;border-radius:16px;background:rgba(23,26,35,.86)}.calendarStateBar{top:calc(var(--headerStickyOffset,82px) + 4px);margin:0 -8px 8px;padding:5px 10px;background:rgba(15,17,23,.98);box-shadow:0 8px 16px rgba(0,0,0,.28);font-size:11px;line-height:1.2}.calendarActions{align-items:center;justify-content:flex-start;gap:8px;padding-bottom:7px;margin-bottom:7px}.icsExportBtn{width:auto;min-height:32px;padding:6px 10px;font-size:12px}.icsExportMeta{font-size:11px;font-weight:700}.calendarFilters{gap:7px;margin:8px 0 0}.filterGroup{gap:5px}.filterGroupTitle{font-size:11px}.calendarCard{grid-template-columns:1fr;gap:10px}.calendarDate{flex-direction:row;align-items:baseline}.calendarDay{font-size:20px}.filterBtn{flex:1 1 auto;min-width:max-content;font-size:12px;padding:7px 9px}.toggleBtn{padding-left:48px}.calendarTitle{font-size:16px}}
 @media(max-width:780px){.grid{grid-template-columns:repeat(2,1fr)}.formgrid{grid-template-columns:1fr}h1{font-size:20px}th,td{font-size:12px;padding:8px}.card{padding:13px}}
 
+/* Calendar readability restoration */
+.calendarStateBar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0 0 12px;padding:9px 11px;border-radius:15px;white-space:normal;overflow:visible;text-overflow:clip;font-size:13px;line-height:1.35}
+.calendarStateChip{display:inline-flex;align-items:center;min-height:30px;border:1px solid var(--line);border-radius:999px;padding:6px 12px;background:rgba(255,255,255,.05);color:var(--text);font-size:13px;font-weight:900;line-height:1.25;box-shadow:0 0 0 1px rgba(255,255,255,.02) inset}
+.calendarStateChip.artist-all{color:#ddd6fe;border-color:rgba(139,92,246,.58);background:rgba(139,92,246,.14)}
+.calendarStateChip.artist-koshi{color:#ffb3b6;border-color:rgba(229,72,77,.72);background:rgba(229,72,77,.16)}
+.calendarStateChip.artist-tak{color:#bfdbfe;border-color:rgba(59,130,246,.72);background:rgba(59,130,246,.16)}
+.calendarStateChip.artist-bz{color:#ddd6fe;border-color:rgba(139,92,246,.76);background:rgba(139,92,246,.18)}
+.calendarStateChip.past-visible{color:var(--accent2);border-color:rgba(126,231,200,.55);background:rgba(126,231,200,.14)}
+.calendarStateChip.past-hidden{color:var(--muted);border-color:rgba(169,176,195,.45);background:rgba(169,176,195,.10)}
+.calendarList{gap:12px}
+.calendarCard{grid-template-columns:136px 1fr;gap:14px;padding:16px}
+.calendarDate{gap:6px}.calendarDay{font-size:23px}.calendarTime{font-size:13px}
+.calendarBadgeRow{gap:8px;margin-bottom:9px}.eventTypeBadge,.artistBadge{padding:5px 10px;font-size:12px}
+.calendarTitle{font-size:18px;line-height:1.4;margin-bottom:7px}.calendarMeta{font-size:13px;line-height:1.65}.calendarDesc{margin-top:10px;line-height:1.75}
+@media(max-width:620px){.calendarStateBar{margin:0 -8px 10px;padding:8px 10px;gap:7px;font-size:13px;line-height:1.35}.calendarStateChip{min-height:29px;padding:6px 10px;font-size:12px}.calendarCard{grid-template-columns:1fr;gap:11px;padding:14px}.calendarDay{font-size:21px}.calendarTime{font-size:13px}.calendarTitle{font-size:17px;line-height:1.42}.calendarMeta{font-size:13px}.calendarDesc{font-size:14px;line-height:1.7}}
+
 /* Performance tweaks */
 .matrix-wrap{contain:layout paint}
 .card{contain:layout}
@@ -5464,10 +5480,14 @@ function calendarFilterSummaryItems(){
  const typeLabel = CALENDAR_TYPE_LABELS[selectedCalendarType] || selectedCalendarType;
  const artistLabel = selectedCalendarArtist === "ALL" ? "全アーティスト" : selectedCalendarArtist;
  const pastLabel = selectedCalendarShowPast ? "終了済み表示" : "終了済み非表示";
- return [typeLabel, artistLabel, pastLabel];
+ return [
+  {label:typeLabel, className:`calendarStateChip calendarTypeFilter type-${selectedCalendarType}`},
+  {label:artistLabel, className:`calendarStateChip ${selectedCalendarArtist === "ALL" ? "artist-all" : calendarArtistClass(selectedCalendarArtist)}`},
+  {label:pastLabel, className:`calendarStateChip ${selectedCalendarShowPast ? "past-visible" : "past-hidden"}`}
+ ];
 }
 function renderCalendarStateBar(){
- return `<div class="calendarStateBar" aria-label="現在の絞り込み条件"><b>表示中：</b>${calendarFilterSummaryItems().map(escapeHtml).join(" / ")}</div>`;
+ return `<div class="calendarStateBar" aria-label="現在の絞り込み条件">${calendarFilterSummaryItems().map(item=>`<span class="${escapeHtml(item.className)}">${escapeHtml(item.label)}</span>`).join("")}</div>`;
 }
 function escapeHtml(value){
  return String(value ?? "").replace(/[&<>'"]/g, ch=>({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[ch]));
