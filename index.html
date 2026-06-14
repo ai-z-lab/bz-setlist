@@ -5864,6 +5864,11 @@ function normalizeCalendarEvent(event){
   id: event.id || `${event.date}-${event.type}-${event.title}`,
   date: event.date || "",
   endDate: event.endDate || "",
+  endAt: event.endAt || "",
+  end: event.end || "",
+  deadline: event.deadline || "",
+  datetime: event.datetime || "",
+  endTime: event.endTime || "",
   time: event.time || "",
   type: event.type || "notice",
   artist: event.artist || "B'z",
@@ -5877,11 +5882,37 @@ function normalizeCalendarEvent(event){
  };
 }
 function calendarSortKey(event){return `${event.date || "9999-99-99"}T${event.time || "99:99"}`;}
-function todayKey(){return new Date().toISOString().slice(0,10);}
+function calendarDateFromDateTimeValue(value, fallbackTime="00:00"){
+ if(!value) return null;
+ const text = String(value).trim();
+ const dateTimeMatch = text.match(/^(\d{4})[/-](\d{1,2})[/-](\d{1,2})(?:[ T](\d{1,2}):(\d{2})(?::(\d{2}))?)?$/);
+ if(!dateTimeMatch){
+  const parsed = new Date(text);
+  return Number.isNaN(parsed.getTime()) ? null : parsed;
+ }
+ const [, year, month, day, hour, minute, second] = dateTimeMatch;
+ const fallback = String(fallbackTime || "00:00").match(/^(\d{1,2}):(\d{2})(?::(\d{2}))?$/) || [];
+ const hh = hour || fallback[1] || "00";
+ const mm = minute || fallback[2] || "00";
+ const ss = second || fallback[3] || "00";
+ const date = new Date(`${year}-${month.padStart(2,"0")}-${day.padStart(2,"0")}T${hh.padStart(2,"0")}:${mm}:${ss}+09:00`);
+ return Number.isNaN(date.getTime()) ? null : date;
+}
+function calendarEventEndDate(event){
+ const explicitEnd = event.endAt || event.deadline || event.end || event.datetime;
+ const explicitEndDate = calendarDateFromDateTimeValue(explicitEnd);
+ if(explicitEndDate) return explicitEndDate;
+ if(event.endDate){
+  return calendarDateFromDateTimeValue(event.endDate, event.endTime || event.time || "23:59:59");
+ }
+ const period = calendarParsePeriod(event.description);
+ if(period && period.end) return period.end;
+ return calendarDateFromDateTimeValue(event.date, event.time || "00:00");
+}
 function isCalendarPast(event){
  if(event.status === "ended") return true;
- const endKey = event.endDate || event.date;
- return Boolean(endKey) && endKey < todayKey();
+ const endDate = calendarEventEndDate(event);
+ return Boolean(endDate) && endDate.getTime() <= Date.now();
 }
 function calendarDateLabel(event){
  const date = event.date ? event.date.replaceAll("-","/") : "日付未定";
