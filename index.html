@@ -6605,6 +6605,20 @@ function changesFromPrev(showId){
 }
 function render(tab="dash"){ if(tab==="import" && !isAdmin) tab="dash"; if(tab==="dash")renderDash(); if(tab==="shows")renderShows(); if(tab==="songs")renderSongs(); if(tab==="matrix")renderMatrix(); if(tab==="pairs")renderPairs(); if(tab==="calendar")renderCalendar(); if(tab==="import")renderImport(); }
 
+function latestUpdateHistory(){
+ const history = Array.isArray(data.updateHistory) && data.updateHistory.length ? data.updateHistory : (window.BZ_DATA.updateHistory || []);
+ return history.slice().sort((a,b)=>String(b.date||"").localeCompare(String(a.date||"")))[0] || null;
+}
+function renderLatestUpdateCard(){
+ const latestUpdate = latestUpdateHistory();
+ if(!latestUpdate) return "";
+ const items = Array.isArray(latestUpdate.items) ? latestUpdate.items : [];
+ return `<div class="card" style="margin-top:14px"><h2>🔔 最新更新</h2>
+  <div class="muted" style="margin-bottom:6px">${escapeHtml(latestUpdate.date || "")}</div>
+  <h3>${escapeHtml(latestUpdate.title || "更新情報")}</h3>
+  ${items.length?`<ul>${items.map(item=>`<li>${escapeHtml(item)}</li>`).join("")}</ul>`:""}
+ </div>`;
+}
 function renderDash(){
  const currentShows=visibleShows();
  const done=currentShows.filter(s=>s.status==="入力済").length, total=currentShows.length, totalSongs=songCounts().length, top=songCounts().slice(0,8), latest=latestShowDate(currentShows);
@@ -6615,6 +6629,7 @@ function renderDash(){
   <div class="card"><div class="muted">総演奏データ</div><div class="big">${rows().length}</div></div>
   <div class="card"><div class="muted">最新公演</div><div class="big" style="font-size:20px">${latest||"—"}</div></div>
  </div>
+ ${renderLatestUpdateCard()}
  <div class="card" style="margin-top:14px"><h2>出現回数 上位</h2>
  ${top.length?`<div class="rank">${top.map(x=>`<div><b>${x.song}</b> <span class="pill">${x.count}回</span><div class="bar"><i style="width:${done?Math.min(100,x.count/done*100):0}%"></i></div></div>`).join("")}</div>`:`<div class="muted">このツアーのデータはまだありません。</div>`}
  </div>
