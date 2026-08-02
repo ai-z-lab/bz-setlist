@@ -1218,7 +1218,7 @@ window.BZ_DATA = {
           "venue": "",
           "description": "一部ホール公演対象\nプレリザーブ先行受付\n申込期間：2026/08/02 11:00 ～ 2026/08/05 23:59",
           "url": "",
-          "receptionSource": "チケットぴあ",
+          "receptionSource": "チケットぴあ／プレリザーブ",
           "status": "scheduled"
       },
       {
@@ -1234,7 +1234,7 @@ window.BZ_DATA = {
           "venue": "",
           "description": "一部ホール公演対象\nプレリザーブ先行受付\n申込期間：2026/08/02 12:00 ～ 2026/08/09 23:59",
           "url": "",
-          "receptionSource": "チケットぴあ",
+          "receptionSource": "チケットぴあ／プレリザーブ",
           "status": "scheduled"
       },
       {
@@ -1280,7 +1280,7 @@ window.BZ_DATA = {
           "venue": "",
           "description": "一部ホール公演対象\nプレリザーブ先行受付",
           "url": "",
-          "receptionSource": "チケットぴあ",
+          "receptionSource": "チケットぴあ／プレリザーブ",
           "status": "scheduled"
       },
       {
@@ -1296,7 +1296,23 @@ window.BZ_DATA = {
           "venue": "",
           "description": "2026/08/08 18:00頃から順次",
           "url": "",
-          "receptionSource": "チケットぴあ",
+          "receptionSource": "チケットぴあ／プレリザーブ",
+          "status": "scheduled"
+      },
+      {
+          "id": "2026-08-08-env-hall-prereserve-shikoku-tohoku-lottery-result",
+          "date": "2026-08-08",
+          "endDate": "",
+          "time": "18:00",
+          "type": "lottery_result",
+          "artist": "Koshi Inaba",
+          "tour": "Koshi Inaba LIVE 2026-2027 ～enV～",
+          "title": "稲葉浩志 プレリザーブ先行 抽選結果発表",
+          "area": "香川・愛媛・宮城・秋田・福島",
+          "venue": "",
+          "description": "2026/08/08 18:00頃から順次",
+          "url": "",
+          "receptionSource": "チケットぴあ／プレリザーブ",
           "status": "scheduled"
       },
       {
@@ -1312,7 +1328,7 @@ window.BZ_DATA = {
           "venue": "",
           "description": "一部ホール公演対象\nプレリザーブ先行受付",
           "url": "",
-          "receptionSource": "チケットぴあ",
+          "receptionSource": "チケットぴあ／プレリザーブ",
           "status": "scheduled"
       },
       {
@@ -6675,6 +6691,7 @@ function calendarIcsDescription(event){
   `アーティスト：${event.artist}`,
   event.tour ? `ツアー：${event.tour}` : "",
   event.area ? `エリア：${event.area}` : "",
+  event.receptionSource ? `受付元：${event.receptionSource}` : "",
   event.url ? `URL：${event.url}` : ""
  ].filter(Boolean);
  return rows.join("\n");
