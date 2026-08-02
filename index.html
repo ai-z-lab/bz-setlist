@@ -1216,7 +1216,7 @@ window.BZ_DATA = {
           "title": "稲葉浩志 プレリザーブ先行受付開始",
           "area": "茨城・山梨公演",
           "venue": "",
-          "description": "一部ホール公演対象\nプレリザーブ先行受付\n申込期間：2026/08/02 11:00 ～ 2026/08/05 23:59",
+          "description": "一部ホール公演対象\nプレリザーブ先行受付\n申込期間：2026/08/02 11:00 ～ 2026/08/05 23:59\n受付元：チケットぴあ／プレリザーブ",
           "url": "",
           "receptionSource": "チケットぴあ／プレリザーブ",
           "status": "scheduled"
@@ -1232,7 +1232,7 @@ window.BZ_DATA = {
           "title": "稲葉浩志 プレリザーブ先行受付開始",
           "area": "香川・愛媛・宮城・秋田・福島公演",
           "venue": "",
-          "description": "一部ホール公演対象\nプレリザーブ先行受付\n申込期間：2026/08/02 12:00 ～ 2026/08/09 23:59",
+          "description": "一部ホール公演対象\nプレリザーブ先行受付\n申込期間：2026/08/02 12:00 ～ 2026/08/09 23:59\n受付元：チケットぴあ／プレリザーブ",
           "url": "",
           "receptionSource": "チケットぴあ／プレリザーブ",
           "status": "scheduled"
@@ -1278,7 +1278,7 @@ window.BZ_DATA = {
           "title": "稲葉浩志 プレリザーブ先行受付締切",
           "area": "茨城・山梨",
           "venue": "",
-          "description": "一部ホール公演対象\nプレリザーブ先行受付",
+          "description": "一部ホール公演対象\nプレリザーブ先行受付\n受付元：チケットぴあ／プレリザーブ",
           "url": "",
           "receptionSource": "チケットぴあ／プレリザーブ",
           "status": "scheduled"
@@ -1294,7 +1294,7 @@ window.BZ_DATA = {
           "title": "稲葉浩志 プレリザーブ先行 抽選結果発表",
           "area": "茨城・山梨",
           "venue": "",
-          "description": "2026/08/08 18:00頃から順次",
+          "description": "2026/08/08 18:00頃から順次\n受付元：チケットぴあ／プレリザーブ",
           "url": "",
           "receptionSource": "チケットぴあ／プレリザーブ",
           "status": "scheduled"
@@ -1310,7 +1310,7 @@ window.BZ_DATA = {
           "title": "稲葉浩志 プレリザーブ先行 抽選結果発表",
           "area": "香川・愛媛・宮城・秋田・福島",
           "venue": "",
-          "description": "2026/08/08 18:00頃から順次",
+          "description": "2026/08/08 18:00頃から順次\n受付元：チケットぴあ／プレリザーブ",
           "url": "",
           "receptionSource": "チケットぴあ／プレリザーブ",
           "status": "scheduled"
@@ -1326,7 +1326,7 @@ window.BZ_DATA = {
           "title": "稲葉浩志 プレリザーブ先行受付締切",
           "area": "香川・愛媛・宮城・秋田・福島",
           "venue": "",
-          "description": "一部ホール公演対象\nプレリザーブ先行受付",
+          "description": "一部ホール公演対象\nプレリザーブ先行受付\n受付元：チケットぴあ／プレリザーブ",
           "url": "",
           "receptionSource": "チケットぴあ／プレリザーブ",
           "status": "scheduled"
@@ -6623,7 +6623,7 @@ function renderCalendarCard(event){
    ${meta?`<div class="calendarMeta">${escapeHtml(meta)}</div>`:""}
    ${event.description?`<div class="calendarDesc">${escapeHtml(event.description)}</div>`:""}
    ${event.url?`<a class="calendarLink" href="${escapeHtml(event.url)}" target="_blank" rel="noopener">詳細を見る</a>`:""}
-   ${!event.url && event.receptionSource?`<div class="calendarSource">受付元：<b>${escapeHtml(event.receptionSource)}</b></div>`:""}
+   ${!event.url && event.receptionSource && !String(event.description || "").includes("受付元：")?`<div class="calendarSource">受付元：<b>${escapeHtml(event.receptionSource)}</b></div>`:""}
   </div>
  </article>`;
 }
@@ -6691,7 +6691,7 @@ function calendarIcsDescription(event){
   `アーティスト：${event.artist}`,
   event.tour ? `ツアー：${event.tour}` : "",
   event.area ? `エリア：${event.area}` : "",
-  event.receptionSource ? `受付元：${event.receptionSource}` : "",
+  event.receptionSource && !String(event.description || "").includes("受付元：") ? `受付元：${event.receptionSource}` : "",
   event.url ? `URL：${event.url}` : ""
  ].filter(Boolean);
  return rows.join("\n");
