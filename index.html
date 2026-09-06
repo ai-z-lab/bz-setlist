@@ -107,9 +107,16 @@ tr:hover td{background:#1c2130}.pill{display:inline-flex;border:1px solid var(--
 <script>
 window.BZ_DATA = {
   "appVersion": "2.0",
-  "updated": "2026-08-28",
+  "updated": "2026-09-05",
   "source": "1000wave.net: FYOP / FYOD / SHOWCASE / FYOP+ / FYOP naked",
   "updateHistory": [
+    {
+      "date": "2026/09/05",
+      "title": "カレンダー情報を更新しました",
+      "items": [
+        "1 CHANCE FESTIVAL 2026「武者がえし」コラボパッケージの一般店舗販売開始を追加"
+      ]
+    },
     {
       "date": "2026/08/28",
       "title": "カレンダー情報を更新しました",
@@ -2652,6 +2659,22 @@ window.BZ_DATA = {
           "area": "熊本",
           "venue": "熊本県農業公園カントリーパーク",
           "description": "1 CHANCE FESTIVAL公式チケット（ticketbook／チケットぴあ 3次先行・抽選）抽選発表：2026/07/15 15:00予定。",
+          "url": "https://1chancefes.com/",
+          "status": "scheduled"
+      },
+      {
+          "id": "2026-09-20-1-chance-festival-2026-mushagaeshi-general-store-sale",
+          "date": "2026-09-20",
+          "endDate": "",
+          "time": "",
+          "allDay": true,
+          "type": "goods",
+          "artist": "Koshi Inaba",
+          "tour": "1 CHANCE FESTIVAL 2026",
+          "title": "1CHANCE FESTIVAL 2026「武者がえし」コラボパッケージ 一般店舗販売開始",
+          "area": "熊本",
+          "venue": "香梅 白山本店、熊本駅店、鶴屋店、合志店、熊本城香梅庵、阿蘇くまもと空港 あそ～ら ロビー店、北熊本SA上り 売店、宮原SA下り 売店",
+          "description": "販売開始：2026/09/20（開始時刻は公式発表なし）\n販売場所：香梅 白山本店／熊本駅店／鶴屋店／合志店／熊本城香梅庵／阿蘇くまもと空港 あそ～ら ロビー店／北熊本SA上り 売店／宮原SA下り 売店\n終了：売り切れ次第",
           "url": "https://1chancefes.com/",
           "status": "scheduled"
       },
@@ -7527,6 +7550,7 @@ function normalizeCalendarEvent(event){
   datetime: event.datetime || "",
   endTime: event.endTime || "",
   time: event.time || "",
+  allDay: event.allDay === true,
   type: event.type || "notice",
   artist: event.artist || "B'z",
   tour: event.tour || "",
@@ -7666,6 +7690,10 @@ function calendarIcsDateTime(date){
  const pad = value => String(value).padStart(2,"0");
  return `${date.getFullYear()}${pad(date.getMonth()+1)}${pad(date.getDate())}T${pad(date.getHours())}${pad(date.getMinutes())}${pad(date.getSeconds())}`;
 }
+function calendarIcsDate(date){
+ const pad = value => String(value).padStart(2,"0");
+ return `${date.getFullYear()}${pad(date.getMonth()+1)}${pad(date.getDate())}`;
+}
 function calendarAddMinutes(date, minutes){
  return new Date(date.getTime() + minutes * 60000);
 }
@@ -7684,6 +7712,7 @@ function calendarIcsTiming(event){
  if(period && period.end > period.start) return period;
  const start = calendarDateFromParts(calendarDateTimeParts(event.date, event.time || "00:00"));
  if(!start) return null;
+ if(event.allDay) return {allDay:true, start, end:calendarAddMinutes(start, 24 * 60)};
  const fallbackMinutes = event.type === "live" ? 120 : 1;
  return {start, end: calendarAddMinutes(start, fallbackMinutes)};
 }
@@ -7736,12 +7765,14 @@ function calendarIcsFilename(){
 function calendarIcsEvent(event, dtstamp){
  const timing = calendarIcsTiming(event);
  if(!timing) return "";
+ const timingLines = timing.allDay
+  ? [`DTSTART;VALUE=DATE:${calendarIcsDate(timing.start)}`, `DTEND;VALUE=DATE:${calendarIcsDate(timing.end)}`]
+  : [`DTSTART;TZID=Asia/Tokyo:${calendarIcsDateTime(timing.start)}`, `DTEND;TZID=Asia/Tokyo:${calendarIcsDateTime(timing.end)}`];
  const lines = [
   "BEGIN:VEVENT",
   `UID:${escapeIcsText(event.id)}@bz-setlist`,
   `DTSTAMP:${dtstamp}`,
-  `DTSTART;TZID=Asia/Tokyo:${calendarIcsDateTime(timing.start)}`,
-  `DTEND;TZID=Asia/Tokyo:${calendarIcsDateTime(timing.end)}`,
+  ...timingLines,
   `SUMMARY:${escapeIcsText(calendarIcsSummary(event))}`,
   `DESCRIPTION:${escapeIcsText(calendarIcsDescription(event))}`,
   `LOCATION:${escapeIcsText(calendarIcsLocation(event))}`,
