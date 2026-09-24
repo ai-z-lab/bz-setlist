@@ -295,7 +295,11 @@ window.BZ_DATA = {
       "status": "入力済",
       "tour": "enV",
       "series": "Koshi Inaba LIVE",
-      "type": "HALL"
+      "type": "HALL",
+      "playlists": {
+        "youtubeMusic": "https://music.youtube.com/playlist?list=PLIVVPVHHo0aY&si=lMEx68F59edMPnCo",
+        "spotify": "https://open.spotify.com/playlist/3ncIYYyPqkgtpUqFaRgIKG?si=zw_DNl2WTDCqlgHunE--Rg"
+      }
     },
     {
       "id": "2026-04-11",
@@ -8879,9 +8883,11 @@ function renderShows(){
 }
 function drawShow(id){
  const s=showMap()[id], r=data.setlists.filter(x=>x.showId===id).map(x=>({...x,song:normalizeSongName(x.song)})).sort((a,b)=>a.order-b.order), changes=changesFromPrev(id);
+ const playlists = s.playlists || (window.BZ_DATA.shows.find(show=>show.id===id) || {}).playlists;
+ const playlistHtml = playlists ? `<div class="controls" aria-label="公演プレイリスト">${[["youtubeMusic","YouTube Music"],["spotify","Spotify"]].filter(([key])=>playlists[key]).map(([key,label])=>`<a class="btn" href="${escapeHtml(playlists[key])}" target="_blank" rel="noopener noreferrer">${label}</a>`).join("")}</div>` : "";
  const max=Math.max(20, ...r.map(x=>x.order), 0);
  const changesHtml=changes.length?`<div class="changeBox"><h3>前公演から変更があった曲</h3><table><thead><tr><th>曲順</th><th>前公演</th><th>今回</th></tr></thead><tbody>${changes.map(x=>`<tr><td>${x.order}</td><td class="oldSong">${x.before}</td><td class="newSong">${x.after}</td></tr>`).join("")}</tbody></table></div>`:`<div class="changeBox muted">前公演からの曲順変更はありません。</div>`;
- document.querySelector("#showBox").innerHTML=`<div class="card"><h2>${s.label} ${s.venue}</h2><div class="muted">${s.date} / ${s.area} / ${s.tour} / ${s.status}</div>${changesHtml}<table><thead><tr><th>曲順</th><th>曲名</th><th>区分</th></tr></thead><tbody>${Array.from({length:max},(_,i)=>{const x=r.find(y=>y.order===i+1)||{song:"",section:i>=18?"Encore":"Main"}; const changed=changes.some(c=>c.order===i+1); return `<tr class="${changed?'changedLine':''}"><td>${i+1}</td><td>${x.song?displaySongName(x.song):"<span class='blank'>未入力</span>"}</td><td>${x.section||""}</td></tr>`}).join("")}</tbody></table></div>`;
+ document.querySelector("#showBox").innerHTML=`<div class="card"><h2>${s.label} ${s.venue}</h2><div class="muted">${s.date} / ${s.area} / ${s.tour} / ${s.status}</div>${playlistHtml}${changesHtml}<table><thead><tr><th>曲順</th><th>曲名</th><th>区分</th></tr></thead><tbody>${Array.from({length:max},(_,i)=>{const x=r.find(y=>y.order===i+1)||{song:"",section:i>=18?"Encore":"Main"}; const changed=changes.some(c=>c.order===i+1); return `<tr class="${changed?'changedLine':''}"><td>${i+1}</td><td>${x.song?displaySongName(x.song):"<span class='blank'>未入力</span>"}</td><td>${x.section||""}</td></tr>`}).join("")}</tbody></table></div>`;
 }
 function renderSongs(){
  const done=visibleShows().filter(s=>s.status==="入力済").length;
