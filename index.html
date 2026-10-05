@@ -329,7 +329,11 @@ window.BZ_DATA = {
       "status": "入力済",
       "tour": "enV",
       "series": "Koshi Inaba LIVE",
-      "type": "HALL"
+      "type": "HALL",
+      "playlists": {
+        "youtubeMusic": "https://music.youtube.com/playlist?list=PLWoyEYY7kCOI",
+        "spotify": "https://open.spotify.com/playlist/0C7ZT6xRXxAV259bd5YXlD?si=mSo0Nsn2QJupfVidd71dNQ"
+      }
     },
     {
       "id": "2026-10-04-env-gunma",
@@ -340,7 +344,11 @@ window.BZ_DATA = {
       "status": "入力済",
       "tour": "enV",
       "series": "Koshi Inaba LIVE",
-      "type": "HALL"
+      "type": "HALL",
+      "playlists": {
+        "youtubeMusic": "https://music.youtube.com/playlist?list=PLYgnLmGxRZuc",
+        "spotify": "https://open.spotify.com/playlist/0DTEnXb5AQ9GMhIqxhFfto?si=KPSxYLFZQDWUPep47RrUcA"
+      }
     },
     {
       "id": "2026-04-11",
@@ -8978,8 +8986,14 @@ function syncOfficialSetlistTours(){
  const officialTourIds = new Set(["enV"]);
  const existingTourIds = new Set((data.tours || []).map(tour=>tour.id));
  data.tours = (data.tours || []).concat((window.BZ_DATA.tours || []).filter(tour=>officialTourIds.has(tour.id) && !existingTourIds.has(tour.id)));
+ const officialShows = (window.BZ_DATA.shows || []).filter(show=>officialTourIds.has(show.tour));
+ const officialShowMap = new Map(officialShows.map(show=>[show.id, show]));
+ data.shows = (data.shows || []).map(show=>{
+  const officialShow = officialShowMap.get(show.id);
+  return officialShow && officialShow.playlists ? {...show, playlists: officialShow.playlists} : show;
+ });
  const existingShowIds = new Set((data.shows || []).map(show=>show.id));
- const newShows = (window.BZ_DATA.shows || []).filter(show=>officialTourIds.has(show.tour) && !existingShowIds.has(show.id));
+ const newShows = officialShows.filter(show=>!existingShowIds.has(show.id));
  if(newShows.length){
   const newShowIds = new Set(newShows.map(show=>show.id));
   data.shows = (data.shows || []).concat(newShows);
