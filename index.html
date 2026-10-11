@@ -107,9 +107,30 @@ tr:hover td{background:#1c2130}.pill{display:inline-flex;border:1px solid var(--
 <script>
 window.BZ_DATA = {
   "appVersion": "2.0",
-  "updated": "2026-10-03",
+  "updated": "2026-10-11",
   "source": "1000wave.net: FYOP / FYOD / SHOWCASE / FYOP+ / FYOP naked / enV",
   "updateHistory": [
+    {
+      "date": "2026-10-06",
+      "title": "セットリスト更新",
+      "items": [
+        "TMG LIVE 2026 “SAYONARA” Zepp Haneda公演（2日目）のセットリストを追加"
+      ]
+    },
+    {
+      "date": "2026-10-05",
+      "title": "セットリスト更新",
+      "items": [
+        "TMG LIVE 2026 “SAYONARA” Zepp Haneda公演（初日）のセットリストを追加"
+      ]
+    },
+    {
+      "date": "2026-10-04",
+      "title": "セットリスト更新",
+      "items": [
+        "Koshi Inaba LIVE 2026-2027 ～enV～ 群馬公演（10/4）のセットリストを追加"
+      ]
+    },
     {
       "date": "2026-10-03",
       "title": "セットリスト更新",
@@ -118,21 +139,21 @@ window.BZ_DATA = {
       ]
     },
     {
-      "date": "2026/09/23",
+      "date": "2026-09-23",
       "title": "セットリスト情報を更新しました",
       "items": [
         "Koshi Inaba LIVE 2026-2027 ～enV～ 津山公演（2日目）のセットリストを追加"
       ]
     },
     {
-      "date": "2026/09/22",
+      "date": "2026-09-22",
       "title": "セットリスト情報を更新しました",
       "items": [
         "Koshi Inaba LIVE 2026-2027 ～enV～ 津山公演のセットリストを追加"
       ]
     },
     {
-      "date": "2026/09/21",
+      "date": "2026-09-21",
       "title": "カレンダー情報を更新しました",
       "items": [
         "enV 津山公演 B’z TICKET直前販売（注釈付きチケット）を追加",
@@ -140,42 +161,42 @@ window.BZ_DATA = {
       ]
     },
     {
-      "date": "2026/09/20",
+      "date": "2026-09-20",
       "title": "セットリスト情報を更新しました",
       "items": [
         "Koshi Inaba LIVE 2026-2027 ～enV～ 山口公演のセットリストを追加"
       ]
     },
     {
-      "date": "2026/09/18",
+      "date": "2026-09-18",
       "title": "セットリスト情報を更新しました",
       "items": [
         "Koshi Inaba LIVE 2026-2027 ～enV～ 広島公演のセットリストを追加"
       ]
     },
     {
-      "date": "2026/09/15",
+      "date": "2026-09-15",
       "title": "カレンダー情報を更新しました",
       "items": [
         "TMG 札幌公演 ローチケ・チケットぴあ一般発売受付終了を追加"
       ]
     },
     {
-      "date": "2026/09/13",
+      "date": "2026-09-13",
       "title": "カレンダー情報を更新しました",
       "items": [
         "enV 2027年アリーナ公演 Pontaパス会員先行・チケットぴあ先行・一般発売を追加"
       ]
     },
     {
-      "date": "2026/09/05",
+      "date": "2026-09-05",
       "title": "カレンダー情報を更新しました",
       "items": [
         "1 CHANCE FESTIVAL 2026「武者がえし」コラボパッケージの一般店舗販売開始を追加"
       ]
     },
     {
-      "date": "2026/08/28",
+      "date": "2026-08-28",
       "title": "カレンダー情報を更新しました",
       "items": [
         "enV ホール公演 機材席解放受付を追加",
@@ -184,14 +205,14 @@ window.BZ_DATA = {
       ]
     },
     {
-      "date": "2026/08/27",
+      "date": "2026-08-27",
       "title": "カレンダー情報を更新しました",
       "items": [
         "enV 2027年アリーナ公演 B’z TICKET二次・三次受付の詳細情報を追加"
       ]
     },
     {
-      "date": "2026/07/10",
+      "date": "2026-07-10",
       "title": "カレンダー情報を追加しました",
       "items": [
         "enV ホール公演 Pontaパス会員先行受付を追加",
@@ -199,7 +220,7 @@ window.BZ_DATA = {
       ]
     },
     {
-      "date": "2026/07/02",
+      "date": "2026-07-02",
       "title": "カレンダー情報を追加しました",
       "items": [
         "enV ホール公演 セブン-イレブンWEB抽選先行を追加",
@@ -9664,9 +9685,14 @@ function changesFromPrev(showId){
 }
 function render(tab="dash"){ if(tab==="import" && !isAdmin) tab="dash"; if(tab==="dash")renderDash(); if(tab==="shows")renderShows(); if(tab==="songs")renderSongs(); if(tab==="matrix")renderMatrix(); if(tab==="pairs")renderPairs(); if(tab==="calendar")renderCalendar(); if(tab==="import")renderImport(); }
 
+function updateHistoryTimestamp(value){
+ const normalized = String(value || "").trim().replace(/\//g, "-");
+ const parsed = Date.parse(`${normalized}T00:00:00`);
+ return Number.isNaN(parsed) ? 0 : parsed;
+}
 function latestUpdateHistory(){
- const history = Array.isArray(data.updateHistory) && data.updateHistory.length ? data.updateHistory : (window.BZ_DATA.updateHistory || []);
- return history.slice().sort((a,b)=>String(b.date||"").localeCompare(String(a.date||"")))[0] || null;
+ const history = Array.isArray(window.BZ_DATA.updateHistory) ? window.BZ_DATA.updateHistory : [];
+ return history.slice().sort((a,b)=>updateHistoryTimestamp(b.date)-updateHistoryTimestamp(a.date))[0] || null;
 }
 function renderLatestUpdateCard(){
  const latestUpdate = latestUpdateHistory();
