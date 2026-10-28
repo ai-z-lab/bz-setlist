@@ -21,6 +21,8 @@
   貼り付けたセットリストを整形し、既存データに追記・更新できます。
 - **新規公演の追加**  
   日付・会場情報を入力して、公演データを追加できます。
+- **Spotify / YouTube Musicプレイリスト監査**
+  セットリストが登録済みで、プレイリストリンクが未登録の公演を自動検出できます。認証設定後はプレイリスト作成、リンク反映、PR作成・マージまで自動実行できます。
 
 ---
 
@@ -77,6 +79,12 @@
   アイコン画像（favicon / apple-touch-icon）
 - `README.md`  
   このドキュメント
+- `scripts/playlist-plan.mjs`
+  未作成プレイリストと同一セットリストを検出する監査ツール
+- `scripts/playlist-sync.mjs`
+  Spotify / YouTube Musicプレイリストの生成・リンク反映ツール
+- `PLAYLIST_AUTOMATION.md`
+  認証設定、安全仕様、実行方法
 
 ---
 
