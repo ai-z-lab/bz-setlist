@@ -1,0 +1,116 @@
+name: Playlist sync
+
+on:
+  pull_request:
+    paths:
+      - "index.html"
+      - "data/playlist-track-map.json"
+      - "scripts/**"
+      - "tests/**"
+      - ".github/workflows/playlist-sync.yml"
+  workflow_dispatch:
+    inputs:
+      provider:
+        description: Provider to sync
+        type: choice
+        options:
+          - both
+          - spotify
+          - youtubeMusic
+        default: both
+      tour:
+        description: Optional exact tour id
+        type: string
+        required: false
+      apply:
+        description: Create playlists and update links
+        type: boolean
+        default: false
+  schedule:
+    - cron: "45 13 * * *"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    env:
+      SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
+      SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
+      SPOTIFY_REFRESH_TOKEN: ${{ secrets.SPOTIFY_REFRESH_TOKEN }}
+      YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+      YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+      YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+      YOUTUBE_AUTO_MATCH: ${{ vars.YOUTUBE_AUTO_MATCH || 'false' }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Validate and build plan
+        run: |
+          node --test
+          node scripts/playlist-plan.mjs --output=playlist-plan.json
+
+      - name: Sync playlists
+        id: sync
+        shell: bash
+        run: |
+          provider="${{ inputs.provider || 'both' }}"
+          tour="${{ inputs.tour }}"
+          apply="${{ inputs.apply }}"
+          if [[ "${{ github.event_name }}" == "schedule" ]]; then
+            apply="${{ vars.PLAYLIST_AUTO_APPLY }}"
+          fi
+          args=(--provider="$provider" --report=playlist-sync-report.json)
+          if [[ -n "$tour" ]]; then args+=(--tour="$tour"); fi
+          if [[ "$apply" == "true" ]]; then args+=(--apply); fi
+          node scripts/playlist-sync.mjs "${args[@]}"
+          echo "apply=$apply" >> "$GITHUB_OUTPUT"
+
+      - name: Add report to run summary
+        shell: bash
+        run: |
+          echo '## Playlist plan' >> "$GITHUB_STEP_SUMMARY"
+          echo '```json' >> "$GITHUB_STEP_SUMMARY"
+          node -e 'const p=require("./playlist-plan.json"); console.log(JSON.stringify(p.summary,null,2))' >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+          echo '## Sync result' >> "$GITHUB_STEP_SUMMARY"
+          echo '```json' >> "$GITHUB_STEP_SUMMARY"
+          node -e 'const r=require("./playlist-sync-report.json"); console.log(JSON.stringify({created:r.created.length,reused:r.reused.length,unresolved:r.unresolved.length,errors:r.errors.length,linkedShows:r.linkedShows},null,2))' >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Create and merge update PR
+        if: steps.sync.outputs.apply == 'true'
+        shell: bash
+        run: |
+          if git diff --quiet -- index.html data/playlist-track-map.json; then
+            echo "No playlist link changes"
+            exit 0
+          fi
+          branch="automation/playlist-sync-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$branch"
+          git add index.html data/playlist-track-map.json
+          git commit -m "Update Spotify and YouTube Music playlists"
+          git push origin "$branch"
+          pr_url=$(gh pr create --base main --head "$branch" --title "プレイリストリンクを自動更新" --body "Spotify / YouTube Musicプレイリストを自動生成し、検証済みリンクを追加しました。")
+          gh pr merge "$pr_url" --squash --delete-branch
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playlist-sync-report-${{ github.run_id }}
+          path: |
+            playlist-plan.json
+            playlist-sync-report.json
+          if-no-files-found: ignore
+          retention-days: 14
