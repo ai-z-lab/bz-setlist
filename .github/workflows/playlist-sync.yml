@@ -1,6 +1,13 @@
 name: Playlist sync
 
 on:
+  pull_request:
+    paths:
+      - "index.html"
+      - "data/playlist-track-map.json"
+      - "scripts/**"
+      - "tests/**"
+      - ".github/workflows/playlist-sync.yml"
   workflow_dispatch:
     inputs:
       provider:
