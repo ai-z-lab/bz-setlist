@@ -30,6 +30,17 @@ function artistForShow(show) {
   return "";
 }
 
+function artistForTrack(show, song) {
+  if (show.tour !== "TMG SAYONARA") return artistForShow(show);
+  const covers = {
+    "WHILE MY GUITAR GENTLY WEEPS": "The Beatles",
+    "Wild World": "Mr. Big",
+    "To Be With You": "Mr. Big",
+    "(You Can Still) Rock in America": "Night Ranger",
+  };
+  return covers[song] || "TMG";
+}
+
 function artistAliases(artist) {
   if (artist === "稲葉浩志") return ["稲葉浩志", "koshi inaba", "inaba koshi"];
   if (artist === "B'z") return ["b'z", "bz"];
@@ -41,21 +52,16 @@ function mapKey(artist, song) {
   return `${artist}\u0000${song}`;
 }
 
-function playlistTitle(group) {
-  const show = group.shows[0];
-  const suffix = group.shows.length === 1
-    ? `${show.date} ${show.venue}`
-    : `${group.shows.length}公演共通 ${group.id.slice(0, 8)}`;
-  return `${show.tour} ${suffix} セットリスト`.slice(0, 140);
+function playlistTitle(show) {
+  return `${show.tour} ${show.date} ${show.venue} セットリスト`.slice(0, 140);
 }
 
-function playlistDescription(group) {
-  const shows = group.shows.map((show) => `${show.date} ${show.venue}`).join(" / ");
-  return `B'z Live Setlist DB 自動生成。${shows}。bz-setlist:${group.id}`.slice(0, 290);
+function playlistDescription(show) {
+  return `B'z Live Setlist DB 自動生成。${show.date} ${show.venue}。bz-setlist:${show.id}`.slice(0, 290);
 }
 
-function marker(group) {
-  return `bz-setlist:${group.id}`;
+function marker(show) {
+  return `bz-setlist:${show.id}`;
 }
 
 async function fetchJson(url, options = {}) {
@@ -111,7 +117,7 @@ class SpotifyAdapter {
       normalize(track.name) === normalize(song)
       && track.artists?.some((item) => aliases.includes(normalize(item.name))),
     );
-    return candidates.length === 1 ? candidates[0].uri : "";
+    return candidates.sort((left, right) => (right.popularity || 0) - (left.popularity || 0))[0]?.uri || "";
   }
 
   async findByMarker(value) {
@@ -136,18 +142,17 @@ class SpotifyAdapter {
     return uris;
   }
 
-  async create(group, uris) {
-    let playlist = await this.findByMarker(marker(group));
+  async create(show, uris) {
+    let playlist = await this.findByMarker(marker(show));
     if (playlist) {
       const existing = await this.listItems(playlist.id);
-      if (existing.length && JSON.stringify(existing) !== JSON.stringify(uris)) throw new Error(`Spotify marker exists with different contents: ${marker(group)}`);
-      if (!existing.length) await this.addItems(playlist.id, uris);
+      if (JSON.stringify(existing) !== JSON.stringify(uris)) await this.replaceItems(playlist.id, uris);
       return playlist.url;
     }
     const body = await fetchJson("https://api.spotify.com/v1/me/playlists", {
       method: "POST",
       headers: this.headers({ "Content-Type": "application/json" }),
-      body: JSON.stringify({ name: playlistTitle(group), public: true, description: playlistDescription(group) }),
+      body: JSON.stringify({ name: playlistTitle(show), public: true, description: playlistDescription(show) }),
     });
     await this.addItems(body.id, uris);
     return body.external_urls.spotify;
@@ -161,6 +166,22 @@ class SpotifyAdapter {
         body: JSON.stringify({ uris: uris.slice(index, index + 100) }),
       });
     }
+  }
+
+  async replaceItems(id, uris) {
+    await fetchJson(`https://api.spotify.com/v1/playlists/${id}/items`, {
+      method: "PUT",
+      headers: this.headers({ "Content-Type": "application/json" }),
+      body: JSON.stringify({ uris: uris.slice(0, 100) }),
+    });
+    if (uris.length > 100) await this.addItems(id, uris.slice(100));
+  }
+
+  async replaceByUrl(url, uris) {
+    const id = String(url).match(/playlist\/([A-Za-z0-9]+)/)?.[1];
+    if (!id) throw new Error(`Invalid Spotify playlist URL: ${url}`);
+    await this.replaceItems(id, uris);
+    return `https://open.spotify.com/playlist/${id}`;
   }
 }
 
@@ -178,7 +199,7 @@ class YouTubeAdapter {
       const channel = normalize(item.snippet?.channelTitle);
       return title.includes(normalize(song)) && aliases.some((alias) => title.includes(alias) || channel.includes(alias));
     });
-    return candidates.length === 1 ? candidates[0].id.videoId : "";
+    return candidates[0]?.id.videoId || "";
   }
 
   async findByMarker(value) {
@@ -205,18 +226,18 @@ class YouTubeAdapter {
     return ids;
   }
 
-  async create(group, videoIds) {
-    let playlist = await this.findByMarker(marker(group));
+  async create(show, videoIds) {
+    let playlist = await this.findByMarker(marker(show));
     if (playlist) {
       const existing = await this.listItems(playlist.id);
-      if (existing.length && JSON.stringify(existing) !== JSON.stringify(videoIds)) throw new Error(`YouTube marker exists with different contents: ${marker(group)}`);
+      if (existing.length && JSON.stringify(existing) !== JSON.stringify(videoIds)) throw new Error(`YouTube marker exists with different contents: ${marker(show)}`);
       if (!existing.length) await this.addItems(playlist.id, videoIds);
       return playlist.url;
     }
     const body = await fetchJson("https://www.googleapis.com/youtube/v3/playlists?part=snippet,status", {
       method: "POST",
       headers: this.headers({ "Content-Type": "application/json" }),
-      body: JSON.stringify({ snippet: { title: playlistTitle(group), description: playlistDescription(group) }, status: { privacyStatus: "unlisted" } }),
+      body: JSON.stringify({ snippet: { title: playlistTitle(show), description: playlistDescription(show) }, status: { privacyStatus: "unlisted" } }),
     });
     await this.addItems(body.id, videoIds);
     return `https://music.youtube.com/playlist?list=${body.id}`;
@@ -238,10 +259,10 @@ async function loadTrackMap(path) {
   catch (error) { if (error.code === "ENOENT") return { version: 1, tracks: {} }; throw error; }
 }
 
-function applyLink(data, showIds, provider, url) {
+function applyLink(data, showIds, provider, url, { replace = false } = {}) {
   let changed = 0;
   data.shows = data.shows.map((show) => {
-    if (!showIds.includes(show.id) || show.playlists?.[provider]) return show;
+    if (!showIds.includes(show.id) || (show.playlists?.[provider] && !replace)) return show;
     changed += 1;
     return { ...show, playlists: { ...(show.playlists || {}), [provider]: url } };
   });
@@ -256,8 +277,10 @@ const providers = providerArg === "both" ? ["spotify", "youtubeMusic"] : [provid
 if (providers.some((provider) => !PROVIDERS.has(provider))) throw new Error(`Unsupported provider: ${providerArg}`);
 
 const apply = hasFlag("apply");
+const repairExisting = hasFlag("repair-existing");
+const showIds = argValue("show-ids").split(",").map((value) => value.trim()).filter(Boolean);
 const document = await loadBzData(indexFile);
-const plan = buildPlaylistPlan(document.data, { tour: argValue("tour") });
+const plan = buildPlaylistPlan(document.data, { tour: argValue("tour"), showIds });
 const trackMap = await loadTrackMap(mapFile);
 const adapters = {};
 if (apply && providers.includes("spotify")) adapters.spotify = new SpotifyAdapter(await refreshSpotifyToken());
@@ -268,46 +291,52 @@ let linkedShows = 0;
 
 for (const group of plan.groups) {
   const representative = group.shows[0];
-  const artist = artistForShow(representative);
   for (const provider of providers) {
-    const needs = group.needs[provider];
-    if (!needs.length) continue;
+    const targets = group.shows.filter((show) => !show.playlists?.[provider] || repairExisting);
+    if (!targets.length) continue;
     try {
-      if (group.existing[provider]) {
-        if (apply) linkedShows += applyLink(document.data, needs, provider, group.existing[provider]);
-        report.reused.push({ provider, group: group.id, shows: needs, url: group.existing[provider] });
-        continue;
-      }
-      if (!artist) {
-        report.unresolved.push({ provider, group: group.id, shows: needs, reason: "artist is not configured", tracks: group.tracks.map((track) => track.song) });
+      if (!artistForShow(representative)) {
+        report.unresolved.push({ provider, group: group.id, shows: targets.map((show) => show.id), reason: "artist is not configured", tracks: group.tracks.map((track) => track.song) });
         continue;
       }
       const ids = [];
       const unresolvedSongs = [];
       for (const track of group.tracks) {
-        const key = mapKey(artist, track.song);
-        trackMap.tracks[key] ||= { artist, song: track.song };
+        const lookupArtist = artistForTrack(representative, track.song);
+        const key = mapKey(artistForShow(representative), track.song);
+        trackMap.tracks[key] ||= { artist: artistForShow(representative), lookupArtist, song: track.song };
         const field = provider === "spotify" ? "spotifyUri" : "youtubeVideoId";
         let id = trackMap.tracks[key][field] || "";
         if (!id && apply) {
-          id = await adapters[provider].resolve(track.song, artist);
+          id = await adapters[provider].resolve(track.song, lookupArtist);
           if (id) trackMap.tracks[key][field] = id;
         }
         if (id) ids.push(id); else unresolvedSongs.push(track.song);
       }
       if (unresolvedSongs.length) {
-        report.unresolved.push({ provider, group: group.id, shows: needs, artist, tracks: unresolvedSongs });
+        report.unresolved.push({ provider, group: group.id, shows: targets.map((show) => show.id), artist: artistForShow(representative), tracks: unresolvedSongs });
         continue;
       }
-      if (!apply) {
-        report.created.push({ provider, group: group.id, shows: needs, dryRun: true, tracks: ids.length });
-        continue;
+      for (const show of targets) {
+        if (!apply) {
+          report.created.push({ provider, group: group.id, shows: [show.id], dryRun: true, repair: Boolean(show.playlists?.[provider]), tracks: ids.length });
+          continue;
+        }
+        let url;
+        if (show.playlists?.[provider] && provider === "spotify") {
+          url = await adapters.spotify.replaceByUrl(show.playlists.spotify, ids);
+          applyLink(document.data, [show.id], provider, url, { replace: true });
+        } else if (show.playlists?.[provider]) {
+          report.reused.push({ provider, group: group.id, shows: [show.id], url: show.playlists[provider], reason: "existing playlist was not modified" });
+          continue;
+        } else {
+          url = await adapters[provider].create(show, ids);
+          linkedShows += applyLink(document.data, [show.id], provider, url);
+        }
+        report.created.push({ provider, group: group.id, shows: [show.id], url, repair: Boolean(show.playlists?.[provider]), tracks: ids.length });
       }
-      const url = await adapters[provider].create(group, ids);
-      linkedShows += applyLink(document.data, needs, provider, url);
-      report.created.push({ provider, group: group.id, shows: needs, url, tracks: ids.length });
     } catch (error) {
-      report.errors.push({ provider, group: group.id, shows: needs, message: error.message });
+      report.errors.push({ provider, group: group.id, shows: targets.map((show) => show.id), message: error.message });
     }
   }
 }
