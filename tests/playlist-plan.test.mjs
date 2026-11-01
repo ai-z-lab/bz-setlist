@@ -22,13 +22,19 @@ function fixture() {
   };
 }
 
-test("groups identical setlists and reuses an existing provider link", () => {
+test("groups identical setlists for track lookup but keeps one playlist per show", () => {
   const plan = buildPlaylistPlan(fixture());
   assert.equal(plan.summary.shows, 3);
   assert.equal(plan.summary.uniqueSetlists, 2);
-  assert.equal(plan.summary.playlistsToCreate.spotify, 1);
-  assert.equal(plan.summary.playlistsToCreate.youtubeMusic, 2);
-  assert.equal(plan.summary.linksReusableWithoutCreation.spotify, 1);
+  assert.equal(plan.summary.playlistsToCreate.spotify, 2);
+  assert.equal(plan.summary.playlistsToCreate.youtubeMusic, 3);
+  assert.equal(plan.summary.linksReusableWithoutCreation.spotify, 0);
+});
+
+test("can limit a batch to explicit show ids", () => {
+  const plan = buildPlaylistPlan(fixture(), { showIds: ["b", "c"] });
+  assert.equal(plan.summary.shows, 2);
+  assert.equal(plan.summary.playlistsToCreate.spotify, 2);
 });
 
 test("keeps different encore songs in different groups", () => {

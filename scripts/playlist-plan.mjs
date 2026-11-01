@@ -10,9 +10,13 @@ function argValue(name, fallback = "") {
   return match ? match.slice(prefix.length) : fallback;
 }
 
-export function buildPlaylistPlan(data, { tour = "" } = {}) {
+export function buildPlaylistPlan(data, { tour = "", showIds = [] } = {}) {
   validateBzData(data);
-  const shows = data.shows.filter((show) => !tour || show.tour === tour);
+  const selectedIds = new Set(showIds);
+  const shows = data.shows.filter((show) =>
+    (!tour || show.tour === tour)
+    && (!selectedIds.size || selectedIds.has(show.id)),
+  );
   const groups = new Map();
 
   for (const show of shows) {
@@ -33,15 +37,10 @@ export function buildPlaylistPlan(data, { tour = "" } = {}) {
   }
 
   const plannedGroups = [...groups.values()].map((group) => {
-    const existing = {
-      spotify: group.shows.find((show) => show.playlists.spotify)?.playlists.spotify || "",
-      youtubeMusic: group.shows.find((show) => show.playlists.youtubeMusic)?.playlists.youtubeMusic || "",
-    };
     return {
       id: group.id,
       tracks: group.tracks,
       shows: group.shows,
-      existing,
       needs: {
         spotify: group.shows.filter((show) => !show.playlists.spotify).map((show) => show.id),
         youtubeMusic: group.shows.filter((show) => !show.playlists.youtubeMusic).map((show) => show.id),
@@ -60,12 +59,12 @@ export function buildPlaylistPlan(data, { tour = "" } = {}) {
       missingShows: missingShows.length,
       uniqueSetlists: plannedGroups.length,
       playlistsToCreate: {
-        spotify: plannedGroups.filter((group) => group.needs.spotify.length && !group.existing.spotify).length,
-        youtubeMusic: plannedGroups.filter((group) => group.needs.youtubeMusic.length && !group.existing.youtubeMusic).length,
+        spotify: plannedGroups.reduce((count, group) => count + group.needs.spotify.length, 0),
+        youtubeMusic: plannedGroups.reduce((count, group) => count + group.needs.youtubeMusic.length, 0),
       },
       linksReusableWithoutCreation: {
-        spotify: plannedGroups.reduce((count, group) => count + (group.existing.spotify ? group.needs.spotify.length : 0), 0),
-        youtubeMusic: plannedGroups.reduce((count, group) => count + (group.existing.youtubeMusic ? group.needs.youtubeMusic.length : 0), 0),
+        spotify: 0,
+        youtubeMusic: 0,
       },
     },
     groups: plannedGroups.filter((group) => group.needs.spotify.length || group.needs.youtubeMusic.length),
