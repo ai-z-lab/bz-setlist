@@ -1,6 +1,11 @@
 name: Playlist sync
 
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - "data/playlist-batch.json"
   pull_request:
     paths:
       - "index.html"
@@ -66,11 +71,22 @@ jobs:
           provider="${{ inputs.provider || 'both' }}"
           tour="${{ inputs.tour }}"
           apply="${{ inputs.apply }}"
+          show_ids=""
+          repair_existing="false"
+          if [[ "${{ github.event_name }}" == "push" ]]; then
+            provider=$(node -p 'require("./data/playlist-batch.json").provider || "both"')
+            show_ids=$(node -p 'require("./data/playlist-batch.json").showIds.join(",")')
+            repair_existing=$(node -p 'String(Boolean(require("./data/playlist-batch.json").repairExisting))')
+            export YOUTUBE_AUTO_MATCH=$(node -p 'String(Boolean(require("./data/playlist-batch.json").youtubeAutoMatch))')
+            apply="true"
+          fi
           if [[ "${{ github.event_name }}" == "schedule" ]]; then
             apply="${{ vars.PLAYLIST_AUTO_APPLY }}"
           fi
           args=(--provider="$provider" --report=playlist-sync-report.json)
           if [[ -n "$tour" ]]; then args+=(--tour="$tour"); fi
+          if [[ -n "$show_ids" ]]; then args+=(--show-ids="$show_ids"); fi
+          if [[ "$repair_existing" == "true" ]]; then args+=(--repair-existing); fi
           if [[ "$apply" == "true" ]]; then args+=(--apply); fi
           node scripts/playlist-sync.mjs "${args[@]}"
           echo "apply=$apply" >> "$GITHUB_OUTPUT"
