@@ -15,11 +15,21 @@ export function looseTitleKey(value) {
   return compact(title);
 }
 
-export function pickVideo(song, candidates, channelId) {
-  const own = candidates.filter((item) => item.channelId === channelId);
-  return own.find((item) => compact(item.title) === compact(song))
-    || own.find((item) => looseTitleKey(item.title) === looseTitleKey(song))
-    || null;
+function withoutArtist(title, aliases) {
+  const text = String(title || "").normalize("NFKC");
+  const alias = aliases.find((name) => text.toLowerCase().startsWith(`${name.toLowerCase()} `) || text.toLowerCase().startsWith(`${name.toLowerCase()}/`));
+  return alias ? text.slice(alias.length).replace(/^\s*[/-]\s*/, "") : text;
+}
+
+// channelIdsは優先順（Topic、公式チャンネルの順）。曲名は完全一致を版表記の除去より優先する
+export function pickVideo(song, candidates, channelIds, aliases = []) {
+  for (const channelId of [].concat(channelIds)) {
+    const own = candidates.filter((item) => item.channelId === channelId).map((item) => ({ ...item, bare: withoutArtist(item.title, aliases) }));
+    const hit = own.find((item) => compact(item.bare) === compact(song))
+      || own.find((item) => looseTitleKey(item.bare) === looseTitleKey(song));
+    if (hit) return hit;
+  }
+  return null;
 }
 
 export function resumePlan(existing, desired) {

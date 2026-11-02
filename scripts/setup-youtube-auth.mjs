@@ -55,7 +55,9 @@ const code = await new Promise((resolve, reject) => {
     code_challenge_method: "S256",
   });
   console.log("ブラウザでGoogleの認証画面を開きます。プレイリストを作成するアカウントを選び、許可してください。");
-  spawn("open", [authUrl.toString()], { detached: true, stdio: "ignore" }).unref();
+  // --incognito: 別アカウントのログイン状態を引き継がないようChromeのシークレットウィンドウで開く
+  const openArgs = process.argv.includes("--incognito") ? ["-na", "Google Chrome", "--args", "--incognito", authUrl.toString()] : [authUrl.toString()];
+  spawn("open", openArgs, { detached: true, stdio: "ignore" }).unref();
 }).finally(() => server.close());
 
 const response = await fetch("https://oauth2.googleapis.com/token", {

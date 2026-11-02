@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// data/youtube-music-sources.json の公式Topicアルバムから曲IDを解決し、
+// data/youtube-music-sources.json の公式Topicアルバム・公式チャンネルから曲IDを解決し、
 // data/playlist-track-map.json の youtubeVideoId へ登録する。検索APIは使わない。
 import { readFile, writeFile } from "node:fs/promises";
 import { pickVideo, refreshYouTubeAccessToken } from "./lib/youtube.mjs";
@@ -35,6 +35,9 @@ async function albumItems(playlistId) {
   return albumCache.get(playlistId);
 }
 
+// --extra-playlist=<ID>: YouTube Musicで手動保存した配信音源を候補に加える（全アーティスト共通）
+const extraPlaylist = process.argv.find((arg) => arg.startsWith("--extra-playlist="))?.split("=")[1];
+
 const resolved = [];
 const unresolved = [];
 for (const track of Object.values(trackMap.tracks)) {
@@ -45,16 +48,28 @@ for (const track of Object.values(trackMap.tracks)) {
   const pinned = source.videos?.[track.song];
   if (pinned) {
     const video = (await get(`videos?part=snippet&id=${pinned}`)).items?.[0];
-    hit = video ? pickVideo(track.song, [{ videoId: pinned, title: video.snippet.title, channelId: video.snippet.channelId }], source.channelId) : null;
+    hit = video ? pickVideo(track.song, [{ videoId: pinned, title: video.snippet.title, channelId: video.snippet.channelId }], source.channelIds, source.aliases) : null;
   }
-  for (const album of source.albums) {
+  for (const album of [...(extraPlaylist ? [extraPlaylist] : []), ...source.albums]) {
     if (hit) break;
-    hit = pickVideo(track.song, await albumItems(album), source.channelId);
+    hit = pickVideo(track.song, await albumItems(album), source.channelIds, source.aliases);
   }
   if (!hit) { unresolved.push({ artist: track.lookupArtist, song: track.song }); continue; }
-  track.youtubeVideoId = hit.videoId;
-  resolved.push({ artist: track.lookupArtist, song: track.song, videoId: hit.videoId, title: hit.title });
+  resolved.push({ track, artist: track.lookupArtist, song: track.song, videoId: hit.videoId, title: hit.title });
 }
+
+// MV・ライブ映像を除外するため、公式TopicチャンネルのArt Track（"Provided to YouTube by"）だけを採用する
+for (let index = 0; index < resolved.length; index += 50) {
+  const batch = resolved.slice(index, index + 50);
+  const videos = new Map(((await get(`videos?part=snippet&id=${batch.map((item) => item.videoId).join(",")}`)).items || []).map((video) => [video.id, video.snippet]));
+  for (const item of batch) {
+    const snippet = videos.get(item.videoId);
+    item.artTrack = Boolean(snippet && sources[item.artist].channelIds.includes(snippet.channelId) && /^Provided to YouTube by/.test(snippet.description || ""));
+  }
+}
+for (const item of resolved.filter((entry) => !entry.artTrack)) unresolved.push({ artist: item.artist, song: item.song, reason: "not an official Art Track", videoId: item.videoId });
+for (const item of resolved.filter((entry) => entry.artTrack)) item.track.youtubeVideoId = item.videoId;
+resolved.splice(0, resolved.length, ...resolved.filter((entry) => entry.artTrack).map(({ track, artTrack, ...rest }) => rest));
 
 if (apply && resolved.length) await writeFile(mapFile, `${JSON.stringify(trackMap, null, 2)}\n`, "utf8");
 process.stdout.write(`${JSON.stringify({ apply, resolved, unresolved }, null, 2)}\n`);

@@ -34,7 +34,6 @@ function artistForShow(show) {
 function artistForTrack(show, song) {
   if (show.tour !== "TMG SAYONARA") return artistForShow(show);
   const covers = {
-    "WHILE MY GUITAR GENTLY WEEPS": "The Beatles",
     "Wild World": "Mr. Big",
     "To Be With You": "Mr. Big",
     "(You Can Still) Rock in America": "Night Ranger",
@@ -214,6 +213,7 @@ class YouTubeAdapter {
   // 途中で停止したプレイリストは不足分だけ追記し、曲順が異なる場合は触らない
   async create(show, videoIds) {
     let playlist = await this.findByMarker(marker(show));
+    let existing = null;
     if (!playlist) {
       const body = await fetchJson("https://www.googleapis.com/youtube/v3/playlists?part=snippet,status", {
         method: "POST",
@@ -222,11 +222,18 @@ class YouTubeAdapter {
       });
       this.playlists.push(body);
       playlist = { id: body.id, url: `https://music.youtube.com/playlist?list=${body.id}` };
+      existing = [];
     }
-    const plan = resumePlan(await this.listItems(playlist.id), videoIds);
+    const plan = resumePlan(existing || await this.listItems(playlist.id), videoIds);
     if (plan.action === "conflict") throw new Error(`YouTube marker exists with different contents: ${marker(show)}`);
     if (plan.action === "append") await this.addItems(playlist.id, videoIds, plan.start);
-    const final = await this.listItems(playlist.id);
+    let final = [];
+    // 作成直後は一覧APIへの反映が遅れ404や件数不足になるため、少し待って再確認する
+    for (let attempt = 0; attempt < 6; attempt += 1) {
+      try { final = await this.listItems(playlist.id); } catch (error) { if (!/\(404\)/.test(error.message)) throw error; }
+      if (JSON.stringify(final) === JSON.stringify(videoIds)) break;
+      await new Promise((resolve) => setTimeout(resolve, 5000));
+    }
     if (JSON.stringify(final) !== JSON.stringify(videoIds)) throw new Error(`YouTube playlist verification failed: ${marker(show)}`);
     return playlist.url;
   }

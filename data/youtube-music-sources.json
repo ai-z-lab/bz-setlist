@@ -1,9 +1,14 @@
 {
   "version": 1,
-  "note": "YouTube Musicの曲IDは各アーティスト公式Topicチャンネルのアルバムからのみ採用します。albumsは優先順です。",
+  "note": "YouTube Musicの曲IDは、各アーティストの公式Topicチャンネル（Art Track）の音源だけを採用します。MV・ライブ映像・公式チャンネルの動画は使いません。albumsは優先順です。",
   "artists": {
     "TMG": {
-      "channelId": "UC3eKEEcuP1z7glBGYpy0F6Q",
+      "channelIds": [
+        "UC3eKEEcuP1z7glBGYpy0F6Q"
+      ],
+      "aliases": [
+        "TMG"
+      ],
       "albums": [
         "OLAK5uy_kTnNwbP7RJ6_Nmg2iCmRfVUMHazkUssN4",
         "OLAK5uy_kWBnBBWQxzPJm7scQbg1CKT7VQnfgAqqo",
@@ -14,8 +19,15 @@
       ]
     },
     "稲葉浩志": {
-      "channelId": "UCEFNL5NM5tHF_erDxNpfuhA",
+      "channelIds": [
+        "UCEFNL5NM5tHF_erDxNpfuhA"
+      ],
+      "aliases": [
+        "稲葉浩志",
+        "Koshi Inaba"
+      ],
       "albums": [
+        "PLCrkPs798lRY",
         "OLAK5uy_mnliWXpO7DxJ85POLvTmJuNSzdMYe-BH4",
         "OLAK5uy_lBaX1r2GyeqV5V-c6Fi9xsoDOqHKtZs2w",
         "OLAK5uy_l6w35KiyW5tE7Wb_HNbi4VU6lW9PLxQyE",
@@ -29,18 +41,30 @@
         "OLAK5uy_kk_o0KZQcd1dKWxZJnElFXW3EJkDH_Uow"
       ]
     },
-    "The Beatles": {
-      "channelId": "UC2XdaAVUannpujzv32jcouQ",
-      "albums": ["OLAK5uy_njHTOnoK_aQOAa3XvnvmzZ76n8cBIJquI"]
-    },
     "Night Ranger": {
-      "channelId": "UCQJifwMdxvt84iTMLXRYxZQ",
-      "albums": ["OLAK5uy_lljRYkLJKWWsXKTxfdZn7gCRYh_OkaZ4k"]
+      "channelIds": [
+        "UCQJifwMdxvt84iTMLXRYxZQ"
+      ],
+      "aliases": [
+        "Night Ranger"
+      ],
+      "albums": [
+        "OLAK5uy_lljRYkLJKWWsXKTxfdZn7gCRYh_OkaZ4k"
+      ]
     },
     "Mr. Big": {
-      "channelId": "UCWK0-VDkqDSM_w01FYTjE5Q",
-      "albums": ["OLAK5uy_nBgrHabXUcnbvdI2HRdxVU86CjR1QzNUk"],
-      "videos": { "Wild World": "9mMOEQsfTUw" }
+      "channelIds": [
+        "UCWK0-VDkqDSM_w01FYTjE5Q"
+      ],
+      "aliases": [
+        "Mr. Big"
+      ],
+      "albums": [
+        "OLAK5uy_nBgrHabXUcnbvdI2HRdxVU86CjR1QzNUk"
+      ],
+      "videos": {
+        "Wild World": "9mMOEQsfTUw"
+      }
     }
   }
 }

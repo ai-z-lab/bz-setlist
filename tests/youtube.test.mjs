@@ -13,6 +13,17 @@ test("picks only videos from the official channel, exact title first", () => {
   assert.equal(pickVideo("SAYONARA", candidates.slice(0, 1), "topic"), null);
 });
 
+test("prefers the Topic channel and strips the artist prefix of official videos", () => {
+  const candidates = [
+    { videoId: "mv", title: "稲葉浩志 / YELLOW", channelId: "official" },
+    { videoId: "topic", title: "YELLOW", channelId: "topic" },
+    { videoId: "other", title: "稲葉浩志 / BANTAM", channelId: "official" },
+  ];
+  assert.equal(pickVideo("YELLOW", candidates, ["topic", "official"], ["稲葉浩志"]).videoId, "topic");
+  assert.equal(pickVideo("YELLOW", candidates.slice(0, 1), ["topic", "official"], ["稲葉浩志"]).videoId, "mv");
+  assert.equal(pickVideo("While My Guitar Gently Weeps", [{ videoId: "b", title: "The Beatles - While My Guitar Gently Weeps (2018 Mix / Audio)", channelId: "vevo" }], ["topic", "vevo"], ["The Beatles"]).videoId, "b");
+});
+
 test("ignores edition suffixes but not different songs", () => {
   assert.equal(looseTitleKey("While My Guitar Gently Weeps (Remastered 2009)"), looseTitleKey("WHILE MY GUITAR GENTLY WEEPS"));
   assert.equal(looseTitleKey("ETERNAL FLAMES (feat. BABYMETAL)"), looseTitleKey("ETERNAL FLAMES"));
