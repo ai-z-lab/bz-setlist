@@ -6,6 +6,8 @@ on:
       - main
     paths:
       - "data/playlist-batch.json"
+      - "data/playlist-track-map.json"
+      - ".github/workflows/playlist-sync.yml"
   pull_request:
     paths:
       - "index.html"
