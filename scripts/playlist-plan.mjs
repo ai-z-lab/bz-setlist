@@ -10,7 +10,7 @@ function argValue(name, fallback = "") {
   return match ? match.slice(prefix.length) : fallback;
 }
 
-export function buildPlaylistPlan(data, { tour = "", showIds = [] } = {}) {
+export function buildPlaylistPlan(data, { tour = "", showIds = [], includeComplete = false } = {}) {
   validateBzData(data);
   const selectedIds = new Set(showIds);
   const shows = data.shows.filter((show) =>
@@ -67,7 +67,8 @@ export function buildPlaylistPlan(data, { tour = "", showIds = [] } = {}) {
         youtubeMusic: 0,
       },
     },
-    groups: plannedGroups.filter((group) => group.needs.spotify.length || group.needs.youtubeMusic.length),
+    // 既存プレイリストを差し替える場合は、リンクがそろったグループも対象にする
+    groups: includeComplete ? plannedGroups : plannedGroups.filter((group) => group.needs.spotify.length || group.needs.youtubeMusic.length),
   };
 }
 

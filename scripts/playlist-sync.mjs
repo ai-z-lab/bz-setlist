@@ -283,7 +283,7 @@ const apply = hasFlag("apply");
 const repairExisting = hasFlag("repair-existing");
 const showIds = argValue("show-ids").split(",").map((value) => value.trim()).filter(Boolean);
 const document = await loadBzData(indexFile);
-const plan = buildPlaylistPlan(document.data, { tour: argValue("tour"), showIds });
+const plan = buildPlaylistPlan(document.data, { tour: argValue("tour"), showIds, includeComplete: repairExisting });
 const trackMap = await loadTrackMap(mapFile);
 const adapters = {};
 if (apply && providers.includes("spotify")) adapters.spotify = new SpotifyAdapter(await refreshSpotifyToken());

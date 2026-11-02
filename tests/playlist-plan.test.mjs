@@ -37,6 +37,13 @@ test("can limit a batch to explicit show ids", () => {
   assert.equal(plan.summary.playlistsToCreate.spotify, 2);
 });
 
+test("includes groups that already have every link when repairing", () => {
+  const data = fixture();
+  data.shows[0].playlists.youtubeMusic = "https://music.youtube.com/playlist?list=existing";
+  assert.equal(buildPlaylistPlan(data, { showIds: ["a"] }).groups.length, 0);
+  assert.equal(buildPlaylistPlan(data, { showIds: ["a"], includeComplete: true }).groups.length, 1);
+});
+
 test("keeps different encore songs in different groups", () => {
   const plan = buildPlaylistPlan(fixture());
   const groups = plan.groups.map((group) => group.tracks.map((track) => track.song).join(","));
