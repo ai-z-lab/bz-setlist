@@ -74,14 +74,13 @@ async function fetchJson(url, options = {}) {
 }
 
 async function refreshSpotifyToken() {
-  const required = ["SPOTIFY_CLIENT_ID", "SPOTIFY_CLIENT_SECRET", "SPOTIFY_REFRESH_TOKEN"];
+  const required = ["SPOTIFY_CLIENT_ID", "SPOTIFY_REFRESH_TOKEN"];
   const missing = required.filter((name) => !process.env[name]);
   if (missing.length) throw new Error(`Spotify credentials are not configured: ${missing.join(", ")}`);
-  const authorization = Buffer.from(`${process.env.SPOTIFY_CLIENT_ID}:${process.env.SPOTIFY_CLIENT_SECRET}`).toString("base64");
-  const body = new URLSearchParams({ grant_type: "refresh_token", refresh_token: process.env.SPOTIFY_REFRESH_TOKEN });
+  const body = new URLSearchParams({ grant_type: "refresh_token", refresh_token: process.env.SPOTIFY_REFRESH_TOKEN, client_id: process.env.SPOTIFY_CLIENT_ID });
   const result = await fetchJson("https://accounts.spotify.com/api/token", {
     method: "POST",
-    headers: { Authorization: `Basic ${authorization}`, "Content-Type": "application/x-www-form-urlencoded" },
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body,
   });
   return result.access_token;
