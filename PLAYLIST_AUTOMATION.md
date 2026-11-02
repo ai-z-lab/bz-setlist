@@ -31,8 +31,9 @@ GitHub ActionsのRepository secretsへ次の値を登録します。トークン
 ### Spotify
 
 - `SPOTIFY_CLIENT_ID`
-- `SPOTIFY_CLIENT_SECRET`
 - `SPOTIFY_REFRESH_TOKEN`
+
+`https://ai-z-lab.github.io/bz-setlist/spotify-callback.html`を開き、Spotifyへ接続するとPKCE方式でRefresh Tokenを取得できます。Client Secretは不要です。SpotifyアプリのRedirect URIには同じURLを完全一致で登録してください。
 
 Spotifyアプリには、公開プレイリストの場合`playlist-modify-public`、非公開プレイリストも扱う場合`playlist-modify-private`のOAuthスコープが必要です。
 
