@@ -54,7 +54,7 @@ OAuthスコープは`https://www.googleapis.com/auth/youtube`または`https://w
 
 YouTube Data APIの既定クォータは1日10,000ユニットで、プレイリスト作成と1曲追加はそれぞれ50ユニットです。上限に達すると処理を止め、未完成のプレイリストはリンク登録しません。クォータ回復後（太平洋時間0時）に同じコマンドを再実行すると、`bz-setlist:<showId>`の目印で既存プレイリストを見つけ、不足分だけ追記します。
 
-`data/playlist-batch.json`の`apply`が`false`の場合、main更新時のActionsは監査のみ行います。
+main更新時のActionsは`data/playlist-batch.json`の`provider`・`showIds`・`repairExisting`に従って適用します。YouTube Musicの作成はクォータ管理のためローカル実行を基本とし、batchの`provider`は`spotify`にしておきます。
 
 YouTubeの自動候補選択は誤登録防止のため初期状態では無効です。検証済みの曲IDを`data/playlist-track-map.json`へ登録するか、Repository variable `YOUTUBE_AUTO_MATCH=true`を明示的に設定すると、厳密一致候補だけを自動採用します。
 

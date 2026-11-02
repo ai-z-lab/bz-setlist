@@ -33,10 +33,6 @@ on:
         description: Create playlists and update links
         type: boolean
         default: false
-      repair_existing:
-        description: Replace tracks of existing Spotify playlists with the track map
-        type: boolean
-        default: false
   schedule:
     - cron: "45 13 * * *"
 
@@ -77,13 +73,13 @@ jobs:
           tour="${{ inputs.tour }}"
           apply="${{ inputs.apply }}"
           show_ids=""
-          repair_existing="${{ inputs.repair_existing || 'false' }}"
+          repair_existing="false"
           if [[ "${{ github.event_name }}" == "push" ]]; then
             provider=$(node -p 'require("./data/playlist-batch.json").provider || "both"')
             show_ids=$(node -p 'require("./data/playlist-batch.json").showIds.join(",")')
             repair_existing=$(node -p 'String(Boolean(require("./data/playlist-batch.json").repairExisting))')
             export YOUTUBE_AUTO_MATCH=$(node -p 'String(Boolean(require("./data/playlist-batch.json").youtubeAutoMatch))')
-            apply=$(node -p 'String(require("./data/playlist-batch.json").apply !== false)')
+            apply="true"
           fi
           if [[ "${{ github.event_name }}" == "schedule" ]]; then
             apply="${{ vars.PLAYLIST_AUTO_APPLY }}"
