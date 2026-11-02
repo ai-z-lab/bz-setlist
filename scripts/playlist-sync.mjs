@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { readFile, writeFile } from "node:fs/promises";
-import { loadBzData, saveBzData, validateBzData } from "./lib/bz-data.mjs";
+import { loadBzData, playlistSignature, saveBzData, validateBzData } from "./lib/bz-data.mjs";
 import { buildPlaylistPlan } from "./playlist-plan.mjs";
 import { ARTIST_ALIASES, artistCandidates, isQuotaError, refreshYouTubeAccessToken, resumePlan } from "./lib/youtube.mjs";
 
@@ -215,7 +215,7 @@ class YouTubeAdapter {
       const body = await fetchJson("https://www.googleapis.com/youtube/v3/playlists?part=snippet,status", {
         method: "POST",
         headers: this.headers({ "Content-Type": "application/json" }),
-        body: JSON.stringify({ snippet: { title: playlistTitle(show), description: playlistDescription(show) }, status: { privacyStatus: "unlisted" } }),
+        body: JSON.stringify({ snippet: { title: playlistTitle(show), description: playlistDescription(show) }, status: { privacyStatus: "public" } }),
       });
       this.playlists.push(body);
       playlist = { id: body.id, url: `https://music.youtube.com/playlist?list=${body.id}` };
@@ -260,6 +260,25 @@ class YouTubeAdapter {
 async function loadTrackMap(path) {
   try { return JSON.parse(await readFile(path, "utf8")); }
   catch (error) { if (error.code === "ENOENT") return { version: 1, tracks: {} }; throw error; }
+}
+
+function playlistIdFromUrl(provider, url) {
+  return provider === "spotify" ? String(url).match(/playlist\/([A-Za-z0-9]+)/)?.[1] : new URL(url).searchParams.get("list");
+}
+
+// 同じアーティスト・同じ曲順の公演で、既存プレイリストの中身（曲数・曲順・音源ID）が完全一致すれば共用する
+async function findSharedPlaylist(data, provider, show, ids, adapter) {
+  const signature = playlistSignature(data, show.id);
+  const checked = new Set();
+  for (const other of data.shows) {
+    const url = other.playlists?.[provider];
+    if (!url || other.id === show.id || checked.has(url) || artistForShow(other) !== artistForShow(show) || playlistSignature(data, other.id) !== signature) continue;
+    checked.add(url);
+    if (!adapter) return url;
+    const items = await adapter.listItems(playlistIdFromUrl(provider, url));
+    if (items.length === ids.length && items.every((id, index) => id === ids[index])) return url;
+  }
+  return "";
 }
 
 function applyLink(data, showIds, provider, url, { replace = false } = {}) {
@@ -328,7 +347,9 @@ for (const group of plan.groups) {
       }
       for (const show of targets) {
         if (!apply) {
-          report.created.push({ provider, group: group.id, shows: [show.id], dryRun: true, repair: Boolean(show.playlists?.[provider]), tracks: ids.length });
+          const shared = show.playlists?.[provider] ? "" : await findSharedPlaylist(document.data, provider, show, ids);
+          if (shared) report.reused.push({ provider, group: group.id, shows: [show.id], url: shared, dryRun: true, reason: "same setlist; shares the playlist after verifying its tracks" });
+          else report.created.push({ provider, group: group.id, shows: [show.id], dryRun: true, repair: Boolean(show.playlists?.[provider]), tracks: ids.length });
           continue;
         }
         let url;
@@ -339,6 +360,12 @@ for (const group of plan.groups) {
           report.reused.push({ provider, group: group.id, shows: [show.id], url: show.playlists[provider], reason: "existing playlist was not modified" });
           continue;
         } else {
+          const shared = await findSharedPlaylist(document.data, provider, show, ids, adapters[provider]);
+          if (shared) {
+            linkedShows += applyLink(document.data, [show.id], provider, shared);
+            report.reused.push({ provider, group: group.id, shows: [show.id], url: shared, reason: "identical tracks; shared existing playlist" });
+            continue;
+          }
           url = await adapters[provider].create(show, ids);
           linkedShows += applyLink(document.data, [show.id], provider, url);
         }
