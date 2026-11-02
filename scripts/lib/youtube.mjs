@@ -73,7 +73,7 @@ export function resumePlan(existing, desired) {
 }
 
 export function isQuotaError(error) {
-  return /quotaExceeded|rateLimitExceeded|dailyLimitExceeded/.test(String(error?.message || error));
+  return /quotaExceeded|rateLimitExceeded|dailyLimitExceeded|RATE_LIMIT_EXCEEDED/.test(String(error?.message || error));
 }
 
 export function loadYouTubeCredentials(env = process.env) {

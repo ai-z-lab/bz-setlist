@@ -347,7 +347,7 @@ for (const group of plan.groups) {
     } catch (error) {
       if (provider === "youtubeMusic" && isQuotaError(error)) {
         quotaStopped = true;
-        report.unresolved.push({ provider, group: group.id, shows: targets.filter((show) => !report.created.some((item) => item.shows.includes(show.id) && item.provider === provider)).map((show) => show.id), reason: "YouTube API quota exceeded; rerun after quota reset" });
+        report.unresolved.push({ provider, group: group.id, shows: targets.filter((show) => !report.created.some((item) => item.shows.includes(show.id) && item.provider === provider)).map((show) => show.id), reason: "YouTube API quota exceeded; rerun after quota reset", message: error.message });
         continue;
       }
       report.errors.push({ provider, group: group.id, shows: targets.map((show) => show.id), message: error.message });

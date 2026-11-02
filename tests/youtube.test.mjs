@@ -48,5 +48,6 @@ test("resumes a partially filled playlist and refuses different contents", () =>
 
 test("detects quota errors", () => {
   assert.ok(isQuotaError(new Error('POST failed (403): {"reason":"quotaExceeded"}')));
+  assert.ok(isQuotaError(new Error("POST failed (429): {\"reason\":\"RATE_LIMIT_EXCEEDED\"}")));
   assert.ok(!isQuotaError(new Error("403 forbidden")));
 });
