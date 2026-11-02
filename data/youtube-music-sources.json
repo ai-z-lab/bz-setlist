@@ -1,0 +1,92 @@
+{
+  "version": 1,
+  "note": "YouTube Musicの曲IDは公式Topicチャンネル（Art Track）の音源だけを採用します。公演アーティスト本人名義を優先し、無い場合だけ原曲アーティストを使います。albumsは優先順で、見つからない場合はTopicチャンネルのリリース一覧も確認します。",
+  "artists": {
+    "TMG": {
+      "channelIds": [
+        "UC3eKEEcuP1z7glBGYpy0F6Q"
+      ],
+      "aliases": [
+        "TMG",
+        "TAK MATSUMOTO GROUP"
+      ],
+      "albums": [
+        "OLAK5uy_kTnNwbP7RJ6_Nmg2iCmRfVUMHazkUssN4",
+        "OLAK5uy_kWBnBBWQxzPJm7scQbg1CKT7VQnfgAqqo",
+        "OLAK5uy_ne3UXv6MtDD_Qc8OgrH-Y_ZcFtn2eLbz8",
+        "OLAK5uy_kFqrgUfagul-OEiPSpaxThSuB_OIux1R4",
+        "OLAK5uy_n4h-QDnsol1DcXfQAeill4V7sevEVwu40",
+        "OLAK5uy_mCkJCbVvqb7T1pazIXzEO5BPYI-HODM-I"
+      ]
+    },
+    "稲葉浩志": {
+      "channelIds": [
+        "UCEFNL5NM5tHF_erDxNpfuhA"
+      ],
+      "aliases": [
+        "稲葉浩志",
+        "Koshi Inaba"
+      ],
+      "albums": [
+        "PLCrkPs798lRY",
+        "OLAK5uy_mnliWXpO7DxJ85POLvTmJuNSzdMYe-BH4",
+        "OLAK5uy_lBaX1r2GyeqV5V-c6Fi9xsoDOqHKtZs2w",
+        "OLAK5uy_l6w35KiyW5tE7Wb_HNbi4VU6lW9PLxQyE",
+        "OLAK5uy_k-cXWg2Y3oVo5A0R-6TXgmRTlxxgKRmpg",
+        "OLAK5uy_nVFWW3vTzWE-7EGpbYo2_rA-uH_U3fQS8",
+        "OLAK5uy_m9zvn2J8CC0Q3vKhlte2rSLo9gGRjgyA0",
+        "OLAK5uy_lU03-tKTjfRNnA-6rT5eaCazqQ15mH_P8",
+        "OLAK5uy_kkXwdsTAPCtHuBcJjKyekiEaaxgL1ez9M",
+        "OLAK5uy_nIReAuBkenIZ14ho0mJGzrCcCWsd0HLBA",
+        "OLAK5uy_nXUcRgDjKrmYPwNev4H_cozjDwhiqs25A",
+        "OLAK5uy_kk_o0KZQcd1dKWxZJnElFXW3EJkDH_Uow"
+      ]
+    },
+    "Night Ranger": {
+      "channelIds": [
+        "UCQJifwMdxvt84iTMLXRYxZQ"
+      ],
+      "aliases": [
+        "Night Ranger"
+      ],
+      "albums": [
+        "OLAK5uy_lljRYkLJKWWsXKTxfdZn7gCRYh_OkaZ4k"
+      ]
+    },
+    "Mr. Big": {
+      "channelIds": [
+        "UCWK0-VDkqDSM_w01FYTjE5Q"
+      ],
+      "aliases": [
+        "Mr. Big"
+      ],
+      "albums": [
+        "OLAK5uy_nBgrHabXUcnbvdI2HRdxVU86CjR1QzNUk"
+      ],
+      "videos": {
+        "Wild World": "9mMOEQsfTUw"
+      }
+    },
+    "B'z": {
+      "channelIds": [
+        "UCMR5xpbhv3jzIQG1TOTg-Jg",
+        "UCamEO39AH5ZX0D5H2tux3GA"
+      ],
+      "aliases": [
+        "B'z",
+        "B’z"
+      ],
+      "albums": []
+    },
+    "松本孝弘": {
+      "channelIds": [
+        "UCkEpzUzd7iR-_ns0VoxivoA"
+      ],
+      "aliases": [
+        "松本孝弘",
+        "Tak Matsumoto"
+      ],
+      "albums": []
+    }
+  }
+}
