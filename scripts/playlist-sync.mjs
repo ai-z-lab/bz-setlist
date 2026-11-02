@@ -2,6 +2,7 @@
 import { readFile, writeFile } from "node:fs/promises";
 import { loadBzData, saveBzData, validateBzData } from "./lib/bz-data.mjs";
 import { buildPlaylistPlan } from "./playlist-plan.mjs";
+import { isQuotaError, refreshYouTubeAccessToken, resumePlan } from "./lib/youtube.mjs";
 
 const PROVIDERS = new Set(["spotify", "youtubeMusic"]);
 
@@ -79,24 +80,6 @@ async function refreshSpotifyToken() {
   if (missing.length) throw new Error(`Spotify credentials are not configured: ${missing.join(", ")}`);
   const body = new URLSearchParams({ grant_type: "refresh_token", refresh_token: process.env.SPOTIFY_REFRESH_TOKEN, client_id: process.env.SPOTIFY_CLIENT_ID });
   const result = await fetchJson("https://accounts.spotify.com/api/token", {
-    method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body,
-  });
-  return result.access_token;
-}
-
-async function refreshYouTubeToken() {
-  const required = ["YOUTUBE_CLIENT_ID", "YOUTUBE_CLIENT_SECRET", "YOUTUBE_REFRESH_TOKEN"];
-  const missing = required.filter((name) => !process.env[name]);
-  if (missing.length) throw new Error(`YouTube credentials are not configured: ${missing.join(", ")}`);
-  const body = new URLSearchParams({
-    client_id: process.env.YOUTUBE_CLIENT_ID,
-    client_secret: process.env.YOUTUBE_CLIENT_SECRET,
-    refresh_token: process.env.YOUTUBE_REFRESH_TOKEN,
-    grant_type: "refresh_token",
-  });
-  const result = await fetchJson("https://oauth2.googleapis.com/token", {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body,
@@ -202,15 +185,18 @@ class YouTubeAdapter {
   }
 
   async findByMarker(value) {
-    let pageToken = "";
-    do {
-      const tokenPart = pageToken ? `&pageToken=${encodeURIComponent(pageToken)}` : "";
-      const body = await fetchJson(`https://www.googleapis.com/youtube/v3/playlists?part=snippet,status&mine=true&maxResults=50${tokenPart}`, { headers: this.headers() });
-      const found = (body.items || []).find((item) => item.snippet?.description?.includes(value));
-      if (found) return { id: found.id, url: `https://music.youtube.com/playlist?list=${found.id}` };
-      pageToken = body.nextPageToken || "";
-    } while (pageToken);
-    return null;
+    if (!this.playlists) {
+      this.playlists = [];
+      let pageToken = "";
+      do {
+        const tokenPart = pageToken ? `&pageToken=${encodeURIComponent(pageToken)}` : "";
+        const body = await fetchJson(`https://www.googleapis.com/youtube/v3/playlists?part=snippet&mine=true&maxResults=50${tokenPart}`, { headers: this.headers() });
+        this.playlists.push(...(body.items || []));
+        pageToken = body.nextPageToken || "";
+      } while (pageToken);
+    }
+    const found = this.playlists.find((item) => item.snippet?.description?.includes(value));
+    return found ? { id: found.id, url: `https://music.youtube.com/playlist?list=${found.id}` } : null;
   }
 
   async listItems(id) {
@@ -225,25 +211,28 @@ class YouTubeAdapter {
     return ids;
   }
 
+  // 途中で停止したプレイリストは不足分だけ追記し、曲順が異なる場合は触らない
   async create(show, videoIds) {
     let playlist = await this.findByMarker(marker(show));
-    if (playlist) {
-      const existing = await this.listItems(playlist.id);
-      if (existing.length && JSON.stringify(existing) !== JSON.stringify(videoIds)) throw new Error(`YouTube marker exists with different contents: ${marker(show)}`);
-      if (!existing.length) await this.addItems(playlist.id, videoIds);
-      return playlist.url;
+    if (!playlist) {
+      const body = await fetchJson("https://www.googleapis.com/youtube/v3/playlists?part=snippet,status", {
+        method: "POST",
+        headers: this.headers({ "Content-Type": "application/json" }),
+        body: JSON.stringify({ snippet: { title: playlistTitle(show), description: playlistDescription(show) }, status: { privacyStatus: "unlisted" } }),
+      });
+      this.playlists.push(body);
+      playlist = { id: body.id, url: `https://music.youtube.com/playlist?list=${body.id}` };
     }
-    const body = await fetchJson("https://www.googleapis.com/youtube/v3/playlists?part=snippet,status", {
-      method: "POST",
-      headers: this.headers({ "Content-Type": "application/json" }),
-      body: JSON.stringify({ snippet: { title: playlistTitle(show), description: playlistDescription(show) }, status: { privacyStatus: "unlisted" } }),
-    });
-    await this.addItems(body.id, videoIds);
-    return `https://music.youtube.com/playlist?list=${body.id}`;
+    const plan = resumePlan(await this.listItems(playlist.id), videoIds);
+    if (plan.action === "conflict") throw new Error(`YouTube marker exists with different contents: ${marker(show)}`);
+    if (plan.action === "append") await this.addItems(playlist.id, videoIds, plan.start);
+    const final = await this.listItems(playlist.id);
+    if (JSON.stringify(final) !== JSON.stringify(videoIds)) throw new Error(`YouTube playlist verification failed: ${marker(show)}`);
+    return playlist.url;
   }
 
-  async addItems(id, videoIds) {
-    for (let position = 0; position < videoIds.length; position += 1) {
+  async addItems(id, videoIds, start = 0) {
+    for (let position = start; position < videoIds.length; position += 1) {
       await fetchJson("https://www.googleapis.com/youtube/v3/playlistItems?part=snippet", {
         method: "POST",
         headers: this.headers({ "Content-Type": "application/json" }),
@@ -283,16 +272,21 @@ const plan = buildPlaylistPlan(document.data, { tour: argValue("tour"), showIds 
 const trackMap = await loadTrackMap(mapFile);
 const adapters = {};
 if (apply && providers.includes("spotify")) adapters.spotify = new SpotifyAdapter(await refreshSpotifyToken());
-if (apply && providers.includes("youtubeMusic")) adapters.youtubeMusic = new YouTubeAdapter(await refreshYouTubeToken());
+if (apply && providers.includes("youtubeMusic")) adapters.youtubeMusic = new YouTubeAdapter(await refreshYouTubeAccessToken());
 
 const report = { generatedAt: new Date().toISOString(), apply, provider: providerArg, tour: argValue("tour") || null, created: [], reused: [], unresolved: [], errors: [] };
 let linkedShows = 0;
+let quotaStopped = false;
 
 for (const group of plan.groups) {
   const representative = group.shows[0];
   for (const provider of providers) {
     const targets = group.shows.filter((show) => !show.playlists?.[provider] || repairExisting);
     if (!targets.length) continue;
+    if (quotaStopped && provider === "youtubeMusic") {
+      report.unresolved.push({ provider, group: group.id, shows: targets.map((show) => show.id), reason: "YouTube API quota exceeded; rerun after quota reset" });
+      continue;
+    }
     try {
       if (!artistForShow(representative)) {
         report.unresolved.push({ provider, group: group.id, shows: targets.map((show) => show.id), reason: "artist is not configured", tracks: group.tracks.map((track) => track.song) });
@@ -335,6 +329,11 @@ for (const group of plan.groups) {
         report.created.push({ provider, group: group.id, shows: [show.id], url, repair: Boolean(show.playlists?.[provider]), tracks: ids.length });
       }
     } catch (error) {
+      if (provider === "youtubeMusic" && isQuotaError(error)) {
+        quotaStopped = true;
+        report.unresolved.push({ provider, group: group.id, shows: targets.filter((show) => !report.created.some((item) => item.shows.includes(show.id) && item.provider === provider)).map((show) => show.id), reason: "YouTube API quota exceeded; rerun after quota reset" });
+        continue;
+      }
       report.errors.push({ provider, group: group.id, shows: targets.map((show) => show.id), message: error.message });
     }
   }
@@ -345,7 +344,7 @@ if (apply) {
   if (linkedShows) {
     const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Tokyo", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
     document.data.updated = today;
-    document.data.updateHistory.unshift({ date: today, title: "プレイリスト更新", items: [`Spotify / YouTube Music のプレイリストリンクを${linkedShows}公演分追加`] });
+    document.data.updateHistory.unshift({ date: today, title: "プレイリスト更新", items: [`${{ spotify: "Spotify", youtubeMusic: "YouTube Music" }[providerArg] || "Spotify / YouTube Music"} のプレイリストリンクを${linkedShows}公演分追加`] });
     validateBzData(document.data);
     await saveBzData(document, document.data);
   }

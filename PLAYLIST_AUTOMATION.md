@@ -45,6 +45,17 @@ Spotifyアプリには、公開プレイリストの場合`playlist-modify-publi
 
 OAuthスコープは`https://www.googleapis.com/auth/youtube`または`https://www.googleapis.com/auth/youtube.force-ssl`を使用します。作成するプレイリストは初期状態で限定公開です。
 
+#### ローカル実行（推奨・macOS）
+
+1. Google Cloud ConsoleでYouTube Data API v3を有効化し、OAuthクライアント（デスクトップアプリ）のJSONをダウンロードします。
+2. `node scripts/setup-youtube-auth.mjs <client_secret_*.json>` を実行し、ブラウザで許可します。認証情報はmacOSキーチェーン（`bz-setlist-youtube`）へ保存され、画面・ファイル・リポジトリには出力されません。
+3. `node scripts/youtube-resolve.mjs --apply` で、`data/youtube-music-sources.json`に登録した公式Topicチャンネルのアルバムから曲IDを解決します（検索APIは使わず、1アルバム約1ユニット）。
+4. `node scripts/playlist-sync.mjs --provider=youtubeMusic --show-ids=<公演ID,...> --apply` で作成します。
+
+YouTube Data APIの既定クォータは1日10,000ユニットで、プレイリスト作成と1曲追加はそれぞれ50ユニットです。上限に達すると処理を止め、未完成のプレイリストはリンク登録しません。クォータ回復後（太平洋時間0時）に同じコマンドを再実行すると、`bz-setlist:<showId>`の目印で既存プレイリストを見つけ、不足分だけ追記します。
+
+`data/playlist-batch.json`の`apply`が`false`の場合、main更新時のActionsは監査のみ行います。
+
 YouTubeの自動候補選択は誤登録防止のため初期状態では無効です。検証済みの曲IDを`data/playlist-track-map.json`へ登録するか、Repository variable `YOUTUBE_AUTO_MATCH=true`を明示的に設定すると、厳密一致候補だけを自動採用します。
 
 ## 実行方法

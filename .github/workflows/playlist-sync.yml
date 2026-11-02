@@ -79,7 +79,7 @@ jobs:
             show_ids=$(node -p 'require("./data/playlist-batch.json").showIds.join(",")')
             repair_existing=$(node -p 'String(Boolean(require("./data/playlist-batch.json").repairExisting))')
             export YOUTUBE_AUTO_MATCH=$(node -p 'String(Boolean(require("./data/playlist-batch.json").youtubeAutoMatch))')
-            apply="true"
+            apply=$(node -p 'String(require("./data/playlist-batch.json").apply !== false)')
           fi
           if [[ "${{ github.event_name }}" == "schedule" ]]; then
             apply="${{ vars.PLAYLIST_AUTO_APPLY }}"

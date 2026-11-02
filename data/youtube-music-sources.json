@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "note": "YouTube Musicの曲IDは各アーティスト公式Topicチャンネルのアルバムからのみ採用します。albumsは優先順です。",
+  "artists": {
+    "TMG": {
+      "channelId": "UC3eKEEcuP1z7glBGYpy0F6Q",
+      "albums": [
+        "OLAK5uy_kTnNwbP7RJ6_Nmg2iCmRfVUMHazkUssN4",
+        "OLAK5uy_kWBnBBWQxzPJm7scQbg1CKT7VQnfgAqqo",
+        "OLAK5uy_ne3UXv6MtDD_Qc8OgrH-Y_ZcFtn2eLbz8",
+        "OLAK5uy_kFqrgUfagul-OEiPSpaxThSuB_OIux1R4",
+        "OLAK5uy_n4h-QDnsol1DcXfQAeill4V7sevEVwu40",
+        "OLAK5uy_mCkJCbVvqb7T1pazIXzEO5BPYI-HODM-I"
+      ]
+    },
+    "稲葉浩志": {
+      "channelId": "UCEFNL5NM5tHF_erDxNpfuhA",
+      "albums": [
+        "OLAK5uy_mnliWXpO7DxJ85POLvTmJuNSzdMYe-BH4",
+        "OLAK5uy_lBaX1r2GyeqV5V-c6Fi9xsoDOqHKtZs2w",
+        "OLAK5uy_l6w35KiyW5tE7Wb_HNbi4VU6lW9PLxQyE",
+        "OLAK5uy_k-cXWg2Y3oVo5A0R-6TXgmRTlxxgKRmpg",
+        "OLAK5uy_nVFWW3vTzWE-7EGpbYo2_rA-uH_U3fQS8",
+        "OLAK5uy_m9zvn2J8CC0Q3vKhlte2rSLo9gGRjgyA0",
+        "OLAK5uy_lU03-tKTjfRNnA-6rT5eaCazqQ15mH_P8",
+        "OLAK5uy_kkXwdsTAPCtHuBcJjKyekiEaaxgL1ez9M",
+        "OLAK5uy_nIReAuBkenIZ14ho0mJGzrCcCWsd0HLBA",
+        "OLAK5uy_nXUcRgDjKrmYPwNev4H_cozjDwhiqs25A",
+        "OLAK5uy_kk_o0KZQcd1dKWxZJnElFXW3EJkDH_Uow"
+      ]
+    },
+    "The Beatles": {
+      "channelId": "UC2XdaAVUannpujzv32jcouQ",
+      "albums": ["OLAK5uy_njHTOnoK_aQOAa3XvnvmzZ76n8cBIJquI"]
+    },
+    "Night Ranger": {
+      "channelId": "UCQJifwMdxvt84iTMLXRYxZQ",
+      "albums": ["OLAK5uy_lljRYkLJKWWsXKTxfdZn7gCRYh_OkaZ4k"]
+    },
+    "Mr. Big": {
+      "channelId": "UCWK0-VDkqDSM_w01FYTjE5Q",
+      "albums": ["OLAK5uy_nBgrHabXUcnbvdI2HRdxVU86CjR1QzNUk"],
+      "videos": { "Wild World": "9mMOEQsfTUw" }
+    }
+  }
+}
