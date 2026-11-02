@@ -64,12 +64,14 @@
     "TMG\u0000THE STORY OF LOVE": {
       "artist": "TMG",
       "lookupArtist": "TMG",
-      "song": "THE STORY OF LOVE"
+      "song": "THE STORY OF LOVE",
+      "spotifyUri": "spotify:track:11XLDDef9OppOcMc2ot3tY"
     },
     "TMG\u0000ETERNAL FLAMES": {
       "artist": "TMG",
       "lookupArtist": "TMG",
-      "song": "ETERNAL FLAMES"
+      "song": "ETERNAL FLAMES",
+      "spotifyUri": "spotify:track:24Nk9mmAd9IJyJ1UX6aaAJ"
     },
     "TMG\u0000GUITAR HERO": {
       "artist": "TMG",
