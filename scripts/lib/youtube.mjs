@@ -15,21 +15,55 @@ export function looseTitleKey(value) {
   return compact(title);
 }
 
-function withoutArtist(title, aliases) {
-  const text = String(title || "").normalize("NFKC");
-  const alias = aliases.find((name) => text.toLowerCase().startsWith(`${name.toLowerCase()} `) || text.toLowerCase().startsWith(`${name.toLowerCase()}/`));
-  return alias ? text.slice(alias.length).replace(/^\s*[/-]\s*/, "") : text;
+// 公演アーティスト本人の名義。カバー曲でも本人名義の配信音源を最優先し、無い場合だけ原曲アーティストを使う
+export const ARTIST_ALIASES = {
+  "B'z": ["B'z", "B’z", "Bz"],
+  "稲葉浩志": ["稲葉浩志", "Koshi Inaba", "Inaba Koshi"],
+  TMG: ["TMG", "TAK MATSUMOTO GROUP", "Tak Matsumoto Group"],
+  "松本孝弘": ["松本孝弘", "Tak Matsumoto"],
+};
+
+export function artistCandidates(performer, original) {
+  return [...new Set([performer, original].filter(Boolean))];
 }
 
-// channelIdsは優先順（Topic、公式チャンネルの順）。曲名は完全一致を版表記の除去より優先する
-export function pickVideo(song, candidates, channelIds, aliases = []) {
-  for (const channelId of [].concat(channelIds)) {
-    const own = candidates.filter((item) => item.channelId === channelId).map((item) => ({ ...item, bare: withoutArtist(item.title, aliases) }));
-    const hit = own.find((item) => compact(item.bare) === compact(song))
-      || own.find((item) => looseTitleKey(item.bare) === looseTitleKey(song));
-    if (hit) return hit;
-  }
-  return null;
+export function isoDurationSeconds(value) {
+  const match = String(value || "").match(/^PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?$/);
+  return match ? (Number(match[1] || 0) * 3600) + (Number(match[2] || 0) * 60) + Number(match[3] || 0) : 0;
+}
+
+// Art Trackの説明文: "Provided to YouTube by …" / "曲名 · アーティスト" / "アルバム"
+export function parseArtTrack(video) {
+  const lines = String(video?.snippet?.description || "").split("\n").map((line) => line.trim()).filter(Boolean);
+  const credit = (lines[1] || "").split(" · ");
+  return {
+    videoId: video?.id,
+    artTrack: /^Provided to YouTube by/.test(lines[0] || ""),
+    channelId: video?.snippet?.channelId,
+    title: credit[0] || video?.snippet?.title || "",
+    artists: credit.slice(1),
+    album: lines[2] || "",
+    durationSec: isoDurationSeconds(video?.contentDetails?.duration),
+  };
+}
+
+function albumKey(value) {
+  return compact(String(value || "").normalize("NFKC").replace(/\s+-\s+(EP|Single)$/i, "").replace(/\s*[([（【][^)\]）】]*(edition|remaster|deluxe|anniversary)[^)\]）】]*[)\]）】]/gi, ""));
+}
+
+// 採用前の検証。曲名・アーティスト・公式Topicチャンネル・Art Trackは必須、アルバムと再生時間は期待値がある場合に照合する
+export function verifyArtTrack(track, { song, aliases, channelIds, expected = {} }) {
+  const reasons = [];
+  if (!track.artTrack) reasons.push("not an Art Track");
+  if (!channelIds.includes(track.channelId)) reasons.push("not an official Topic channel");
+  if (looseTitleKey(track.title) !== looseTitleKey(song)) reasons.push(`title mismatch: ${track.title}`);
+  const names = aliases.map(compact);
+  if (!track.artists.some((name) => names.includes(compact(name)))) reasons.push(`artist mismatch: ${track.artists.join(", ")}`);
+  // 同名シングル収録の同一音源（再生時間が一致）は、アルバム違いでも同じ音源として認める
+  const sameNameSingle = looseTitleKey(track.album) === looseTitleKey(song) && expected.durationSec && Math.abs(expected.durationSec - track.durationSec) <= 3;
+  if (expected.album && albumKey(expected.album) !== albumKey(track.album) && !sameNameSingle) reasons.push(`album mismatch: ${track.album} != ${expected.album}`);
+  if (expected.durationSec && Math.abs(expected.durationSec - track.durationSec) > 3) reasons.push(`duration mismatch: ${track.durationSec}s != ${expected.durationSec}s`);
+  return { ok: !reasons.length, reasons };
 }
 
 export function resumePlan(existing, desired) {

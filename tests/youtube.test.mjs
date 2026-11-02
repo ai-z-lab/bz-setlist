@@ -1,27 +1,34 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { isQuotaError, looseTitleKey, pickVideo, resumePlan } from "../scripts/lib/youtube.mjs";
+import { artistCandidates, isQuotaError, isoDurationSeconds, looseTitleKey, parseArtTrack, resumePlan, verifyArtTrack } from "../scripts/lib/youtube.mjs";
 
-test("picks only videos from the official channel, exact title first", () => {
-  const candidates = [
-    { videoId: "fake", title: "SAYONARA", channelId: "other" },
-    { videoId: "loose", title: "SAYONARA (2026 Mix)", channelId: "topic" },
-    { videoId: "exact", title: "SAYONARA", channelId: "topic" },
-  ];
-  assert.equal(pickVideo("SAYONARA", candidates, "topic").videoId, "exact");
-  assert.equal(pickVideo("SAYONARA", candidates.slice(0, 2), "topic").videoId, "loose");
-  assert.equal(pickVideo("SAYONARA", candidates.slice(0, 1), "topic"), null);
+function video(id, description, duration = "PT4M40S", channelId = "tmg-topic") {
+  return { id, snippet: { channelId, title: "x", description }, contentDetails: { duration } };
+}
+
+const wmggw = video("tmg", "Provided to YouTube by Being\n\nWHILE MY GUITAR GENTLY WEEPS · TMG\n\nTMG Ⅲ SAYONARA\n\n℗ 2026");
+const rules = { song: "WHILE MY GUITAR GENTLY WEEPS", aliases: ["TMG", "TAK MATSUMOTO GROUP"], channelIds: ["tmg-topic"], expected: { album: "TMG Ⅲ SAYONARA", durationSec: 279 } };
+
+test("tries the performing artist before the original artist", () => {
+  assert.deepEqual(artistCandidates("TMG", "Mr. Big"), ["TMG", "Mr. Big"]);
+  assert.deepEqual(artistCandidates("稲葉浩志", "稲葉浩志"), ["稲葉浩志"]);
 });
 
-test("prefers the Topic channel and strips the artist prefix of official videos", () => {
-  const candidates = [
-    { videoId: "mv", title: "稲葉浩志 / YELLOW", channelId: "official" },
-    { videoId: "topic", title: "YELLOW", channelId: "topic" },
-    { videoId: "other", title: "稲葉浩志 / BANTAM", channelId: "official" },
-  ];
-  assert.equal(pickVideo("YELLOW", candidates, ["topic", "official"], ["稲葉浩志"]).videoId, "topic");
-  assert.equal(pickVideo("YELLOW", candidates.slice(0, 1), ["topic", "official"], ["稲葉浩志"]).videoId, "mv");
-  assert.equal(pickVideo("While My Guitar Gently Weeps", [{ videoId: "b", title: "The Beatles - While My Guitar Gently Weeps (2018 Mix / Audio)", channelId: "vevo" }], ["topic", "vevo"], ["The Beatles"]).videoId, "b");
+test("parses Art Track credits, album and duration", () => {
+  assert.deepEqual(parseArtTrack(wmggw), { videoId: "tmg", artTrack: true, channelId: "tmg-topic", title: "WHILE MY GUITAR GENTLY WEEPS", artists: ["TMG"], album: "TMG Ⅲ SAYONARA", durationSec: 280 });
+  assert.equal(isoDurationSeconds("PT1H2M3S"), 3723);
+});
+
+test("accepts only verified official Art Tracks", () => {
+  assert.ok(verifyArtTrack(parseArtTrack(wmggw), rules).ok);
+  const mv = video("mv", "稲葉浩志 / YELLOW Music Video", "PT4M0S", "official");
+  assert.ok(!verifyArtTrack(parseArtTrack(mv), { ...rules, song: "YELLOW", channelIds: ["topic"] }).ok);
+  const beatles = video("b", "Provided to YouTube by Apple\n\nWhile My Guitar Gently Weeps · The Beatles\n\nLove\n\n℗ 2006", "PT3M46S");
+  const single = video("s", "Provided to YouTube by Being\n\nStray Hearts · 稲葉浩志\n\nStray Hearts\n\n℗ 2023", "PT4M5S", "topic");
+  const inaba = { song: "Stray Hearts", aliases: ["稲葉浩志"], channelIds: ["topic"] };
+  assert.ok(verifyArtTrack(parseArtTrack(single), { ...inaba, expected: { album: "只者", durationSec: 246 } }).ok);
+  assert.ok(!verifyArtTrack(parseArtTrack(single), { ...inaba, expected: { album: "只者", durationSec: 260 } }).ok);
+  assert.deepEqual(verifyArtTrack(parseArtTrack(beatles), rules).reasons, ["artist mismatch: The Beatles", "album mismatch: Love != TMG Ⅲ SAYONARA", "duration mismatch: 226s != 279s"]);
 });
 
 test("ignores edition suffixes but not different songs", () => {

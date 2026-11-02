@@ -1,13 +1,14 @@
 {
   "version": 1,
-  "note": "YouTube Musicの曲IDは、各アーティストの公式Topicチャンネル（Art Track）の音源だけを採用します。MV・ライブ映像・公式チャンネルの動画は使いません。albumsは優先順です。",
+  "note": "YouTube Musicの曲IDは公式Topicチャンネル（Art Track）の音源だけを採用します。公演アーティスト本人名義を優先し、無い場合だけ原曲アーティストを使います。albumsは優先順で、見つからない場合はTopicチャンネルのリリース一覧も確認します。",
   "artists": {
     "TMG": {
       "channelIds": [
         "UC3eKEEcuP1z7glBGYpy0F6Q"
       ],
       "aliases": [
-        "TMG"
+        "TMG",
+        "TAK MATSUMOTO GROUP"
       ],
       "albums": [
         "OLAK5uy_kTnNwbP7RJ6_Nmg2iCmRfVUMHazkUssN4",
@@ -65,6 +66,27 @@
       "videos": {
         "Wild World": "9mMOEQsfTUw"
       }
+    },
+    "B'z": {
+      "channelIds": [
+        "UCMR5xpbhv3jzIQG1TOTg-Jg",
+        "UCamEO39AH5ZX0D5H2tux3GA"
+      ],
+      "aliases": [
+        "B'z",
+        "B’z"
+      ],
+      "albums": []
+    },
+    "松本孝弘": {
+      "channelIds": [
+        "UCkEpzUzd7iR-_ns0VoxivoA"
+      ],
+      "aliases": [
+        "松本孝弘",
+        "Tak Matsumoto"
+      ],
+      "albums": []
     }
   }
 }

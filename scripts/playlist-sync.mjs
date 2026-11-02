@@ -2,7 +2,7 @@
 import { readFile, writeFile } from "node:fs/promises";
 import { loadBzData, saveBzData, validateBzData } from "./lib/bz-data.mjs";
 import { buildPlaylistPlan } from "./playlist-plan.mjs";
-import { isQuotaError, refreshYouTubeAccessToken, resumePlan } from "./lib/youtube.mjs";
+import { ARTIST_ALIASES, artistCandidates, isQuotaError, refreshYouTubeAccessToken, resumePlan } from "./lib/youtube.mjs";
 
 const PROVIDERS = new Set(["spotify", "youtubeMusic"]);
 
@@ -42,10 +42,7 @@ function artistForTrack(show, song) {
 }
 
 function artistAliases(artist) {
-  if (artist === "稲葉浩志") return ["稲葉浩志", "koshi inaba", "inaba koshi"];
-  if (artist === "B'z") return ["b'z", "bz"];
-  if (artist === "TMG") return ["tmg", "tak matsumoto group"];
-  return [artist];
+  return ARTIST_ALIASES[artist] || [artist];
 }
 
 function mapKey(artist, song) {
@@ -224,9 +221,20 @@ class YouTubeAdapter {
       playlist = { id: body.id, url: `https://music.youtube.com/playlist?list=${body.id}` };
       existing = [];
     }
-    const plan = resumePlan(existing || await this.listItems(playlist.id), videoIds);
-    if (plan.action === "conflict") throw new Error(`YouTube marker exists with different contents: ${marker(show)}`);
-    if (plan.action === "append") await this.addItems(playlist.id, videoIds, plan.start);
+    // 409/5xxなどの一時エラーは、一覧を読み直して実際の追加位置から再開する
+    for (let attempt = 0; ; attempt += 1) {
+      const plan = resumePlan(existing || await this.listItems(playlist.id), videoIds);
+      existing = null;
+      if (plan.action === "conflict") throw new Error(`YouTube marker exists with different contents: ${marker(show)}`);
+      if (plan.action === "complete") break;
+      try {
+        await this.addItems(playlist.id, videoIds, plan.start);
+        break;
+      } catch (error) {
+        if (attempt >= 3 || isQuotaError(error) || !/\((409|500|503)\)/.test(error.message)) throw error;
+        await new Promise((resolve) => setTimeout(resolve, 5000));
+      }
+    }
     let final = [];
     // 作成直後は一覧APIへの反映が遅れ404や件数不足になるため、少し待って再確認する
     for (let attempt = 0; attempt < 6; attempt += 1) {
@@ -307,9 +315,10 @@ for (const group of plan.groups) {
         trackMap.tracks[key] ||= { artist: artistForShow(representative), lookupArtist, song: track.song };
         const field = provider === "spotify" ? "spotifyUri" : "youtubeVideoId";
         let id = trackMap.tracks[key][field] || "";
-        if (!id && apply) {
-          id = await adapters[provider].resolve(track.song, lookupArtist);
-          if (id) trackMap.tracks[key][field] = id;
+        // 本人名義の音源を優先し、見つからない場合だけ原曲アーティスト版を使う
+        for (const candidate of id || !apply ? [] : artistCandidates(artistForShow(representative), lookupArtist)) {
+          id = await adapters[provider].resolve(track.song, candidate);
+          if (id) { trackMap.tracks[key][field] = id; break; }
         }
         if (id) ids.push(id); else unresolvedSongs.push(track.song);
       }

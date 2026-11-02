@@ -49,7 +49,17 @@ OAuthスコープは`https://www.googleapis.com/auth/youtube`または`https://w
 
 1. Google Cloud ConsoleでYouTube Data API v3を有効化し、OAuthクライアント（デスクトップアプリ）のJSONをダウンロードします。
 2. `node scripts/setup-youtube-auth.mjs <client_secret_*.json>` を実行し、ブラウザで許可します。認証情報はmacOSキーチェーン（`bz-setlist-youtube`）へ保存され、画面・ファイル・リポジトリには出力されません。
-3. `node scripts/youtube-resolve.mjs --apply` で、`data/youtube-music-sources.json`に登録した公式Topicチャンネルのアルバムから曲IDを解決します（検索APIは使わず、1アルバム約1ユニット）。
+3. `node scripts/youtube-resolve.mjs --apply` で曲IDを解決します（検索APIは使わず、1アルバム約1ユニット）。YouTube Musicで手動保存した曲を使う場合は `--extra-playlist-title=<プレイリスト名>`、登録済みIDの再検証は `--verify-all` を付けます。
+
+#### 曲IDの採用ルール（YouTube Music）
+
+1. 公演アーティスト本人名義の公式配信音源を最優先します（B'z／B’z、稲葉浩志／Koshi Inaba、TMG／TAK MATSUMOTO GROUP、松本孝弘／Tak Matsumoto）。
+2. 本人名義が複数ある場合も、曲名・アルバム・公式Topicチャンネルで照合します。
+3. 本人名義の配信音源が無い場合だけ、原曲アーティスト版を採用します（例: TMGが演奏したMr. Big「To Be With You」）。
+4. 採用するのは公式TopicチャンネルのArt Track（説明文が「Provided to YouTube by」）だけです。MV・ライブ映像・公式チャンネルの動画は採用せず、未解決として止めます。
+5. 採用前に曲名・アーティスト・アルバム・再生時間（±3秒）を検証します。期待値はSpotifyの公開曲情報を使い、同名シングル収録の同一音源（再生時間が一致）だけはアルバム違いを許容します。
+
+候補の探索順は、固定指定 → 手動保存プレイリスト → 登録アルバム → Topicのリリース一覧 → YouTubeの公開検索結果です。公開検索結果は候補IDの収集にだけ使い、採否は必ず公式APIで検証します。
 4. `node scripts/playlist-sync.mjs --provider=youtubeMusic --show-ids=<公演ID,...> --apply` で作成します。
 
 YouTube Data APIの既定クォータは1日10,000ユニットで、プレイリスト作成と1曲追加はそれぞれ50ユニットです。上限に達すると処理を止め、未完成のプレイリストはリンク登録しません。クォータ回復後（太平洋時間0時）に同じコマンドを再実行すると、`bz-setlist:<showId>`の目印で既存プレイリストを見つけ、不足分だけ追記します。
