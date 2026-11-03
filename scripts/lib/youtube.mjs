@@ -18,7 +18,7 @@ export function looseTitleKey(value) {
 // 公演アーティスト本人の名義。カバー曲でも本人名義の配信音源を最優先し、無い場合だけ原曲アーティストを使う
 export const ARTIST_ALIASES = {
   "B'z": ["B'z", "B’z", "Bz"],
-  "稲葉浩志": ["稲葉浩志", "Koshi Inaba", "Inaba Koshi"],
+  "稲葉浩志": ["稲葉浩志", "Koshi Inaba", "Inaba Koshi", "INABA/SALAS", "Inaba Salas"],
   TMG: ["TMG", "TAK MATSUMOTO GROUP", "Tak Matsumoto Group"],
   "松本孝弘": ["松本孝弘", "Tak Matsumoto"],
 };
