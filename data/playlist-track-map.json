@@ -343,6 +343,12 @@
       "song": "NOW",
       "spotifyUri": "spotify:track:2yxXfDTUEidGzLZrDkhm27",
       "youtubeVideoId": "ReCpY_P88GI"
+    },
+    "稲葉浩志\u0000CHAIN": {
+      "artist": "稲葉浩志",
+      "lookupArtist": "稲葉浩志",
+      "song": "CHAIN",
+      "spotifyUri": "spotify:track:4Kgz6L8idxMjVXRUsYtVR0"
     }
   }
 }
