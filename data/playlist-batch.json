@@ -1,5 +1,5 @@
 {
-  "provider": "spotify",
+  "provider": "both",
   "repairExisting": false,
   "youtubeAutoMatch": false,
   "showIds": [
