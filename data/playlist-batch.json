@@ -1,8 +1,8 @@
 {
-  "provider": "spotify",
+  "provider": "both",
   "repairExisting": false,
   "youtubeAutoMatch": false,
   "showIds": [
-    "2026-11-05-env-oita"
+    "2026-11-07-env-fukuoka"
   ]
 }
