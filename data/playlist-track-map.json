@@ -348,7 +348,8 @@
       "artist": "稲葉浩志",
       "lookupArtist": "稲葉浩志",
       "song": "CHAIN",
-      "spotifyUri": "spotify:track:4Kgz6L8idxMjVXRUsYtVR0"
+      "spotifyUri": "spotify:track:4Kgz6L8idxMjVXRUsYtVR0",
+      "youtubeVideoId": "J6vmHpbOtoY"
     },
     "稲葉浩志\u0000I AM YOUR BABY": {
       "artist": "稲葉浩志",
@@ -368,7 +369,8 @@
       "artist": "稲葉浩志",
       "lookupArtist": "稲葉浩志",
       "song": "眠れないのは誰のせい",
-      "spotifyUri": "spotify:track:0pzS9ai2gyvyEiSj7B09nJ"
+      "spotifyUri": "spotify:track:0pzS9ai2gyvyEiSj7B09nJ",
+      "youtubeVideoId": "3CzNeoUGRjU"
     }
   }
 }
