@@ -354,13 +354,15 @@
       "artist": "稲葉浩志",
       "lookupArtist": "稲葉浩志",
       "song": "I AM YOUR BABY",
-      "spotifyUri": "spotify:track:44gybcX7gfEMnw4rTSWXJ0"
+      "spotifyUri": "spotify:track:44gybcX7gfEMnw4rTSWXJ0",
+      "youtubeVideoId": "hgkFIKJ3knQ"
     },
     "稲葉浩志\u0000気分はI am All Yours": {
       "artist": "稲葉浩志",
       "lookupArtist": "稲葉浩志",
       "song": "気分はI am All Yours",
-      "spotifyUri": "spotify:track:6EAAMJPHBNhzkVANnhaI44"
+      "spotifyUri": "spotify:track:6EAAMJPHBNhzkVANnhaI44",
+      "youtubeVideoId": "sYaTvyFuD78"
     }
   }
 }
