@@ -506,7 +506,7 @@ function downloadCalendarIcs(liveOnly=false){
   ? calendarIcsExportableEvents(calendarEvents().filter(event=>event.type === "live" && !isCalendarPast(event) && (!selectedCalendarArtists.length || selectedCalendarArtists.includes(event.artist))))
   : calendarIcsExportableEvents();
  if(!events.length){
-  alert("エクスポートできる日付確定済みの表示中イベントがありません。");
+  alert((selectedCalendarArtists.length||selectedCalendarTypes.length) ? "条件に合う予定がありません。画面の「絞り込みをリセット」を押して、もう一度試してください。" : "追加できる日付確定済みの予定がありません。");
   return;
  }
  const blob = new Blob([buildCalendarIcs(events)], {type:"text/calendar;charset=utf-8"});
@@ -525,6 +525,8 @@ function bindCalendarFilters(){
  document.querySelectorAll("[data-calendar-past-toggle]").forEach(btn=>btn.onclick=()=>{selectedCalendarShowPast=!selectedCalendarShowPast; renderCalendar();});
  const exportBtn = document.querySelector("#calendarIcsExportBtn");
  if(exportBtn) exportBtn.onclick = ()=>downloadCalendarIcs(false);
+ const resetBtn = document.querySelector("#calendarResetBtn");
+ if(resetBtn) resetBtn.onclick = ()=>{selectedCalendarTypes=[]; selectedCalendarArtists=[]; renderCalendar();};
  const liveBtn = document.querySelector("#calendarIcsLiveBtn");
  if(liveBtn) liveBtn.onclick = ()=>downloadCalendarIcs(true);
 }
@@ -556,7 +558,7 @@ function renderCalendar(){
   </section>
   ${renderCalendarStateBar()}
   <section class="calendarList">
-   ${events.length ? events.map(renderCalendarCard).join("") : '<div class="card calendarEmpty muted">条件に一致するイベントはありません。</div>'}
+   ${events.length ? events.map(renderCalendarCard).join("") : `<div class="card calendarEmpty muted">条件に一致するイベントはありません。${(selectedCalendarTypes.length||selectedCalendarArtists.length) ? '<br><button id="calendarResetBtn" class="icsExportBtn" type="button" style="margin-top:10px">絞り込みをリセット</button>' : ""}</div>`}
   </section>`, {showTourBar:false});
  bindCalendarFilters();
 }
