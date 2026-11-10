@@ -525,6 +525,8 @@ function bindCalendarFilters(){
  document.querySelectorAll("[data-calendar-past-toggle]").forEach(btn=>btn.onclick=()=>{selectedCalendarShowPast=!selectedCalendarShowPast; renderCalendar();});
  const exportBtn = document.querySelector("#calendarIcsExportBtn");
  if(exportBtn) exportBtn.onclick = ()=>downloadCalendarIcs(false);
+ const resetBtn2 = document.querySelector("#calendarFilterResetBtn");
+ if(resetBtn2) resetBtn2.onclick = ()=>{selectedCalendarTypes=[]; selectedCalendarArtists=[]; renderCalendar();};
  const resetBtn = document.querySelector("#calendarResetBtn");
  if(resetBtn) resetBtn.onclick = ()=>{selectedCalendarTypes=[]; selectedCalendarArtists=[]; renderCalendar();};
  const liveBtn = document.querySelector("#calendarIcsLiveBtn");
@@ -542,6 +544,7 @@ function renderCalendar(){
     <button id="calendarIcsExportBtn" class="icsExportBtn" type="button" ${icsEvents.length ? "" : "disabled"}>ICSでエクスポート</button>
     <button id="calendarIcsLiveBtn" class="icsExportBtn icsLiveBtn" type="button">公演だけまとめて追加（ICS）</button>
     <div class="icsExportMeta">日付確定済みの${icsEvents.length}件をICS出力（表示中 ${events.length}件）</div>
+    ${(selectedCalendarTypes.length||selectedCalendarArtists.length) ? '<button id="calendarFilterResetBtn" class="icsExportBtn" type="button">絞り込みを解除（いまは絞り込み中）</button>' : ""}
    </div>
    <details class="icsHelp"><summary>スマホのカレンダーに入れるには</summary>
     <div><b>① 行く公演だけ（かんたん）</b><br>下の予定のカードにある「カレンダーに追加」を押して、保存。</div>
