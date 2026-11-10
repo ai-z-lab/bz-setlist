@@ -139,8 +139,8 @@ function syncOfficialCalendarEvents(){
  data.calendarEvents = customEvents.concat(official);
 }
 let selectedTour = localStorage.getItem("selectedTour_v4") || "FYOP+";
-let selectedCalendarType = "ALL";
-let selectedCalendarArtist = "ALL";
+let selectedCalendarTypes = [];
+let selectedCalendarArtists = [];
 let selectedCalendarShowPast = false;
 syncOfficialSetlistTours();
 syncOfficialCalendarEvents();
@@ -281,16 +281,18 @@ function calendarMeta(event){
 function filteredCalendarEvents(){
  return calendarEvents().filter(event=>
   (selectedCalendarShowPast || !isCalendarPast(event)) &&
-  (selectedCalendarType === "ALL" || event.type === selectedCalendarType) &&
-  (selectedCalendarArtist === "ALL" || event.artist === selectedCalendarArtist)
+  (!selectedCalendarTypes.length || selectedCalendarTypes.includes(event.type)) &&
+  (!selectedCalendarArtists.length || selectedCalendarArtists.includes(event.artist))
  );
 }
 function calendarFilterSummaryItems(){
- const typeLabel = CALENDAR_TYPE_LABELS[selectedCalendarType] || selectedCalendarType;
- const artistLabel = selectedCalendarArtist === "ALL" ? "全アーティスト" : selectedCalendarArtist;
+ const typeLabel = selectedCalendarTypes.length ? selectedCalendarTypes.map(value=>CALENDAR_TYPE_LABELS[value] || value).join("・") : (CALENDAR_TYPE_LABELS.ALL || "すべて");
+ const artistLabel = selectedCalendarArtists.length ? selectedCalendarArtists.join("・") : "全アーティスト";
+ const typeKey = selectedCalendarTypes.length === 1 ? selectedCalendarTypes[0] : "ALL";
+ const artistKey = selectedCalendarArtists.length === 1 ? selectedCalendarArtists[0] : "ALL";
  return [
-  {label:typeLabel, className:`calendarStateChip calendarTypeFilter type-${selectedCalendarType}`},
-  {label:artistLabel, className:`calendarStateChip ${selectedCalendarArtist === "ALL" ? "artist-all" : calendarArtistClass(selectedCalendarArtist)}`}
+  {label:typeLabel, className:`calendarStateChip calendarTypeFilter type-${typeKey}`},
+  {label:artistLabel, className:`calendarStateChip ${artistKey === "ALL" ? "artist-all" : calendarArtistClass(artistKey)}`}
  ];
 }
 function renderCalendarPastToggle(id, extraClass="", label="終了済み", showStatus=true){
@@ -312,12 +314,16 @@ function calendarArtistClass(artist){
  if(normalized.includes("b'z") || normalized.includes("bz")) return "artist-bz";
  return "";
 }
+function calendarToggleSelection(list, value){
+ if(value === "ALL") return [];
+ return list.includes(value) ? list.filter(item=>item !== value) : [...list, value];
+}
 function renderCalendarFilterButtons(items, selected, dataName){
  return items.map(value=>{
   const isTypeFilter = dataName === "calendar-type";
   const artistClass = dataName === "calendar-artist" ? calendarArtistClass(value) : "";
   const typeClass = isTypeFilter ? `calendarTypeFilter type-${value}` : "";
-  return `<button class="filterBtn ${typeClass} ${artistClass} ${selected===value?'active':''}" data-${dataName}="${escapeHtml(value)}">${escapeHtml(CALENDAR_TYPE_LABELS[value] || value)}</button>`;
+  return `<button class="filterBtn ${typeClass} ${artistClass} ${(value==="ALL" ? !selected.length : selected.includes(value))?'active':''}" data-${dataName}="${escapeHtml(value)}">${escapeHtml(CALENDAR_TYPE_LABELS[value] || value)}</button>`;
  }).join("");
 }
 function calendarGoodsStatus(event){
@@ -456,8 +462,8 @@ function calendarAppleUrl(event){
 }
 function calendarIcsFilename(){
  const parts = ["bz", "calendar"];
- if(selectedCalendarArtist !== "ALL") parts.push(selectedCalendarArtist);
- if(selectedCalendarType !== "ALL") parts.push(CALENDAR_TYPE_LABELS[selectedCalendarType] || selectedCalendarType);
+ selectedCalendarArtists.forEach(value=>parts.push(value));
+ selectedCalendarTypes.forEach(value=>parts.push(CALENDAR_TYPE_LABELS[value] || value));
  if(parts.length === 2) parts.push("all");
  return `${parts.join("-").toLowerCase().replace(/b'z/g,"bz").replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"")}.ics`;
 }
@@ -497,7 +503,7 @@ function calendarIcsExportableEvents(events=filteredCalendarEvents()){
 }
 function downloadCalendarIcs(liveOnly=false){
  const events = liveOnly
-  ? calendarIcsExportableEvents(calendarEvents().filter(event=>event.type === "live" && !isCalendarPast(event) && (selectedCalendarArtist === "ALL" || event.artist === selectedCalendarArtist)))
+  ? calendarIcsExportableEvents(calendarEvents().filter(event=>event.type === "live" && !isCalendarPast(event) && (!selectedCalendarArtists.length || selectedCalendarArtists.includes(event.artist))))
   : calendarIcsExportableEvents();
  if(!events.length){
   alert("エクスポートできる日付確定済みの表示中イベントがありません。");
@@ -514,8 +520,8 @@ function downloadCalendarIcs(liveOnly=false){
  URL.revokeObjectURL(url);
 }
 function bindCalendarFilters(){
- document.querySelectorAll("[data-calendar-type]").forEach(btn=>btn.onclick=()=>{selectedCalendarType=btn.dataset.calendarType; renderCalendar();});
- document.querySelectorAll("[data-calendar-artist]").forEach(btn=>btn.onclick=()=>{selectedCalendarArtist=btn.dataset.calendarArtist; renderCalendar();});
+ document.querySelectorAll("[data-calendar-type]").forEach(btn=>btn.onclick=()=>{selectedCalendarTypes=calendarToggleSelection(selectedCalendarTypes, btn.dataset.calendarType); renderCalendar();});
+ document.querySelectorAll("[data-calendar-artist]").forEach(btn=>btn.onclick=()=>{selectedCalendarArtists=calendarToggleSelection(selectedCalendarArtists, btn.dataset.calendarArtist); renderCalendar();});
  document.querySelectorAll("[data-calendar-past-toggle]").forEach(btn=>btn.onclick=()=>{selectedCalendarShowPast=!selectedCalendarShowPast; renderCalendar();});
  const exportBtn = document.querySelector("#calendarIcsExportBtn");
  if(exportBtn) exportBtn.onclick = ()=>downloadCalendarIcs(false);
@@ -542,8 +548,8 @@ function renderCalendar(){
     <div>迷ったら ①。②③で開けないときは、①を使ってください。</div>
    </details>
    <div class="calendarFilters">
-    <div class="filterGroup"><div class="filterGroupTitle">イベント種別</div>${renderCalendarFilterButtons(CALENDAR_TYPE_ORDER, selectedCalendarType, "calendar-type")}</div>
-    <div class="filterGroup"><div class="filterGroupTitle">アーティスト</div>${renderCalendarFilterButtons(CALENDAR_ARTIST_ORDER, selectedCalendarArtist, "calendar-artist")}</div>
+    <div class="filterGroup"><div class="filterGroupTitle">イベント種別</div>${renderCalendarFilterButtons(CALENDAR_TYPE_ORDER, selectedCalendarTypes, "calendar-type")}</div>
+    <div class="filterGroup"><div class="filterGroupTitle">アーティスト</div>${renderCalendarFilterButtons(CALENDAR_ARTIST_ORDER, selectedCalendarArtists, "calendar-artist")}</div>
     <div class="filterGroup"><div class="filterGroupTitle">表示設定</div>${renderCalendarPastToggle("calendarPastToggle", "", "終了済みを表示する", false)}</div>
    </div>
   </section>
