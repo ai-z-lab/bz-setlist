@@ -426,7 +426,7 @@ function calendarIcsDescription(event){
  return rows.join("\n");
 }
 function calendarIcsSummary(event){
- return [event.artist, event.tour, event.title].filter(Boolean).join(" / ");
+ return [event.artist, event.title].filter(Boolean).join("｜");
 }
 function calendarIcsLocation(event){
  return [event.area, event.venue].filter(Boolean).join(" ");
