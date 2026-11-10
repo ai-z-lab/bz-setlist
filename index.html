@@ -535,7 +535,8 @@ function bindCalendarFilters(){
 function renderCalendar(){
  const events = filteredCalendarEvents();
  const icsEvents = calendarIcsExportableEvents(events);
- setApp(`<section class="calendarHero card">
+ const inApp = /Barcelona|Instagram|FBAN|FBAV|\bLine\//i.test(navigator.userAgent || "");
+ setApp(`${inApp ? '<section class="card" style="border-color:#ffd36a;margin-bottom:10px"><b>アプリ内ブラウザで開いています。</b><br>ThreadsやInstagramの中だと、カレンダー追加が動かないことがあります。右上の「…」から「ブラウザで開く」を選んで、SafariやChromeで開き直してください。</section>' : ""}<section class="calendarHero card">
    <div><h2>カレンダー</h2><div class="muted">B'z / Koshi Inaba / TMG 関連の公演・チケット受付・発売スケジュールを日付順に確認できます。</div></div>
    <span class="pill">登録イベント ${calendarEvents().length}件</span>
   </section>
