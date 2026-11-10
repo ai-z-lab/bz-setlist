@@ -535,10 +535,11 @@ function renderCalendar(){
     <button id="calendarIcsLiveBtn" class="icsExportBtn icsLiveBtn" type="button">公演だけまとめて追加（ICS）</button>
     <div class="icsExportMeta">日付確定済みの${icsEvents.length}件をICS出力（表示中 ${events.length}件）</div>
    </div>
-   <details class="icsHelp"><summary>まとめて入れたあとの取り込み方</summary>
-    <div><b>Android</b>：ダウンロードした「.ics」ファイルをタップ →「カレンダー」で開く。開けない場合はパソコン表示のGoogleカレンダー →「設定」→「インポート」。</div>
-    <div><b>iPhone</b>：ダウンロードした「.ics」をタップ →「すべて追加」。</div>
-    <div>1件ずつ入れたい場合は、各予定のカードにある「カレンダーに追加」を押してください。</div>
+   <details class="icsHelp" open><summary>スマホのカレンダーに入れるには</summary>
+    <div><b>① 行く公演だけ（かんたん）</b><br>下の予定のカードにある「カレンダーに追加」を押して、保存。</div>
+    <div><b>② これからの公演を全部</b><br>「公演だけまとめて追加（ICS）」を押す → ダウンロードされたファイルをタップ。<br>Android：「カレンダー」で開く／iPhone：「すべて追加」。</div>
+    <div><b>③ チケットの日程も含めて全部</b><br>「ICSでエクスポート」を押す。使い方は②と同じ。</div>
+    <div>迷ったら ①。②③で開けないときは、①を使ってください。</div>
    </details>
    <div class="calendarFilters">
     <div class="filterGroup"><div class="filterGroupTitle">イベント種別</div>${renderCalendarFilterButtons(CALENDAR_TYPE_ORDER, selectedCalendarType, "calendar-type")}</div>
