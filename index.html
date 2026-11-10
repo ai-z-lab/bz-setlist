@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="google" content="notranslate">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>B'z Live Setlist DB</title>
+<title>B'z Live Calendar & Setlist</title>
 <link rel="apple-touch-icon" href="B4991D9E-91DD-4222-B7C1-F811D4A3E26E.png">
 <link rel="icon" href="B4991D9E-91DD-4222-B7C1-F811D4A3E26E.png">
 <style>
@@ -92,15 +92,15 @@ tr:hover td{background:#1c2130}.pill{display:inline-flex;border:1px solid var(--
 </head>
 <body>
 <header>
-  <h1>B'z Live Setlist DB</h1>
+  <h1>B'z Live Calendar & Setlist</h1>
   <div class="sub">公演別セトリ・曲別ランキング・2days比較・チケット日程・カレンダー</div>
 </header>
 <nav>
   <button data-tab="news">ニュース</button>
-  <button data-tab="calendar">カレンダー</button>
+  <button data-tab="calendar" class="active">カレンダー</button>
   <button data-tab="shows">公演別</button>
   <button data-tab="songs">曲別ランキング</button>
-  <button data-tab="dash" class="active">Dashboard</button>
+  <button data-tab="dash">Dashboard</button>
   <button data-tab="matrix">マトリクス</button>
   <button data-tab="pairs">1日目/2日目比較</button>
 </nav>
@@ -717,7 +717,7 @@ function renderImport(){
  document.querySelector("#saveReplaceBtn").onclick=()=>{const parsed=readParsed(); if(!parsed)return; const id=sel.value; data.setlists=data.setlists.filter(r=>r.showId!==id).concat(parsed); data.shows=data.shows.map(s=>s.id===id?{...s,status:"入力済"}:s); data.updated=new Date().toISOString().slice(0,10); saveLocal(); alert("全上書きしました"); render("shows");};
  document.querySelector("#addShowBtn").onclick=()=>{const t=document.querySelector("#newTour").value, date=document.querySelector("#newDate").value.trim(), label=document.querySelector("#newLabel").value.trim()||date, area=document.querySelector("#newArea").value.trim(), venue=document.querySelector("#newVenue").value.trim(), type=document.querySelector("#newType").value; if(!date||!area||!venue){alert("日付・エリア・会場を入れてください");return;} const id=(date.replaceAll("/","-")+"-"+area+"-"+Math.random().toString(36).slice(2,6)).replace(/\s/g,""); data.shows.push({id,date,label,area,venue,status:"未入力",tour:t,series:t==="SHOWCASE"?"SHOWCASE":(t==="FYOD"?"FC":"LIVE-GYM"),type}); selectedTour=t; localStorage.setItem("selectedTour_v4",selectedTour); saveLocal(); alert("公演を追加しました。次にセトリを貼って保存できます。"); render("import");};
 }
-render();
+render("calendar");
 </script>
 <script data-goatcounter="https://bz-setlist.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
