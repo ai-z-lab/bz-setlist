@@ -509,7 +509,7 @@ function downloadCalendarIcs(liveOnly=false){
   alert("エクスポートできる日付確定済みの表示中イベントがありません。");
   return;
  }
- const blob = new Blob(["\ufeff", buildCalendarIcs(events)], {type:"text/calendar;charset=utf-8"});
+ const blob = new Blob([buildCalendarIcs(events)], {type:"text/calendar;charset=utf-8"});
  const url = URL.createObjectURL(blob);
  const link = document.createElement("a");
  link.href = url;
@@ -543,7 +543,7 @@ function renderCalendar(){
    </div>
    <details class="icsHelp" open><summary>スマホのカレンダーに入れるには</summary>
     <div><b>① 行く公演だけ（かんたん）</b><br>下の予定のカードにある「カレンダーに追加」を押して、保存。</div>
-    <div><b>② これからの公演を全部</b><br>「公演だけまとめて追加（ICS）」を押す → ダウンロードされたファイルをタップ。<br>Android：「カレンダー」で開く／iPhone：「すべて追加」。</div>
+    <div><b>② これからの公演を全部</b><br>「公演だけまとめて追加（ICS）」を押す → ダウンロードされたファイルをタップ。<br>iPhone：「すべて追加」。<br>Android：「どのアプリで開きますか」と出たら Googleカレンダー を選ぶ。弾かれる機種では①を使ってください。</div>
     <div><b>③ チケットの日程も含めて全部</b><br>「ICSでエクスポート」を押す。使い方は②と同じ。</div>
     <div>迷ったら ①。②③で開けないときは、①を使ってください。</div>
    </details>
