@@ -351,7 +351,7 @@ function renderCalendarCard(event){
    ${meta?`<div class="calendarMeta">${escapeHtml(meta)}</div>`:""}
    ${event.description?`<div class="calendarDesc">${escapeHtml(event.description)}</div>`:""}
    ${event.url?`<a class="calendarLink" href="${escapeHtml(event.url)}" target="_blank" rel="noopener">詳細を見る</a>`:""}
-   ${!past && calendarIsIos() && calendarAppleUrl(event)?`<a class="calendarLink calendarGcalLink" href="${escapeHtml(calendarAppleUrl(event))}">iPhoneのカレンダーに追加</a>`:""}
+   ${!past && calendarIsIos() && calendarIcsTiming(event)?`<a class="calendarLink calendarGcalLink" href="#" role="button" data-ics-event="${escapeHtml(event.id)}">iPhoneのカレンダーに追加</a>`:""}
    ${!past && calendarGoogleUrl(event)?`<a class="calendarLink calendarGcalLink" href="${escapeHtml(calendarGoogleUrl(event))}" target="_blank" rel="noopener">Googleカレンダーに追加</a>`:""}
    ${!event.url && event.receptionSource && !String(event.description || "").includes("受付元：")?`<div class="calendarSource">受付元：<b>${escapeHtml(event.receptionSource)}</b></div>`:""}
   </div>
@@ -519,7 +519,21 @@ function downloadCalendarIcs(liveOnly=false){
  link.remove();
  URL.revokeObjectURL(url);
 }
+function downloadCalendarIcsOne(eventId){
+ const event = calendarEvents().find(e=>e.id===eventId);
+ if(!event || !calendarIcsTiming(event)){ alert("この予定は日時が確定していないため、追加できません。"); return; }
+ const blob = new Blob([buildCalendarIcs([event])], {type:"text/calendar;charset=utf-8"});
+ const url = URL.createObjectURL(blob);
+ const link = document.createElement("a");
+ link.href = url;
+ link.download = `bz-${String(event.id).replace(/[^A-Za-z0-9_-]/g,"").slice(0,60) || "event"}.ics`;
+ document.body.appendChild(link);
+ link.click();
+ link.remove();
+ setTimeout(()=>URL.revokeObjectURL(url), 60000);
+}
 function bindCalendarFilters(){
+ document.querySelectorAll("[data-ics-event]").forEach(a=>a.onclick=ev=>{ev.preventDefault(); downloadCalendarIcsOne(a.dataset.icsEvent);});
  document.querySelectorAll("[data-calendar-type]").forEach(btn=>btn.onclick=()=>{selectedCalendarTypes=calendarToggleSelection(selectedCalendarTypes, btn.dataset.calendarType); renderCalendar();});
  document.querySelectorAll("[data-calendar-artist]").forEach(btn=>btn.onclick=()=>{selectedCalendarArtists=calendarToggleSelection(selectedCalendarArtists, btn.dataset.calendarArtist); renderCalendar();});
  document.querySelectorAll("[data-calendar-past-toggle]").forEach(btn=>btn.onclick=()=>{selectedCalendarShowPast=!selectedCalendarShowPast; renderCalendar();});
