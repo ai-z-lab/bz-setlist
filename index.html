@@ -501,7 +501,11 @@ function buildCalendarIcs(events){
 function calendarIcsExportableEvents(events=filteredCalendarEvents()){
  return events.filter(event=>calendarIcsTiming(event));
 }
+function gcEvent(name, title){
+ try{ if(window.goatcounter && window.goatcounter.count) window.goatcounter.count({path:"event-"+name, title:title||name, event:true}); }catch(e){}
+}
 function downloadCalendarIcs(liveOnly=false){
+ gcEvent(liveOnly ? "ics-live" : "ics-all", liveOnly ? "公演だけまとめて追加" : "ICSでエクスポート");
  const events = liveOnly
   ? calendarIcsExportableEvents(calendarEvents().filter(event=>event.type === "live" && !isCalendarPast(event) && (!selectedCalendarArtists.length || selectedCalendarArtists.includes(event.artist))))
   : calendarIcsExportableEvents();
@@ -520,6 +524,7 @@ function downloadCalendarIcs(liveOnly=false){
  URL.revokeObjectURL(url);
 }
 function downloadCalendarIcsOne(eventId){
+ gcEvent("ics-one", "iPhoneのカレンダーに追加");
  const event = calendarEvents().find(e=>e.id===eventId);
  if(!event || !calendarIcsTiming(event)){ alert("この予定は日時が確定していないため、追加できません。"); return; }
  const blob = new Blob([buildCalendarIcs([event])], {type:"text/calendar;charset=utf-8"});
@@ -533,6 +538,7 @@ function downloadCalendarIcsOne(eventId){
  setTimeout(()=>URL.revokeObjectURL(url), 60000);
 }
 function bindCalendarFilters(){
+ document.querySelectorAll('a[href^="https://calendar.google.com/"]').forEach(a=>{ if(!a.dataset.gcBound){ a.dataset.gcBound="1"; a.addEventListener("click", ()=>gcEvent("gcal-one", "Googleカレンダーに追加")); } });
  document.querySelectorAll("[data-ics-event]").forEach(a=>a.onclick=ev=>{ev.preventDefault(); downloadCalendarIcsOne(a.dataset.icsEvent);});
  document.querySelectorAll("[data-calendar-type]").forEach(btn=>btn.onclick=()=>{selectedCalendarTypes=calendarToggleSelection(selectedCalendarTypes, btn.dataset.calendarType); renderCalendar();});
  document.querySelectorAll("[data-calendar-artist]").forEach(btn=>btn.onclick=()=>{selectedCalendarArtists=calendarToggleSelection(selectedCalendarArtists, btn.dataset.calendarArtist); renderCalendar();});
@@ -550,6 +556,7 @@ function renderCalendar(){
  const events = filteredCalendarEvents();
  const icsEvents = calendarIcsExportableEvents(events);
  const inApp = /Barcelona|Instagram|FBAN|FBAV|\bLine\//i.test(navigator.userAgent || "");
+ if(inApp && !window.__gcInAppSent){ window.__gcInAppSent = true; setTimeout(()=>gcEvent("inapp-view","アプリ内ブラウザで表示"), 1500); }
  setApp(`${inApp ? '<section class="card" style="border-color:#ffd36a;margin-bottom:10px"><b>アプリ内ブラウザで開いています。</b><br>ThreadsやInstagramの中だと、カレンダー追加が動かないことがあります。右上の「…」から「ブラウザで開く」を選んで、SafariやChromeで開き直してください。</section>' : ""}<section class="calendarHero card">
    <div><h2>カレンダー</h2><div class="muted">B'z / Koshi Inaba / TMG 関連の公演・チケット受付・発売スケジュールを日付順に確認できます。</div></div>
    <span class="pill">登録イベント ${calendarEvents().length}件</span>
