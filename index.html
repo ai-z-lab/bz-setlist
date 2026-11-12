@@ -501,8 +501,19 @@ function buildCalendarIcs(events){
 function calendarIcsExportableEvents(events=filteredCalendarEvents()){
  return events.filter(event=>calendarIcsTiming(event));
 }
-function gcEvent(name, title){
- try{ if(window.goatcounter && window.goatcounter.count) window.goatcounter.count({path:"event-"+name, title:title||name, event:true}); }catch(e){}
+function gcSend(name, title){
+ try{ if(window.goatcounter && window.goatcounter.count){ window.goatcounter.count({path:"event-"+name, title:title||name, event:true}); return true; } }catch(e){}
+ return false;
+}
+// 計測スクリプト(async)の読み込みが遅いと、すぐには送れない。渡せるまで0.5秒ごとに最大20秒待ち、
+// 渡せたときだけ onSent を呼ぶ(送れないまま「送信済み」にしない)。
+function gcEvent(name, title, onSent){
+ let tries = 0;
+ const attempt = () => {
+  if(gcSend(name, title)){ if(onSent) onSent(); return; }
+  if(++tries < 40) setTimeout(attempt, 500);
+ };
+ attempt();
 }
 function downloadCalendarIcs(liveOnly=false){
  gcEvent(liveOnly ? "ics-live" : "ics-all", liveOnly ? "公演だけまとめて追加" : "ICSでエクスポート");
@@ -556,7 +567,7 @@ function renderCalendar(){
  const events = filteredCalendarEvents();
  const icsEvents = calendarIcsExportableEvents(events);
  const inApp = /Barcelona|Instagram|FBAN|FBAV|\bLine\//i.test(navigator.userAgent || "");
- if(inApp && !window.__gcInAppSent){ window.__gcInAppSent = true; setTimeout(()=>gcEvent("inapp-view","アプリ内ブラウザで表示"), 1500); }
+ if(inApp && !window.__gcInAppSent && !window.__gcInAppPending){ window.__gcInAppPending = true; setTimeout(()=>gcEvent("inapp-view","アプリ内ブラウザで表示", ()=>{ window.__gcInAppSent = true; }), 1500); }
  setApp(`${inApp ? '<section class="card" style="border-color:#ffd36a;margin-bottom:10px"><b>アプリ内ブラウザで開いています。</b><br>ThreadsやInstagramの中だと、カレンダー追加が動かないことがあります。右上の「…」から「ブラウザで開く」を選んで、SafariやChromeで開き直してください。</section>' : ""}<section class="calendarHero card">
    <div><h2>カレンダー</h2><div class="muted">B'z / Koshi Inaba / TMG 関連の公演・チケット受付・発売スケジュールを日付順に確認できます。</div></div>
    <span class="pill">登録イベント ${calendarEvents().length}件</span>
