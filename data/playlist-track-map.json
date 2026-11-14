@@ -1148,6 +1148,12 @@
       "lookupArtist": "ONE OK ROCK",
       "song": "完全感覚Dreamer",
       "spotifyUri": "spotify:track:3x3xDJexQhxbFQUwCbUc0y"
+    },
+    "MAN WITH A MISSION\u0000Dead End in Tokyo": {
+      "artist": "MAN WITH A MISSION",
+      "lookupArtist": "MAN WITH A MISSION",
+      "song": "Dead End in Tokyo",
+      "note": "「Dead End in Tokyo」はアコースティック版の配信がないため通常版で代用"
     }
   }
 }

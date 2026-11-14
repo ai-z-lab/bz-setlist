@@ -54,7 +54,17 @@ function playlistTitle(show) {
 }
 
 function playlistDescription(show) {
-  return `B'z Live Setlist DB 自動生成。${show.date} ${show.venue}。${marker(show)}`.slice(0, 290);
+  // 配信がなく代用・除外した曲は説明欄に書く。検索に使う識別子(marker)が切れないよう、注記側を削る
+  const tail = marker(show);
+  const notes = show.playlistNotes?.length ? `注：${show.playlistNotes.join("／")}。` : "";
+  const head = `B'z Live Setlist DB 自動生成。${show.date} ${show.venue}。${notes}`;
+  return `${head.slice(0, Math.max(0, 290 - tail.length))}${tail}`;
+}
+
+// 配信がなく除外した曲・別音源で代用した曲(track-mapの note)を、プレイリスト説明用の文にする
+function trackNote(entry, song) {
+  if (entry.skip) return `「${song}」は配信がないため除外`;
+  return entry.note || "";
 }
 
 // ゲスト用は別の名前空間(bz-guest:)にして、本編の bz-setlist:<showId> と部分一致しないようにする
@@ -137,6 +147,8 @@ class SpotifyAdapter {
     if (playlist) {
       const existing = await this.listItems(playlist.id);
       if (JSON.stringify(existing) !== JSON.stringify(uris)) await this.replaceItems(playlist.id, uris);
+      // 代用・除外の注記を説明欄に反映する(注記がある場合だけ)
+      if (show.playlistNotes?.length) await this.updateDescription(playlist.id, playlistDescription(show));
       return playlist.url;
     }
     const body = await fetchJson("https://api.spotify.com/v1/me/playlists", {
@@ -146,6 +158,14 @@ class SpotifyAdapter {
     });
     await this.addItems(body.id, uris);
     return body.external_urls.spotify;
+  }
+
+  async updateDescription(id, description) {
+    await fetchJson(`https://api.spotify.com/v1/playlists/${id}`, {
+      method: "PUT",
+      headers: this.headers({ "Content-Type": "application/json" }),
+      body: JSON.stringify({ description }),
+    });
   }
 
   async addItems(id, uris) {
@@ -341,11 +361,14 @@ for (const group of plan.groups) {
       const ids = [];
       const unresolvedSongs = [];
       const skippedSongs = [];
+      const playlistNotes = [];
       for (const track of group.tracks) {
         const lookupArtist = artistForTrack(representative, track.song);
         const key = mapKey(artistForShow(representative), track.song);
         trackMap.tracks[key] ||= { artist: artistForShow(representative), lookupArtist, song: track.song };
         const entry = trackMap.tracks[key];
+        const note = trackNote(entry, track.song);
+        if (note) playlistNotes.push(note);
         // 音源が配信されていない曲は skip:true で除外する(プレイリストは配信されている曲だけで作る)
         if (entry.skip) { skippedSongs.push(track.song); continue; }
         const field = provider === "spotify" ? "spotifyUri" : "youtubeVideoId";
@@ -366,7 +389,8 @@ for (const group of plan.groups) {
         console.log(`UNRESOLVED ${provider} ${group.id}: ${unresolvedSongs.join(" / ")}`);
         continue;
       }
-      for (const show of targets) {
+      for (const targetShow of targets) {
+        const show = playlistNotes.length ? { ...targetShow, playlistNotes } : targetShow;
         if (!apply) {
           const shared = show.playlists?.[provider] ? "" : await findSharedPlaylist(document.data, provider, show, ids);
           if (shared) report.reused.push({ provider, group: group.id, shows: [show.id], url: shared, dryRun: true, reason: "same setlist; shares the playlist after verifying its tracks" });
@@ -428,10 +452,13 @@ for (const provider of guestIds.length ? providers : []) {
         const field = provider === "spotify" ? "spotifyUri" : "youtubeVideoId";
         const ids = [];
         const unresolvedSongs = [];
+        const playlistNotes = [];
         for (const track of guest.songs) {
           const key = mapKey(guest.artist, track.song);
           trackMap.tracks[key] ||= { artist: guest.artist, lookupArtist: guest.artist, song: track.song };
           const entry = trackMap.tracks[key];
+          const note = trackNote(entry, track.song);
+          if (note) playlistNotes.push(note);
           if (entry.skip) continue;
           let id = entry[field] || "";
           if (!id && apply) {
@@ -448,7 +475,7 @@ for (const provider of guestIds.length ? providers : []) {
           continue;
         }
         if (!apply) { report.created.push({ provider, group: `guest:${showId}`, shows: [showId], dryRun: true, tracks: ids.length }); continue; }
-        url = await adapters[provider].create({ ...show, id: `${show.id}::guest`, tour: `${show.tour} ゲスト ${guest.artist}` }, ids);
+        url = await adapters[provider].create({ ...show, id: `${show.id}::guest`, tour: `${show.tour} ゲスト ${guest.artist}`, playlistNotes }, ids);
         guestCreated[groupKey] = url;
         report.created.push({ provider, group: `guest:${showId}`, shows: [showId], url, tracks: ids.length });
       }
