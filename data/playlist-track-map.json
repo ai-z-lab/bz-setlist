@@ -371,6 +371,435 @@
       "song": "眠れないのは誰のせい",
       "spotifyUri": "spotify:track:0pzS9ai2gyvyEiSj7B09nJ",
       "youtubeVideoId": "3CzNeoUGRjU"
+    },
+    "稲葉浩志\u0000Yellow": {
+      "artist": "稲葉浩志",
+      "lookupArtist": "稲葉浩志",
+      "song": "Yellow",
+      "spotifyUri": "spotify:track:0kA7QIwYXygWStmGbdSUYH"
+    },
+    "稲葉浩志\u0000羽 feat.Taka": {
+      "artist": "稲葉浩志",
+      "lookupArtist": "稲葉浩志",
+      "song": "羽 feat.Taka"
+    },
+    "B'z\u0000FAITH?": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "FAITH?",
+      "spotifyUri": "spotify:track:2Tc41LtbWieH6DfT6eBEvA"
+    },
+    "B'z\u0000濁流BOY": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "濁流BOY",
+      "spotifyUri": "spotify:track:1jVDfky7KiS25ob9Tnrylj"
+    },
+    "B'z\u0000ZERO": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "ZERO",
+      "spotifyUri": "spotify:track:7jfJw6EnyMaPAryntOKyKI"
+    },
+    "B'z\u0000おでかけしましょ": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "おでかけしましょ",
+      "spotifyUri": "spotify:track:2vp2LRcZQbR1ZD5VpoZsEN"
+    },
+    "B'z\u0000love me, I love you": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "love me, I love you",
+      "spotifyUri": "spotify:track:00GuuqRIM2y5DiMwmmHNVJ"
+    },
+    "B'z\u0000今夜月の見える丘に": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "今夜月の見える丘に",
+      "spotifyUri": "spotify:track:5fnZAPIZZbyM0Az0VBYbB4"
+    },
+    "B'z\u0000ペインキラー": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "ペインキラー",
+      "spotifyUri": "spotify:track:2MkBPLGvzIxUmdObQ40gAw"
+    },
+    "B'z\u0000片翼の風景": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "片翼の風景",
+      "spotifyUri": "spotify:track:0oR5kzboPkn8qbzljkZXbi"
+    },
+    "B'z\u0000鞭": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "鞭",
+      "spotifyUri": "spotify:track:0s2SvvyZj4OEAcLjARcxFc"
+    },
+    "B'z\u0000今では...今なら...今も...": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "今では...今なら...今も...",
+      "spotifyUri": "spotify:track:1AfOHv87699UIMyxnjXUsv"
+    },
+    "B'z\u0000#1090~Million Dreams~ / 松本孝弘": {
+      "artist": "B'z",
+      "lookupArtist": "Tak Matsumoto",
+      "song": "#1090~Million Dreams~ / 松本孝弘",
+      "lookupSong": "#1090 ~Million Dreams~"
+    },
+    "B'z\u0000春": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "春",
+      "spotifyUri": "spotify:track:0hPNMKbctexjG4HQZg6Xdj"
+    },
+    "B'z\u0000イルミネーション": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "イルミネーション",
+      "spotifyUri": "spotify:track:329F0CzBUS5UcnDWEQr36Q"
+    },
+    "B'z\u0000FMP": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "FMP",
+      "spotifyUri": "spotify:track:45JeNFrU6EwDjPQ8dNHOB2"
+    },
+    "B'z\u0000有頂天": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "有頂天",
+      "spotifyUri": "spotify:track:5pwWqj6xvpuwsYpC2dz6hN"
+    },
+    "B'z\u0000Heaven Knows": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "Heaven Knows",
+      "spotifyUri": "spotify:track:2m9wsoF85YK4KkGIPNeJEZ"
+    },
+    "B'z\u0000Liar! Liar!": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "Liar! Liar!",
+      "spotifyUri": "spotify:track:6CDOY6O95QaTKyftaoPKJS"
+    },
+    "B'z\u0000ultra soul": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "ultra soul",
+      "spotifyUri": "spotify:track:5QAZVZA3FN1s368XgijXHZ"
+    },
+    "B'z\u0000その先へ": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "その先へ",
+      "spotifyUri": "spotify:track:0RfhC89XTIF4zWhLyNFMQw"
+    },
+    "B'z\u0000ミエナイチカラ 〜INVISIBLE ONE〜": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "ミエナイチカラ 〜INVISIBLE ONE〜",
+      "spotifyUri": "spotify:track:1B7JdytwORQ3snphFEbPW1"
+    },
+    "B'z\u0000IT'S SHOWTIME!!": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "IT'S SHOWTIME!!",
+      "spotifyUri": "spotify:track:6C0OQJJD7QoLd2uhdMD4Dx"
+    },
+    "B'z\u0000Hi": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "Hi"
+    },
+    "B'z\u0000ねがい": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "ねがい",
+      "spotifyUri": "spotify:track:1DCPNjIaSxNkOORVUOQ2to"
+    },
+    "B'z\u0000イチブトゼンブ": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "イチブトゼンブ",
+      "spotifyUri": "spotify:track:2X0pcKFdtkbjKxtZlyZCkZ"
+    },
+    "B'z\u0000INTO THE BLUE": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "INTO THE BLUE",
+      "spotifyUri": "spotify:track:09Ex4axzmzG7jmTPalrwrG"
+    },
+    "B'z\u0000The IIIRD Eye": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "The IIIRD Eye",
+      "spotifyUri": "spotify:track:6RcnoVEUeKJUjvEzUcRfFI"
+    },
+    "B'z\u0000classmate": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "classmate",
+      "spotifyUri": "spotify:track:6tk1hqGmLjZ6LBTaJYbnLS"
+    },
+    "B'z\u0000ハピネス": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "ハピネス",
+      "spotifyUri": "spotify:track:2Y0uyMmf6amk1hOagEbWzt"
+    },
+    "B'z\u0000さまよえる蒼い弾丸": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "さまよえる蒼い弾丸",
+      "spotifyUri": "spotify:track:22vD6sEksRVOGjh4FZW0eK"
+    },
+    "B'z\u0000Don't Leave Me": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "Don't Leave Me",
+      "spotifyUri": "spotify:track:6iA7Zzr7stMdcUukOvzFkz"
+    },
+    "B'z\u0000美しき世界": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "美しき世界",
+      "spotifyUri": "spotify:track:24R98ZZI9DMUJyqvE3OEQe"
+    },
+    "B'z\u0000Everlasting": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "Everlasting",
+      "spotifyUri": "spotify:track:3D73y76E5mWefQZlb2P15z"
+    },
+    "B'z\u0000Shower": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "Shower",
+      "spotifyUri": "spotify:track:1TCH4ycwbSsY82GcqlBZL1"
+    },
+    "B'z\u0000ultra soul (with 10-FEET)": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "ultra soul (with 10-FEET)",
+      "lookupSong": "ultra soul"
+    },
+    "B'z\u0000完全無欠": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "完全無欠",
+      "spotifyUri": "spotify:track:40afsj2ROuexeaIXEmnk9J"
+    },
+    "B'z\u0000それでもやっぱり": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "それでもやっぱり",
+      "spotifyUri": "spotify:track:4fpVLec9CsmteROc76jUnQ"
+    },
+    "B'z\u0000兵、走る": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "兵、走る",
+      "spotifyUri": "spotify:track:4SvUlGYsyCe5yhs2qRvE8r"
+    },
+    "B'z\u0000声明": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "声明",
+      "spotifyUri": "spotify:track:4XR5BvFYxVG9d5tAjf4Exf"
+    },
+    "B'z\u0000MY LONELY TOWN": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "MY LONELY TOWN",
+      "spotifyUri": "spotify:track:6vHXMEBFbiNbsDp5Je3mKp"
+    },
+    "B'z\u0000DIVE": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "DIVE",
+      "spotifyUri": "spotify:track:4ysB60jfyAqMMLQYGkkodK"
+    },
+    "B'z\u0000恐るるなかれ灰は灰に": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "恐るるなかれ灰は灰に",
+      "spotifyUri": "spotify:track:4nVCzfxuWZ8CcooV59Iyqz"
+    },
+    "B'z\u0000The ⅢRD Eye": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "The ⅢRD Eye",
+      "spotifyUri": "spotify:track:6RcnoVEUeKJUjvEzUcRfFI"
+    },
+    "B'z\u0000東京": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "東京",
+      "spotifyUri": "spotify:track:2mbZHsUYjQtYujS5xW0Q9q"
+    },
+    "B'z\u0000消えない虹": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "消えない虹",
+      "spotifyUri": "spotify:track:2GmBZ4QWoHzwahr7kD9bcP"
+    },
+    "B'z\u0000EPIC MATCH / Tak Matsumoto": {
+      "artist": "B'z",
+      "lookupArtist": "Tak Matsumoto",
+      "song": "EPIC MATCH / Tak Matsumoto",
+      "lookupSong": "EPIC MATCH"
+    },
+    "B'z\u0000LOVE PHANTOM": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "LOVE PHANTOM",
+      "spotifyUri": "spotify:track:6rcPP3eWwKcUrIEWb1bR5S"
+    },
+    "B'z\u0000Still Alive": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "Still Alive",
+      "spotifyUri": "spotify:track:5rSv2YkdxJHKOXHOI3dTpT"
+    },
+    "B'z\u0000juice": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "juice",
+      "spotifyUri": "spotify:track:5ycG1RtSgd64p9MnHJFv40"
+    },
+    "B'z\u0000Brotherhood": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "Brotherhood",
+      "spotifyUri": "spotify:track:4IMR2o2jexaJfBH0qTPB3I"
+    },
+    "B'z\u0000いつかのメリークリスマス": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "いつかのメリークリスマス",
+      "spotifyUri": "spotify:track:3Ro8jrbsWu0VSk1odLLYuo"
+    },
+    "B'z\u0000愛のバクダン": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "愛のバクダン",
+      "spotifyUri": "spotify:track:6b2BKq7AZ564QdptHFmvm5"
+    },
+    "B'z\u0000となりでねむらせて": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "となりでねむらせて",
+      "spotifyUri": "spotify:track:6sdViNiEaFH1xllHoTZ9dy"
+    },
+    "B'z\u0000キレイな愛じゃなくても": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "キレイな愛じゃなくても",
+      "spotifyUri": "spotify:track:1rh8UiCAjizECKoMVNKMqi"
+    },
+    "B'z\u0000ギリギリchop": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "ギリギリchop",
+      "spotifyUri": "spotify:track:1HVjTDgMSHgZNmpCurPRbU"
+    },
+    "B'z\u0000shower": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "shower",
+      "spotifyUri": "spotify:track:1TCH4ycwbSsY82GcqlBZL1"
+    },
+    "B'z\u0000Homebound": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "Homebound",
+      "spotifyUri": "spotify:track:0FRNMK0t7vxNxSbzt0eUMp"
+    },
+    "B'z\u0000Tiger's Eye / Tak Matsumoto": {
+      "artist": "B'z",
+      "lookupArtist": "Tak Matsumoto",
+      "song": "Tiger's Eye / Tak Matsumoto",
+      "lookupSong": "Tiger's Eye"
+    },
+    "B'z\u0000Tokyo Dream Park (Tak Matsumoto)": {
+      "artist": "B'z",
+      "lookupArtist": "Tak Matsumoto",
+      "song": "Tokyo Dream Park (Tak Matsumoto)",
+      "lookupSong": "Tokyo Dream Park"
+    },
+    "B'z\u0000Lair!Lair!": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "Lair!Lair!"
+    },
+    "B'z\u0000ミエナイチカラ〜INVISIBLE ONE〜": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "ミエナイチカラ〜INVISIBLE ONE〜",
+      "spotifyUri": "spotify:track:1B7JdytwORQ3snphFEbPW1"
+    },
+    "B'z\u0000Heaven Knows (観客とMV撮影)": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "Heaven Knows (観客とMV撮影)",
+      "lookupSong": "Heaven Knows"
+    },
+    "B'z\u0000今では....今なら...今も...": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "今では....今なら...今も...",
+      "spotifyUri": "spotify:track:1AfOHv87699UIMyxnjXUsv"
+    },
+    "B'z\u0000Liar!Liar!": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "Liar!Liar!",
+      "spotifyUri": "spotify:track:6CDOY6O95QaTKyftaoPKJS"
+    },
+    "B'z\u0000ミエナイチカラ〜INVISIBLE ONE~": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "ミエナイチカラ〜INVISIBLE ONE~",
+      "spotifyUri": "spotify:track:1B7JdytwORQ3snphFEbPW1"
+    },
+    "B'z\u0000裸足の女神": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "裸足の女神",
+      "spotifyUri": "spotify:track:379BZPfArQmtGt7CNoa9PZ"
+    },
+    "B'z\u0000BAD COMMUNICATION": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "BAD COMMUNICATION",
+      "spotifyUri": "spotify:track:07sqtGCWKNXhFEBg28zZ8U"
+    },
+    "B'z\u0000UNITE": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "UNITE",
+      "spotifyUri": "spotify:track:5SWOc0rXnhB10hBPFWqkDM"
+    },
+    "B'z\u0000Calling": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "Calling",
+      "spotifyUri": "spotify:track:4yDVcEoYVZRvlHTkKIbyeg"
+    },
+    "B'z\u0000太陽のKomachi Angel": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "太陽のKomachi Angel",
+      "spotifyUri": "spotify:track:0VautPaGJuzwHMo945JvLa"
+    },
+    "B'z\u0000BLOWIN'": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "BLOWIN'",
+      "spotifyUri": "spotify:track:38DbjBzICQsrm693uQ4giW"
     }
   }
 }
