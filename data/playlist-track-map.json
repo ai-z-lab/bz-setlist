@@ -804,6 +804,30 @@
       "lookupArtist": "B'z",
       "song": "BLOWIN'",
       "spotifyUri": "spotify:track:38DbjBzICQsrm693uQ4giW"
+    },
+    "B'z\u0000BANZAI": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "BANZAI",
+      "spotifyUri": "spotify:track:5vDiJnkN3lgM57eMozNBeQ"
+    },
+    "B'z\u0000恋心（KOI-GOKORO）": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "恋心（KOI-GOKORO）",
+      "spotifyUri": "spotify:track:5gvOsIUuNj63n4MfFxpzFQ"
+    },
+    "B'z\u0000孤独のRunaway": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "孤独のRunaway",
+      "spotifyUri": "spotify:track:6T7uNx62gM52UlWj9Ur9h4"
+    },
+    "B'z\u0000さよならなんかは言わせない": {
+      "artist": "B'z",
+      "lookupArtist": "B'z",
+      "song": "さよならなんかは言わせない",
+      "spotifyUri": "spotify:track:06Mukn5JTWYernh2TsfclD"
     }
   }
 }
