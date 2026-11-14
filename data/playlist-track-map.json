@@ -381,7 +381,8 @@
     "稲葉浩志\u0000羽 feat.Taka": {
       "artist": "稲葉浩志",
       "lookupArtist": "稲葉浩志",
-      "song": "羽 feat.Taka"
+      "song": "羽 feat.Taka",
+      "lookupSong": "羽"
     },
     "B'z\u0000FAITH?": {
       "artist": "B'z",
@@ -513,7 +514,8 @@
     "B'z\u0000Hi": {
       "artist": "B'z",
       "lookupArtist": "B'z",
-      "song": "Hi"
+      "song": "Hi",
+      "skip": true
     },
     "B'z\u0000ねがい": {
       "artist": "B'z",
@@ -652,7 +654,8 @@
       "artist": "B'z",
       "lookupArtist": "Tak Matsumoto",
       "song": "EPIC MATCH / Tak Matsumoto",
-      "lookupSong": "EPIC MATCH"
+      "lookupSong": "EPIC MATCH",
+      "skip": true
     },
     "B'z\u0000LOVE PHANTOM": {
       "artist": "B'z",
@@ -731,12 +734,8 @@
       "artist": "B'z",
       "lookupArtist": "Tak Matsumoto",
       "song": "Tokyo Dream Park (Tak Matsumoto)",
-      "lookupSong": "Tokyo Dream Park"
-    },
-    "B'z\u0000Lair!Lair!": {
-      "artist": "B'z",
-      "lookupArtist": "B'z",
-      "song": "Lair!Lair!"
+      "lookupSong": "Tokyo Dream Park",
+      "skip": true
     },
     "B'z\u0000ミエナイチカラ〜INVISIBLE ONE〜": {
       "artist": "B'z",
