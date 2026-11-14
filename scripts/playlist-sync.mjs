@@ -416,6 +416,10 @@ for (const provider of guestIds.length ? providers : []) {
     const show = document.data.shows.find((item) => item.id === showId);
     const guest = show?.guest;
     if (!guest || guest.playlists?.[provider]) continue;
+    if (quotaStopped && provider === "youtubeMusic") {
+      report.unresolved.push({ provider, group: `guest:${showId}`, shows: [showId], reason: "YouTube API quota exceeded; rerun after quota reset" });
+      continue;
+    }
     const groupKey = `${show.tour}\u0000${guest.artist}\u0000${provider}`;
     try {
       let url = guestCreated[groupKey];
@@ -452,6 +456,11 @@ for (const provider of guestIds.length ? providers : []) {
         linkedShows += 1;
       }
     } catch (error) {
+      if (provider === "youtubeMusic" && isQuotaError(error)) {
+        quotaStopped = true;
+        report.unresolved.push({ provider, group: `guest:${showId}`, shows: [showId], reason: "YouTube API quota exceeded; rerun after quota reset", message: error.message });
+        continue;
+      }
       report.errors.push({ provider, group: `guest:${showId}`, shows: [showId], message: error.message });
     }
   }
