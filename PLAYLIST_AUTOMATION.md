@@ -94,3 +94,5 @@ node scripts/playlist-sync.mjs --provider=spotify --tour="TMG SAYONARA" --apply
 ## セットリストの出典と、代用・除外の注記
 - 曲順の確認は 1000wave.net を第一にする（本人の指示、2026-11-15）。LiveFansはツアー期間中の曲順がシャッフル表示になり、公演後も曲の抜け・順番違いがあったため、「曲が同じか」の確認だけに使い、曲順の根拠にしない。
 - 配信がなく除外した曲（`skip: true`）や、別の音源で代用した曲（`data/playlist-track-map.json` の `note`）は、プレイリストの説明欄に「注：…」として自動で書く。識別用の marker は説明欄の末尾に必ず残る。
+
+自動処理（`scripts/playlist-sync.mjs`）も、Spotifyで新規作成する前に、本人のライブラリから公演日（M/D・M.D）を名前に含む手作りのプレイリストを探します。曲順が同じならそのURLを登録し、違う場合は重複を作らずエラーで止めて本人確認に回します。
