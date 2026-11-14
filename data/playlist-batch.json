@@ -1,22 +1,17 @@
 {
   "provider": "spotify",
-  "repairExisting": true,
+  "repairExisting": false,
   "youtubeAutoMatch": false,
   "showIds": [
-    "2025-11-15-fyop-nagoya1",
-    "2025-11-16-fyop-nagoya2",
-    "2026-03-28-fyod-ariake1",
-    "2026-03-29-fyod-ariake2",
-    "2026-04-12",
-    "2026-04-19",
-    "2026-04-26",
-    "2026-05-03",
-    "2026-05-10",
-    "2026-05-17",
-    "2026-05-24",
-    "2026-05-31",
-    "2026-06-07",
-    "2026-06-13",
-    "2026-06-28-fyop-naked-yokohama2"
+    "2025-06-21-unite02-yokohama"
+  ],
+  "guestShowIds": [
+    "2021-09-18-unite01-osaka",
+    "2021-09-19-unite01-osaka",
+    "2021-09-28-unite01-yokohama",
+    "2021-09-29-unite01-yokohama",
+    "2025-06-21-unite02-yokohama",
+    "2025-06-28-unite02-yokohama",
+    "2025-06-29-unite02-yokohama"
   ]
 }
