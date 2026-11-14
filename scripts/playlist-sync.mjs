@@ -403,7 +403,8 @@ for (const group of plan.groups) {
 }
 
 // ゲスト出演分: show.guest {artist, songs, playlists}。同じツアー・同じゲストの公演は1本を共用する
-const guestIds = argValue("guest-show-ids").split(",").map((value) => value.trim()).filter(Boolean);
+const batchGuestIds = await readFile("data/playlist-batch.json", "utf8").then((text) => JSON.parse(text).guestShowIds || []).catch(() => []);
+const guestIds = (argValue("guest-show-ids") ? argValue("guest-show-ids").split(",") : batchGuestIds).map((value) => value.trim()).filter(Boolean);
 const guestCreated = {};
 for (const provider of guestIds.length ? providers : []) {
   for (const showId of guestIds) {
