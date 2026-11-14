@@ -1153,7 +1153,14 @@
       "artist": "MAN WITH A MISSION",
       "lookupArtist": "MAN WITH A MISSION",
       "song": "Dead End in Tokyo",
-      "note": "「Dead End in Tokyo」はアコースティック版の配信がないため通常版で代用"
+      "note": "「Dead End in Tokyo」はアコースティック版の配信がないため通常版で代用",
+      "spotifyUri": "spotify:track:4RzfF0Jd5TFNskiMNf2nZp"
+    },
+    "MAN WITH A MISSION\u0000Emotions": {
+      "artist": "MAN WITH A MISSION",
+      "lookupArtist": "MAN WITH A MISSION",
+      "song": "Emotions",
+      "spotifyUri": "spotify:track:7nI2HGtYYULqSOOX4XWjzq"
     }
   }
 }
