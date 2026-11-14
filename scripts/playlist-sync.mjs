@@ -403,8 +403,13 @@ for (const group of plan.groups) {
 }
 
 // ゲスト出演分: show.guest {artist, songs, playlists}。同じツアー・同じゲストの公演は1本を共用する
-const batchGuestIds = await readFile("data/playlist-batch.json", "utf8").then((text) => JSON.parse(text).guestShowIds || []).catch(() => []);
-const guestIds = (argValue("guest-show-ids") ? argValue("guest-show-ids").split(",") : batchGuestIds).map((value) => value.trim()).filter(Boolean);
+const batchFile = await readFile("data/playlist-batch.json", "utf8").then((text) => JSON.parse(text)).catch(() => ({}));
+const sameAsBatchShows = JSON.stringify([...showIds].sort()) === JSON.stringify([...(batchFile.showIds || [])].sort());
+// 明示指定が無いとき、バッチのゲスト対象は「フィルタ無し」または「バッチ自身の showIds と同じ指定(pushで自動実行)」の場合だけ使う
+const defaultGuestIds = !showIds.length || sameAsBatchShows ? batchFile.guestShowIds || [] : [];
+const requestedGuestIds = (argValue("guest-show-ids") ? argValue("guest-show-ids").split(",") : defaultGuestIds).map((value) => value.trim()).filter(Boolean);
+const tourFilter = argValue("tour");
+const guestIds = requestedGuestIds.filter((id) => !tourFilter || document.data.shows.find((show) => show.id === id)?.tour === tourFilter);
 const guestCreated = {};
 for (const provider of guestIds.length ? providers : []) {
   for (const showId of guestIds) {
