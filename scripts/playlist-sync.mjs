@@ -87,15 +87,26 @@ class SpotifyAdapter {
   constructor(token) { this.token = token; }
   headers(extra = {}) { return { Authorization: `Bearer ${this.token}`, ...extra }; }
 
-  async resolve(song, artist) {
-    const query = encodeURIComponent(`track:${song} artist:${artist}`);
-    const body = await fetchJson(`https://api.spotify.com/v1/search?q=${query}&type=track&limit=10`, { headers: this.headers() });
+  async resolve(song, artist, options = {}) {
     const aliases = artistAliases(artist).map(normalize);
-    const candidates = (body.tracks?.items || []).filter((track) =>
-      normalize(track.name) === normalize(song)
-      && track.artists?.some((item) => aliases.includes(normalize(item.name))),
-    );
-    return candidates.sort((left, right) => (right.popularity || 0) - (left.popularity || 0))[0]?.uri || "";
+    const wanted = normalize(song);
+    const matches = (track) => {
+      const name = normalize(track.name);
+      const nameOk = name === wanted || (options.matchPrefix && wanted.length >= 4 && name.startsWith(wanted));
+      return nameOk && track.artists?.some((item) => aliases.includes(normalize(item.name)));
+    };
+    // 短い曲名(例: Hi)は同名曲に埋もれるため、検索語を変えて複数ページ探す
+    const queries = [`track:${song} artist:${artist}`, `${song} ${artist}`, `${song}`];
+    for (const raw of queries) {
+      for (const offset of [0, 10, 20]) {
+        const body = await fetchJson(`https://api.spotify.com/v1/search?q=${encodeURIComponent(raw)}&type=track&limit=10&offset=${offset}&market=JP`, { headers: this.headers() });
+        const items = body.tracks?.items || [];
+        const found = items.filter(matches).sort((left, right) => (right.popularity || 0) - (left.popularity || 0))[0];
+        if (found) return found.uri;
+        if (items.length < 10) break;
+      }
+    }
+    return "";
   }
 
   async findByMarker(value) {
@@ -343,7 +354,7 @@ for (const group of plan.groups) {
         const searchArtist = entry.lookupArtist || lookupArtist;
         // 本人名義の音源を優先し、見つからない場合だけ原曲アーティスト版を使う
         for (const candidate of id || !apply ? [] : artistCandidates(artistForShow(representative), searchArtist)) {
-          id = await adapters[provider].resolve(searchSong, candidate);
+          id = await adapters[provider].resolve(searchSong, candidate, { matchPrefix: Boolean(entry.matchPrefix) });
           if (id) { trackMap.tracks[key][field] = id; break; }
         }
         if (id) ids.push(id); else unresolvedSongs.push(track.song);
@@ -351,6 +362,7 @@ for (const group of plan.groups) {
       if (skippedSongs.length) report.skipped = [...(report.skipped || []), { provider, group: group.id, songs: skippedSongs }];
       if (unresolvedSongs.length) {
         report.unresolved.push({ provider, group: group.id, shows: targets.map((show) => show.id), artist: artistForShow(representative), tracks: unresolvedSongs });
+        console.log(`UNRESOLVED ${provider} ${group.id}: ${unresolvedSongs.join(" / ")}`);
         continue;
       }
       for (const show of targets) {
