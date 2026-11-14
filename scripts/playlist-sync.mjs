@@ -54,11 +54,12 @@ function playlistTitle(show) {
 }
 
 function playlistDescription(show) {
-  return `B'z Live Setlist DB 自動生成。${show.date} ${show.venue}。bz-setlist:${show.id}`.slice(0, 290);
+  return `B'z Live Setlist DB 自動生成。${show.date} ${show.venue}。${marker(show)}`.slice(0, 290);
 }
 
+// ゲスト用は別の名前空間(bz-guest:)にして、本編の bz-setlist:<showId> と部分一致しないようにする
 function marker(show) {
-  return `bz-setlist:${show.id}`;
+  return show.id.endsWith("::guest") ? `bz-guest:${show.id.slice(0, -"::guest".length)}` : `bz-setlist:${show.id}`;
 }
 
 async function fetchJson(url, options = {}) {
@@ -398,6 +399,70 @@ for (const group of plan.groups) {
         continue;
       }
       report.errors.push({ provider, group: group.id, shows: targets.map((show) => show.id), message: error.message });
+    }
+  }
+}
+
+// ゲスト出演分: show.guest {artist, songs, playlists}。同じツアー・同じゲストの公演は1本を共用する
+const batchFile = await readFile("data/playlist-batch.json", "utf8").then((text) => JSON.parse(text)).catch(() => ({}));
+const sameAsBatchShows = JSON.stringify([...showIds].sort()) === JSON.stringify([...(batchFile.showIds || [])].sort());
+// 明示指定が無いとき、バッチのゲスト対象は「フィルタ無し」または「バッチ自身の showIds と同じ指定(pushで自動実行)」の場合だけ使う
+const defaultGuestIds = !showIds.length || sameAsBatchShows ? batchFile.guestShowIds || [] : [];
+const requestedGuestIds = (argValue("guest-show-ids") ? argValue("guest-show-ids").split(",") : defaultGuestIds).map((value) => value.trim()).filter(Boolean);
+const tourFilter = argValue("tour");
+const guestIds = requestedGuestIds.filter((id) => !tourFilter || document.data.shows.find((show) => show.id === id)?.tour === tourFilter);
+const guestCreated = {};
+for (const provider of guestIds.length ? providers : []) {
+  for (const showId of guestIds) {
+    const show = document.data.shows.find((item) => item.id === showId);
+    const guest = show?.guest;
+    if (!guest || guest.playlists?.[provider]) continue;
+    if (quotaStopped && provider === "youtubeMusic") {
+      report.unresolved.push({ provider, group: `guest:${showId}`, shows: [showId], reason: "YouTube API quota exceeded; rerun after quota reset" });
+      continue;
+    }
+    const groupKey = `${show.tour}\u0000${guest.artist}\u0000${provider}`;
+    try {
+      let url = guestCreated[groupKey];
+      if (!url) {
+        const field = provider === "spotify" ? "spotifyUri" : "youtubeVideoId";
+        const ids = [];
+        const unresolvedSongs = [];
+        for (const track of guest.songs) {
+          const key = mapKey(guest.artist, track.song);
+          trackMap.tracks[key] ||= { artist: guest.artist, lookupArtist: guest.artist, song: track.song };
+          const entry = trackMap.tracks[key];
+          if (entry.skip) continue;
+          let id = entry[field] || "";
+          if (!id && apply) {
+            for (const candidate of artistCandidates(guest.artist, entry.lookupArtist || guest.artist)) {
+              id = await adapters[provider].resolve(entry.lookupSong || track.song, candidate, { matchPrefix: Boolean(entry.matchPrefix) });
+              if (id) { entry[field] = id; break; }
+            }
+          }
+          if (id) ids.push(id); else unresolvedSongs.push(track.song);
+        }
+        if (unresolvedSongs.length) {
+          report.unresolved.push({ provider, group: `guest:${showId}`, shows: [showId], artist: guest.artist, tracks: unresolvedSongs });
+          console.log(`UNRESOLVED guest ${provider} ${showId}: ${unresolvedSongs.join(" / ")}`);
+          continue;
+        }
+        if (!apply) { report.created.push({ provider, group: `guest:${showId}`, shows: [showId], dryRun: true, tracks: ids.length }); continue; }
+        url = await adapters[provider].create({ ...show, id: `${show.id}::guest`, tour: `${show.tour} ゲスト ${guest.artist}` }, ids);
+        guestCreated[groupKey] = url;
+        report.created.push({ provider, group: `guest:${showId}`, shows: [showId], url, tracks: ids.length });
+      }
+      if (url && apply) {
+        guest.playlists = { ...(guest.playlists || {}), [provider]: url };
+        linkedShows += 1;
+      }
+    } catch (error) {
+      if (provider === "youtubeMusic" && isQuotaError(error)) {
+        quotaStopped = true;
+        report.unresolved.push({ provider, group: `guest:${showId}`, shows: [showId], reason: "YouTube API quota exceeded; rerun after quota reset", message: error.message });
+        continue;
+      }
+      report.errors.push({ provider, group: `guest:${showId}`, shows: [showId], message: error.message });
     }
   }
 }
