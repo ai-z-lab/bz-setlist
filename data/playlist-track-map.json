@@ -654,7 +654,8 @@
       "artist": "B'z",
       "lookupArtist": "Tak Matsumoto",
       "song": "EPIC MATCH / Tak Matsumoto",
-      "lookupSong": "EPIC MATCH"
+      "lookupSong": "EPIC MATCH",
+      "matchPrefix": true
     },
     "B'z\u0000LOVE PHANTOM": {
       "artist": "B'z",
@@ -733,7 +734,8 @@
       "artist": "B'z",
       "lookupArtist": "Tak Matsumoto",
       "song": "Tokyo Dream Park (Tak Matsumoto)",
-      "lookupSong": "Tokyo Dream Park"
+      "lookupSong": "Tokyo Dream Park",
+      "matchPrefix": true
     },
     "B'z\u0000ミエナイチカラ〜INVISIBLE ONE〜": {
       "artist": "B'z",
