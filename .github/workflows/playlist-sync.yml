@@ -74,10 +74,12 @@ jobs:
           apply="${{ inputs.apply }}"
           show_ids=""
           repair_existing="false"
+          guest_show_ids=""
           if [[ "${{ github.event_name }}" == "push" ]]; then
             provider=$(node -p 'require("./data/playlist-batch.json").provider || "both"')
             show_ids=$(node -p 'require("./data/playlist-batch.json").showIds.join(",")')
             repair_existing=$(node -p 'String(Boolean(require("./data/playlist-batch.json").repairExisting))')
+            guest_show_ids=$(node -p '(require("./data/playlist-batch.json").guestShowIds || []).join(",")')
             export YOUTUBE_AUTO_MATCH=$(node -p 'String(Boolean(require("./data/playlist-batch.json").youtubeAutoMatch))')
             apply="true"
           fi
@@ -88,6 +90,7 @@ jobs:
           if [[ -n "$tour" ]]; then args+=(--tour="$tour"); fi
           if [[ -n "$show_ids" ]]; then args+=(--show-ids="$show_ids"); fi
           if [[ "$repair_existing" == "true" ]]; then args+=(--repair-existing); fi
+          if [[ -n "$guest_show_ids" ]]; then args+=(--guest-show-ids="$guest_show_ids"); fi
           if [[ "$apply" == "true" ]]; then args+=(--apply); fi
           node scripts/playlist-sync.mjs "${args[@]}"
           echo "apply=$apply" >> "$GITHUB_OUTPUT"

@@ -402,6 +402,55 @@ for (const group of plan.groups) {
   }
 }
 
+// ゲスト出演分: show.guest {artist, songs, playlists}。同じツアー・同じゲストの公演は1本を共用する
+const guestIds = argValue("guest-show-ids").split(",").map((value) => value.trim()).filter(Boolean);
+const guestCreated = {};
+for (const provider of guestIds.length ? providers : []) {
+  for (const showId of guestIds) {
+    const show = document.data.shows.find((item) => item.id === showId);
+    const guest = show?.guest;
+    if (!guest || guest.playlists?.[provider]) continue;
+    const groupKey = `${show.tour}\u0000${guest.artist}\u0000${provider}`;
+    try {
+      let url = guestCreated[groupKey];
+      if (!url) {
+        const field = provider === "spotify" ? "spotifyUri" : "youtubeVideoId";
+        const ids = [];
+        const unresolvedSongs = [];
+        for (const track of guest.songs) {
+          const key = mapKey(guest.artist, track.song);
+          trackMap.tracks[key] ||= { artist: guest.artist, lookupArtist: guest.artist, song: track.song };
+          const entry = trackMap.tracks[key];
+          if (entry.skip) continue;
+          let id = entry[field] || "";
+          if (!id && apply) {
+            for (const candidate of artistCandidates(guest.artist, entry.lookupArtist || guest.artist)) {
+              id = await adapters[provider].resolve(entry.lookupSong || track.song, candidate, { matchPrefix: Boolean(entry.matchPrefix) });
+              if (id) { entry[field] = id; break; }
+            }
+          }
+          if (id) ids.push(id); else unresolvedSongs.push(track.song);
+        }
+        if (unresolvedSongs.length) {
+          report.unresolved.push({ provider, group: `guest:${showId}`, shows: [showId], artist: guest.artist, tracks: unresolvedSongs });
+          console.log(`UNRESOLVED guest ${provider} ${showId}: ${unresolvedSongs.join(" / ")}`);
+          continue;
+        }
+        if (!apply) { report.created.push({ provider, group: `guest:${showId}`, shows: [showId], dryRun: true, tracks: ids.length }); continue; }
+        url = await adapters[provider].create({ ...show, id: `${show.id}::guest`, tour: `${show.tour} ゲスト ${guest.artist}` }, ids);
+        guestCreated[groupKey] = url;
+        report.created.push({ provider, group: `guest:${showId}`, shows: [showId], url, tracks: ids.length });
+      }
+      if (url && apply) {
+        guest.playlists = { ...(guest.playlists || {}), [provider]: url };
+        linkedShows += 1;
+      }
+    } catch (error) {
+      report.errors.push({ provider, group: `guest:${showId}`, shows: [showId], message: error.message });
+    }
+  }
+}
+
 if (apply) {
   await writeFile(mapFile, `${JSON.stringify(trackMap, null, 2)}\n`, "utf8");
   if (linkedShows) {
