@@ -515,7 +515,8 @@
     "B'z\u0000Hi": {
       "artist": "B'z",
       "lookupArtist": "B'z",
-      "song": "Hi"
+      "song": "Hi",
+      "spotifyUri": "spotify:track:0Me8ErX6BFxXI97809NX2X"
     },
     "B'z\u0000ねがい": {
       "artist": "B'z",
@@ -655,7 +656,8 @@
       "lookupArtist": "Tak Matsumoto",
       "song": "EPIC MATCH / Tak Matsumoto",
       "lookupSong": "EPIC MATCH",
-      "matchPrefix": true
+      "matchPrefix": true,
+      "spotifyUri": "spotify:track:0NFygNu7nBTxL1jqq0lkUB"
     },
     "B'z\u0000LOVE PHANTOM": {
       "artist": "B'z",
