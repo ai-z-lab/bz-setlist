@@ -131,6 +131,25 @@ class SpotifyAdapter {
     return null;
   }
 
+  // 名前に公演日（M/D または M.D）を含む既存プレイリストを探す。曲順が同じなら共用。違うなら重複を作らず止める
+  async findHandMade(show, uris) {
+    const m = String(show.date || "").match(/(\d{4})\/(\d{1,2})\/(\d{1,2})/);
+    if (!m) return null;
+    const re = new RegExp(`(^|\\D)0?${Number(m[2])}[/.]0?${Number(m[3])}(\\D|$)`);
+    let url = "https://api.spotify.com/v1/me/playlists?limit=50";
+    while (url) {
+      const body = await fetchJson(url, { headers: this.headers() });
+      for (const item of body.items || []) {
+        if (item.description?.includes("bz-setlist:") || item.description?.includes("bz-guest:") || !re.test(item.name || "")) continue;
+        const items = await this.listItems(item.id);
+        if (JSON.stringify(items) === JSON.stringify(uris)) return item.external_urls.spotify;
+        throw new Error(`Existing playlist "${item.name}" matches the date but its tracks differ; not creating a duplicate: ${item.external_urls.spotify}`);
+      }
+      url = body.next || "";
+    }
+    return null;
+  }
+
   async listItems(id) {
     const uris = [];
     let url = `https://api.spotify.com/v1/playlists/${id}/items?limit=100`;
@@ -151,6 +170,9 @@ class SpotifyAdapter {
       if (show.playlistNotes?.length) await this.updateDescription(playlist.id, playlistDescription(show));
       return playlist.url;
     }
+    // 本人が手で作った同じ公演のプレイリストがあれば、新規作成せずそれを使う（二重作成の防止）
+    const handMade = await this.findHandMade(show, uris);
+    if (handMade) return handMade;
     const body = await fetchJson("https://api.spotify.com/v1/me/playlists", {
       method: "POST",
       headers: this.headers({ "Content-Type": "application/json" }),
