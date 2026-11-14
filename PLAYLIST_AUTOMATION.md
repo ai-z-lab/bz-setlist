@@ -40,6 +40,8 @@ Spotifyアプリには、公開プレイリストの場合`playlist-modify-publi
 
 ### YouTube / YouTube Music
 
+**実績ある方法（2026-11-15追記）**：これまでのYouTube Musicプレイリスト（大分11/5、福岡11/7・11/8、札幌11/14など）は、APIではなく、本人のログイン済みChromeのYouTube Musicで作成してきた（PR #145・#151・#156の記載）。ActionsにはYouTube認証がなく、下記のAPI方式はクォータ上限で止まりやすいため、通常はこのChrome方式を使う。作成後は曲順を1000waveのセットリストと照合し、リンクをPRで反映する。以下のAPI方式は補助・予備の手順。
+
 - `YOUTUBE_CLIENT_ID`
 - `YOUTUBE_CLIENT_SECRET`
 - `YOUTUBE_REFRESH_TOKEN`
