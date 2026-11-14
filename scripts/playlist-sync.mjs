@@ -187,10 +187,12 @@ class SpotifyAdapter {
     if (uris.length > 100) await this.addItems(id, uris.slice(100));
   }
 
-  async replaceByUrl(url, uris) {
+  async replaceByUrl(url, uris, description = "") {
     const id = String(url).match(/playlist\/([A-Za-z0-9]+)/)?.[1];
     if (!id) throw new Error(`Invalid Spotify playlist URL: ${url}`);
     await this.replaceItems(id, uris);
+    // 代用・除外の注記がある場合は、既存リンクの修復でも説明欄を更新する
+    if (description) await this.updateDescription(id, description);
     return `https://open.spotify.com/playlist/${id}`;
   }
 }
@@ -399,7 +401,7 @@ for (const group of plan.groups) {
         }
         let url;
         if (show.playlists?.[provider] && provider === "spotify") {
-          url = await adapters.spotify.replaceByUrl(show.playlists.spotify, ids);
+          url = await adapters.spotify.replaceByUrl(show.playlists.spotify, ids, show.playlistNotes?.length ? playlistDescription(show) : "");
           applyLink(document.data, [show.id], provider, url, { replace: true });
         } else if (show.playlists?.[provider]) {
           report.reused.push({ provider, group: group.id, shows: [show.id], url: show.playlists[provider], reason: "existing playlist was not modified" });
