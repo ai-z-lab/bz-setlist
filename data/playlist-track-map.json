@@ -737,7 +737,8 @@
       "lookupArtist": "Tak Matsumoto",
       "song": "Tokyo Dream Park (Tak Matsumoto)",
       "lookupSong": "Tokyo Dream Park",
-      "matchPrefix": true
+      "matchPrefix": true,
+      "skip": true
     },
     "B'z\u0000ミエナイチカラ〜INVISIBLE ONE〜": {
       "artist": "B'z",
