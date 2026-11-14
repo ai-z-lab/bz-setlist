@@ -121,6 +121,15 @@ function syncOfficialSetlistTours(){
  });
  const tourOrder = new Map((window.BZ_DATA.tours || []).map((tour, index)=>[tour.id, index]));
  data.tours = (data.tours || []).map((tour, index)=>[tour, index]).sort((a, b)=>(tourOrder.has(a[0].id) ? tourOrder.get(a[0].id) : 1000 + a[1]) - (tourOrder.has(b[0].id) ? tourOrder.get(b[0].id) : 1000 + b[1])).map(item=>item[0]);
+ // 公式データでアンコール区切りを修正した公演は、保存済みブラウザの区切りも公式に合わせる（曲・順番が同じ行だけ）
+ const sectionFixShowIds = new Set(officialShows.filter(show=>show.tour==="UNITE #02").map(show=>show.id));
+ if(sectionFixShowIds.size){
+  const officialRows = new Map((window.BZ_DATA.setlists || []).filter(row=>sectionFixShowIds.has(row.showId)).map(row=>[row.showId+"#"+row.order, row]));
+  data.setlists = (data.setlists || []).map(row=>{
+   const official = sectionFixShowIds.has(row.showId) ? officialRows.get(row.showId+"#"+row.order) : null;
+   return official && official.song===row.song && official.section!==row.section ? {...row, section: official.section} : row;
+  });
+ }
  const existingShowIds = new Set((data.shows || []).map(show=>show.id));
  const newShows = officialShows.filter(show=>!existingShowIds.has(show.id));
  if(newShows.length){
