@@ -54,11 +54,12 @@ function playlistTitle(show) {
 }
 
 function playlistDescription(show) {
-  return `B'z Live Setlist DB 自動生成。${show.date} ${show.venue}。bz-setlist:${show.id}`.slice(0, 290);
+  return `B'z Live Setlist DB 自動生成。${show.date} ${show.venue}。${marker(show)}`.slice(0, 290);
 }
 
+// ゲスト用は別の名前空間(bz-guest:)にして、本編の bz-setlist:<showId> と部分一致しないようにする
 function marker(show) {
-  return `bz-setlist:${show.id}`;
+  return show.id.endsWith("::guest") ? `bz-guest:${show.id.slice(0, -"::guest".length)}` : `bz-setlist:${show.id}`;
 }
 
 async function fetchJson(url, options = {}) {
