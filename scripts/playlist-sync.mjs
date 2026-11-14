@@ -328,19 +328,27 @@ for (const group of plan.groups) {
       }
       const ids = [];
       const unresolvedSongs = [];
+      const skippedSongs = [];
       for (const track of group.tracks) {
         const lookupArtist = artistForTrack(representative, track.song);
         const key = mapKey(artistForShow(representative), track.song);
         trackMap.tracks[key] ||= { artist: artistForShow(representative), lookupArtist, song: track.song };
+        const entry = trackMap.tracks[key];
+        // 音源が配信されていない曲は skip:true で除外する(プレイリストは配信されている曲だけで作る)
+        if (entry.skip) { skippedSongs.push(track.song); continue; }
         const field = provider === "spotify" ? "spotifyUri" : "youtubeVideoId";
-        let id = trackMap.tracks[key][field] || "";
+        let id = entry[field] || "";
+        // 曲名の注記(共演・演出メモなど)や表記ゆれは lookupSong / lookupArtist で検索語だけ上書きする
+        const searchSong = entry.lookupSong || track.song;
+        const searchArtist = entry.lookupArtist || lookupArtist;
         // 本人名義の音源を優先し、見つからない場合だけ原曲アーティスト版を使う
-        for (const candidate of id || !apply ? [] : artistCandidates(artistForShow(representative), lookupArtist)) {
-          id = await adapters[provider].resolve(track.song, candidate);
+        for (const candidate of id || !apply ? [] : artistCandidates(artistForShow(representative), searchArtist)) {
+          id = await adapters[provider].resolve(searchSong, candidate);
           if (id) { trackMap.tracks[key][field] = id; break; }
         }
         if (id) ids.push(id); else unresolvedSongs.push(track.song);
       }
+      if (skippedSongs.length) report.skipped = [...(report.skipped || []), { provider, group: group.id, songs: skippedSongs }];
       if (unresolvedSongs.length) {
         report.unresolved.push({ provider, group: group.id, shows: targets.map((show) => show.id), artist: artistForShow(representative), tracks: unresolvedSongs });
         continue;

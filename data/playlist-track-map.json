@@ -445,8 +445,9 @@
     },
     "B'z\u0000#1090~Million Dreams~ / 松本孝弘": {
       "artist": "B'z",
-      "lookupArtist": "B'z",
-      "song": "#1090~Million Dreams~ / 松本孝弘"
+      "lookupArtist": "Tak Matsumoto",
+      "song": "#1090~Million Dreams~ / 松本孝弘",
+      "lookupSong": "#1090 ~Million Dreams~"
     },
     "B'z\u0000春": {
       "artist": "B'z",
@@ -582,7 +583,8 @@
     "B'z\u0000ultra soul (with 10-FEET)": {
       "artist": "B'z",
       "lookupArtist": "B'z",
-      "song": "ultra soul (with 10-FEET)"
+      "song": "ultra soul (with 10-FEET)",
+      "lookupSong": "ultra soul"
     },
     "B'z\u0000完全無欠": {
       "artist": "B'z",
@@ -646,8 +648,9 @@
     },
     "B'z\u0000EPIC MATCH / Tak Matsumoto": {
       "artist": "B'z",
-      "lookupArtist": "B'z",
-      "song": "EPIC MATCH / Tak Matsumoto"
+      "lookupArtist": "Tak Matsumoto",
+      "song": "EPIC MATCH / Tak Matsumoto",
+      "lookupSong": "EPIC MATCH"
     },
     "B'z\u0000LOVE PHANTOM": {
       "artist": "B'z",
@@ -717,13 +720,15 @@
     },
     "B'z\u0000Tiger's Eye / Tak Matsumoto": {
       "artist": "B'z",
-      "lookupArtist": "B'z",
-      "song": "Tiger's Eye / Tak Matsumoto"
+      "lookupArtist": "Tak Matsumoto",
+      "song": "Tiger's Eye / Tak Matsumoto",
+      "lookupSong": "Tiger's Eye"
     },
     "B'z\u0000Tokyo Dream Park (Tak Matsumoto)": {
       "artist": "B'z",
-      "lookupArtist": "B'z",
-      "song": "Tokyo Dream Park (Tak Matsumoto)"
+      "lookupArtist": "Tak Matsumoto",
+      "song": "Tokyo Dream Park (Tak Matsumoto)",
+      "lookupSong": "Tokyo Dream Park"
     },
     "B'z\u0000Lair!Lair!": {
       "artist": "B'z",
@@ -739,7 +744,8 @@
     "B'z\u0000Heaven Knows (観客とMV撮影)": {
       "artist": "B'z",
       "lookupArtist": "B'z",
-      "song": "Heaven Knows (観客とMV撮影)"
+      "song": "Heaven Knows (観客とMV撮影)",
+      "lookupSong": "Heaven Knows"
     },
     "B'z\u0000今では....今なら...今も...": {
       "artist": "B'z",
