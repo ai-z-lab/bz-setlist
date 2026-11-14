@@ -110,7 +110,7 @@ window.BZ_DATA = {"appVersion":"2.0","updated":"2026-11-14","source":"1000wave.n
 
 let data = JSON.parse(localStorage.getItem("bzData_v4") || JSON.stringify(window.BZ_DATA));
 function syncOfficialSetlistTours(){
- const officialTourIds = new Set(["enV", "TMG SAYONARA", "1CHANCE FESTIVAL 2026"]);
+ const officialTourIds = new Set(["enV", "TMG SAYONARA", "1CHANCE FESTIVAL 2026", "FYOP", "FYOP+", "FYOP naked", "FYOD", "SHOWCASE", "ULTRA MISSION", "UNITE #02"]);
  const existingTourIds = new Set((data.tours || []).map(tour=>tour.id));
  data.tours = (data.tours || []).concat((window.BZ_DATA.tours || []).filter(tour=>officialTourIds.has(tour.id) && !existingTourIds.has(tour.id)));
  const officialShows = (window.BZ_DATA.shows || []).filter(show=>officialTourIds.has(show.tour));
