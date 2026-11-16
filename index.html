@@ -26,7 +26,7 @@ main{padding:18px;max-width:1180px;margin:auto}
 .tourbar{display:flex;gap:8px;overflow-x:auto;margin:0 0 16px;padding:4px 0 12px;border-bottom:1px solid var(--line)}
 .tourBtn{border-radius:14px;padding:10px 14px;background:#11141d;color:var(--text);border:1px solid var(--line);font-weight:900}
 .tourBtn.active{background:var(--accent);color:#151515;border-color:var(--accent)}
-.showPickList{display:flex;flex-direction:column;gap:6px;max-height:240px;overflow-y:auto;margin:10px 0;padding:2px}
+.showPickList{display:flex;flex-direction:column;gap:6px;max-height:300px;overflow-y:auto;margin:10px 0;padding:5px;-webkit-overflow-scrolling:touch}
 .showPick{display:flex;flex-direction:column;align-items:flex-start;text-align:left;gap:2px;border-radius:12px;padding:9px 12px;background:#11141d;color:var(--text);border:1px solid var(--line);font-size:13px}
 .showPick span{font-size:11px;font-weight:600;opacity:.75}
 .showPick.active{border:2px solid var(--accent);box-shadow:0 0 0 1px var(--accent);background:#1a1f2c}
@@ -741,9 +741,9 @@ function renderShows(){
  const list=visibleShows(); if(!list.length){setApp(`<div class="card">このツアーの公演データはまだありません。「追記・整形」で公演を追加できます。</div>`);return;}
  const __latest=latestEnteredShow(list); const opts=list.map(s=>`<option value="${s.id}"${__latest&&__latest.id===s.id?" selected":""}>${s.label}｜${s.area}｜${s.venue}</option>`).join("");
  const pickList=list.map(s=>`<button type="button" class="showPick" data-id="${s.id}"><b>${s.label}</b><span>${s.area}｜${s.venue}</span></button>`).join("");
- setApp(`<div class="muted" style="margin:6px 0 2px">▼ 見たい公演をタップして選びます</div><div class="controls"><select id="showSel">${opts}</select></div><div class="showPickList" id="showPickList">${pickList}</div><div id="showBox"></div>`);
+ setApp(`<div class="muted" style="margin:6px 0 2px">▼ 見たい公演をタップして選びます</div><div class="controls" style="display:none"><select id="showSel">${opts}</select></div><div class="showPickList" id="showPickList">${pickList}</div><div id="showBox"></div>`);
  const sel=document.querySelector("#showSel");
- const markPick=()=>{ document.querySelectorAll(".showPick").forEach(b=>{ const on=b.dataset.id===sel.value; b.classList.toggle("active",on); if(on) b.setAttribute("aria-current","true"); else b.removeAttribute("aria-current"); }); const a=document.querySelector(".showPick.active"); const box=document.getElementById("showPickList"); if(a&&box){ box.scrollTop=Math.max(0,a.offsetTop-box.offsetTop-40); } };
+ const markPick=()=>{ document.querySelectorAll(".showPick").forEach(b=>{ const on=b.dataset.id===sel.value; b.classList.toggle("active",on); if(on) b.setAttribute("aria-current","true"); else b.removeAttribute("aria-current"); }); const a=document.querySelector(".showPick.active"); const box=document.getElementById("showPickList"); if(a&&box){ box.scrollTop+=a.getBoundingClientRect().top-box.getBoundingClientRect().top-8; } };
  sel.onchange=()=>{ drawShow(sel.value); markPick(); const o=sel.options[sel.selectedIndex]; gcEvent("show-"+sel.value,"公演を表示："+(o?o.textContent:sel.value)); };
  document.querySelectorAll(".showPick").forEach(b=>b.onclick=()=>{ sel.value=b.dataset.id; sel.onchange(); });
  drawShow(sel.value); markPick();
