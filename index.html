@@ -441,7 +441,7 @@ function calendarIcsTiming(event){
 function escapeIcsText(value){
  return String(value ?? "")
   .replace(/\\/g,"\\\\")
-  .replace(/\r\n|\r|\n/g,"\n")
+  .replace(/\r\n|\r|\n/g,"\\n")
   .replace(/;/g,"\\;")
   .replace(/,/g,"\\,");
 }
@@ -533,6 +533,15 @@ function buildCalendarIcs(events){
   "PRODID:-//bz-setlist//calendar export//JA",
   "CALSCALE:GREGORIAN",
   "X-WR-TIMEZONE:Asia/Tokyo",
+  "BEGIN:VTIMEZONE",
+  "TZID:Asia/Tokyo",
+  "BEGIN:STANDARD",
+  "DTSTART:19700101T000000",
+  "TZOFFSETFROM:+0900",
+  "TZOFFSETTO:+0900",
+  "TZNAME:JST",
+  "END:STANDARD",
+  "END:VTIMEZONE",
   ...events.map(event=>calendarIcsEvent(event, dtstamp)).filter(Boolean),
   "END:VCALENDAR"
  ];
