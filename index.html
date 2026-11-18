@@ -220,7 +220,7 @@ function setApp(html, options={}){
  if(showTourBar) bindTourBar();
 }
 function tourBar(){
- const items=[{id:"ALL",label:"全部",year:""}].concat(tours());
+ const items=[{id:"ALL",label:"すべて",year:""}].concat(tours());
  return `<div class="tourbar">${items.map(t=>`<button class="tourBtn ${selectedTour===t.id?'active':''}" data-tour="${t.id}">${t.label}${t.year?`<small>${t.year}</small>`:""}</button>`).join("")}</div>`;
 }
 function bindTourBar(){
@@ -327,7 +327,7 @@ function filteredCalendarEvents(){
 }
 function calendarFilterSummaryItems(){
  const typeLabel = selectedCalendarTypes.length ? selectedCalendarTypes.map(value=>CALENDAR_TYPE_LABELS[value] || value).join("・") : (CALENDAR_TYPE_LABELS.ALL || "すべて");
- const artistLabel = selectedCalendarArtists.length ? selectedCalendarArtists.join("・") : "全アーティスト";
+ const artistLabel = selectedCalendarArtists.length ? selectedCalendarArtists.join("・") : "すべて";
  const typeKey = selectedCalendarTypes.length === 1 ? selectedCalendarTypes[0] : "ALL";
  const artistKey = selectedCalendarArtists.length === 1 ? selectedCalendarArtists[0] : "ALL";
  return [
@@ -623,13 +623,13 @@ function renderCalendar(){
   </section>
   <section class="card calendarFilterPanel">
    <div class="calendarActions">
-    <button id="calendarIcsExportBtn" class="icsExportBtn" type="button" ${icsEvents.length ? "" : "disabled"}>${(selectedCalendarTypes.length||selectedCalendarArtists.length) ? `絞り込み中の${icsEvents.length}件をICSで書き出す` : "ICSでエクスポート（全部）"}</button>
+    <button id="calendarIcsExportBtn" class="icsExportBtn" type="button" ${icsEvents.length ? "" : "disabled"}>${(selectedCalendarTypes.length||selectedCalendarArtists.length) ? `絞り込み中の${icsEvents.length}件をICSで書き出す` : "すべてをICSで書き出す"}</button>
     <button id="calendarIcsLiveBtn" class="icsExportBtn icsLiveBtn" type="button">公演だけまとめて追加（ICS）</button>
     <div class="icsExportMeta">${(selectedCalendarTypes.length||selectedCalendarArtists.length) ? `下の「イベント種別」「アーティスト」で絞り込んだ${icsEvents.length}件だけを書き出します。` : `日付確定済みの${icsEvents.length}件を書き出します。ほしい種類だけにするには、下で絞り込んでから押してください。`}</div>
     ${(selectedCalendarTypes.length||selectedCalendarArtists.length) ? '<button id="calendarFilterResetBtn" class="icsExportBtn" type="button">絞り込みを解除（いまは絞り込み中）</button>' : ""}
    </div>
    <details class="icsHelp" open><summary>スマホのカレンダーに入れるには</summary>
-    <div><b>基本は「公演だけ」</b>（全部入れなくてOK）<br><b>1.</b> 「公演だけまとめて追加（ICS）」を押す<br><b>2.</b> iPhone：「○件の予定」の画面が開く → <b>左上の青い ✓</b> を押す<br>　 Android：「アプリで開く」→「カレンダー」→ 右上の「すべて追加」<br><b>3.</b> 入れる先のカレンダーを選ぶ（迷ったら普段使っているカレンダー）</div>
+    <div><b>基本は「公演だけ」</b>（すべて入れなくてOK）<br><b>1.</b> 「公演だけまとめて追加（ICS）」を押す<br><b>2.</b> iPhone：共有メニュー（AirDropなどが並ぶ画面）が出たら、<b>右上の ✕</b> で閉じる → 「○件の予定」の画面の<b>左上の青い ✓</b> を押す<br>　 Android：「アプリで開く」→「カレンダー」→ 右上の「すべて追加」<br><b>3.</b> 入れる先のカレンダーを選ぶ（迷ったら普段使っているカレンダー）</div>
     <div><b>行く公演だけ入れたい</b><br>下の予定カードの「iPhoneのカレンダーに追加」（Androidは「Googleカレンダーに追加」）を押す。1件ずつ入ります。</div>
     <div><b>種類を選んで入れたい・色分けしたい</b><br>下の「イベント種別」で絞る → 「絞り込み中の○件をICSで書き出す」を押す → 上の2・3と同じ。種類ごとに別のカレンダーへ入れると色が分かれます。</div>
     <div class="muted">Androidでファイルが開けないときは、「Googleカレンダーに追加」を使ってください。</div>
