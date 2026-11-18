@@ -95,6 +95,7 @@ tr:hover td{background:#1c2130}.pill{display:inline-flex;border:1px solid var(--
 .matrix-wrap{contain:layout paint}
 .card{contain:layout}
 
+.subBox{margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.12)}.subTitle{font-weight:900;font-size:13px;margin-bottom:6px}.subBtn{text-decoration:none;display:inline-block;text-align:center}.icsHelp code{font-size:11px;word-break:break-all}
 </style>
 </head>
 <body>
@@ -525,13 +526,14 @@ function calendarIcsEvent(event, dtstamp){
  ];
  return lines.map(foldIcsLine).join("\r\n");
 }
-function buildCalendarIcs(events){
- const dtstamp = new Date().toISOString().replace(/[-:]/g,"").replace(/\.\d{3}Z$/, "Z");
+function buildCalendarIcs(events, opts={}){
+ const dtstamp = opts.dtstamp || new Date().toISOString().replace(/[-:]/g,"").replace(/\.\d{3}Z$/, "Z");
  const lines = [
   "BEGIN:VCALENDAR",
   "VERSION:2.0",
   "PRODID:-//bz-setlist//calendar export//JA",
   "CALSCALE:GREGORIAN",
+  ...(opts.name ? [`X-WR-CALNAME:${escapeIcsText(opts.name)}`, "REFRESH-INTERVAL;VALUE=DURATION:PT12H", "X-PUBLISHED-TTL:PT12H"] : []),
   "X-WR-TIMEZONE:Asia/Tokyo",
   "BEGIN:VTIMEZONE",
   "TZID:Asia/Tokyo",
@@ -546,6 +548,21 @@ function buildCalendarIcs(events){
   "END:VCALENDAR"
  ];
  return `${lines.join("\r\n")}\r\n`;
+}
+const CALENDAR_SUB_FEEDS = [
+ {key:"live", file:"bz-live.ics", label:"公演"},
+ {key:"ticket", file:"bz-ticket.ics", label:"チケット"},
+ {key:"goods", file:"bz-goods.ics", label:"グッズ"},
+ {key:"all", file:"bz-all.ics", label:"すべて"}
+];
+const CALENDAR_SUB_BASE = "ai-z-lab.github.io/bz-setlist/";
+function calendarSubscribeUrl(file){
+ const feed = "webcal://" + CALENDAR_SUB_BASE + file;
+ return calendarIsIos() ? feed : `https://calendar.google.com/calendar/r?cid=${encodeURIComponent(feed)}`;
+}
+function renderCalendarSubscribe(){
+ const buttons = CALENDAR_SUB_FEEDS.map(f=>`<a class="icsExportBtn subBtn" data-sub-feed="${f.key}" href="${calendarSubscribeUrl(f.file)}">${f.label}</a>`).join("");
+ return `<div class="subBox"><div class="subTitle">おすすめ：自動で更新されるカレンダーに登録</div><div class="calendarActions">${buttons}</div><div class="icsExportMeta">ほしい種類を押すだけで登録できます。予定が増えると自動で入ります（反映は半日ほど遅れることがあります）。種類ごとに別のカレンダーになるので、色分けもできます。</div></div>`;
 }
 function calendarIcsExportableEvents(events=filteredCalendarEvents()){
  return events.filter(event=>calendarIcsTiming(event));
@@ -599,6 +616,7 @@ function downloadCalendarIcsOne(eventId){
 }
 function bindCalendarFilters(){
  document.querySelectorAll('a[href^="https://calendar.google.com/"]').forEach(a=>{ if(!a.dataset.gcBound){ a.dataset.gcBound="1"; a.addEventListener("click", ()=>gcEvent("gcal-one", "Googleカレンダーに追加")); } });
+ document.querySelectorAll("[data-sub-feed]").forEach(a=>{ if(!a.dataset.gcBound){ a.dataset.gcBound="1"; a.addEventListener("click", ()=>gcEvent("sub-"+a.dataset.subFeed, "カレンダー購読："+a.textContent)); } });
  document.querySelectorAll("[data-ics-event]").forEach(a=>a.onclick=ev=>{ev.preventDefault(); downloadCalendarIcsOne(a.dataset.icsEvent);});
  document.querySelectorAll("[data-calendar-type]").forEach(btn=>btn.onclick=()=>{selectedCalendarTypes=calendarToggleSelection(selectedCalendarTypes, btn.dataset.calendarType); gcEvent("cal-filter-type","カレンダー絞り込み（種類）"); renderCalendar();});
  document.querySelectorAll("[data-calendar-artist]").forEach(btn=>btn.onclick=()=>{selectedCalendarArtists=calendarToggleSelection(selectedCalendarArtists, btn.dataset.calendarArtist); gcEvent("cal-filter-artist","カレンダー絞り込み（アーティスト）"); renderCalendar();});
@@ -622,6 +640,7 @@ function renderCalendar(){
    <span class="pill">登録イベント ${calendarEvents().length}件</span>
   </section>
   <section class="card calendarFilterPanel">
+   ${renderCalendarSubscribe()}
    <div class="calendarActions">
     <button id="calendarIcsExportBtn" class="icsExportBtn" type="button" ${icsEvents.length ? "" : "disabled"}>${(selectedCalendarTypes.length||selectedCalendarArtists.length) ? `絞り込み中の${icsEvents.length}件をICSで書き出す` : "すべてをICSで書き出す"}</button>
     <button id="calendarIcsLiveBtn" class="icsExportBtn icsLiveBtn" type="button">公演だけまとめて追加（ICS）</button>
@@ -629,10 +648,10 @@ function renderCalendar(){
     ${(selectedCalendarTypes.length||selectedCalendarArtists.length) ? '<button id="calendarFilterResetBtn" class="icsExportBtn" type="button">絞り込みを解除（いまは絞り込み中）</button>' : ""}
    </div>
    <details class="icsHelp" open><summary>スマホのカレンダーに入れるには</summary>
-    <div><b>基本は「公演だけ」</b>（すべて入れなくてOK）<br><b>1.</b> 「公演だけまとめて追加（ICS）」を押す<br><b>2.</b> iPhone：共有メニュー（AirDropなどが並ぶ画面）が出たら、<b>右上の ✕</b> で閉じる → 「○件の予定」の画面の<b>左上の青い ✓</b> を押す<br>　 Android：「アプリで開く」→「カレンダー」→ 右上の「すべて追加」<br><b>3.</b> 入れる先のカレンダーを選ぶ（迷ったら普段使っているカレンダー）</div>
-    <div><b>行く公演だけ入れたい</b><br>下の予定カードの「iPhoneのカレンダーに追加」（Androidは「Googleカレンダーに追加」）を押す。1件ずつ入ります。</div>
-    <div><b>種類を選んで入れたい・色分けしたい</b><br>下の「イベント種別」で絞る → 「絞り込み中の○件をICSで書き出す」を押す → 上の2・3と同じ。種類ごとに別のカレンダーへ入れると色が分かれます。</div>
-    <div class="muted">Androidでファイルが開けないときは、「Googleカレンダーに追加」を使ってください。</div>
+    <div><b>いちばん簡単：上の「おすすめ」ボタン</b><br>ほしい種類（公演・チケット・グッズ）を押す → 確認画面で「登録／購読」を押す。1回で済み、あとは自動で増えます。</div>
+    <div><b>1件だけ入れたい</b><br>下の予定カードの「iPhoneのカレンダーに追加」（Androidは「Googleカレンダーに追加」）を押す。</div>
+    <div><b>ファイルで入れる（上でうまくいかないとき）</b><br><b>1.</b> 「公演だけまとめて追加（ICS）」を押す<br><b>2.</b> iPhone：共有メニュー（AirDropなどが並ぶ画面）が出たら、<b>右上の ✕</b> で閉じる → 「○件の予定」の画面の<b>左上の青い ✓</b> を押す<br>　 Android：「アプリで開く」→「カレンダー」→ 右上の「すべて追加」<br><b>3.</b> 入れる先のカレンダーを選ぶ<br>種類を選びたいときは、下の「イベント種別」で絞ってから「絞り込み中の○件をICSで書き出す」を押す。</div>
+    <div class="muted">Androidでおすすめボタンやファイルがうまくいかないときは、Googleカレンダー（パソコン版）の「他のカレンダー」→「URLで追加」に、<code>https://ai-z-lab.github.io/bz-setlist/bz-live.ics</code> を貼ってください（公演の場合）。</div>
    </details>
    <div class="calendarFilters">
     <div class="filterGroup"><div class="filterGroupTitle">イベント種別</div>${renderCalendarFilterButtons(CALENDAR_TYPE_ORDER, selectedCalendarTypes, "calendar-type")}</div>
