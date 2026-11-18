@@ -173,7 +173,9 @@ function latestEnteredShow(shows=data.shows){
  const done=shows.filter(s=>s.status==="入力済" && data.setlists.some(x=>x.showId===s.id)).sort((a,b)=>a.id.localeCompare(b.id));
  return done[done.length-1] || null;
 }
-let selectedTour = localStorage.getItem("selectedTour_v4") || (latestEnteredShow()||{}).tour || "FYOP+";
+// 開くたびに最新のツアーを表示する(以前は最後に押したツアーを端末に覚えていて、古いツアーが開いてしまっていた)
+try{ localStorage.removeItem("selectedTour_v4"); }catch(e){}
+let selectedTour = (latestEnteredShow()||{}).tour || "FYOP+";
 let selectedCalendarTypes = [];
 let selectedCalendarArtists = [];
 let selectedCalendarShowPast = false;
@@ -225,7 +227,7 @@ function tourBar(){
  return `<div class="tourbar">${items.map(t=>`<button class="tourBtn ${selectedTour===t.id?'active':''}" data-tour="${t.id}">${t.label}${t.year?`<small>${t.year}</small>`:""}</button>`).join("")}</div>`;
 }
 function bindTourBar(){
- document.querySelectorAll(".tourBtn").forEach(btn=>btn.onclick=()=>{gcEvent("tour-"+btn.dataset.tour,"ツアー："+btn.textContent.trim());selectedTour=btn.dataset.tour; localStorage.setItem("selectedTour_v4", selectedTour); const active=document.querySelector("nav button.active"); render(active?active.dataset.tab:"dash");});
+ document.querySelectorAll(".tourBtn").forEach(btn=>btn.onclick=()=>{gcEvent("tour-"+btn.dataset.tour,"ツアー："+btn.textContent.trim());selectedTour=btn.dataset.tour; const active=document.querySelector("nav button.active"); render(active?active.dataset.tab:"dash");});
 }
 
 const CALENDAR_TYPE_LABELS = {
@@ -857,7 +859,7 @@ function renderImport(){
  function readParsed(){try{return JSON.parse(out.value).filter(x=>x.showId&&x.order&&x.song)}catch(e){alert("先に整形してください");return null}}
  document.querySelector("#saveMergeBtn").onclick=()=>{const parsed=readParsed(); if(!parsed)return; const id=sel.value; data.setlists=data.setlists.filter(r=>!(r.showId===id&&parsed.some(p=>p.order===r.order))).concat(parsed); data.shows=data.shows.map(s=>s.id===id?{...s,status:"入力済"}:s); data.updated=new Date().toISOString().slice(0,10); saveLocal(); alert("追記・更新しました"); render("shows");};
  document.querySelector("#saveReplaceBtn").onclick=()=>{const parsed=readParsed(); if(!parsed)return; const id=sel.value; data.setlists=data.setlists.filter(r=>r.showId!==id).concat(parsed); data.shows=data.shows.map(s=>s.id===id?{...s,status:"入力済"}:s); data.updated=new Date().toISOString().slice(0,10); saveLocal(); alert("全上書きしました"); render("shows");};
- document.querySelector("#addShowBtn").onclick=()=>{const t=document.querySelector("#newTour").value, date=document.querySelector("#newDate").value.trim(), label=document.querySelector("#newLabel").value.trim()||date, area=document.querySelector("#newArea").value.trim(), venue=document.querySelector("#newVenue").value.trim(), type=document.querySelector("#newType").value; if(!date||!area||!venue){alert("日付・エリア・会場を入れてください");return;} const id=(date.replaceAll("/","-")+"-"+area+"-"+Math.random().toString(36).slice(2,6)).replace(/\s/g,""); data.shows.push({id,date,label,area,venue,status:"未入力",tour:t,series:t==="SHOWCASE"?"SHOWCASE":(t==="FYOD"?"FC":"LIVE-GYM"),type}); selectedTour=t; localStorage.setItem("selectedTour_v4",selectedTour); saveLocal(); alert("公演を追加しました。次にセトリを貼って保存できます。"); render("import");};
+ document.querySelector("#addShowBtn").onclick=()=>{const t=document.querySelector("#newTour").value, date=document.querySelector("#newDate").value.trim(), label=document.querySelector("#newLabel").value.trim()||date, area=document.querySelector("#newArea").value.trim(), venue=document.querySelector("#newVenue").value.trim(), type=document.querySelector("#newType").value; if(!date||!area||!venue){alert("日付・エリア・会場を入れてください");return;} const id=(date.replaceAll("/","-")+"-"+area+"-"+Math.random().toString(36).slice(2,6)).replace(/\s/g,""); data.shows.push({id,date,label,area,venue,status:"未入力",tour:t,series:t==="SHOWCASE"?"SHOWCASE":(t==="FYOD"?"FC":"LIVE-GYM"),type}); selectedTour=t;  saveLocal(); alert("公演を追加しました。次にセトリを貼って保存できます。"); render("import");};
 }
 (function(){
  const box=document.querySelector("#howto"); if(!box) return;
