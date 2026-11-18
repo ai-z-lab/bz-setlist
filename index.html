@@ -571,7 +571,7 @@ function calendarOneByOneHint(){
 }
 function renderCalendarSubscribeAndroid(){
  const copies = CALENDAR_SUB_FEEDS.map(f=>`<button type="button" class="icsExportBtn subBtn" data-copy-url="https://${CALENDAR_SUB_BASE}${f.file}">${f.label}のURLをコピー</button>`).join("");
- return `<div class="subBox"><div class="subTitle">カレンダーに入れる（Android）</div><div class="icsExportMeta">① 入れたい種類の「URLをコピー」を押す</div><div class="calendarActions">${copies}</div><div class="icsExportMeta">② 下のボタンでGoogleカレンダーの設定ページを開く<br>③ Chromeの右上メニュー（⋮）で「PC版サイト」にチェックを付ける<br>④ 欄にURLを貼って「カレンダーを追加」を押す<br>一度やれば、予定が増えたとき自動で入ります。<br><b>おすすめは、公演・チケット・グッズを別々に入れること</b>です（カレンダーごとに色を変えられます）。「すべて」は色分けできません。<br>※Androidは、機種やアプリの版によって動きが違います。うまくいかないときは、パソコンで同じ手順をするか、下の「うまくいかないとき・ほかの入れ方」を見てください。</div><div class="calendarActions"><a class="icsExportBtn subBtn" href="https://calendar.google.com/calendar/u/0/r/settings/addbyurl">Googleカレンダーの設定ページを開く</a></div>${calendarOneByOneHint()}</div>`;
+ return `<div class="subBox"><div class="subTitle">カレンダーに入れる（Android）</div><div class="icsExportMeta">① 入れたい種類の「URLをコピー」を押す</div><div class="calendarActions">${copies}</div><div class="icsExportMeta">② 下のボタンでGoogleカレンダーの設定ページを開く<br>③ Chromeの右上メニュー（⋮）で「PC版サイト」にチェックを付ける<br>④ 欄にURLを貼って「カレンダーを追加」を押す<br>一度やれば、予定が増えたとき自動で入ります。<br><b>おすすめは、公演・チケット・グッズを別々に入れること</b>です（カレンダーごとに色を変えられます）。「すべて」は色分けできません。<br>※Androidは、機種やアプリの版によって動きが違います。うまくいかないときは、パソコンで同じ手順をするか、予定の一覧にある「Googleカレンダーに追加」で1件ずつ入れてください。</div><div class="calendarActions"><a class="icsExportBtn subBtn" href="https://calendar.google.com/calendar/u/0/r/settings/addbyurl">Googleカレンダーの設定ページを開く</a></div>${calendarOneByOneHint()}</div>`;
 }
 function renderCalendarSubscribe(){
  if(calendarIsAndroid()) return renderCalendarSubscribeAndroid();
@@ -656,18 +656,8 @@ function renderCalendar(){
   </section>
   <section class="card calendarFilterPanel">
    ${renderCalendarSubscribe()}
-   <div class="calendarActions">
-    <button id="calendarIcsExportBtn" class="icsExportBtn" type="button" ${icsEvents.length ? "" : "disabled"}>${(selectedCalendarTypes.length||selectedCalendarArtists.length) ? `絞り込み中の${icsEvents.length}件をICSで書き出す` : "すべてをICSで書き出す"}</button>
-    <button id="calendarIcsLiveBtn" class="icsExportBtn icsLiveBtn" type="button">公演だけまとめて追加（ICS）</button>
-    <div class="icsExportMeta">${(selectedCalendarTypes.length||selectedCalendarArtists.length) ? `下の「イベント種別」「アーティスト」で絞り込んだ${icsEvents.length}件だけを書き出します。` : `日付確定済みの${icsEvents.length}件を書き出します。ほしい種類だけにするには、下で絞り込んでから押してください。`}</div>
-    ${(selectedCalendarTypes.length||selectedCalendarArtists.length) ? '<button id="calendarFilterResetBtn" class="icsExportBtn" type="button">絞り込みを解除（いまは絞り込み中）</button>' : ""}
-   </div>
-   <details class="icsHelp"><summary>うまくいかないとき・ほかの入れ方</summary>
-    <div><b>1件だけ入れたい</b><br>下の予定カードの「iPhoneのカレンダーに追加」（Androidは「Googleカレンダーに追加」）を押す。</div>
-    <div><b>ファイルで入れる（その時点の分だけ。あとから増えても自動では入りません）</b><br>「公演だけまとめて追加（ICS）」を押してファイルをもらい、次のようにします。<br><b>iPhone</b>：共有メニュー（AirDropなどが並ぶ画面）が出たら、右上の ✕ で閉じる → 「○件の予定」の画面の左上の青い ✓ を押す → 入れる先を選ぶ。<br><b>Android</b>：「アプリで開く」→「カレンダー」→ 右上の「すべて追加」。開けないときは、上の「かんたん」の方法か、「Googleカレンダーに追加」を使ってください。<br><b>パソコン</b>：Googleカレンダーを開き、右上の歯車 →「設定」→「インポート」で、もらったファイルを選ぶ。</div>
-    <div><b>種類を選んでファイルにしたい</b><br>下の「イベント種別」で絞ってから「絞り込み中の○件をICSで書き出す」を押す。</div>
-    
-   </details>
+   ${(selectedCalendarTypes.length||selectedCalendarArtists.length) ? '<div class="calendarActions"><button id="calendarFilterResetBtn" class="icsExportBtn" type="button">絞り込みを解除（いまは絞り込み中）</button></div>' : ""}
+   <!-- ICSファイルのダウンロード(downloadCalendarIcs)は、重複が増えて分かりにくいため画面から外している。コードは残してある。 -->
    <div class="calendarFilters">
     <div class="filterGroup"><div class="filterGroupTitle">イベント種別</div>${renderCalendarFilterButtons(CALENDAR_TYPE_ORDER, selectedCalendarTypes, "calendar-type")}</div>
     <div class="filterGroup"><div class="filterGroupTitle">アーティスト</div>${renderCalendarFilterButtons(CALENDAR_ARTIST_ORDER, selectedCalendarArtists, "calendar-artist")}</div>
