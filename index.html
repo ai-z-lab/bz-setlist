@@ -95,7 +95,7 @@ tr:hover td{background:#1c2130}.pill{display:inline-flex;border:1px solid var(--
 .matrix-wrap{contain:layout paint}
 .card{contain:layout}
 
-.subBox{margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.12)}.subTitle{font-weight:900;font-size:16px;color:var(--accent);margin-bottom:6px}.subBtn{text-decoration:none;display:inline-block;text-align:center}.recoBox{background:rgba(255,211,106,.14);border:1px solid var(--accent);border-radius:10px;padding:8px 10px;margin:8px 0;font-size:14px;font-weight:900;color:var(--accent);line-height:1.5}.recoBox small{display:block;color:var(--text);font-size:12px;font-weight:700;margin-top:3px}.subStep{color:var(--text);font-size:13px;font-weight:800;line-height:1.8;margin:8px 0 4px}.subStep b{color:var(--accent2)}.subAuto{color:var(--accent2);font-size:13px;font-weight:900;margin-top:8px}.subNote{color:var(--muted);font-size:12px;font-weight:700;line-height:1.6;margin-top:6px}.subChoice{border:1px solid var(--accent2);border-radius:10px;padding:8px 10px;margin:8px 0 12px}.subChoiceTitle{color:var(--accent2);font-size:14px;font-weight:900;margin-top:4px}.subChoice .subStep{margin-top:4px}.subBtnAll{background:transparent!important;color:var(--muted)!important;border:1px solid var(--line)!important}.icsHelp code{font-size:11px;word-break:break-all}
+.subBox{margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.12)}.subTitle{font-weight:900;font-size:16px;color:var(--accent);margin-bottom:6px}.subBtn{text-decoration:none;display:inline-block;text-align:center}.recoBox{background:rgba(255,211,106,.14);border:1px solid var(--accent);border-radius:10px;padding:8px 10px;margin:8px 0;font-size:14px;font-weight:900;color:var(--accent);line-height:1.5}.recoBox small{display:block;color:var(--text);font-size:12px;font-weight:700;margin-top:3px}.subStep{color:var(--text);font-size:13px;font-weight:800;line-height:1.8;margin:8px 0 4px}.subStep b{color:var(--accent2)}.subAuto{color:var(--accent2);font-size:13px;font-weight:900;margin-top:8px}.subNote{color:var(--muted);font-size:12px;font-weight:700;line-height:1.6;margin-top:6px}.subOther{margin-top:10px;color:var(--text)}.subOther summary{cursor:pointer;color:var(--accent);font-weight:900;font-size:13px}.subChoice{border:1px solid var(--accent2);border-radius:10px;padding:8px 10px;margin:8px 0 12px}.subChoiceTitle{color:var(--accent2);font-size:14px;font-weight:900;margin-top:4px}.subChoice .subStep{margin-top:4px}.subBtnAll{background:transparent!important;color:var(--muted)!important;border:1px solid var(--line)!important}.icsHelp code{font-size:11px;word-break:break-all}
 </style>
 </head>
 <body>
@@ -569,12 +569,16 @@ function calendarOneByOneHint(){
  const btn = calendarIsIos() ? "「iPhoneのカレンダーに追加」" : "「Googleカレンダーに追加」";
  return `<div class="subChoice"><div class="subChoiceTitle">方法1：1件だけ入れる</div><div class="subStep">下の予定の一覧で、入れたい予定の ${btn} を押す。</div><div class="calendarActions"><a class="icsExportBtn subBtn" href="#calendarList" data-scroll-list="1">予定の一覧へ ↓</a></div></div>`;
 }
+function calendarOtherAppsBox(){
+ const copies = CALENDAR_SUB_FEEDS.map(f=>`<button type="button" class="icsExportBtn subBtn${f.key==="all"?" subBtnAll":""}" data-copy-url="https://${CALENDAR_SUB_BASE}${f.file}">${f.key==="all"?"すべて（色分けなし）":f.label}のURLをコピー</button>`).join("");
+ return `<details class="subOther"><summary>Googleカレンダー以外のアプリを使っている人（Outlook、Appleカレンダーなど）</summary><div class="subStep">お使いのカレンダーアプリの「URLで追加」「購読」「インターネットカレンダー」などの項目に、下のURLを貼ってください。名前はアプリによって違います。</div><div class="calendarActions">${copies}</div><div class="subNote">アプリがURLの購読に対応していない場合は、この方法では入れられません。</div></details>`;
+}
 function calendarRecoBox(){
  return `<div class="recoBox">★ おすすめ：公演・チケット・グッズを、別々に入れる<small>カレンダーごとに色を変えられて、見やすくなります。「すべて」は1つにまとまり、色分けできません。</small></div>`;
 }
 function renderCalendarSubscribeAndroid(){
  const copies = CALENDAR_SUB_FEEDS.map(f=>`<button type="button" class="icsExportBtn subBtn${f.key==="all"?" subBtnAll":""}" data-copy-url="https://${CALENDAR_SUB_BASE}${f.file}">${f.key==="all"?"すべて（色分けなし）":f.label}のURLをコピー</button>`).join("");
- return `<div class="subBox"><div class="subTitle">カレンダーに入れる（Android）</div>${calendarOneByOneHint()}<div class="subChoiceTitle">方法2：まとめて入れる（自動で更新）</div>${calendarRecoBox()}<div class="subStep">① 入れたい種類の「URLをコピー」を押す</div><div class="calendarActions">${copies}</div><div class="subStep">② 下のボタンでGoogleカレンダーの設定ページを開く<br>③ Chromeの右上メニュー（⋮）で「PC版サイト」にチェックを付ける<br>④ 欄にURLを貼って「カレンダーを追加」を押す</div><div class="calendarActions"><a class="icsExportBtn subBtn" href="https://calendar.google.com/calendar/u/0/r/settings/addbyurl">Googleカレンダーの設定ページを開く</a></div><div class="subAuto">一度やれば、予定が増えたとき自動で入ります。</div><div class="subNote">※Androidは、機種やアプリの版によって動きが違います。うまくいかないときは、パソコンで同じ手順をするか、予定の一覧にある「Googleカレンダーに追加」で1件ずつ入れてください。</div></div>`;
+ return `<div class="subBox"><div class="subTitle">カレンダーに入れる（Android）</div>${calendarOneByOneHint()}<div class="subChoiceTitle">方法2：まとめて入れる（自動で更新）</div>${calendarRecoBox()}<div class="subStep">① 入れたい種類の「URLをコピー」を押す</div><div class="calendarActions">${copies}</div><div class="subStep">② 下のボタンでGoogleカレンダーの設定ページを開く<br>③ Chromeの右上メニュー（⋮）で「PC版サイト」にチェックを付ける<br>④ 欄にURLを貼って「カレンダーを追加」を押す</div><div class="calendarActions"><a class="icsExportBtn subBtn" href="https://calendar.google.com/calendar/u/0/r/settings/addbyurl">Googleカレンダーの設定ページを開く</a></div><div class="subAuto">一度やれば、予定が増えたとき自動で入ります。</div>${calendarOtherAppsBox()}<div class="subNote">※Androidは、機種やアプリの版によって動きが違います。うまくいかないときは、パソコンで同じ手順をするか、予定の一覧にある「Googleカレンダーに追加」で1件ずつ入れてください。</div></div>`;
 }
 function renderCalendarSubscribe(){
  if(calendarIsAndroid()) return renderCalendarSubscribeAndroid();
@@ -582,7 +586,7 @@ function renderCalendarSubscribe(){
  const step3 = calendarIsIos()
   ? "③ カレンダーアプリの下の「カレンダー」を押し、「照会」の下に増えた名前の<b>左の丸にチェック</b>を付ける"
   : "③ Googleカレンダーの左側の「他のカレンダー」に増えます（チェックが外れていたら付ける）";
- return `<div class="subBox"><div class="subTitle">カレンダーに入れる</div>${calendarOneByOneHint()}<div class="subChoiceTitle">方法2：まとめて入れる（自動で更新）</div>${calendarRecoBox()}<div class="subStep">① 入れたい種類を押す</div><div class="calendarActions">${buttons}</div><div class="subStep">② 出てきた画面で「購読」か「追加」を押す<br>${step3}</div><div class="subAuto">一度やれば、予定が増えたとき自動で入ります。</div></div>`;
+ return `<div class="subBox"><div class="subTitle">カレンダーに入れる</div>${calendarOneByOneHint()}<div class="subChoiceTitle">方法2：まとめて入れる（自動で更新）</div>${calendarRecoBox()}<div class="subStep">① 入れたい種類を押す</div><div class="calendarActions">${buttons}</div><div class="subStep">② 出てきた画面で「購読」か「追加」を押す<br>${step3}</div><div class="subAuto">一度やれば、予定が増えたとき自動で入ります。</div>${calendarOtherAppsBox()}</div>`;
 }
 function calendarIcsExportableEvents(events=filteredCalendarEvents()){
  return events.filter(event=>calendarIcsTiming(event));
