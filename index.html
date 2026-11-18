@@ -628,12 +628,11 @@ function renderCalendar(){
     <div class="icsExportMeta">${(selectedCalendarTypes.length||selectedCalendarArtists.length) ? `下の「イベント種別」「アーティスト」で絞り込んだ${icsEvents.length}件だけを書き出します。` : `日付確定済みの${icsEvents.length}件を書き出します。ほしい種類だけにするには、下で絞り込んでから押してください。`}</div>
     ${(selectedCalendarTypes.length||selectedCalendarArtists.length) ? '<button id="calendarFilterResetBtn" class="icsExportBtn" type="button">絞り込みを解除（いまは絞り込み中）</button>' : ""}
    </div>
-   <details class="icsHelp"><summary>スマホのカレンダーに入れるには</summary>
-    <div><b>① 行く公演だけ（かんたん）</b><br>下の予定のカードにある「iPhoneのカレンダーに追加」を押して、保存。<br>※この方法では、入れる先のカレンダーを選べません（標準のカレンダーに入ります）。入れる先を選びたい人は、「Googleカレンダーに追加」か、下の②③を使ってください。</div>
-    <div><b>② これからの公演を全部</b><br>「公演だけまとめて追加（ICS）」を押す。<br><b>iPhone</b>：「○件の予定」という画面が開く → <b>左上の青い ✓ を押す</b> → 入れる先のカレンダーを選んで追加。（✓を押すまでは追加されません）<br><b>Android</b>：「アプリで開く」と出たら「カレンダー」を選ぶ → 右上の「すべて追加」。出ないときは、ダウンロードしたファイルをタップして開く。</div>
-    <details class="icsHelpSub"><summary>入れる先のカレンダーの選び方（②③のとき）</summary><div>「すべて追加」を押すと、入れる先のカレンダーを選ぶ画面が出ます。<br>・手軽に：普段使っているアカウントの「マイ カレンダー」を選ぶ（他の予定と混ざります）。<br>・分けたい人：先に「B'z」「稲葉浩志」などの名前のカレンダーを作っておくと、ここで選べます（パソコンのブラウザの Googleカレンダー →「他のカレンダー」の「＋」→「新しいカレンダーを作成」）。この画面では新しく作れません。</div></div></details>
-    <div><b>③ ほしい種類だけ・色分けしたい</b><br>下の「イベント種別」「アーティスト」で絞り込む → 「絞り込み中の○件をICSで書き出す」を押す。使い方は②と同じ。<br>種類ごとに別のカレンダー（例：公演用・チケット用）に入れると、色分けできます。</div>
-    <div>迷ったら ①。②③で開けないときは、①を使ってください。</div>
+   <details class="icsHelp" open><summary>スマホのカレンダーに入れるには</summary>
+    <div><b>基本は「公演だけ」</b>（全部入れなくてOK）<br><b>1.</b> 「公演だけまとめて追加（ICS）」を押す<br><b>2.</b> iPhone：「○件の予定」の画面が開く → <b>左上の青い ✓</b> を押す<br>　 Android：「アプリで開く」→「カレンダー」→ 右上の「すべて追加」<br><b>3.</b> 入れる先のカレンダーを選ぶ（迷ったら普段使っているカレンダー）</div>
+    <div><b>行く公演だけ入れたい</b><br>下の予定カードの「iPhoneのカレンダーに追加」（Androidは「Googleカレンダーに追加」）を押す。1件ずつ入ります。</div>
+    <div><b>種類を選んで入れたい・色分けしたい</b><br>下の「イベント種別」で絞る → 「絞り込み中の○件をICSで書き出す」を押す → 上の2・3と同じ。種類ごとに別のカレンダーへ入れると色が分かれます。</div>
+    <div class="muted">Androidでファイルが開けないときは、「Googleカレンダーに追加」を使ってください。</div>
    </details>
    <div class="calendarFilters">
     <div class="filterGroup"><div class="filterGroupTitle">イベント種別</div>${renderCalendarFilterButtons(CALENDAR_TYPE_ORDER, selectedCalendarTypes, "calendar-type")}</div>
