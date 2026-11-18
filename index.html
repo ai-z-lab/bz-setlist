@@ -562,7 +562,7 @@ function calendarSubscribeUrl(file){
 }
 function renderCalendarSubscribe(){
  const buttons = CALENDAR_SUB_FEEDS.map(f=>`<a class="icsExportBtn subBtn" data-sub-feed="${f.key}" href="${calendarSubscribeUrl(f.file)}">${f.label}</a>`).join("");
- return `<div class="subBox"><div class="subTitle">カレンダーに入れる（かんたん・おすすめ）</div><div class="icsExportMeta">① 入れたい種類を押す</div><div class="calendarActions">${buttons}</div><div class="icsExportMeta">② 出てきた画面で「購読」か「追加」を押す<br>③ <b>iPhone</b>：カレンダーアプリの下の「カレンダー」を押し、「照会」の下に増えた名前の<b>左の丸にチェック</b>を付ける<br><b>Android</b>：追加先のアカウントを選ぶと「カレンダーを追加しました」と出ます。左上の ☰ を開き、増えた名前にチェックを付ける（見つからないときは、アカウントの下の「さらに表示」を開くか、数分待ってからもう一度見てください）<br>一度やれば、予定が増えたとき自動で入ります。「すべて」は3種類をまとめたものなので、種類ごとに入れた人は押さなくてOKです（二重に出ます）。種類ごとに色も変えられます。</div></div>`;
+ return `<div class="subBox"><div class="subTitle">カレンダーに入れる（かんたん・おすすめ）</div><div class="icsExportMeta">① 入れたい種類を押す</div><div class="calendarActions">${buttons}</div><div class="icsExportMeta">② 出てきた画面で「購読」か「追加」を押す<br>③ <b>iPhone</b>：カレンダーアプリの下の「カレンダー」を押し、「照会」の下に増えた名前の<b>左の丸にチェック</b>を付ける<br><b>Android</b>：このボタンでは登録できないことが確認できました。下の「うまくいかないとき・ほかの入れ方」を使ってください。<br>一度やれば、予定が増えたとき自動で入ります。「すべて」は3種類をまとめたものなので、種類ごとに入れた人は押さなくてOKです（二重に出ます）。種類ごとに色も変えられます。</div></div>`;
 }
 function calendarIcsExportableEvents(events=filteredCalendarEvents()){
  return events.filter(event=>calendarIcsTiming(event));
