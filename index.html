@@ -563,14 +563,18 @@ function calendarSubscribeUrl(file){
 function calendarIsAndroid(){
  return /Android/.test(navigator.userAgent || "");
 }
+function calendarOneByOneHint(){
+ const btn = calendarIsIos() ? "「iPhoneのカレンダーに追加」" : "「Googleカレンダーに追加」";
+ return `<div class="icsExportMeta oneByOne"><b>1件だけ入れたいとき</b>：下の予定の一覧で、入れたい予定の ${btn} を押す。</div>`;
+}
 function renderCalendarSubscribeAndroid(){
  const copies = CALENDAR_SUB_FEEDS.map(f=>`<button type="button" class="icsExportBtn subBtn" data-copy-url="https://${CALENDAR_SUB_BASE}${f.file}">${f.label}のURLをコピー</button>`).join("");
- return `<div class="subBox"><div class="subTitle">カレンダーに入れる（Android）</div><div class="icsExportMeta">① 入れたい種類の「URLをコピー」を押す</div><div class="calendarActions">${copies}</div><div class="icsExportMeta">② 下のボタンでGoogleカレンダーの設定ページを開く<br>③ Chromeの右上メニュー（⋮）で「PC版サイト」にチェックを付ける<br>④ 欄にURLを貼って「カレンダーを追加」を押す<br>一度やれば、予定が増えたとき自動で入ります。<br>※Androidは、機種やアプリの版によって動きが違います。うまくいかないときは、パソコンで同じ手順をするか、下の「うまくいかないとき・ほかの入れ方」を見てください。</div><div class="calendarActions"><a class="icsExportBtn subBtn" href="https://calendar.google.com/calendar/u/0/r/settings/addbyurl">Googleカレンダーの設定ページを開く</a></div></div>`;
+ return `<div class="subBox"><div class="subTitle">カレンダーに入れる（Android）</div><div class="icsExportMeta">① 入れたい種類の「URLをコピー」を押す</div><div class="calendarActions">${copies}</div><div class="icsExportMeta">② 下のボタンでGoogleカレンダーの設定ページを開く<br>③ Chromeの右上メニュー（⋮）で「PC版サイト」にチェックを付ける<br>④ 欄にURLを貼って「カレンダーを追加」を押す<br>一度やれば、予定が増えたとき自動で入ります。<br>※Androidは、機種やアプリの版によって動きが違います。うまくいかないときは、パソコンで同じ手順をするか、下の「うまくいかないとき・ほかの入れ方」を見てください。</div><div class="calendarActions"><a class="icsExportBtn subBtn" href="https://calendar.google.com/calendar/u/0/r/settings/addbyurl">Googleカレンダーの設定ページを開く</a></div>${calendarOneByOneHint()}</div>`;
 }
 function renderCalendarSubscribe(){
  if(calendarIsAndroid()) return renderCalendarSubscribeAndroid();
  const buttons = CALENDAR_SUB_FEEDS.map(f=>`<a class="icsExportBtn subBtn" data-sub-feed="${f.key}" href="${calendarSubscribeUrl(f.file)}">${f.label}</a>`).join("");
- return `<div class="subBox"><div class="subTitle">カレンダーに入れる（かんたん・おすすめ）</div><div class="icsExportMeta">① 入れたい種類を押す</div><div class="calendarActions">${buttons}</div><div class="icsExportMeta">② 出てきた画面で「購読」か「追加」を押す<br>③ <b>iPhone</b>：カレンダーアプリの下の「カレンダー」を押し、「照会」の下に増えた名前の<b>左の丸にチェック</b>を付ける<br>一度やれば、予定が増えたとき自動で入ります。「すべて」は3種類をまとめたものなので、種類ごとに入れた人は押さなくてOKです（二重に出ます）。種類ごとに色も変えられます。</div></div>`;
+ return `<div class="subBox"><div class="subTitle">カレンダーに入れる（かんたん・おすすめ）</div><div class="icsExportMeta">① 入れたい種類を押す</div><div class="calendarActions">${buttons}</div><div class="icsExportMeta">② 出てきた画面で「購読」か「追加」を押す<br>${calendarIsIos() ? "③ カレンダーアプリの下の「カレンダー」を押し、「照会」の下に増えた名前の<b>左の丸にチェック</b>を付ける<br>" : "③ Googleカレンダーの左側の「他のカレンダー」に増えます（チェックが外れていたら付ける）<br>"}一度やれば、予定が増えたとき自動で入ります。「すべて」は3種類をまとめたものなので、種類ごとに入れた人は押さなくてOKです（二重に出ます）。種類ごとに色も変えられます。</div>${calendarOneByOneHint()}</div>`;
 }
 function calendarIcsExportableEvents(events=filteredCalendarEvents()){
  return events.filter(event=>calendarIcsTiming(event));
