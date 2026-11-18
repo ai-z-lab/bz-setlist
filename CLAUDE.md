@@ -11,3 +11,8 @@
 - マージ前に `node --test tests/*.test.mjs` を通す。`tests/inline-script-syntax.test.mjs` が index.html のスクリプトの構文エラーを検出する。
 - マージ後は、Pagesのデプロイ成功だけで完了としない。公開ページ（https://ai-z-lab.github.io/bz-setlist/?v=<新しい値>）を実際に開き、公演のプルダウンとセトリ、カレンダーなど主要タブに中身が出ることを確認してから報告する。確認できない場合は「公開表示は未確認」と書く。
 - 一度に複数のPRを続けてマージせず、1つずつ公開ページで確認する。
+
+## 購読用カレンダー(bz-*.ics)
+- `bz-live.ics` `bz-ticket.ics` `bz-goods.ics` `bz-all.ics` は、`window.BZ_DATA` から `node scripts/build-ics.mjs` で生成するファイル(アプリの「自動で更新されるカレンダーに登録」の購読先)。
+- `calendarEvents` などのデータを変えたら、必ず `node scripts/build-ics.mjs` を実行して、生成された `bz-*.ics` も同じPRでコミットする。忘れると `tests/ics-feeds.test.mjs` が失敗する。
+- 手でファイルを編集しない。
