@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:bz-vermillion.com)",
+      "WebFetch(domain:bp.bz-party.com)",
+      "WebFetch(domain:www.1000wave.net)",
+      "WebFetch(domain:bz-ticket.com)"
+    ]
+  }
+}
