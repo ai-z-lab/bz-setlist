@@ -564,7 +564,7 @@ function calendarIsAndroid(){
  return /Android/.test(navigator.userAgent || "");
 }
 function renderCalendarSubscribeAndroid(){
- const copies = CALENDAR_SUB_FEEDS.filter(f=>f.key!=="all").map(f=>`<button type="button" class="icsExportBtn subBtn" data-copy-url="https://${CALENDAR_SUB_BASE}${f.file}">${f.label}のURLをコピー</button>`).join("");
+ const copies = CALENDAR_SUB_FEEDS.map(f=>`<button type="button" class="icsExportBtn subBtn" data-copy-url="https://${CALENDAR_SUB_BASE}${f.file}">${f.label}のURLをコピー</button>`).join("");
  return `<div class="subBox"><div class="subTitle">カレンダーに入れる（Android）</div><div class="icsExportMeta">① 入れたい種類の「URLをコピー」を押す</div><div class="calendarActions">${copies}</div><div class="icsExportMeta">② 下のボタンでGoogleカレンダーの設定ページを開く<br>③ Chromeの右上メニュー（⋮）で「PC版サイト」にチェックを付ける<br>④ 欄にURLを貼って「カレンダーを追加」を押す<br>一度やれば、予定が増えたとき自動で入ります。</div><div class="calendarActions"><a class="icsExportBtn subBtn" href="https://calendar.google.com/calendar/u/0/r/settings/addbyurl">Googleカレンダーの設定ページを開く</a></div></div>`;
 }
 function renderCalendarSubscribe(){
