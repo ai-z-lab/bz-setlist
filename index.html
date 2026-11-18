@@ -560,9 +560,17 @@ function calendarSubscribeUrl(file){
  const feed = "webcal://" + CALENDAR_SUB_BASE + file;
  return calendarIsIos() ? feed : `https://calendar.google.com/calendar/r?cid=${encodeURIComponent(feed)}`;
 }
+function calendarIsAndroid(){
+ return /Android/.test(navigator.userAgent || "");
+}
+function renderCalendarSubscribeAndroid(){
+ const copies = CALENDAR_SUB_FEEDS.filter(f=>f.key!=="all").map(f=>`<button type="button" class="icsExportBtn subBtn" data-copy-url="https://${CALENDAR_SUB_BASE}${f.file}">${f.label}のURLをコピー</button>`).join("");
+ return `<div class="subBox"><div class="subTitle">カレンダーに入れる（Android）</div><div class="icsExportMeta">① 入れたい種類の「URLをコピー」を押す</div><div class="calendarActions">${copies}</div><div class="icsExportMeta">② 下のボタンでGoogleカレンダーの設定ページを開く<br>③ Chromeの右上メニュー（⋮）で「PC版サイト」にチェックを付ける<br>④ 欄にURLを貼って「カレンダーを追加」を押す<br>一度やれば、予定が増えたとき自動で入ります。</div><div class="calendarActions"><a class="icsExportBtn subBtn" href="https://calendar.google.com/calendar/u/0/r/settings/addbyurl">Googleカレンダーの設定ページを開く</a></div></div>`;
+}
 function renderCalendarSubscribe(){
+ if(calendarIsAndroid()) return renderCalendarSubscribeAndroid();
  const buttons = CALENDAR_SUB_FEEDS.map(f=>`<a class="icsExportBtn subBtn" data-sub-feed="${f.key}" href="${calendarSubscribeUrl(f.file)}">${f.label}</a>`).join("");
- return `<div class="subBox"><div class="subTitle">カレンダーに入れる（かんたん・おすすめ）</div><div class="icsExportMeta">① 入れたい種類を押す</div><div class="calendarActions">${buttons}</div><div class="icsExportMeta">② 出てきた画面で「購読」か「追加」を押す<br>③ <b>iPhone</b>：カレンダーアプリの下の「カレンダー」を押し、「照会」の下に増えた名前の<b>左の丸にチェック</b>を付ける<br><b>Android</b>：このボタンでは登録できません。下の「Androidの登録方法」を見てください。<br>一度やれば、予定が増えたとき自動で入ります。「すべて」は3種類をまとめたものなので、種類ごとに入れた人は押さなくてOKです（二重に出ます）。種類ごとに色も変えられます。</div></div>`;
+ return `<div class="subBox"><div class="subTitle">カレンダーに入れる（かんたん・おすすめ）</div><div class="icsExportMeta">① 入れたい種類を押す</div><div class="calendarActions">${buttons}</div><div class="icsExportMeta">② 出てきた画面で「購読」か「追加」を押す<br>③ <b>iPhone</b>：カレンダーアプリの下の「カレンダー」を押し、「照会」の下に増えた名前の<b>左の丸にチェック</b>を付ける<br>一度やれば、予定が増えたとき自動で入ります。「すべて」は3種類をまとめたものなので、種類ごとに入れた人は押さなくてOKです（二重に出ます）。種類ごとに色も変えられます。</div></div>`;
 }
 function calendarIcsExportableEvents(events=filteredCalendarEvents()){
  return events.filter(event=>calendarIcsTiming(event));
@@ -616,6 +624,7 @@ function downloadCalendarIcsOne(eventId){
 }
 function bindCalendarFilters(){
  document.querySelectorAll('a[href^="https://calendar.google.com/"]').forEach(a=>{ if(!a.dataset.gcBound){ a.dataset.gcBound="1"; a.addEventListener("click", ()=>gcEvent("gcal-one", "Googleカレンダーに追加")); } });
+ document.querySelectorAll("[data-copy-url]").forEach(btn=>{ if(!btn.dataset.gcBound){ btn.dataset.gcBound="1"; btn.addEventListener("click", ()=>{ const url=btn.dataset.copyUrl; const done=()=>{ const old=btn.dataset.label||btn.textContent; btn.dataset.label=old; btn.textContent="コピーしました"; setTimeout(()=>{btn.textContent=old;},2000); gcEvent("sub-copy","購読URLコピー："+old); }; try{ navigator.clipboard.writeText(url).then(done, ()=>{ prompt("このURLをコピーしてください", url); }); }catch(e){ prompt("このURLをコピーしてください", url); } }); } });
  document.querySelectorAll("[data-sub-feed]").forEach(a=>{ if(!a.dataset.gcBound){ a.dataset.gcBound="1"; a.addEventListener("click", ()=>gcEvent("sub-"+a.dataset.subFeed, "カレンダー購読："+a.textContent)); } });
  document.querySelectorAll("[data-ics-event]").forEach(a=>a.onclick=ev=>{ev.preventDefault(); downloadCalendarIcsOne(a.dataset.icsEvent);});
  document.querySelectorAll("[data-calendar-type]").forEach(btn=>btn.onclick=()=>{selectedCalendarTypes=calendarToggleSelection(selectedCalendarTypes, btn.dataset.calendarType); gcEvent("cal-filter-type","カレンダー絞り込み（種類）"); renderCalendar();});
@@ -647,9 +656,6 @@ function renderCalendar(){
     <div class="icsExportMeta">${(selectedCalendarTypes.length||selectedCalendarArtists.length) ? `下の「イベント種別」「アーティスト」で絞り込んだ${icsEvents.length}件だけを書き出します。` : `日付確定済みの${icsEvents.length}件を書き出します。ほしい種類だけにするには、下で絞り込んでから押してください。`}</div>
     ${(selectedCalendarTypes.length||selectedCalendarArtists.length) ? '<button id="calendarFilterResetBtn" class="icsExportBtn" type="button">絞り込みを解除（いまは絞り込み中）</button>' : ""}
    </div>
-   <details class="icsHelp" open><summary>Androidの登録方法</summary>
-    <div><b>1.</b> Chromeで <code>https://calendar.google.com/calendar/u/0/r/settings/addbyurl</code> を開く<br><b>2.</b> Chromeの右上メニュー（⋮）で「PC版サイト」にチェックを付ける<br><b>3.</b> 欄に <code>https://ai-z-lab.github.io/bz-setlist/bz-live.ics</code> を貼って「カレンダーを追加」を押す<br>チケットは <code>bz-ticket.ics</code>、グッズは <code>bz-goods.ics</code> に変えて同じようにします。予定が増えたとき自動で入ります。</div>
-   </details>
    <details class="icsHelp"><summary>うまくいかないとき・ほかの入れ方</summary>
     <div><b>1件だけ入れたい</b><br>下の予定カードの「iPhoneのカレンダーに追加」（Androidは「Googleカレンダーに追加」）を押す。</div>
     <div><b>ファイルで入れる（その時点の分だけ。あとから増えても自動では入りません）</b><br>「公演だけまとめて追加（ICS）」を押してファイルをもらい、次のようにします。<br><b>iPhone</b>：共有メニュー（AirDropなどが並ぶ画面）が出たら、右上の ✕ で閉じる → 「○件の予定」の画面の左上の青い ✓ を押す → 入れる先を選ぶ。<br><b>Android</b>：「アプリで開く」→「カレンダー」→ 右上の「すべて追加」。開けないときは、上の「かんたん」の方法か、「Googleカレンダーに追加」を使ってください。<br><b>パソコン</b>：Googleカレンダーを開き、右上の歯車 →「設定」→「インポート」で、もらったファイルを選ぶ。</div>
