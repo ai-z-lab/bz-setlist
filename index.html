@@ -571,7 +571,19 @@ function calendarOneByOneHint(){
 }
 function calendarOtherAppsBox(){
  const copies = CALENDAR_SUB_FEEDS.map(f=>`<button type="button" class="icsExportBtn subBtn${f.key==="all"?" subBtnAll":""}" data-copy-url="https://${CALENDAR_SUB_BASE}${f.file}">${f.key==="all"?"すべて（色分けなし）":f.label}のURLをコピー</button>`).join("");
- return `<details class="subOther"><summary>Googleカレンダー以外のアプリを使っている人（Outlook、Appleカレンダーなど）</summary><div class="subStep">お使いのカレンダーアプリの「URLで追加」「購読」「インターネットカレンダー」などの項目に、下のURLを貼ってください。名前はアプリによって違います。</div><div class="calendarActions">${copies}</div><div class="subNote">アプリがURLの購読に対応していない場合は、この方法では入れられません。</div></details>`;
+ // いま上に出しているのと反対のカレンダー(iPhoneならGoogle、MacなどならApple)のリンクも出す
+ let alt = "";
+ if(!calendarIsAndroid()){
+  const iosLike = calendarIsIos();
+  const label = iosLike ? "Googleカレンダーを使っている人" : "Appleカレンダーを使っている人（Mac）";
+  const links = CALENDAR_SUB_FEEDS.map(f=>{
+   const feed = "webcal://" + CALENDAR_SUB_BASE + f.file;
+   const href = iosLike ? `https://calendar.google.com/calendar/r?cid=${encodeURIComponent(feed)}` : feed;
+   return `<a class="icsExportBtn subBtn${f.key==="all"?" subBtnAll":""}" href="${href}">${f.key==="all"?"すべて（色分けなし）":f.label}</a>`;
+  }).join("");
+  alt = `<div class="subStep">${label}：</div><div class="calendarActions">${links}</div>`;
+ }
+ return `<details class="subOther"><summary>使っているカレンダーアプリが違う人</summary>${alt}<div class="subStep">Outlookなど、そのほかのアプリは、「URLで追加」「購読」「インターネットカレンダー」などの項目に、下のURLを貼ってください。名前はアプリによって違います。</div><div class="calendarActions">${copies}</div><div class="subNote">アプリがURLの購読に対応していない場合は、この方法では入れられません。</div></details>`;
 }
 function calendarRecoBox(){
  return `<div class="recoBox">★ おすすめ：公演・チケット・グッズを、別々に入れる<small>カレンダーごとに色を変えられて、見やすくなります。「すべて」は1つにまとまり、色分けできません。</small></div>`;
