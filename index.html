@@ -524,6 +524,7 @@ function calendarIcsEvent(event, dtstamp){
   `SUMMARY:${escapeIcsText(calendarIcsSummary(event))}`,
   `DESCRIPTION:${escapeIcsText(calendarIcsDescription(event))}`,
   `LOCATION:${escapeIcsText(calendarIcsLocation(event))}`,
+  "X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist",
   "END:VEVENT"
  ];
  return lines.map(foldIcsLine).join("\r\n");
@@ -537,6 +538,8 @@ function buildCalendarIcs(events, opts={}){
   "CALSCALE:GREGORIAN",
   ...(opts.name ? [`X-WR-CALNAME:${escapeIcsText(opts.name)}`, "REFRESH-INTERVAL;VALUE=DURATION:PT12H", "X-PUBLISHED-TTL:PT12H"] : []),
   "X-WR-TIMEZONE:Asia/Tokyo",
+  "X-WR-CALDESC:B'zセットリストアプリ (ai-z-lab) が作成。https://ai-z-lab.github.io/bz-setlist/",
+  "X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist",
   "BEGIN:VTIMEZONE",
   "TZID:Asia/Tokyo",
   "BEGIN:STANDARD",

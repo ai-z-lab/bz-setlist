@@ -6,6 +6,8 @@ X-WR-CALNAME:B'z グッズ
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 X-WR-TIMEZONE:Asia/Tokyo
+X-WR-CALDESC:B'zセットリストアプリ (ai-z-lab) が作成。https://ai-z-lab.github.io/bz-setlist/
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 BEGIN:VTIMEZONE
 TZID:Asia/Tokyo
 BEGIN:STANDARD
@@ -29,6 +31,7 @@ DESCRIPTION:SHIBUYA TSUTAYA店頭受取の予約購入者向け。受取
  京\n受付元：SHIBUYA TSUTAYA\nURL：https://shibuyatsutaya.tsite.jp/ar
  ticle/2683.html
 LOCATION:東京 SHIBUYA TSUTAYA 地下2F
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-20-bz-party-calendar-2027-sale-start@bz-setlist
@@ -46,6 +49,7 @@ DESCRIPTION:B'z PARTY正規会員限定（冬季限定）。卓上週め
  ：グッズ\nアーティスト：B'z\nツアー：B'z PARTY ONLINE SHOP\
  nURL：https://bp.bz-party.com/sitenews_det.php?id=21807
 LOCATION:
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-23-1chance-official-goods-postsale-end@bz-setlist
@@ -61,6 +65,7 @@ DESCRIPTION:フェス公式グッズ一部商品の事後通販。10/13 19
  イン\n受付元：1CHANCE FESTIVAL 2026 公式ストア\nURL：https://1
  chancefes-store.com/blogs/news/261013
 LOCATION:オンライン 1CHANCE FESTIVAL 2026 公式ストア
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-24-tmg-store-goods-start@bz-setlist
@@ -75,6 +80,7 @@ DESCRIPTION:システムの安全性確認およびセキュリティ対
  “SAYONARA”\nエリア：オンライン\n受付元：B'z the Store\nUR
  L：https://bz-vermillion.com/news/261023.html
 LOCATION:オンライン B'z the Store
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-30-tmg-store-goods-end@bz-setlist
@@ -89,6 +95,7 @@ DESCRIPTION:システムの安全性確認およびセキュリティ対
  “SAYONARA”\nエリア：オンライン\n受付元：B'z the Store\nUR
  L：https://bz-vermillion.com/news/261023.html
 LOCATION:オンライン B'z the Store
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-31-env-okinawa-goods-start@bz-setlist
@@ -103,6 +110,7 @@ DESCRIPTION:Koshi Inaba LIVE 2026-2027 ～enV～ 沖縄コンベンショ
  Koshi Inaba LIVE 2026-2027 ～enV～\nエリア：沖縄\n受付元：B'z 
  Official Website\nURL：https://bz-vermillion.com/en5/goods.html#goodsinfo
 LOCATION:沖縄 沖縄コンベンションセンター 劇場棟
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-01-env-okinawa-goods-start@bz-setlist
@@ -117,6 +125,7 @@ DESCRIPTION:Koshi Inaba LIVE 2026-2027 ～enV～ 沖縄コンベンショ
  Koshi Inaba LIVE 2026-2027 ～enV～\nエリア：沖縄\n受付元：B'z 
  Official Website\nURL：https://bz-vermillion.com/en5/goods.html#goodsinfo
 LOCATION:沖縄 沖縄コンベンションセンター 劇場棟
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-02-bz-party-shop-blanket-order-start@bz-setlist
@@ -134,6 +143,7 @@ DESCRIPTION:B'z PARTY正規会員限定（2026年11月現在の正規会
  ィスト：B'z\nツアー：B'z PARTY ONLINE SHOP\nURL：https://shop.bp.
  bz-party.com/products/blanket
 LOCATION:
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-05-env-oita-goods-start@bz-setlist
@@ -148,6 +158,7 @@ DESCRIPTION:Koshi Inaba LIVE 2026-2027 ～enV～ iichikoグランシアタ
   ～enV～\nエリア：大分\n受付元：B'z Official Website\nURL：ht
  tps://bz-vermillion.com/en5/goods.html#goodsinfo
 LOCATION:大分 iichikoグランシアタ
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-07-env-fukuoka-goods-start@bz-setlist
@@ -162,6 +173,7 @@ DESCRIPTION:Koshi Inaba LIVE 2026-2027 ～enV～ 福岡市民ホール 大
  2026-2027 ～enV～\nエリア：福岡\n受付元：B'z Official Website\
  nURL：https://bz-vermillion.com/en5/goods.html#goodsinfo
 LOCATION:福岡 福岡市民ホール 大ホール
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-08-env-fukuoka-goods-start@bz-setlist
@@ -176,6 +188,7 @@ DESCRIPTION:Koshi Inaba LIVE 2026-2027 ～enV～ 福岡市民ホール 大
  2026-2027 ～enV～\nエリア：福岡\n受付元：B'z Official Website\
  nURL：https://bz-vermillion.com/en5/goods.html#goodsinfo
 LOCATION:福岡 福岡市民ホール 大ホール
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-13-bz-party-shop-blanket-order-deadline@bz-setlist
@@ -193,6 +206,7 @@ DESCRIPTION:B'z PARTY正規会員限定（2026年11月現在の正規会
  ィスト：B'z\nツアー：B'z PARTY ONLINE SHOP\nURL：https://shop.bp.
  bz-party.com/products/blanket
 LOCATION:
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-14-env-sapporo-goods-start@bz-setlist
@@ -207,6 +221,7 @@ DESCRIPTION:Koshi Inaba LIVE 2026-2027 ～enV～ 札幌文化芸術劇場h
  6-2027 ～enV～\nエリア：北海道\n受付元：B'z Official Website\
  nURL：https://bz-vermillion.com/en5/goods.html#goodsinfo
 LOCATION:北海道 札幌文化芸術劇場hitaru
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-16-env-obihiro-goods-start@bz-setlist
@@ -221,6 +236,7 @@ DESCRIPTION:Koshi Inaba LIVE 2026-2027 ～enV～ 帯広市民文化ホー
  aba LIVE 2026-2027 ～enV～\nエリア：北海道\n受付元：B'z Offic
  ial Website\nURL：https://bz-vermillion.com/en5/goods.html#goodsinfo
 LOCATION:北海道 帯広市民文化ホール 大ホール
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-20-env-koriyama-goods-start@bz-setlist
@@ -235,6 +251,7 @@ DESCRIPTION:Koshi Inaba LIVE 2026-2027 ～enV～ けんしん郡山文化
  Koshi Inaba LIVE 2026-2027 ～enV～\nエリア：福島\n受付元：B'z 
  Official Website\nURL：https://bz-vermillion.com/en5/goods.html#goodsinfo
 LOCATION:福島 けんしん郡山文化センター 大ホール
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-20-bz-party-calendar-2027-december-shipping-deadline@bz-setlis
@@ -254,6 +271,7 @@ DESCRIPTION:11/20(金)までの注文分が、12月中旬〜下旬ごろ
  別：グッズ\nアーティスト：B'z\nツアー：B'z PARTY ONLINE SH
  OP\nURL：https://bp.bz-party.com/sitenews_det.php?id=21807
 LOCATION:
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-22-env-sendai-goods-start@bz-setlist
@@ -268,6 +286,7 @@ DESCRIPTION:Koshi Inaba LIVE 2026-2027 ～enV～ 仙台サンプラザホ
  6-2027 ～enV～\nエリア：宮城\n受付元：B'z Official Website\nUR
  L：https://bz-vermillion.com/en5/goods.html#goodsinfo
 LOCATION:宮城 仙台サンプラザホール
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-23-env-akita-goods-start@bz-setlist
@@ -282,6 +301,7 @@ DESCRIPTION:Koshi Inaba LIVE 2026-2027 ～enV～ あきた芸術劇場 ミ
  hi Inaba LIVE 2026-2027 ～enV～\nエリア：秋田\n受付元：B'z Off
  icial Website\nURL：https://bz-vermillion.com/en5/goods.html#goodsinfo
 LOCATION:秋田 あきた芸術劇場 ミルハス 大ホール
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2027-koshi-analog-2027-01-27@bz-setlist
@@ -294,6 +314,7 @@ DESCRIPTION:発売日：2027-01-27。LP2枚組、5\,500円（税込）。\
  デビュー30周年 アナログ盤\n受付元：B’z Official Website\n
  URL：https://bz-vermillion.com/news/260916.html
 LOCATION:
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2027-koshi-analog-2027-02-24@bz-setlist
@@ -306,6 +327,7 @@ DESCRIPTION:発売日：2027-02-24。LP2枚組、5\,500円（税込）。\
  デビュー30周年 アナログ盤\n受付元：B’z Official Website\n
  URL：https://bz-vermillion.com/news/260916.html
 LOCATION:
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2027-koshi-analog-2027-03-10@bz-setlist
@@ -318,6 +340,7 @@ DESCRIPTION:発売日：2027-03-10。LP2枚組、5\,500円（税込）。\
  デビュー30周年 アナログ盤\n受付元：B’z Official Website\n
  URL：https://bz-vermillion.com/news/260916.html
 LOCATION:
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2027-koshi-analog-2027-04-07@bz-setlist
@@ -330,6 +353,7 @@ DESCRIPTION:発売日：2027-04-07。LP2枚組、5\,500円（税込）。\
  デビュー30周年 アナログ盤\n受付元：B’z Official Website\n
  URL：https://bz-vermillion.com/news/260916.html
 LOCATION:
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2027-koshi-analog-2027-05-26@bz-setlist
@@ -342,6 +366,7 @@ DESCRIPTION:発売日：2027-05-26。LP2枚組、5\,500円（税込）。\
  デビュー30周年 アナログ盤\n受付元：B’z Official Website\n
  URL：https://bz-vermillion.com/news/260916.html
 LOCATION:
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2027-koshi-analog-2027-06-30@bz-setlist
@@ -354,5 +379,6 @@ DESCRIPTION:発売日：2027-06-30。LP2枚組、5\,500円（税込）。\
  デビュー30周年 アナログ盤\n受付元：B’z Official Website\n
  URL：https://bz-vermillion.com/news/260916.html
 LOCATION:
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 END:VCALENDAR
