@@ -150,6 +150,18 @@ function syncOfficialSetlistTours(){
    return official && official.song===row.song && official.section!==row.section ? {...row, section: official.section} : row;
   });
  }
+ // 共演の注記と、6/21の曲順修正（3曲目と4曲目）を、保存済みブラウザにも反映する（曲が同じ行に注記を足すだけ。ほかの編集は触らない）
+ const unitShowIds = new Set(officialShows.filter(show=>show.tour==="UNITE #01" || show.tour==="UNITE #02").map(show=>show.id));
+ if(unitShowIds.size){
+  const unitRows = new Map((window.BZ_DATA.setlists || []).filter(row=>unitShowIds.has(row.showId)).map(row=>[row.showId+"#"+row.order, row]));
+  data.setlists = (data.setlists || []).map(row=>{
+   const official = unitShowIds.has(row.showId) ? unitRows.get(row.showId+"#"+row.order) : null;
+   if(!official) return row;
+   const swapped = row.showId==="2025-06-21-unite02-yokohama" && (row.order===3 || row.order===4) && official.song!==row.song && unitRows.get(row.showId+"#"+(row.order===3?4:3)) && unitRows.get(row.showId+"#"+(row.order===3?4:3)).song===row.song;
+   const next = swapped ? {...row, song: official.song} : row;
+   return next.song===official.song && official.note && !next.note ? {...next, note: official.note} : next;
+  });
+ }
  const existingShowIds = new Set((data.shows || []).map(show=>show.id));
  const newShows = officialShows.filter(show=>!existingShowIds.has(show.id));
  if(newShows.length){
