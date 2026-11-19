@@ -22,14 +22,15 @@ UID:2026-10-13-tmg-shibuya-tsutaya-pickup@bz-setlist
 DTSTAMP:20261119T000000Z
 DTSTART;TZID=Asia/Tokyo:20261013T000000
 DTEND;TZID=Asia/Tokyo:20261013T000100
-SUMMARY:TMG｜TMG Ⅲ SAYONARA 予約CD店頭受取期間
+SUMMARY:TMG⁠‌​‌⁠｜TMG Ⅲ SAYONARA 予約CD店頭受取期間
 DESCRIPTION:SHIBUYA TSUTAYA店頭受取の予約購入者向け。受取
  期間：10/13(火)〜10/26(月)。商品入荷後より受渡し。購入
  特典は先着缶バッジ（予約分は確保）。予約受付は終
  了予定のため、受取対象者向けの日程。\n種別：グッズ
  \nアーティスト：TMG\nツアー：TMG Ⅲ SAYONARA\nエリア：東
  京\n受付元：SHIBUYA TSUTAYA\nURL：https://shibuyatsutaya.tsite.jp/ar
- ticle/2683.html
+ ticle/2683.html\n出典：B'zセットリスト ai-z-lab.github.io/bz-setl
+ ist
 LOCATION:東京 SHIBUYA TSUTAYA 地下2F
 X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
@@ -38,8 +39,8 @@ UID:2026-10-20-bz-party-calendar-2027-sale-start@bz-setlist
 DTSTAMP:20261119T000000Z
 DTSTART;TZID=Asia/Tokyo:20261020T000000
 DTEND;TZID=Asia/Tokyo:20261020T000100
-SUMMARY:B'z｜B'zカレンダー2027 通常販売スタート（B'z PARTY
- 会員限定）
+SUMMARY:B'z⁠‌​‌⁠｜B'zカレンダー2027 通常販売スター
+ ト（B'z PARTY会員限定）
 DESCRIPTION:B'z PARTY正規会員限定（冬季限定）。卓上週め
  くり／壁掛月めくり。11/20(金)までの注文分は12月中旬
  〜下旬ごろ発送開始、11/21(土)以降の注文分は2027年1月
@@ -54,7 +55,8 @@ DESCRIPTION:B'z PARTY正規会員限定（冬季限定）。卓上週め
  た写真などで構成。収録写真の一部はB'z PARTYサイトのSH
  OPで公開中（B'z PARTY公式LINE 11/19）。\n種別：グッズ\nア
  ーティスト：B'z\nツアー：B'z PARTY ONLINE SHOP\nURL：https://bp
- .bz-party.com/sitenews_det.php?id=21807
+ .bz-party.com/sitenews_det.php?id=21807\n出典：B'zセットリスト ai
+ -z-lab.github.io/bz-setlist
 LOCATION:
 X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
@@ -63,14 +65,15 @@ UID:2026-10-23-1chance-official-goods-postsale-end@bz-setlist
 DTSTAMP:20261119T000000Z
 DTSTART;TZID=Asia/Tokyo:20261023T235900
 DTEND;TZID=Asia/Tokyo:20261024T000000
-SUMMARY:稲葉浩志関連｜1CHANCE FESTIVAL 2026 グッズ事後通販
- 締切
+SUMMARY:稲葉浩志関連⁠‌​‌⁠｜1CHANCE FESTIVAL 2026 グッ
+ ズ事後通販締切
 DESCRIPTION:フェス公式グッズ一部商品の事後通販。10/13 19
  :00～10/23 23:59。10月下旬から順次発送。稲葉浩志単独グ
  ッズとは限らない。\n種別：グッズ\nアーティスト：稲
  葉浩志関連\nツアー：1CHANCE FESTIVAL 2026\nエリア：オンラ
  イン\n受付元：1CHANCE FESTIVAL 2026 公式ストア\nURL：https://1
- chancefes-store.com/blogs/news/261013
+ chancefes-store.com/blogs/news/261013\n出典：B'zセットリスト ai-z
+ -lab.github.io/bz-setlist
 LOCATION:オンライン 1CHANCE FESTIVAL 2026 公式ストア
 X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
@@ -79,13 +82,14 @@ UID:2026-10-24-tmg-store-goods-start@bz-setlist
 DTSTAMP:20261119T000000Z
 DTSTART;TZID=Asia/Tokyo:20261024T130000
 DTEND;TZID=Asia/Tokyo:20261024T130100
-SUMMARY:TMG｜TMG SAYONARA ツアーグッズ通販開始
+SUMMARY:TMG⁠‌​‌⁠｜TMG SAYONARA ツアーグッズ通販開始
 DESCRIPTION:システムの安全性確認およびセキュリティ対
  応に伴う延期後の日程。通常販売・受注販売：2026/10/24 
  13:00～10/30 18:00。発送は2026年12月中旬から順次予定。\n
  種別：グッズ\nアーティスト：TMG\nツアー：TMG LIVE 2026 
  “SAYONARA”\nエリア：オンライン\n受付元：B'z the Store\nUR
- L：https://bz-vermillion.com/news/261023.html
+ L：https://bz-vermillion.com/news/261023.html\n出典：B'zセットリ
+ スト ai-z-lab.github.io/bz-setlist
 LOCATION:オンライン B'z the Store
 X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
@@ -94,13 +98,14 @@ UID:2026-10-30-tmg-store-goods-end@bz-setlist
 DTSTAMP:20261119T000000Z
 DTSTART;TZID=Asia/Tokyo:20261030T180000
 DTEND;TZID=Asia/Tokyo:20261030T180100
-SUMMARY:TMG｜TMG SAYONARA ツアーグッズ通販締切
+SUMMARY:TMG⁠‌​‌⁠｜TMG SAYONARA ツアーグッズ通販締切
 DESCRIPTION:システムの安全性確認およびセキュリティ対
  応に伴う延期後の日程。通常販売・受注販売：2026/10/24 
  13:00～10/30 18:00。発送は2026年12月中旬から順次予定。\n
  種別：グッズ\nアーティスト：TMG\nツアー：TMG LIVE 2026 
  “SAYONARA”\nエリア：オンライン\n受付元：B'z the Store\nUR
- L：https://bz-vermillion.com/news/261023.html
+ L：https://bz-vermillion.com/news/261023.html\n出典：B'zセットリ
+ スト ai-z-lab.github.io/bz-setlist
 LOCATION:オンライン B'z the Store
 X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
@@ -109,13 +114,15 @@ UID:2026-10-31-env-okinawa-goods-start@bz-setlist
 DTSTAMP:20261119T000000Z
 DTSTART;TZID=Asia/Tokyo:20261031T130000
 DTEND;TZID=Asia/Tokyo:20261031T130100
-SUMMARY:Koshi Inaba｜稲葉浩志 enV 会場グッズ販売開始
+SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志 enV 会場グッズ販
+ 売開始
 DESCRIPTION:Koshi Inaba LIVE 2026-2027 ～enV～ 沖縄コンベンショ
  ンセンター 劇場棟公演の公式グッズ販売開始予定時刻
  ：13:00。天候・状況により一時中断または中止の場合あ
  り。\n種別：グッズ\nアーティスト：Koshi Inaba\nツアー：
  Koshi Inaba LIVE 2026-2027 ～enV～\nエリア：沖縄\n受付元：B'z 
  Official Website\nURL：https://bz-vermillion.com/en5/goods.html#goodsinfo
+ \n出典：B'zセットリスト ai-z-lab.github.io/bz-setlist
 LOCATION:沖縄 沖縄コンベンションセンター 劇場棟
 X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
@@ -124,13 +131,15 @@ UID:2026-11-01-env-okinawa-goods-start@bz-setlist
 DTSTAMP:20261119T000000Z
 DTSTART;TZID=Asia/Tokyo:20261101T133000
 DTEND;TZID=Asia/Tokyo:20261101T133100
-SUMMARY:Koshi Inaba｜稲葉浩志 enV 会場グッズ販売開始
+SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志 enV 会場グッズ販
+ 売開始
 DESCRIPTION:Koshi Inaba LIVE 2026-2027 ～enV～ 沖縄コンベンショ
  ンセンター 劇場棟公演の公式グッズ販売開始予定時刻
  ：13:30。天候・状況により一時中断または中止の場合あ
  り。\n種別：グッズ\nアーティスト：Koshi Inaba\nツアー：
  Koshi Inaba LIVE 2026-2027 ～enV～\nエリア：沖縄\n受付元：B'z 
  Official Website\nURL：https://bz-vermillion.com/en5/goods.html#goodsinfo
+ \n出典：B'zセットリスト ai-z-lab.github.io/bz-setlist
 LOCATION:沖縄 沖縄コンベンションセンター 劇場棟
 X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
@@ -139,8 +148,8 @@ UID:2026-11-02-bz-party-shop-blanket-order-start@bz-setlist
 DTSTAMP:20261119T000000Z
 DTSTART;TZID=Asia/Tokyo:20261102T140000
 DTEND;TZID=Asia/Tokyo:20261102T140100
-SUMMARY:B'z｜B'z PARTYオリジナルブランケット 受注開始（
- 会員限定）
+SUMMARY:B'z⁠‌​‌⁠｜B'z PARTYオリジナルブランケット 
+ 受注開始（会員限定）
 DESCRIPTION:B'z PARTY正規会員限定（2026年11月現在の正規会
  員は、2026/9/30までに入会・継続手続きを完了している
  必要あり）。受付期間：2026/11/02 14:00〜2026/11/13 12:00。価
@@ -148,7 +157,8 @@ DESCRIPTION:B'z PARTY正規会員限定（2026年11月現在の正規会
  フリース素材。サイズH700×W1000mm、ポリエステル100％。
  発送：2026年12月下旬以降順次。\n種別：グッズ\nアーテ
  ィスト：B'z\nツアー：B'z PARTY ONLINE SHOP\nURL：https://shop.bp.
- bz-party.com/products/blanket
+ bz-party.com/products/blanket\n出典：B'zセットリスト ai-z-lab.git
+ hub.io/bz-setlist
 LOCATION:
 X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
@@ -157,13 +167,15 @@ UID:2026-11-05-env-oita-goods-start@bz-setlist
 DTSTAMP:20261119T000000Z
 DTSTART;TZID=Asia/Tokyo:20261105T133000
 DTEND;TZID=Asia/Tokyo:20261105T133100
-SUMMARY:Koshi Inaba｜稲葉浩志 enV 会場グッズ販売開始
+SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志 enV 会場グッズ販
+ 売開始
 DESCRIPTION:Koshi Inaba LIVE 2026-2027 ～enV～ iichikoグランシアタ
  公演の公式グッズ販売開始予定時刻：13:30。天候・状況
  により一時中断または中止の場合あり。\n種別：グッズ
  \nアーティスト：Koshi Inaba\nツアー：Koshi Inaba LIVE 2026-2027
   ～enV～\nエリア：大分\n受付元：B'z Official Website\nURL：ht
- tps://bz-vermillion.com/en5/goods.html#goodsinfo
+ tps://bz-vermillion.com/en5/goods.html#goodsinfo\n出典：B'zセットリ
+ スト ai-z-lab.github.io/bz-setlist
 LOCATION:大分 iichikoグランシアタ
 X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
@@ -172,13 +184,15 @@ UID:2026-11-07-env-fukuoka-goods-start@bz-setlist
 DTSTAMP:20261119T000000Z
 DTSTART;TZID=Asia/Tokyo:20261107T123000
 DTEND;TZID=Asia/Tokyo:20261107T123100
-SUMMARY:Koshi Inaba｜稲葉浩志 enV 会場グッズ販売開始
+SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志 enV 会場グッズ販
+ 売開始
 DESCRIPTION:Koshi Inaba LIVE 2026-2027 ～enV～ 福岡市民ホール 大
  ホール公演の公式グッズ販売開始予定時刻：12:30。天候
  ・状況により一時中断または中止の場合あり。\n種別：
  グッズ\nアーティスト：Koshi Inaba\nツアー：Koshi Inaba LIVE 
  2026-2027 ～enV～\nエリア：福岡\n受付元：B'z Official Website\
- nURL：https://bz-vermillion.com/en5/goods.html#goodsinfo
+ nURL：https://bz-vermillion.com/en5/goods.html#goodsinfo\n出典：B'zセ
+ ットリスト ai-z-lab.github.io/bz-setlist
 LOCATION:福岡 福岡市民ホール 大ホール
 X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
@@ -187,13 +201,15 @@ UID:2026-11-08-env-fukuoka-goods-start@bz-setlist
 DTSTAMP:20261119T000000Z
 DTSTART;TZID=Asia/Tokyo:20261108T123000
 DTEND;TZID=Asia/Tokyo:20261108T123100
-SUMMARY:Koshi Inaba｜稲葉浩志 enV 会場グッズ販売開始
+SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志 enV 会場グッズ販
+ 売開始
 DESCRIPTION:Koshi Inaba LIVE 2026-2027 ～enV～ 福岡市民ホール 大
  ホール公演の公式グッズ販売開始予定時刻：12:30。天候
  ・状況により一時中断または中止の場合あり。\n種別：
  グッズ\nアーティスト：Koshi Inaba\nツアー：Koshi Inaba LIVE 
  2026-2027 ～enV～\nエリア：福岡\n受付元：B'z Official Website\
- nURL：https://bz-vermillion.com/en5/goods.html#goodsinfo
+ nURL：https://bz-vermillion.com/en5/goods.html#goodsinfo\n出典：B'zセ
+ ットリスト ai-z-lab.github.io/bz-setlist
 LOCATION:福岡 福岡市民ホール 大ホール
 X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
@@ -202,8 +218,8 @@ UID:2026-11-13-bz-party-shop-blanket-order-deadline@bz-setlist
 DTSTAMP:20261119T000000Z
 DTSTART;TZID=Asia/Tokyo:20261113T120000
 DTEND;TZID=Asia/Tokyo:20261113T120100
-SUMMARY:B'z｜B'z PARTYオリジナルブランケット 受注締切（
- 会員限定）
+SUMMARY:B'z⁠‌​‌⁠｜B'z PARTYオリジナルブランケット 
+ 受注締切（会員限定）
 DESCRIPTION:B'z PARTY正規会員限定（2026年11月現在の正規会
  員は、2026/9/30までに入会・継続手続きを完了している
  必要あり）。受付期間：2026/11/02 14:00〜2026/11/13 12:00。価
@@ -211,7 +227,8 @@ DESCRIPTION:B'z PARTY正規会員限定（2026年11月現在の正規会
  フリース素材。サイズH700×W1000mm、ポリエステル100％。
  発送：2026年12月下旬以降順次。\n種別：グッズ\nアーテ
  ィスト：B'z\nツアー：B'z PARTY ONLINE SHOP\nURL：https://shop.bp.
- bz-party.com/products/blanket
+ bz-party.com/products/blanket\n出典：B'zセットリスト ai-z-lab.git
+ hub.io/bz-setlist
 LOCATION:
 X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
@@ -220,13 +237,15 @@ UID:2026-11-14-env-sapporo-goods-start@bz-setlist
 DTSTAMP:20261119T000000Z
 DTSTART;TZID=Asia/Tokyo:20261114T123000
 DTEND;TZID=Asia/Tokyo:20261114T123100
-SUMMARY:Koshi Inaba｜稲葉浩志 enV 会場グッズ販売開始
+SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志 enV 会場グッズ販
+ 売開始
 DESCRIPTION:Koshi Inaba LIVE 2026-2027 ～enV～ 札幌文化芸術劇場h
  itaru公演の公式グッズ販売開始予定時刻：12:30。天候・
  状況により一時中断または中止の場合あり。\n種別：グ
  ッズ\nアーティスト：Koshi Inaba\nツアー：Koshi Inaba LIVE 202
  6-2027 ～enV～\nエリア：北海道\n受付元：B'z Official Website\
- nURL：https://bz-vermillion.com/en5/goods.html#goodsinfo
+ nURL：https://bz-vermillion.com/en5/goods.html#goodsinfo\n出典：B'zセ
+ ットリスト ai-z-lab.github.io/bz-setlist
 LOCATION:北海道 札幌文化芸術劇場hitaru
 X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
@@ -235,13 +254,15 @@ UID:2026-11-16-env-obihiro-goods-start@bz-setlist
 DTSTAMP:20261119T000000Z
 DTSTART;TZID=Asia/Tokyo:20261116T133000
 DTEND;TZID=Asia/Tokyo:20261116T133100
-SUMMARY:Koshi Inaba｜稲葉浩志 enV 会場グッズ販売開始
+SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志 enV 会場グッズ販
+ 売開始
 DESCRIPTION:Koshi Inaba LIVE 2026-2027 ～enV～ 帯広市民文化ホー
  ル 大ホール公演の公式グッズ販売開始予定時刻：13:30
  。天候・状況により一時中断または中止の場合あり。\n
  種別：グッズ\nアーティスト：Koshi Inaba\nツアー：Koshi In
  aba LIVE 2026-2027 ～enV～\nエリア：北海道\n受付元：B'z Offic
- ial Website\nURL：https://bz-vermillion.com/en5/goods.html#goodsinfo
+ ial Website\nURL：https://bz-vermillion.com/en5/goods.html#goodsinfo\n出
+ 典：B'zセットリスト ai-z-lab.github.io/bz-setlist
 LOCATION:北海道 帯広市民文化ホール 大ホール
 X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
@@ -250,13 +271,15 @@ UID:2026-11-20-env-koriyama-goods-start@bz-setlist
 DTSTAMP:20261119T000000Z
 DTSTART;TZID=Asia/Tokyo:20261120T133000
 DTEND;TZID=Asia/Tokyo:20261120T133100
-SUMMARY:Koshi Inaba｜稲葉浩志 enV 会場グッズ販売開始
+SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志 enV 会場グッズ販
+ 売開始
 DESCRIPTION:Koshi Inaba LIVE 2026-2027 ～enV～ けんしん郡山文化
  センター 大ホール公演の公式グッズ販売開始予定時刻
  ：13:30。天候・状況により一時中断または中止の場合あ
  り。\n種別：グッズ\nアーティスト：Koshi Inaba\nツアー：
  Koshi Inaba LIVE 2026-2027 ～enV～\nエリア：福島\n受付元：B'z 
  Official Website\nURL：https://bz-vermillion.com/en5/goods.html#goodsinfo
+ \n出典：B'zセットリスト ai-z-lab.github.io/bz-setlist
 LOCATION:福島 けんしん郡山文化センター 大ホール
 X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
@@ -266,8 +289,8 @@ UID:2026-11-20-bz-party-calendar-2027-december-shipping-deadline@bz-setlis
 DTSTAMP:20261119T000000Z
 DTSTART;TZID=Asia/Tokyo:20261120T000000
 DTEND;TZID=Asia/Tokyo:20261120T000100
-SUMMARY:B'z｜B'zカレンダー2027 12月発送分の注文期限（B'z P
- ARTY会員限定）
+SUMMARY:B'z⁠‌​‌⁠｜B'zカレンダー2027 12月発送分の注
+ 文期限（B'z PARTY会員限定）
 DESCRIPTION:11/20(金)までの注文分が、12月中旬〜下旬ごろ
  発送開始。B'z PARTY正規会員限定（冬季限定）。卓上週
  めくり／壁掛月めくり。11/20(金)までの注文分は12月中
@@ -283,7 +306,8 @@ DESCRIPTION:11/20(金)までの注文分が、12月中旬〜下旬ごろ
  した写真などで構成。収録写真の一部はB'z PARTYサイト
  のSHOPで公開中（B'z PARTY公式LINE 11/19）。\n種別：グッズ\
  nアーティスト：B'z\nツアー：B'z PARTY ONLINE SHOP\nURL：https:
- //bp.bz-party.com/sitenews_det.php?id=21807
+ //bp.bz-party.com/sitenews_det.php?id=21807\n出典：B'zセットリス
+ ト ai-z-lab.github.io/bz-setlist
 LOCATION:
 X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
@@ -292,13 +316,15 @@ UID:2026-11-22-env-sendai-goods-start@bz-setlist
 DTSTAMP:20261119T000000Z
 DTSTART;TZID=Asia/Tokyo:20261122T123000
 DTEND;TZID=Asia/Tokyo:20261122T123100
-SUMMARY:Koshi Inaba｜稲葉浩志 enV 会場グッズ販売開始
+SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志 enV 会場グッズ販
+ 売開始
 DESCRIPTION:Koshi Inaba LIVE 2026-2027 ～enV～ 仙台サンプラザホ
  ール公演の公式グッズ販売開始予定時刻：12:30。天候・
  状況により一時中断または中止の場合あり。\n種別：グ
  ッズ\nアーティスト：Koshi Inaba\nツアー：Koshi Inaba LIVE 202
  6-2027 ～enV～\nエリア：宮城\n受付元：B'z Official Website\nUR
- L：https://bz-vermillion.com/en5/goods.html#goodsinfo
+ L：https://bz-vermillion.com/en5/goods.html#goodsinfo\n出典：B'zセッ
+ トリスト ai-z-lab.github.io/bz-setlist
 LOCATION:宮城 仙台サンプラザホール
 X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
@@ -307,13 +333,15 @@ UID:2026-11-23-env-akita-goods-start@bz-setlist
 DTSTAMP:20261119T000000Z
 DTSTART;TZID=Asia/Tokyo:20261123T123000
 DTEND;TZID=Asia/Tokyo:20261123T123100
-SUMMARY:Koshi Inaba｜稲葉浩志 enV 会場グッズ販売開始
+SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志 enV 会場グッズ販
+ 売開始
 DESCRIPTION:Koshi Inaba LIVE 2026-2027 ～enV～ あきた芸術劇場 ミ
  ルハス 大ホール公演の公式グッズ販売開始予定時刻：1
  2:30。天候・状況により一時中断または中止の場合あり
  。\n種別：グッズ\nアーティスト：Koshi Inaba\nツアー：Kos
  hi Inaba LIVE 2026-2027 ～enV～\nエリア：秋田\n受付元：B'z Off
- icial Website\nURL：https://bz-vermillion.com/en5/goods.html#goodsinfo
+ icial Website\nURL：https://bz-vermillion.com/en5/goods.html#goodsinfo\n
+ 出典：B'zセットリスト ai-z-lab.github.io/bz-setlist
 LOCATION:秋田 あきた芸術劇場 ミルハス 大ホール
 X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
@@ -322,11 +350,13 @@ UID:2027-koshi-analog-2027-01-27@bz-setlist
 DTSTAMP:20261119T000000Z
 DTSTART;TZID=Asia/Tokyo:20270127T000000
 DTEND;TZID=Asia/Tokyo:20270127T000100
-SUMMARY:Koshi Inaba｜稲葉浩志『マグマ』アナログLP発売
+SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志『マグマ』アナロ
+ グLP発売
 DESCRIPTION:発売日：2027-01-27。LP2枚組、5\,500円（税込）。\
  n種別：グッズ\nアーティスト：Koshi Inaba\nツアー：ソロ
  デビュー30周年 アナログ盤\n受付元：B’z Official Website\n
- URL：https://bz-vermillion.com/news/260916.html
+ URL：https://bz-vermillion.com/news/260916.html\n出典：B'zセットリ
+ スト ai-z-lab.github.io/bz-setlist
 LOCATION:
 X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
@@ -335,11 +365,13 @@ UID:2027-koshi-analog-2027-02-24@bz-setlist
 DTSTAMP:20261119T000000Z
 DTSTART;TZID=Asia/Tokyo:20270224T000000
 DTEND;TZID=Asia/Tokyo:20270224T000100
-SUMMARY:Koshi Inaba｜稲葉浩志『志庵』アナログLP発売
+SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志『志庵』アナログL
+ P発売
 DESCRIPTION:発売日：2027-02-24。LP2枚組、5\,500円（税込）。\
  n種別：グッズ\nアーティスト：Koshi Inaba\nツアー：ソロ
  デビュー30周年 アナログ盤\n受付元：B’z Official Website\n
- URL：https://bz-vermillion.com/news/260916.html
+ URL：https://bz-vermillion.com/news/260916.html\n出典：B'zセットリ
+ スト ai-z-lab.github.io/bz-setlist
 LOCATION:
 X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
@@ -348,11 +380,13 @@ UID:2027-koshi-analog-2027-03-10@bz-setlist
 DTSTAMP:20261119T000000Z
 DTSTART;TZID=Asia/Tokyo:20270310T000000
 DTEND;TZID=Asia/Tokyo:20270310T000100
-SUMMARY:Koshi Inaba｜稲葉浩志『Peace Of Mind』アナログLP発売
+SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志『Peace Of Mind』アナ
+ ログLP発売
 DESCRIPTION:発売日：2027-03-10。LP2枚組、5\,500円（税込）。\
  n種別：グッズ\nアーティスト：Koshi Inaba\nツアー：ソロ
  デビュー30周年 アナログ盤\n受付元：B’z Official Website\n
- URL：https://bz-vermillion.com/news/260916.html
+ URL：https://bz-vermillion.com/news/260916.html\n出典：B'zセットリ
+ スト ai-z-lab.github.io/bz-setlist
 LOCATION:
 X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
@@ -361,11 +395,13 @@ UID:2027-koshi-analog-2027-04-07@bz-setlist
 DTSTAMP:20261119T000000Z
 DTSTART;TZID=Asia/Tokyo:20270407T000000
 DTEND;TZID=Asia/Tokyo:20270407T000100
-SUMMARY:Koshi Inaba｜稲葉浩志『Hadou』アナログLP発売
+SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志『Hadou』アナログLP
+ 発売
 DESCRIPTION:発売日：2027-04-07。LP2枚組、5\,500円（税込）。\
  n種別：グッズ\nアーティスト：Koshi Inaba\nツアー：ソロ
  デビュー30周年 アナログ盤\n受付元：B’z Official Website\n
- URL：https://bz-vermillion.com/news/260916.html
+ URL：https://bz-vermillion.com/news/260916.html\n出典：B'zセットリ
+ スト ai-z-lab.github.io/bz-setlist
 LOCATION:
 X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
@@ -374,11 +410,13 @@ UID:2027-koshi-analog-2027-05-26@bz-setlist
 DTSTAMP:20261119T000000Z
 DTSTART;TZID=Asia/Tokyo:20270526T000000
 DTEND;TZID=Asia/Tokyo:20270526T000100
-SUMMARY:Koshi Inaba｜稲葉浩志『Singing Bird』アナログLP発売
+SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志『Singing Bird』アナ
+ ログLP発売
 DESCRIPTION:発売日：2027-05-26。LP2枚組、5\,500円（税込）。\
  n種別：グッズ\nアーティスト：Koshi Inaba\nツアー：ソロ
  デビュー30周年 アナログ盤\n受付元：B’z Official Website\n
- URL：https://bz-vermillion.com/news/260916.html
+ URL：https://bz-vermillion.com/news/260916.html\n出典：B'zセットリ
+ スト ai-z-lab.github.io/bz-setlist
 LOCATION:
 X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
@@ -387,11 +425,13 @@ UID:2027-koshi-analog-2027-06-30@bz-setlist
 DTSTAMP:20261119T000000Z
 DTSTART;TZID=Asia/Tokyo:20270630T000000
 DTEND;TZID=Asia/Tokyo:20270630T000100
-SUMMARY:Koshi Inaba｜稲葉浩志『只者』アナログLP発売
+SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志『只者』アナログL
+ P発売
 DESCRIPTION:発売日：2027-06-30。LP2枚組、5\,500円（税込）。\
  n種別：グッズ\nアーティスト：Koshi Inaba\nツアー：ソロ
  デビュー30周年 アナログ盤\n受付元：B’z Official Website\n
- URL：https://bz-vermillion.com/news/260916.html
+ URL：https://bz-vermillion.com/news/260916.html\n出典：B'zセットリ
+ スト ai-z-lab.github.io/bz-setlist
 LOCATION:
 X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT

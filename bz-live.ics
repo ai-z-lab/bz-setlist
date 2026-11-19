@@ -22,10 +22,11 @@ UID:2026-10-20-tmg-sayonara-愛知-zepp-nagoya@bz-setlist
 DTSTAMP:20261119T000000Z
 DTSTART;TZID=Asia/Tokyo:20261020T180000
 DTEND;TZID=Asia/Tokyo:20261020T200000
-SUMMARY:TMG｜愛知公演
+SUMMARY:TMG⁠‌​‌⁠｜愛知公演
 DESCRIPTION:OPEN 17:00 / START 18:00\n種別：公演\nアーティスト
  ：TMG\nツアー：TMG LIVE 2026 “SAYONARA”\nエリア：愛知\nURL
- ：https://bz-vermillion.com/tmg/2026/
+ ：https://bz-vermillion.com/tmg/2026/\n出典：B'zセットリスト ai-
+ z-lab.github.io/bz-setlist
 LOCATION:愛知 Zepp Nagoya
 X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
@@ -34,10 +35,11 @@ UID:2026-10-21-tmg-sayonara-愛知-zepp-nagoya@bz-setlist
 DTSTAMP:20261119T000000Z
 DTSTART;TZID=Asia/Tokyo:20261021T180000
 DTEND;TZID=Asia/Tokyo:20261021T200000
-SUMMARY:TMG｜愛知公演
+SUMMARY:TMG⁠‌​‌⁠｜愛知公演
 DESCRIPTION:OPEN 17:00 / START 18:00\n種別：公演\nアーティスト
  ：TMG\nツアー：TMG LIVE 2026 “SAYONARA”\nエリア：愛知\nURL
- ：https://bz-vermillion.com/tmg/2026/
+ ：https://bz-vermillion.com/tmg/2026/\n出典：B'zセットリスト ai-
+ z-lab.github.io/bz-setlist
 LOCATION:愛知 Zepp Nagoya
 X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
@@ -47,10 +49,11 @@ UID:2026-10-23-tmg-sayonara-東京-東京ガーデンシアター@bz-setli
 DTSTAMP:20261119T000000Z
 DTSTART;TZID=Asia/Tokyo:20261023T180000
 DTEND;TZID=Asia/Tokyo:20261023T200000
-SUMMARY:TMG｜東京公演
+SUMMARY:TMG⁠‌​‌⁠｜東京公演
 DESCRIPTION:OPEN 17:00 / START 18:00\n種別：公演\nアーティスト
  ：TMG\nツアー：TMG LIVE 2026 “SAYONARA”\nエリア：東京\nURL
- ：https://bz-vermillion.com/tmg/2026/
+ ：https://bz-vermillion.com/tmg/2026/\n出典：B'zセットリスト ai-
+ z-lab.github.io/bz-setlist
 LOCATION:東京 東京ガーデンシアター
 X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
@@ -60,10 +63,11 @@ UID:2026-10-24-env-live-栃木-栃木県総合文化センター-メイン
 DTSTAMP:20261119T000000Z
 DTSTART;TZID=Asia/Tokyo:20261024T170000
 DTEND;TZID=Asia/Tokyo:20261024T190000
-SUMMARY:Koshi Inaba｜栃木公演
+SUMMARY:Koshi Inaba⁠‌​‌⁠｜栃木公演
 DESCRIPTION:OPEN 16:00 / START 17:00\n種別：公演\nアーティスト
  ：Koshi Inaba\nツアー：Koshi Inaba LIVE 2026-2027 ～enV～\nエリ
- ア：栃木\nURL：https://bz-vermillion.com/en5/
+ ア：栃木\nURL：https://bz-vermillion.com/en5/\n出典：B'zセット
+ リスト ai-z-lab.github.io/bz-setlist
 LOCATION:栃木 栃木県総合文化センター メインホール
 X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
@@ -73,10 +77,11 @@ UID:2026-10-27-env-live-神奈川-横須賀芸術劇場-大劇場@bz-setli
 DTSTAMP:20261119T000000Z
 DTSTART;TZID=Asia/Tokyo:20261027T180000
 DTEND;TZID=Asia/Tokyo:20261027T200000
-SUMMARY:Koshi Inaba｜神奈川公演
+SUMMARY:Koshi Inaba⁠‌​‌⁠｜神奈川公演
 DESCRIPTION:OPEN 17:00 / START 18:00\n種別：公演\nアーティスト
  ：Koshi Inaba\nツアー：Koshi Inaba LIVE 2026-2027 ～enV～\nエリ
- ア：神奈川\nURL：https://bz-vermillion.com/en5/
+ ア：神奈川\nURL：https://bz-vermillion.com/en5/\n出典：B'zセッ
+ トリスト ai-z-lab.github.io/bz-setlist
 LOCATION:神奈川 横須賀芸術劇場 大劇場
 X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
@@ -86,10 +91,11 @@ UID:2026-10-31-env-live-沖縄-沖縄コンベンションセンター-劇
 DTSTAMP:20261119T000000Z
 DTSTART;TZID=Asia/Tokyo:20261031T170000
 DTEND;TZID=Asia/Tokyo:20261031T190000
-SUMMARY:Koshi Inaba｜沖縄公演
+SUMMARY:Koshi Inaba⁠‌​‌⁠｜沖縄公演
 DESCRIPTION:OPEN 16:00 / START 17:00\n種別：公演\nアーティスト
  ：Koshi Inaba\nツアー：Koshi Inaba LIVE 2026-2027 ～enV～\nエリ
- ア：沖縄\nURL：https://bz-vermillion.com/en5/
+ ア：沖縄\nURL：https://bz-vermillion.com/en5/\n出典：B'zセット
+ リスト ai-z-lab.github.io/bz-setlist
 LOCATION:沖縄 沖縄コンベンションセンター 劇場棟
 X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
@@ -99,10 +105,11 @@ UID:2026-11-01-env-live-沖縄-沖縄コンベンションセンター-劇
 DTSTAMP:20261119T000000Z
 DTSTART;TZID=Asia/Tokyo:20261101T170000
 DTEND;TZID=Asia/Tokyo:20261101T190000
-SUMMARY:Koshi Inaba｜沖縄公演
+SUMMARY:Koshi Inaba⁠‌​‌⁠｜沖縄公演
 DESCRIPTION:OPEN 16:00 / START 17:00\n種別：公演\nアーティスト
  ：Koshi Inaba\nツアー：Koshi Inaba LIVE 2026-2027 ～enV～\nエリ
- ア：沖縄\nURL：https://bz-vermillion.com/en5/
+ ア：沖縄\nURL：https://bz-vermillion.com/en5/\n出典：B'zセット
+ リスト ai-z-lab.github.io/bz-setlist
 LOCATION:沖縄 沖縄コンベンションセンター 劇場棟
 X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
@@ -111,10 +118,11 @@ UID:2026-11-05-env-live-大分-iichikoグランシアタ@bz-setlist
 DTSTAMP:20261119T000000Z
 DTSTART;TZID=Asia/Tokyo:20261105T180000
 DTEND;TZID=Asia/Tokyo:20261105T200000
-SUMMARY:Koshi Inaba｜大分公演
+SUMMARY:Koshi Inaba⁠‌​‌⁠｜大分公演
 DESCRIPTION:OPEN 17:00 / START 18:00\n種別：公演\nアーティスト
  ：Koshi Inaba\nツアー：Koshi Inaba LIVE 2026-2027 ～enV～\nエリ
- ア：大分\nURL：https://bz-vermillion.com/en5/
+ ア：大分\nURL：https://bz-vermillion.com/en5/\n出典：B'zセット
+ リスト ai-z-lab.github.io/bz-setlist
 LOCATION:大分 iichikoグランシアタ
 X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
@@ -124,10 +132,11 @@ UID:2026-11-07-env-live-福岡-福岡市民ホール-大ホール@bz-setli
 DTSTAMP:20261119T000000Z
 DTSTART;TZID=Asia/Tokyo:20261107T170000
 DTEND;TZID=Asia/Tokyo:20261107T190000
-SUMMARY:Koshi Inaba｜福岡公演
+SUMMARY:Koshi Inaba⁠‌​‌⁠｜福岡公演
 DESCRIPTION:OPEN 16:00 / START 17:00\n種別：公演\nアーティスト
  ：Koshi Inaba\nツアー：Koshi Inaba LIVE 2026-2027 ～enV～\nエリ
- ア：福岡\nURL：https://bz-vermillion.com/en5/
+ ア：福岡\nURL：https://bz-vermillion.com/en5/\n出典：B'zセット
+ リスト ai-z-lab.github.io/bz-setlist
 LOCATION:福岡 福岡市民ホール 大ホール
 X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
@@ -137,10 +146,11 @@ UID:2026-11-08-env-live-福岡-福岡市民ホール-大ホール@bz-setli
 DTSTAMP:20261119T000000Z
 DTSTART;TZID=Asia/Tokyo:20261108T170000
 DTEND;TZID=Asia/Tokyo:20261108T190000
-SUMMARY:Koshi Inaba｜福岡公演
+SUMMARY:Koshi Inaba⁠‌​‌⁠｜福岡公演
 DESCRIPTION:OPEN 16:00 / START 17:00\n種別：公演\nアーティスト
  ：Koshi Inaba\nツアー：Koshi Inaba LIVE 2026-2027 ～enV～\nエリ
- ア：福岡\nURL：https://bz-vermillion.com/en5/
+ ア：福岡\nURL：https://bz-vermillion.com/en5/\n出典：B'zセット
+ リスト ai-z-lab.github.io/bz-setlist
 LOCATION:福岡 福岡市民ホール 大ホール
 X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
@@ -150,10 +160,11 @@ UID:2026-11-14-env-live-北海道-札幌文化芸術劇場hitaru@bz-setlis
 DTSTAMP:20261119T000000Z
 DTSTART;TZID=Asia/Tokyo:20261114T170000
 DTEND;TZID=Asia/Tokyo:20261114T190000
-SUMMARY:Koshi Inaba｜北海道公演
+SUMMARY:Koshi Inaba⁠‌​‌⁠｜北海道公演
 DESCRIPTION:OPEN 16:00 / START 17:00\n種別：公演\nアーティスト
  ：Koshi Inaba\nツアー：Koshi Inaba LIVE 2026-2027 ～enV～\nエリ
- ア：北海道\nURL：https://bz-vermillion.com/en5/
+ ア：北海道\nURL：https://bz-vermillion.com/en5/\n出典：B'zセッ
+ トリスト ai-z-lab.github.io/bz-setlist
 LOCATION:北海道 札幌文化芸術劇場hitaru
 X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
@@ -163,10 +174,11 @@ UID:2026-11-16-env-live-北海道-帯広市民文化ホール-大ホール
 DTSTAMP:20261119T000000Z
 DTSTART;TZID=Asia/Tokyo:20261116T180000
 DTEND;TZID=Asia/Tokyo:20261116T200000
-SUMMARY:Koshi Inaba｜北海道公演
+SUMMARY:Koshi Inaba⁠‌​‌⁠｜北海道公演
 DESCRIPTION:OPEN 17:00 / START 18:00\n種別：公演\nアーティスト
  ：Koshi Inaba\nツアー：Koshi Inaba LIVE 2026-2027 ～enV～\nエリ
- ア：北海道\nURL：https://bz-vermillion.com/en5/
+ ア：北海道\nURL：https://bz-vermillion.com/en5/\n出典：B'zセッ
+ トリスト ai-z-lab.github.io/bz-setlist
 LOCATION:北海道 帯広市民文化ホール 大ホール
 X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
@@ -176,10 +188,11 @@ UID:2026-11-20-env-live-福島-けんしん郡山文化センター郡山
 DTSTAMP:20261119T000000Z
 DTSTART;TZID=Asia/Tokyo:20261120T180000
 DTEND;TZID=Asia/Tokyo:20261120T200000
-SUMMARY:Koshi Inaba｜福島公演
+SUMMARY:Koshi Inaba⁠‌​‌⁠｜福島公演
 DESCRIPTION:OPEN 17:00 / START 18:00\n種別：公演\nアーティスト
  ：Koshi Inaba\nツアー：Koshi Inaba LIVE 2026-2027 ～enV～\nエリ
- ア：福島\nURL：https://bz-vermillion.com/en5/
+ ア：福島\nURL：https://bz-vermillion.com/en5/\n出典：B'zセット
+ リスト ai-z-lab.github.io/bz-setlist
 LOCATION:福島 けんしん郡山文化センター(郡山市民文化セ
  ンター) 大ホール
 X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
@@ -189,10 +202,11 @@ UID:2026-11-22-env-live-宮城-仙台サンプラザホール@bz-setlist
 DTSTAMP:20261119T000000Z
 DTSTART;TZID=Asia/Tokyo:20261122T170000
 DTEND;TZID=Asia/Tokyo:20261122T190000
-SUMMARY:Koshi Inaba｜宮城公演
+SUMMARY:Koshi Inaba⁠‌​‌⁠｜宮城公演
 DESCRIPTION:OPEN 16:00 / START 17:00\n種別：公演\nアーティスト
  ：Koshi Inaba\nツアー：Koshi Inaba LIVE 2026-2027 ～enV～\nエリ
- ア：宮城\nURL：https://bz-vermillion.com/en5/
+ ア：宮城\nURL：https://bz-vermillion.com/en5/\n出典：B'zセット
+ リスト ai-z-lab.github.io/bz-setlist
 LOCATION:宮城 仙台サンプラザホール
 X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
@@ -202,10 +216,11 @@ UID:2026-11-23-env-live-秋田-あきた芸術劇場-ミルハス-大ホ
 DTSTAMP:20261119T000000Z
 DTSTART;TZID=Asia/Tokyo:20261123T170000
 DTEND;TZID=Asia/Tokyo:20261123T190000
-SUMMARY:Koshi Inaba｜秋田公演
+SUMMARY:Koshi Inaba⁠‌​‌⁠｜秋田公演
 DESCRIPTION:OPEN 16:00 / START 17:00\n種別：公演\nアーティスト
  ：Koshi Inaba\nツアー：Koshi Inaba LIVE 2026-2027 ～enV～\nエリ
- ア：秋田\nURL：https://bz-vermillion.com/en5/
+ ア：秋田\nURL：https://bz-vermillion.com/en5/\n出典：B'zセット
+ リスト ai-z-lab.github.io/bz-setlist
 LOCATION:秋田 あきた芸術劇場 ミルハス 大ホール
 X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
@@ -215,10 +230,11 @@ UID:2026-11-28-env-live-和歌山-和歌山県民文化会館-大ホール
 DTSTAMP:20261119T000000Z
 DTSTART;TZID=Asia/Tokyo:20261128T170000
 DTEND;TZID=Asia/Tokyo:20261128T190000
-SUMMARY:Koshi Inaba｜和歌山公演
+SUMMARY:Koshi Inaba⁠‌​‌⁠｜和歌山公演
 DESCRIPTION:OPEN 16:00 / START 17:00\n種別：公演\nアーティスト
  ：Koshi Inaba\nツアー：Koshi Inaba LIVE 2026-2027 ～enV～\nエリ
- ア：和歌山\nURL：https://bz-vermillion.com/en5/
+ ア：和歌山\nURL：https://bz-vermillion.com/en5/\n出典：B'zセッ
+ トリスト ai-z-lab.github.io/bz-setlist
 LOCATION:和歌山 和歌山県民文化会館 大ホール
 X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
@@ -228,10 +244,11 @@ UID:2026-11-30-env-live-京都-京都ロームシアター-メインホー
 DTSTAMP:20261119T000000Z
 DTSTART;TZID=Asia/Tokyo:20261130T180000
 DTEND;TZID=Asia/Tokyo:20261130T200000
-SUMMARY:Koshi Inaba｜京都公演
+SUMMARY:Koshi Inaba⁠‌​‌⁠｜京都公演
 DESCRIPTION:OPEN 17:00 / START 18:00\n種別：公演\nアーティスト
  ：Koshi Inaba\nツアー：Koshi Inaba LIVE 2026-2027 ～enV～\nエリ
- ア：京都\nURL：https://bz-vermillion.com/en5/
+ ア：京都\nURL：https://bz-vermillion.com/en5/\n出典：B'zセット
+ リスト ai-z-lab.github.io/bz-setlist
 LOCATION:京都 京都ロームシアター メインホール
 X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
@@ -240,10 +257,11 @@ UID:2026-12-04-env-live-愛媛-松山市民会館-大ホール@bz-setlist
 DTSTAMP:20261119T000000Z
 DTSTART;TZID=Asia/Tokyo:20261204T180000
 DTEND;TZID=Asia/Tokyo:20261204T200000
-SUMMARY:Koshi Inaba｜愛媛公演
+SUMMARY:Koshi Inaba⁠‌​‌⁠｜愛媛公演
 DESCRIPTION:OPEN 17:00 / START 18:00\n種別：公演\nアーティスト
  ：Koshi Inaba\nツアー：Koshi Inaba LIVE 2026-2027 ～enV～\nエリ
- ア：愛媛\nURL：https://bz-vermillion.com/en5/
+ ア：愛媛\nURL：https://bz-vermillion.com/en5/\n出典：B'zセット
+ リスト ai-z-lab.github.io/bz-setlist
 LOCATION:愛媛 松山市民会館 大ホール
 X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
@@ -253,10 +271,11 @@ UID:2026-12-06-env-live-香川-レクザムホール香川県県民ホー
 DTSTAMP:20261119T000000Z
 DTSTART;TZID=Asia/Tokyo:20261206T170000
 DTEND;TZID=Asia/Tokyo:20261206T190000
-SUMMARY:Koshi Inaba｜香川公演
+SUMMARY:Koshi Inaba⁠‌​‌⁠｜香川公演
 DESCRIPTION:OPEN 16:00 / START 17:00\n種別：公演\nアーティスト
  ：Koshi Inaba\nツアー：Koshi Inaba LIVE 2026-2027 ～enV～\nエリ
- ア：香川\nURL：https://bz-vermillion.com/en5/
+ ア：香川\nURL：https://bz-vermillion.com/en5/\n出典：B'zセット
+ リスト ai-z-lab.github.io/bz-setlist
 LOCATION:香川 レクザムホール（香川県県民ホール）大ホ
  ール
 X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
@@ -267,10 +286,11 @@ UID:2026-12-11-env-live-三重-三重県文化会館-大ホール@bz-setli
 DTSTAMP:20261119T000000Z
 DTSTART;TZID=Asia/Tokyo:20261211T180000
 DTEND;TZID=Asia/Tokyo:20261211T200000
-SUMMARY:Koshi Inaba｜三重公演
+SUMMARY:Koshi Inaba⁠‌​‌⁠｜三重公演
 DESCRIPTION:OPEN 17:00 / START 18:00\n種別：公演\nアーティスト
  ：Koshi Inaba\nツアー：Koshi Inaba LIVE 2026-2027 ～enV～\nエリ
- ア：三重\nURL：https://bz-vermillion.com/en5/
+ ア：三重\nURL：https://bz-vermillion.com/en5/\n出典：B'zセット
+ リスト ai-z-lab.github.io/bz-setlist
 LOCATION:三重 三重県文化会館 大ホール
 X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
@@ -280,10 +300,11 @@ UID:2026-12-13-env-live-岐阜-長良川国際会議場-メインホール
 DTSTAMP:20261119T000000Z
 DTSTART;TZID=Asia/Tokyo:20261213T170000
 DTEND;TZID=Asia/Tokyo:20261213T190000
-SUMMARY:Koshi Inaba｜岐阜公演
+SUMMARY:Koshi Inaba⁠‌​‌⁠｜岐阜公演
 DESCRIPTION:OPEN 16:00 / START 17:00\n種別：公演\nアーティスト
  ：Koshi Inaba\nツアー：Koshi Inaba LIVE 2026-2027 ～enV～\nエリ
- ア：岐阜\nURL：https://bz-vermillion.com/en5/
+ ア：岐阜\nURL：https://bz-vermillion.com/en5/\n出典：B'zセット
+ リスト ai-z-lab.github.io/bz-setlist
 LOCATION:岐阜 長良川国際会議場 メインホール
 X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
@@ -293,10 +314,11 @@ UID:2026-12-18-env-live-福井-福井フェニックス-プラザ-エル
 DTSTAMP:20261119T000000Z
 DTSTART;TZID=Asia/Tokyo:20261218T180000
 DTEND;TZID=Asia/Tokyo:20261218T200000
-SUMMARY:Koshi Inaba｜福井公演
+SUMMARY:Koshi Inaba⁠‌​‌⁠｜福井公演
 DESCRIPTION:OPEN 17:00 / START 18:00\n種別：公演\nアーティスト
  ：Koshi Inaba\nツアー：Koshi Inaba LIVE 2026-2027 ～enV～\nエリ
- ア：福井\nURL：https://bz-vermillion.com/en5/
+ ア：福井\nURL：https://bz-vermillion.com/en5/\n出典：B'zセット
+ リスト ai-z-lab.github.io/bz-setlist
 LOCATION:福井 福井フェニックス・プラザ エルピス大ホー
  ル
 X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
@@ -306,10 +328,11 @@ UID:2026-12-20-env-live-石川-本多の森-北電ホール@bz-setlist
 DTSTAMP:20261119T000000Z
 DTSTART;TZID=Asia/Tokyo:20261220T170000
 DTEND;TZID=Asia/Tokyo:20261220T190000
-SUMMARY:Koshi Inaba｜石川公演
+SUMMARY:Koshi Inaba⁠‌​‌⁠｜石川公演
 DESCRIPTION:OPEN 16:00 / START 17:00\n種別：公演\nアーティスト
  ：Koshi Inaba\nツアー：Koshi Inaba LIVE 2026-2027 ～enV～\nエリ
- ア：石川\nURL：https://bz-vermillion.com/en5/
+ ア：石川\nURL：https://bz-vermillion.com/en5/\n出典：B'zセット
+ リスト ai-z-lab.github.io/bz-setlist
 LOCATION:石川 本多の森 北電ホール
 X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
@@ -318,14 +341,15 @@ UID:2026-12-28-radio-crazy-koshi-inaba-live@bz-setlist
 DTSTAMP:20261119T000000Z
 DTSTART;TZID=Asia/Tokyo:20261228T110000
 DTEND;TZID=Asia/Tokyo:20261228T130000
-SUMMARY:Koshi Inaba｜FM802 RADIO CRAZY 2026 稲葉浩志出演
+SUMMARY:Koshi Inaba⁠‌​‌⁠｜FM802 RADIO CRAZY 2026 稲葉浩志
+ 出演
 DESCRIPTION:イベント全体 OPEN 10:00 / START 11:00。稲葉浩志の
  出演時刻・出演ステージは後日発表されるタイムテー
  ブルで確認。開場・開演、出演日・出演時刻・出演ス
  テージは変更となる場合があります。\n種別：公演\nア
  ーティスト：Koshi Inaba\nツアー：FM802 ROCK FESTIVAL RADIO CRAZY
   2026\nエリア：大阪\n受付元：FM802 RADIO CRAZY\nURL：https://ra
- diocrazy.fm/
+ diocrazy.fm/\n出典：B'zセットリスト ai-z-lab.github.io/bz-setlist
 LOCATION:大阪 インテックス大阪
 X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
@@ -334,13 +358,15 @@ UID:2026-12-29-countdown-japan-koshi-inaba-live@bz-setlist
 DTSTAMP:20261119T000000Z
 DTSTART;TZID=Asia/Tokyo:20261229T173500
 DTEND;TZID=Asia/Tokyo:20261229T193500
-SUMMARY:Koshi Inaba｜COUNTDOWN JAPAN 26/27 稲葉浩志出演
+SUMMARY:Koshi Inaba⁠‌​‌⁠｜COUNTDOWN JAPAN 26/27 稲葉浩志出
+ 演
 DESCRIPTION:稲葉浩志の出演は17:35〜（11/11 公式発表）。イ
  ベント全体 OPEN 9:30 / START 12:00 / END 20:40予定。出演ステ
  ージは公式ページに記載がなく、要確認。\n種別：公演
  \nアーティスト：Koshi Inaba\nツアー：COUNTDOWN JAPAN 26/27 supp
  orted by au\nエリア：千葉\n受付元：COUNTDOWN JAPAN\nURL：https:
- //countdownjapan.jp/2627/
+ //countdownjapan.jp/2627/\n出典：B'zセットリスト ai-z-lab.github.
+ io/bz-setlist
 LOCATION:千葉 幕張メッセ国際展示場1～11ホール・イベン
  トホール
 X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
@@ -350,10 +376,11 @@ UID:2027-01-09-env-live-兵庫-glion-arena-kobe@bz-setlist
 DTSTAMP:20261119T000000Z
 DTSTART;TZID=Asia/Tokyo:20270109T170000
 DTEND;TZID=Asia/Tokyo:20270109T190000
-SUMMARY:Koshi Inaba｜兵庫公演
+SUMMARY:Koshi Inaba⁠‌​‌⁠｜兵庫公演
 DESCRIPTION:OPEN 15:30 / START 17:00\n種別：公演\nアーティスト
  ：Koshi Inaba\nツアー：Koshi Inaba LIVE 2026-2027 ～enV～\nエリ
- ア：兵庫\nURL：https://bz-vermillion.com/en5/
+ ア：兵庫\nURL：https://bz-vermillion.com/en5/\n出典：B'zセット
+ リスト ai-z-lab.github.io/bz-setlist
 LOCATION:兵庫 GLION ARENA KOBE
 X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
@@ -362,10 +389,11 @@ UID:2027-01-10-env-live-兵庫-glion-arena-kobe@bz-setlist
 DTSTAMP:20261119T000000Z
 DTSTART;TZID=Asia/Tokyo:20270110T170000
 DTEND;TZID=Asia/Tokyo:20270110T190000
-SUMMARY:Koshi Inaba｜兵庫公演
+SUMMARY:Koshi Inaba⁠‌​‌⁠｜兵庫公演
 DESCRIPTION:OPEN 15:30 / START 17:00\n種別：公演\nアーティスト
  ：Koshi Inaba\nツアー：Koshi Inaba LIVE 2026-2027 ～enV～\nエリ
- ア：兵庫\nURL：https://bz-vermillion.com/en5/
+ ア：兵庫\nURL：https://bz-vermillion.com/en5/\n出典：B'zセット
+ リスト ai-z-lab.github.io/bz-setlist
 LOCATION:兵庫 GLION ARENA KOBE
 X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
@@ -375,10 +403,11 @@ UID:2027-01-16-env-live-愛知-ポートメッセなごや-第1展示館@b
 DTSTAMP:20261119T000000Z
 DTSTART;TZID=Asia/Tokyo:20270116T170000
 DTEND;TZID=Asia/Tokyo:20270116T190000
-SUMMARY:Koshi Inaba｜愛知公演
+SUMMARY:Koshi Inaba⁠‌​‌⁠｜愛知公演
 DESCRIPTION:OPEN 15:30 / START 17:00\n種別：公演\nアーティスト
  ：Koshi Inaba\nツアー：Koshi Inaba LIVE 2026-2027 ～enV～\nエリ
- ア：愛知\nURL：https://bz-vermillion.com/en5/
+ ア：愛知\nURL：https://bz-vermillion.com/en5/\n出典：B'zセット
+ リスト ai-z-lab.github.io/bz-setlist
 LOCATION:愛知 ポートメッセなごや 第1展示館
 X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
@@ -388,10 +417,11 @@ UID:2027-01-17-env-live-愛知-ポートメッセなごや-第1展示館@b
 DTSTAMP:20261119T000000Z
 DTSTART;TZID=Asia/Tokyo:20270117T170000
 DTEND;TZID=Asia/Tokyo:20270117T190000
-SUMMARY:Koshi Inaba｜愛知公演
+SUMMARY:Koshi Inaba⁠‌​‌⁠｜愛知公演
 DESCRIPTION:OPEN 15:30 / START 17:00\n種別：公演\nアーティスト
  ：Koshi Inaba\nツアー：Koshi Inaba LIVE 2026-2027 ～enV～\nエリ
- ア：愛知\nURL：https://bz-vermillion.com/en5/
+ ア：愛知\nURL：https://bz-vermillion.com/en5/\n出典：B'zセット
+ リスト ai-z-lab.github.io/bz-setlist
 LOCATION:愛知 ポートメッセなごや 第1展示館
 X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
@@ -401,10 +431,11 @@ UID:2027-01-23-env-live-宮城-宮城-セキスイハイムスーパーア
 DTSTAMP:20261119T000000Z
 DTSTART;TZID=Asia/Tokyo:20270123T170000
 DTEND;TZID=Asia/Tokyo:20270123T190000
-SUMMARY:Koshi Inaba｜宮城公演
+SUMMARY:Koshi Inaba⁠‌​‌⁠｜宮城公演
 DESCRIPTION:OPEN 15:30 / START 17:00\n種別：公演\nアーティスト
  ：Koshi Inaba\nツアー：Koshi Inaba LIVE 2026-2027 ～enV～\nエリ
- ア：宮城\nURL：https://bz-vermillion.com/en5/
+ ア：宮城\nURL：https://bz-vermillion.com/en5/\n出典：B'zセット
+ リスト ai-z-lab.github.io/bz-setlist
 LOCATION:宮城 宮城 セキスイハイムスーパーアリーナ
 X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
@@ -413,10 +444,11 @@ UID:2027-01-28-env-live-神奈川-kアリーナ横浜@bz-setlist
 DTSTAMP:20261119T000000Z
 DTSTART;TZID=Asia/Tokyo:20270128T180000
 DTEND;TZID=Asia/Tokyo:20270128T200000
-SUMMARY:Koshi Inaba｜神奈川公演
+SUMMARY:Koshi Inaba⁠‌​‌⁠｜神奈川公演
 DESCRIPTION:OPEN 16:30 / START 18:00\n種別：公演\nアーティスト
  ：Koshi Inaba\nツアー：Koshi Inaba LIVE 2026-2027 ～enV～\nエリ
- ア：神奈川\nURL：https://bz-vermillion.com/en5/
+ ア：神奈川\nURL：https://bz-vermillion.com/en5/\n出典：B'zセッ
+ トリスト ai-z-lab.github.io/bz-setlist
 LOCATION:神奈川 Kアリーナ横浜
 X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
@@ -425,10 +457,11 @@ UID:2027-01-30-env-live-神奈川-kアリーナ横浜@bz-setlist
 DTSTAMP:20261119T000000Z
 DTSTART;TZID=Asia/Tokyo:20270130T170000
 DTEND;TZID=Asia/Tokyo:20270130T190000
-SUMMARY:Koshi Inaba｜神奈川公演
+SUMMARY:Koshi Inaba⁠‌​‌⁠｜神奈川公演
 DESCRIPTION:OPEN 15:30 / START 17:00\n種別：公演\nアーティスト
  ：Koshi Inaba\nツアー：Koshi Inaba LIVE 2026-2027 ～enV～\nエリ
- ア：神奈川\nURL：https://bz-vermillion.com/en5/
+ ア：神奈川\nURL：https://bz-vermillion.com/en5/\n出典：B'zセッ
+ トリスト ai-z-lab.github.io/bz-setlist
 LOCATION:神奈川 Kアリーナ横浜
 X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
@@ -437,10 +470,11 @@ UID:2027-01-31-env-live-神奈川-kアリーナ横浜@bz-setlist
 DTSTAMP:20261119T000000Z
 DTSTART;TZID=Asia/Tokyo:20270131T170000
 DTEND;TZID=Asia/Tokyo:20270131T190000
-SUMMARY:Koshi Inaba｜神奈川公演
+SUMMARY:Koshi Inaba⁠‌​‌⁠｜神奈川公演
 DESCRIPTION:OPEN 15:30 / START 17:00\n種別：公演\nアーティスト
  ：Koshi Inaba\nツアー：Koshi Inaba LIVE 2026-2027 ～enV～\nエリ
- ア：神奈川\nURL：https://bz-vermillion.com/en5/
+ ア：神奈川\nURL：https://bz-vermillion.com/en5/\n出典：B'zセッ
+ トリスト ai-z-lab.github.io/bz-setlist
 LOCATION:神奈川 Kアリーナ横浜
 X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
@@ -449,12 +483,14 @@ UID:2027-08-14-en-dome-live-東京-東京ドーム@bz-setlist
 DTSTAMP:20261119T000000Z
 DTSTART;TZID=Asia/Tokyo:20270814T170000
 DTEND;TZID=Asia/Tokyo:20270814T190000
-SUMMARY:Koshi Inaba｜東京公演（東京ドーム 1日目）
+SUMMARY:Koshi Inaba⁠‌​‌⁠｜東京公演（東京ドーム 1日
+ 目）
 DESCRIPTION:OPEN 15:00 / START 17:00。SS席¥18\,000（B’z PARTY限定
  ）/ S席¥13\,000 / A席（注釈付き）¥7\,000。4歳未満入場不
  可。\n種別：公演\nアーティスト：Koshi Inaba\nツアー：Kos
  hi Inaba LIVE 2027 ～en-DOME～\nエリア：東京\nURL：https://bz-ver
- million.com/en-dome/
+ million.com/en-dome/\n出典：B'zセットリスト ai-z-lab.github.io/bz
+ -setlist
 LOCATION:東京 東京ドーム
 X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
@@ -463,12 +499,14 @@ UID:2027-08-15-en-dome-live-東京-東京ドーム@bz-setlist
 DTSTAMP:20261119T000000Z
 DTSTART;TZID=Asia/Tokyo:20270815T170000
 DTEND;TZID=Asia/Tokyo:20270815T190000
-SUMMARY:Koshi Inaba｜東京公演（東京ドーム 2日目）
+SUMMARY:Koshi Inaba⁠‌​‌⁠｜東京公演（東京ドーム 2日
+ 目）
 DESCRIPTION:OPEN 15:00 / START 17:00。SS席¥18\,000（B’z PARTY限定
  ）/ S席¥13\,000 / A席（注釈付き）¥7\,000。4歳未満入場不
  可。\n種別：公演\nアーティスト：Koshi Inaba\nツアー：Kos
  hi Inaba LIVE 2027 ～en-DOME～\nエリア：東京\nURL：https://bz-ver
- million.com/en-dome/
+ million.com/en-dome/\n出典：B'zセットリスト ai-z-lab.github.io/bz
+ -setlist
 LOCATION:東京 東京ドーム
 X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
