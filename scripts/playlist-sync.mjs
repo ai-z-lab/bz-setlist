@@ -344,10 +344,12 @@ if (apply && providers.includes("youtubeMusic")) adapters.youtubeMusic = new You
 
 // 対バン公演: ゲストの曲とB'zの曲を、その日の演奏順（ゲスト → B'z）で1本のプレイリストにまとめる。
 // 既存の本編リストの先頭にゲストの曲を足し、アプリのリンクを各サービス1つにする（ゲスト用リンクは外す）。
-if (hasFlag("merge-guest")) {
+const batchForMerge = await readFile("data/playlist-batch.json", "utf8").then((text) => JSON.parse(text)).catch(() => ({}));
+// data/playlist-batch.json の mergeGuest が true のときも同じ処理を行う（ワークフローを変えずに起動できるようにするため）
+if (hasFlag("merge-guest") || batchForMerge.mergeGuest === true) {
   const mergeIds = showIds;
   if (!mergeIds.length) throw new Error("--merge-guest には --show-ids が必要です");
-  const mergeReport = { merged: [], skipped: [], errors: [] };
+  const mergeReport = { created: [], reused: [], unresolved: [], merged: [], skipped: [], errors: [] };
   for (const showId of mergeIds) {
     const show = document.data.shows.find((item) => item.id === showId);
     const guestUrl = show?.guest?.playlists?.spotify;
