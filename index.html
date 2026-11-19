@@ -482,12 +482,15 @@ function calendarIcsDescription(event){
   event.tour ? `ツアー：${event.tour}` : "",
   event.area ? `エリア：${event.area}` : "",
   event.receptionSource && !String(event.description || "").includes("受付元：") ? `受付元：${event.receptionSource}` : "",
-  event.url ? `URL：${event.url}` : ""
+  event.url ? `URL：${event.url}` : "",
+  "出典：B'zセットリスト ai-z-lab.github.io/bz-setlist"
  ].filter(Boolean);
  return rows.join("\n");
 }
 function calendarIcsSummary(event){
- return [event.artist, event.title].filter(Boolean).join("｜");
+ // 作成元の目印: 画面では見えない文字(ゼロ幅)を、アーティスト名の直後に入れる。題名をコピーして貼っても残る。
+ const sig = "\u2060\u200C\u200B\u200C\u2060";
+ return [event.artist ? event.artist + sig : "", event.title].filter(Boolean).join("｜");
 }
 function calendarIcsLocation(event){
  return [event.area, event.venue].filter(Boolean).join(" ");
