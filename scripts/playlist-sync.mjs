@@ -423,7 +423,8 @@ let quotaStopped = false;
 for (const group of plan.groups) {
   const representative = group.shows[0];
   for (const provider of providers) {
-    const targets = group.shows.filter((show) => !show.playlists?.[provider] || repairExisting);
+    // ゲストが出る対バン公演のYouTube Musicは、ゲスト→B'zの1本を merge-guest モードで作る。ここでB'zだけのリストを作らない
+    const targets = group.shows.filter((show) => (!show.playlists?.[provider] || repairExisting) && !(provider === "youtubeMusic" && show.guest?.songs?.length));
     if (!targets.length) continue;
     if (quotaStopped && provider === "youtubeMusic") {
       report.unresolved.push({ provider, group: group.id, shows: targets.map((show) => show.id), reason: "YouTube API quota exceeded; rerun after quota reset" });
