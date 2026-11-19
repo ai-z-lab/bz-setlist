@@ -136,7 +136,7 @@ class SpotifyAdapter {
     let url = `https://api.spotify.com/v1/playlists/${id}/items?limit=100`;
     while (url) {
       const body = await fetchJson(url, { headers: this.headers() });
-      for (const item of body.items || []) if (item.track?.uri) uris.push(item.track.uri);
+      for (const item of body.items || []) { const uri = item.item?.uri || item.track?.uri; if (uri) uris.push(uri); }
       url = body.next || "";
     }
     return uris;
@@ -360,6 +360,8 @@ if (hasFlag("merge-guest") || (batchForMerge.mergeGuest === true && process.env.
       const mainId = playlistIdFromUrl("spotify", mainUrl);
       const guestItems = apply ? await adapters.spotify.listItems(guestId) : [];
       const mainItems = apply ? await adapters.spotify.listItems(mainId) : [];
+      // 読み取りが空のまま書き込むとリストが空になるため、どちらかが空なら中止する
+      if (apply && (!guestItems.length || !mainItems.length)) throw new Error(`曲を読み取れないため中止しました（ゲスト${guestItems.length}曲・本編${mainItems.length}曲）。Spotifyは変更していません`);
       const alreadyMerged = guestItems.length && mainItems.slice(0, guestItems.length).join() === guestItems.join();
       if (apply && !alreadyMerged) {
         await adapters.spotify.replaceItems(mainId, [...guestItems, ...mainItems]);
