@@ -1,1 +1,1 @@
-{"provider":"spotify","repairExisting":true,"youtubeAutoMatch":false,"mergeGuest":false,"showIds":["2025-06-21-unite02-yokohama","2025-06-28-unite02-yokohama","2025-06-29-unite02-yokohama"],"guestShowIds":[]}
+{"provider":"spotify","repairExisting":false,"youtubeAutoMatch":false,"mergeGuest":true,"showIds":["2025-06-21-unite02-yokohama","2025-06-28-unite02-yokohama","2025-06-29-unite02-yokohama"],"guestShowIds":[]}
