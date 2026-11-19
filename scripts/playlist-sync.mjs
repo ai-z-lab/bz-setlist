@@ -346,7 +346,7 @@ if (apply && providers.includes("youtubeMusic")) adapters.youtubeMusic = new You
 // 既存の本編リストの先頭にゲストの曲を足し、アプリのリンクを各サービス1つにする（ゲスト用リンクは外す）。
 const batchForMerge = await readFile("data/playlist-batch.json", "utf8").then((text) => JSON.parse(text)).catch(() => ({}));
 // data/playlist-batch.json の mergeGuest が true のときも同じ処理を行う（ワークフローを変えずに起動できるようにするため）
-if (hasFlag("merge-guest") || batchForMerge.mergeGuest === true) {
+if (hasFlag("merge-guest") || (batchForMerge.mergeGuest === true && process.env.GITHUB_EVENT_NAME === "push")) {
   const mergeIds = showIds;
   if (!mergeIds.length) throw new Error("--merge-guest には --show-ids が必要です");
   const mergeReport = { created: [], reused: [], unresolved: [], merged: [], skipped: [], errors: [] };
