@@ -342,6 +342,33 @@ const adapters = {};
 if (apply && providers.includes("spotify")) adapters.spotify = new SpotifyAdapter(await refreshSpotifyToken());
 if (apply && providers.includes("youtubeMusic")) adapters.youtubeMusic = new YouTubeAdapter(await refreshYouTubeAccessToken());
 
+// ゲスト付きの対バン公演のYouTube Music: 当日の演奏順（ゲスト → B'z）で1本のリストを作る。
+// 通常の同期（定期実行・手動実行）からも呼ぶので、上限で止まった分は次回の実行で同じ内容のまま再開できる。
+async function createCombinedYoutube(show, report) {
+  if (!show?.guest?.songs?.length || show.playlists?.youtubeMusic || show.guest.playlists?.youtubeMusic) return;
+  try {
+    const mainSongs = document.data.setlists.filter((row) => row.showId === show.id).sort((a, b) => a.order - b.order).map((row) => row.song);
+    const wanted = [
+      ...[...show.guest.songs].sort((a, b) => a.order - b.order).map((row) => ({ artist: show.guest.artist, song: row.song })),
+      ...mainSongs.map((song) => ({ artist: artistForShow(show), song })),
+    ];
+    const ids = [];
+    const missing = [];
+    for (const { artist, song } of wanted) {
+      const id = trackMap.tracks[mapKey(artist, song)]?.youtubeVideoId;
+      if (id) ids.push(id); else missing.push(`${artist} ${song}`);
+    }
+    if (missing.length) { report.unresolved.push({ showId: show.id, provider: "youtubeMusic", tracks: missing }); return; }
+    if (!apply) { report.created.push({ showId: show.id, provider: "youtubeMusic", dryRun: true, tracks: ids.length }); return; }
+    const url = await adapters.youtubeMusic.create({ ...show, tour: `B'z Presents ${show.tour} ${show.guest.artist}×B'z（当日の演奏順）` }, ids);
+    show.playlists = { ...(show.playlists || {}), youtubeMusic: url };
+    report.created.push({ showId: show.id, provider: "youtubeMusic", url, tracks: ids.length });
+  } catch (error) {
+    if (isQuotaError(error)) report.unresolved.push({ showId: show.id, provider: "youtubeMusic", reason: "YouTube APIの上限に達しました。上限が戻ってから再実行します", message: error.message });
+    else report.errors.push({ showId: show.id, provider: "youtubeMusic", message: error.message });
+  }
+}
+
 // 対バン公演: ゲストの曲とB'zの曲を、その日の演奏順（ゲスト → B'z）で1本のプレイリストにまとめる。
 // 既存の本編リストの先頭にゲストの曲を足し、アプリのリンクを各サービス1つにする（ゲスト用リンクは外す）。
 const batchForMerge = await readFile("data/playlist-batch.json", "utf8").then((text) => JSON.parse(text)).catch(() => ({}));
@@ -354,31 +381,38 @@ if (hasFlag("merge-guest") || (batchForMerge.mergeGuest === true && process.env.
     const show = document.data.shows.find((item) => item.id === showId);
     const guestUrl = show?.guest?.playlists?.spotify;
     const mainUrl = show?.playlists?.spotify;
-    if (!show || !guestUrl || !mainUrl) { mergeReport.skipped.push({ showId, reason: "Spotifyのゲスト用または本編のリンクがありません" }); continue; }
-    try {
-      const guestId = playlistIdFromUrl("spotify", guestUrl);
-      const mainId = playlistIdFromUrl("spotify", mainUrl);
-      const guestItems = apply ? await adapters.spotify.listItems(guestId) : [];
-      const mainItems = apply ? await adapters.spotify.listItems(mainId) : [];
-      // 読み取りが空のまま書き込むとリストが空になるため、どちらかが空なら中止する
-      if (apply && (!guestItems.length || !mainItems.length)) throw new Error(`曲を読み取れないため中止しました（ゲスト${guestItems.length}曲・本編${mainItems.length}曲）。Spotifyは変更していません`);
-      const alreadyMerged = guestItems.length && mainItems.slice(0, guestItems.length).join() === guestItems.join();
-      if (apply && !alreadyMerged) {
-        await adapters.spotify.replaceItems(mainId, [...guestItems, ...mainItems]);
-        await adapters.spotify.updateDescription(mainId, `${playlistDescription(show)} 当日の演奏順（ゲスト ${show.guest.artist} → B'z）で1本にまとめています。`);
-      }
-      const ytm = show.guest.playlists?.youtubeMusic;
-      if (apply) {
-        show.playlists = { ...(show.playlists || {}), ...(ytm ? { youtubeMusic: ytm } : {}) };
-        delete show.guest.playlists;
-      }
-      mergeReport.merged.push({ showId, guestTracks: guestItems.length, mainTracks: mainItems.length, alreadyMerged: Boolean(alreadyMerged), youtubeMusic: Boolean(ytm) });
-    } catch (error) { mergeReport.errors.push({ showId, message: error.message }); }
+    if (!show?.guest) { mergeReport.skipped.push({ showId, reason: "ゲストの情報がありません" }); continue; }
+    // Spotify: 本編リストの先頭にゲストの曲を足す
+    if (providers.includes("spotify") && guestUrl && mainUrl) {
+      try {
+        const guestId = playlistIdFromUrl("spotify", guestUrl);
+        const mainId = playlistIdFromUrl("spotify", mainUrl);
+        const guestItems = apply ? await adapters.spotify.listItems(guestId) : [];
+        const mainItems = apply ? await adapters.spotify.listItems(mainId) : [];
+        // 読み取りが空のまま書き込むとリストが空になるため、どちらかが空なら中止する
+        if (apply && (!guestItems.length || !mainItems.length)) throw new Error(`曲を読み取れないため中止しました（ゲスト${guestItems.length}曲・本編${mainItems.length}曲）。Spotifyは変更していません`);
+        const alreadyMerged = guestItems.length && mainItems.slice(0, guestItems.length).join() === guestItems.join();
+        if (apply && !alreadyMerged) {
+          await adapters.spotify.replaceItems(mainId, [...guestItems, ...mainItems]);
+          await adapters.spotify.updateDescription(mainId, `${playlistDescription(show)} 当日の演奏順（ゲスト ${show.guest.artist} → B'z）で1本にまとめています。`);
+        }
+        const ytm = show.guest.playlists?.youtubeMusic;
+        if (apply) {
+          show.playlists = { ...(show.playlists || {}), ...(ytm ? { youtubeMusic: ytm } : {}) };
+          delete show.guest.playlists;
+        }
+        mergeReport.merged.push({ showId, provider: "spotify", guestTracks: guestItems.length, mainTracks: mainItems.length, alreadyMerged: Boolean(alreadyMerged), youtubeMusic: Boolean(ytm) });
+      } catch (error) { mergeReport.errors.push({ showId, provider: "spotify", message: error.message }); }
+    } else if (providers.includes("spotify") && !show.playlists?.spotify) {
+      mergeReport.skipped.push({ showId, provider: "spotify", reason: "Spotifyのゲスト用または本編のリンクがありません" });
+    }
+    // YouTube Music: 当日の演奏順（ゲスト → B'z）で、最初から1本のリストを作る（既存のリンクがある公演は触らない）
+    if (providers.includes("youtubeMusic")) await createCombinedYoutube(show, mergeReport);
   }
-  if (apply && mergeReport.merged.length) {
+  if (apply && (mergeReport.merged.length || mergeReport.created.length)) {
     const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Tokyo", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
     document.data.updated = today;
-    document.data.updateHistory.unshift({ date: today, title: "対バン公演のプレイリストを1本に統一", items: [`ゲストとB'zの曲を当日の演奏順で通して聴けるよう、${mergeReport.merged.length}公演のプレイリストを1本にまとめました`] });
+    document.data.updateHistory.unshift({ date: today, title: "対バン公演のプレイリストを1本に統一", items: [`ゲストとB'zの曲を当日の演奏順で通して聴けるよう、${new Set([...mergeReport.merged, ...mergeReport.created].map((item) => item.showId)).size}公演のプレイリストを1本にしました`] });
     validateBzData(document.data);
     await saveBzData(document, document.data);
   }
@@ -394,7 +428,8 @@ let quotaStopped = false;
 for (const group of plan.groups) {
   const representative = group.shows[0];
   for (const provider of providers) {
-    const targets = group.shows.filter((show) => !show.playlists?.[provider] || repairExisting);
+    // ゲストが出る対バン公演のYouTube Musicは、ゲスト→B'zの1本を merge-guest モードで作る。ここでB'zだけのリストを作らない
+    const targets = group.shows.filter((show) => (!show.playlists?.[provider] || repairExisting) && !(provider === "youtubeMusic" && document.data.shows.find((item) => item.id === show.id)?.guest?.songs?.length));
     if (!targets.length) continue;
     if (quotaStopped && provider === "youtubeMusic") {
       report.unresolved.push({ provider, group: group.id, shows: targets.map((show) => show.id), reason: "YouTube API quota exceeded; rerun after quota reset" });
@@ -470,6 +505,18 @@ for (const group of plan.groups) {
         continue;
       }
       report.errors.push({ provider, group: group.id, shows: targets.map((show) => show.id), message: error.message });
+    }
+  }
+}
+
+// ゲスト付きの対バン公演のYouTube Music（B'zだけのリストは作らず、ゲスト→B'zの1本を作る）。対象は、同期の対象になった公演だけ
+if (providers.includes("youtubeMusic") && !quotaStopped) {
+  const planned = new Set(plan.groups.flatMap((group) => group.shows.map((show) => show.id)));
+  const combinedReport = { created: report.created, unresolved: report.unresolved, errors: report.errors };
+  for (const show of document.data.shows) {
+    if (planned.has(show.id) && show.guest?.songs?.length) {
+      await createCombinedYoutube(show, combinedReport);
+      if (show.playlists?.youtubeMusic) linkedShows += 1;
     }
   }
 }
