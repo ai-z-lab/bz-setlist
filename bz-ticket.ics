@@ -6,6 +6,8 @@ X-WR-CALNAME:B'z チケット
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 X-WR-TIMEZONE:Asia/Tokyo
+X-WR-CALDESC:B'zセットリストアプリ (ai-z-lab) が作成。https://ai-z-lab.github.io/bz-setlist/
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 BEGIN:VTIMEZONE
 TZID:Asia/Tokyo
 BEGIN:STANDARD
@@ -26,6 +28,7 @@ DESCRIPTION:各公演開場2時間前まで\n種別：受付締切\nアー
  愛知\n受付元：B’z TICKET\nURL：https://bz-ticket.com/news/179cb28
  4-f1bb-45ad-abd8-4d470b1449b4
 LOCATION:愛知 Zepp Nagoya
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-20-tmg-sayonara-meeting-entry-deadline@bz-setlist
@@ -40,6 +43,7 @@ DESCRIPTION:受付元：B'z Official Website\n対象公演：2026/10/20 Ze
  \nエリア：愛知\nURL：https://bz-vermillion.com/news/261002_2sayonar
  a.html
 LOCATION:愛知 Zepp Nagoya
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-20-tmg-sayonara-meeting-lottery-result@bz-setlist
@@ -54,6 +58,7 @@ DESCRIPTION:受付元：B'z Official Website\n対象公演：2026/10/20 Ze
  \nエリア：愛知\nURL：https://bz-vermillion.com/news/261002_2sayonar
  a.html
 LOCATION:愛知 Zepp Nagoya
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-21-env-hall-group-07-resale-club-gym-start@bz-setlist
@@ -70,6 +75,7 @@ DESCRIPTION:受付元：B’z TICKET\n対象公演：\n・10/31 沖縄コ
  ：https://bz-ticket.com/leaflets/resale-schedule-en5-hall
 LOCATION:沖縄 10/31 沖縄コンベンションセンター / 11/1 沖
  縄コンベンションセンター
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-21-env-hall-group-08-resale-party-start@bz-setlist
@@ -86,6 +92,7 @@ DESCRIPTION:受付元：B’z TICKET\n対象公演：\n・11/5 iichikoグ
  岡\nURL：https://bz-ticket.com/leaflets/resale-schedule-en5-hall
 LOCATION:大分・福岡 11/5 iichikoグランシアタ / 11/7 福岡市
  民ホール / 11/8 福岡市民ホール
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-tmg-direct-nagoya21-end@bz-setlist
@@ -98,6 +105,7 @@ DESCRIPTION:各公演開場2時間前まで\n種別：受付締切\nアー
  愛知\n受付元：B’z TICKET\nURL：https://bz-ticket.com/news/179cb28
  4-f1bb-45ad-abd8-4d470b1449b4
 LOCATION:愛知 Zepp Nagoya
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-21-tmg-sayonara-meeting-entry-deadline@bz-setlist
@@ -112,6 +120,7 @@ DESCRIPTION:受付元：B'z Official Website\n対象公演：2026/10/21 Ze
  \nエリア：愛知\nURL：https://bz-vermillion.com/news/261002_2sayonar
  a.html
 LOCATION:愛知 Zepp Nagoya
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-21-tmg-sayonara-meeting-lottery-result@bz-setlist
@@ -126,6 +135,7 @@ DESCRIPTION:受付元：B'z Official Website\n対象公演：2026/10/21 Ze
  \nエリア：愛知\nURL：https://bz-vermillion.com/news/261002_2sayonar
  a.html
 LOCATION:愛知 Zepp Nagoya
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-tmg-direct-tokyo-start@bz-setlist
@@ -138,6 +148,7 @@ DESCRIPTION:開放席が発生した場合のみ先着販売\n種別：受
  ”\nエリア：東京\n受付元：B’z TICKET\nURL：https://bz-ticket
  .com/news/179cb284-f1bb-45ad-abd8-4d470b1449b4
 LOCATION:東京 東京ガーデンシアター
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-23-env-hall-group-08-resale-club-gym-start@bz-setlist
@@ -154,6 +165,7 @@ DESCRIPTION:受付元：B’z TICKET\n対象公演：\n・11/5 iichikoグ
  岡\nURL：https://bz-ticket.com/leaflets/resale-schedule-en5-hall
 LOCATION:大分・福岡 11/5 iichikoグランシアタ / 11/7 福岡市
  民ホール / 11/8 福岡市民ホール
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-tmg-direct-tokyo-end@bz-setlist
@@ -166,6 +178,7 @@ DESCRIPTION:各公演開場2時間前まで\n種別：受付締切\nアー
  東京\n受付元：B’z TICKET\nURL：https://bz-ticket.com/news/179cb28
  4-f1bb-45ad-abd8-4d470b1449b4
 LOCATION:東京 東京ガーデンシアター
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-23-tmg-sayonara-meeting-entry-deadline@bz-setlist
@@ -180,6 +193,7 @@ DESCRIPTION:受付元：B'z Official Website\n対象公演：2026/10/23
  026 “SAYONARA”\nエリア：東京\nURL：https://bz-vermillion.com/ne
  ws/261002_2sayonara.html
 LOCATION:東京 東京ガーデンシアター
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-23-tmg-sayonara-meeting-lottery-result@bz-setlist
@@ -194,6 +208,7 @@ DESCRIPTION:受付元：B'z Official Website\n対象公演：2026/10/23
  026 “SAYONARA”\nエリア：東京\nURL：https://bz-vermillion.com/ne
  ws/261002_2sayonara.html
 LOCATION:東京 東京ガーデンシアター
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-25-env-yokosuka-direct-sale-start@bz-setlist
@@ -208,6 +223,7 @@ DESCRIPTION:先着。B’z PARTY直前販売：SS席（B’z PARTY正規
  エリア：神奈川\n受付元：B’z TICKET\nURL：https://bz-ticket.c
  om/receptions
 LOCATION:神奈川 横須賀芸術劇場 大劇場
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-25-tmg3-bonus-entry-deadline@bz-setlist
@@ -223,6 +239,7 @@ DESCRIPTION:受付元：B ZONE\n受付名：TMG Ⅲ SAYONARA 封入応募
  をもって発表。\n種別：受付締切\nアーティスト：TMG\n
  ツアー：TMG Ⅲ SAYONARA\nURL：https://bzone.co.jp/ex/sp/TMGIII/
 LOCATION:CD初回プレス封入応募抽選券
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-26-radio-crazy-radipass-gold-3rd-entry-start@bz-setlist
@@ -236,6 +253,7 @@ DESCRIPTION:受付元：FM802 RADIPASS GOLD。会員向け抽選受付：2
  ーティスト：Koshi Inaba\nツアー：FM802 ROCK FESTIVAL RADIO CRAZY
   2026\nエリア：大阪\nURL：https://radiocrazy.fm/ticket/
 LOCATION:大阪 インテックス大阪（稲葉浩志は12/28出演）
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-26-radio-crazy-official-4th-entry-start@bz-setlist
@@ -249,6 +267,7 @@ DESCRIPTION:受付元：FM802 RADIO CRAZY／イープラス。抽選受付
  アーティスト：Koshi Inaba\nツアー：FM802 ROCK FESTIVAL RADIO CR
  AZY 2026\nエリア：大阪\nURL：https://radiocrazy.fm/ticket/
 LOCATION:大阪 インテックス大阪（稲葉浩志は12/28出演）
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-26-env-hall-group-07-resale-deadline@bz-setlist
@@ -265,6 +284,7 @@ DESCRIPTION:受付元：B’z TICKET\n対象公演：\n・10/31 沖縄コ
  ：https://bz-ticket.com/leaflets/resale-schedule-en5-hall
 LOCATION:沖縄 10/31 沖縄コンベンションセンター / 11/1 沖
  縄コンベンションセンター
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-26-env-arena-ponta-pass-entry-start@bz-setlist
@@ -279,6 +299,7 @@ DESCRIPTION:申込期間：2026/10/26 12:00 ～ 2026/11/03 23:59\n対象
   Inaba\nツアー：Koshi Inaba LIVE 2026-2027 ～enV～\n受付元：Pont
  aパス\nURL：https://bz-vermillion.com/en5/
 LOCATION:2027年アリーナ公演 全8公演
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-26-env-yokosuka-direct-sale-deadline@bz-setlist
@@ -292,6 +313,7 @@ DESCRIPTION:先着。B’z PARTY直前販売：SS席（B’z PARTY正規
  Inaba\nツアー：Koshi Inaba LIVE 2026-2027 ～enV～\nエリア：神
  奈川\n受付元：B’z TICKET\nURL：https://bz-ticket.com/receptions
 LOCATION:神奈川 横須賀芸術劇場 大劇場
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-28-env-hall-group-08-resale-deadline@bz-setlist
@@ -308,6 +330,7 @@ DESCRIPTION:受付元：B’z TICKET\n対象公演：\n・11/5 iichikoグ
  岡\nURL：https://bz-ticket.com/leaflets/resale-schedule-en5-hall
 LOCATION:大分・福岡 11/5 iichikoグランシアタ / 11/7 福岡市
  民ホール / 11/8 福岡市民ホール
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-28-countdown-japan-2nd-entry-start@bz-setlist
@@ -322,6 +345,7 @@ DESCRIPTION:受付元：COUNTDOWN JAPAN／Jフェスアプリ。第2次抽
  アー：COUNTDOWN JAPAN 26/27 supported by au\nエリア：千葉\nURL：
  https://countdownjapan.jp/2627/
 LOCATION:千葉 幕張メッセ（稲葉浩志は12/29出演）
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-29-env-okinawa-direct-sale-start@bz-setlist
@@ -337,6 +361,7 @@ DESCRIPTION:B’z TICKET直前（注釈付きチケット）先着販売
  RL：https://bz-ticket.com/receptions
 LOCATION:沖縄 10/31・11/1 沖縄コンベンションセンター 劇
  場棟
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-31-env-okinawa-direct-sale-deadline@bz-setlist
@@ -350,6 +375,7 @@ DESCRIPTION:B’z TICKET直前（注釈付きチケット）先着販売
  nV～\nエリア：沖縄\n受付元：B’z TICKET\nURL：https://bz-tick
  et.com/receptions
 LOCATION:沖縄 沖縄コンベンションセンター 劇場棟
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-01-env-okinawa-direct-sale-deadline@bz-setlist
@@ -363,6 +389,7 @@ DESCRIPTION:B’z TICKET直前（注釈付きチケット）先着販売
  nV～\nエリア：沖縄\n受付元：B’z TICKET\nURL：https://bz-tick
  et.com/receptions
 LOCATION:沖縄 沖縄コンベンションセンター 劇場棟
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-02-tmg-tokyo-tshirt-shipping-entry-start@bz-setlist
@@ -379,6 +406,7 @@ DESCRIPTION:受付元：B’z PARTY\n対象：2026/10/23 東京ガーデ
  IVE 2026 “SAYONARA”\nエリア：オンライン\nURL：https://bp.bz-
  party.com/sitenews_det.php?id=21866
 LOCATION:オンライン グッズ発送受付フォーム
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-02-env-hall-group-09-resale-party-start@bz-setlist
@@ -395,6 +423,7 @@ DESCRIPTION:受付元：B’z TICKET\n対象公演：\n・11/14 札幌文
  icket.com/leaflets/resale-schedule-en5-hall
 LOCATION:北海道 11/14 札幌文化芸術劇場hitaru / 11/16 帯広市
  民文化ホール
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-02-countdown-japan-2nd-entry-deadline@bz-setlist
@@ -408,6 +437,7 @@ DESCRIPTION:受付元：COUNTDOWN JAPAN／Jフェスアプリ。第2次抽
  ティスト：Koshi Inaba\nツアー：COUNTDOWN JAPAN 26/27 supported by
   au\nエリア：千葉\nURL：https://countdownjapan.jp/2627/
 LOCATION:千葉 幕張メッセ（稲葉浩志は12/29出演）
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-03-radio-crazy-radipass-gold-3rd-entry-deadline@bz-setlist
@@ -420,6 +450,7 @@ DESCRIPTION:受付元：FM802 RADIPASS GOLD。会員向け第3回抽選受
  ：Koshi Inaba\nツアー：FM802 ROCK FESTIVAL RADIO CRAZY 2026\nエリ
  ア：大阪\nURL：https://radiocrazy.fm/ticket/
 LOCATION:大阪 インテックス大阪（稲葉浩志は12/28出演）
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-03-radio-crazy-official-4th-entry-deadline@bz-setlist
@@ -432,6 +463,7 @@ DESCRIPTION:受付元：FM802 RADIO CRAZY／イープラス。オフィシ
  nアーティスト：Koshi Inaba\nツアー：FM802 ROCK FESTIVAL RADIO C
  RAZY 2026\nエリア：大阪\nURL：https://radiocrazy.fm/ticket/
 LOCATION:大阪 インテックス大阪（稲葉浩志は12/28出演）
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-03-env-arena-ponta-pass-entry-deadline@bz-setlist
@@ -446,6 +478,7 @@ DESCRIPTION:受付締切：2026/11/03 23:59\n対象：2027/01/09・01/10
  Koshi Inaba LIVE 2026-2027 ～enV～\n受付元：Pontaパス\nURL：https
  ://bz-vermillion.com/en5/
 LOCATION:2027年アリーナ公演 全8公演
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-04-env-ponta-pass-goods-gift-entry-start@bz-setlist
@@ -460,6 +493,7 @@ DESCRIPTION:申込期間：2026/11/04 10:00 ～ 2026/11/18 09:59\nツア
  ー：Koshi Inaba LIVE 2026-2027 ～enV～\nURL：https://bz-vermillion.co
  m/en5/
 LOCATION:
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-04-tmg-ponta-pass-goods-gift-entry-start@bz-setlist
@@ -473,6 +507,7 @@ DESCRIPTION:申込期間：2026/11/04 10:00 ～ 2026/11/18 09:59\nツア
  共通）\n種別：受付開始\nアーティスト：TMG\nツアー：TM
  G LIVE 2026 “SAYONARA”\nURL：https://bz-vermillion.com/tmg/2026/
 LOCATION:
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-04-env-arena-pia-ichihaya-entry-start@bz-setlist
@@ -488,6 +523,7 @@ DESCRIPTION:申込期間：2026/11/04 12:00 ～ 2026/11/10 23:59\n対象
  ケットぴあ・いち早プレリザーブ\nURL：https://bz-vermillion
  .com/en5/
 LOCATION:2027年アリーナ公演 全8公演
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-04-env-hall-group-09-resale-club-gym-start@bz-setlist
@@ -504,6 +540,7 @@ DESCRIPTION:受付元：B’z TICKET\n対象公演：\n・11/14 札幌文
  icket.com/leaflets/resale-schedule-en5-hall
 LOCATION:北海道 11/14 札幌文化芸術劇場hitaru / 11/16 帯広市
  民文化ホール
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-06-radio-crazy-lawson-lottery-entry-start@bz-setlist
@@ -518,6 +555,7 @@ DESCRIPTION:受付元：ローソンチケット（Lコード55802、ス
  ティスト：Koshi Inaba\nツアー：FM802 ROCK FESTIVAL RADIO CRAZY 20
  26\nエリア：大阪\nURL：https://l-tike.com/order?gLcode=55802
 LOCATION:大阪 インテックス大阪（稲葉浩志は12/28出演）
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-06-env-hall-group-10-resale-party-start@bz-setlist
@@ -533,6 +571,7 @@ DESCRIPTION:受付元：B’z TICKET\n対象公演：\n・11/20 けんし
  エリア：福島\nURL：https://bz-ticket.com/leaflets/resale-schedule-e
  n5-hall
 LOCATION:福島 11/20 けんしん郡山文化センター
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-07-env-arena-ponta-pass-lottery-result@bz-setlist
@@ -547,6 +586,7 @@ DESCRIPTION:結果発表：2026/11/07 20:00\n対象：2027/01/09・01/10
  Koshi Inaba LIVE 2026-2027 ～enV～\n受付元：Pontaパス\nURL：https
  ://bz-vermillion.com/en5/
 LOCATION:2027年アリーナ公演 全8公演
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-08-env-hall-group-10-resale-club-gym-start@bz-setlist
@@ -562,6 +602,7 @@ DESCRIPTION:受付元：B’z TICKET\n対象公演：\n・11/20 けんし
  エリア：福島\nURL：https://bz-ticket.com/leaflets/resale-schedule-e
  n5-hall
 LOCATION:福島 11/20 けんしん郡山文化センター
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-09-env-hall-group-09-resale-deadline@bz-setlist
@@ -578,6 +619,7 @@ DESCRIPTION:受付元：B’z TICKET\n対象公演：\n・11/14 札幌文
  icket.com/leaflets/resale-schedule-en5-hall
 LOCATION:北海道 11/14 札幌文化芸術劇場hitaru / 11/16 帯広市
  民文化ホール
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-09-env-hall-group-11-resale-party-start@bz-setlist
@@ -594,6 +636,7 @@ DESCRIPTION:受付元：B’z TICKET\n対象公演：\n・11/22 仙台サ
  tps://bz-ticket.com/leaflets/resale-schedule-en5-hall
 LOCATION:宮城・秋田 11/22 仙台サンプラザホール / 11/23 あ
  きた芸術劇場 ミルハス
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-10-env-arena-pia-ichihaya-entry-deadline@bz-setlist
@@ -608,6 +651,7 @@ DESCRIPTION:受付締切：2026/11/10 23:59\n対象：2027/01/09・01/10
  Koshi Inaba LIVE 2026-2027 ～enV～\n受付元：チケットぴあ・い
  ち早プレリザーブ\nURL：https://bz-vermillion.com/en5/
 LOCATION:2027年アリーナ公演 全8公演
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-11-env-arena-pia-seven-eleven-entry-start@bz-setlist
@@ -623,6 +667,7 @@ DESCRIPTION:申込期間：2026/11/11 12:00 ～ 2026/11/23 23:59\n対象
  ケットぴあ・セブン‐イレブンWEB抽選先行\nURL：https://b
  z-vermillion.com/en5/
 LOCATION:2027年アリーナ公演 全8公演
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-11-env-hall-group-11-resale-club-gym-start@bz-setlist
@@ -639,6 +684,7 @@ DESCRIPTION:受付元：B’z TICKET\n対象公演：\n・11/22 仙台サ
  tps://bz-ticket.com/leaflets/resale-schedule-en5-hall
 LOCATION:宮城・秋田 11/22 仙台サンプラザホール / 11/23 あ
  きた芸術劇場 ミルハス
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-11-tmg-tokyo-tshirt-shipping-entry-deadline@bz-setlist
@@ -655,6 +701,7 @@ DESCRIPTION:受付元：B’z PARTY\n対象：2026/10/23 東京ガーデ
  IVE 2026 “SAYONARA”\nエリア：オンライン\nURL：https://bp.bz-
  party.com/sitenews_det.php?id=21866
 LOCATION:オンライン グッズ発送受付フォーム
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-13-env-hall-group-10-resale-deadline@bz-setlist
@@ -670,6 +717,7 @@ DESCRIPTION:受付元：B’z TICKET\n対象公演：\n・11/20 けんし
  エリア：福島\nURL：https://bz-ticket.com/leaflets/resale-schedule-e
  n5-hall
 LOCATION:福島 11/20 けんしん郡山文化センター
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-13-env-hall-group-12-resale-party-start@bz-setlist
@@ -686,6 +734,7 @@ DESCRIPTION:受付元：B’z TICKET\n対象公演：\n・11/28 和歌山
  //bz-ticket.com/leaflets/resale-schedule-en5-hall
 LOCATION:和歌山・京都 11/28 和歌山県民文化会館 / 11/30 ロ
  ームシアター京都
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-14-env-arena-pia-ichihaya-lottery-result@bz-setlist
@@ -700,6 +749,7 @@ DESCRIPTION:結果発表：2026/11/14 20:00\n対象：2027/01/09・01/10
  Koshi Inaba LIVE 2026-2027 ～enV～\n受付元：チケットぴあ・い
  ち早プレリザーブ\nURL：https://bz-vermillion.com/en5/
 LOCATION:2027年アリーナ公演 全8公演
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-15-env-hall-group-12-resale-club-gym-start@bz-setlist
@@ -716,6 +766,7 @@ DESCRIPTION:受付元：B’z TICKET\n対象公演：\n・11/28 和歌山
  //bz-ticket.com/leaflets/resale-schedule-en5-hall
 LOCATION:和歌山・京都 11/28 和歌山県民文化会館 / 11/30 ロ
  ームシアター京都
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-16-radio-crazy-official-6th-entry-start@bz-setlist
@@ -730,6 +781,7 @@ DESCRIPTION:受付元：FM802 RADIO CRAZY／イープラス。抽選受付
  i Inaba\nツアー：FM802 ROCK FESTIVAL RADIO CRAZY 2026\nエリア：大
  阪\nURL：https://eplus.jp/sf/detail/0344660008
 LOCATION:大阪 インテックス大阪（稲葉浩志は12/28出演）
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-16-env-hall-group-11-resale-deadline@bz-setlist
@@ -746,6 +798,7 @@ DESCRIPTION:受付元：B’z TICKET\n対象公演：\n・11/22 仙台サ
  tps://bz-ticket.com/leaflets/resale-schedule-en5-hall
 LOCATION:宮城・秋田 11/22 仙台サンプラザホール / 11/23 あ
  きた芸術劇場 ミルハス
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-17-radio-crazy-lawson-lottery-entry-deadline@bz-setlist
@@ -760,6 +813,7 @@ DESCRIPTION:受付元：ローソンチケット（Lコード55802、ス
  FM802 ROCK FESTIVAL RADIO CRAZY 2026\nエリア：大阪\nURL：https://l-
  tike.com/order?gLcode=55802
 LOCATION:大阪 インテックス大阪（稲葉浩志は12/28出演）
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-18-env-ponta-pass-goods-gift-entry-deadline@bz-setlist
@@ -773,6 +827,7 @@ DESCRIPTION:受付締切：2026/11/18 09:59\nツアーグッズをPontaパ
  付締切\nアーティスト：Koshi Inaba\nツアー：Koshi Inaba LIVE 
  2026-2027 ～enV～\nURL：https://bz-vermillion.com/en5/
 LOCATION:
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-18-tmg-ponta-pass-goods-gift-entry-deadline@bz-setlist
@@ -786,6 +841,7 @@ DESCRIPTION:受付締切：2026/11/18 09:59\nツアーグッズをPontaパ
  付締切\nアーティスト：TMG\nツアー：TMG LIVE 2026 “SAYONARA
  ”\nURL：https://bz-vermillion.com/tmg/2026/
 LOCATION:
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-20-env-hall-group-12-resale-deadline@bz-setlist
@@ -802,6 +858,7 @@ DESCRIPTION:受付元：B’z TICKET\n対象公演：\n・11/28 和歌山
  //bz-ticket.com/leaflets/resale-schedule-en5-hall
 LOCATION:和歌山・京都 11/28 和歌山県民文化会館 / 11/30 ロ
  ームシアター京都
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-20-env-hall-group-13-resale-party-start@bz-setlist
@@ -818,6 +875,7 @@ DESCRIPTION:受付元：B’z TICKET\n対象公演：\n・12/4 松山市
  ts/resale-schedule-en5-hall
 LOCATION:愛媛・香川 12/4 松山市民会館 / 12/6 レクザムホー
  ル
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-20-radio-crazy-lawson-lottery-result@bz-setlist
@@ -831,6 +889,7 @@ DESCRIPTION:受付元：ローソンチケット（Lコード55802）。
  ティスト：Koshi Inaba\nツアー：FM802 ROCK FESTIVAL RADIO CRAZY 20
  26\nエリア：大阪\nURL：https://l-tike.com/order?gLcode=55802
 LOCATION:大阪 インテックス大阪（稲葉浩志は12/28出演）
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-22-env-hall-group-13-resale-club-gym-start@bz-setlist
@@ -847,6 +906,7 @@ DESCRIPTION:受付元：B’z TICKET\n対象公演：\n・12/4 松山市
  ts/resale-schedule-en5-hall
 LOCATION:愛媛・香川 12/4 松山市民会館 / 12/6 レクザムホー
  ル
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-23-radio-crazy-official-6th-entry-deadline@bz-setlist
@@ -859,6 +919,7 @@ DESCRIPTION:受付元：FM802 RADIO CRAZY／イープラス。オフィシ
  nアーティスト：Koshi Inaba\nツアー：FM802 ROCK FESTIVAL RADIO C
  RAZY 2026\nエリア：大阪\nURL：https://eplus.jp/sf/detail/0344660008
 LOCATION:大阪 インテックス大阪（稲葉浩志は12/28出演）
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-23-env-arena-pia-seven-eleven-entry-deadline@bz-setlist
@@ -873,6 +934,7 @@ DESCRIPTION:受付締切：2026/11/23 23:59\n対象：2027/01/09・01/10
  Koshi Inaba LIVE 2026-2027 ～enV～\n受付元：チケットぴあ・セ
  ブン‐イレブンWEB抽選先行\nURL：https://bz-vermillion.com/en5/
 LOCATION:2027年アリーナ公演 全8公演
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-24-en-dome-bz-ticket-1-entry-start@bz-setlist
@@ -886,6 +948,7 @@ DESCRIPTION:申込期間：2026/11/24 12:00 ～ 2026/11/30 23:59。対象
  ィスト：Koshi Inaba\nツアー：Koshi Inaba LIVE 2027 ～en-DOME～\n
  URL：https://bz-vermillion.com/en-dome/
 LOCATION:
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-27-env-hall-group-13-resale-deadline@bz-setlist
@@ -902,6 +965,7 @@ DESCRIPTION:受付元：B’z TICKET\n対象公演：\n・12/4 松山市
  ts/resale-schedule-en5-hall
 LOCATION:愛媛・香川 12/4 松山市民会館 / 12/6 レクザムホー
  ル
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-27-env-arena-pia-seven-eleven-lottery-result@bz-setlist
@@ -916,6 +980,7 @@ DESCRIPTION:結果発表：2026/11/27 20:00\n対象：2027/01/09・01/10
  Koshi Inaba LIVE 2026-2027 ～enV～\n受付元：チケットぴあ・セ
  ブン‐イレブンWEB抽選先行\nURL：https://bz-vermillion.com/en5/
 LOCATION:2027年アリーナ公演 全8公演
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-30-en-dome-bz-ticket-1-entry-deadline@bz-setlist
@@ -927,6 +992,7 @@ DESCRIPTION:種別：受付締切\nアーティスト：Koshi Inaba\nツ
  アー：Koshi Inaba LIVE 2027 ～en-DOME～\nURL：https://bz-vermillion.
  com/en-dome/
 LOCATION:
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-12-01-env-hall-group-14-resale-party-start@bz-setlist
@@ -943,6 +1009,7 @@ DESCRIPTION:受付元：B’z TICKET\n対象公演：\n・12/11 三重県
  com/leaflets/resale-schedule-en5-hall
 LOCATION:三重・岐阜 12/11 三重県文化会館 / 12/13 長良川国
  際会議場
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-12-03-env-hall-group-14-resale-club-gym-start@bz-setlist
@@ -959,6 +1026,7 @@ DESCRIPTION:受付元：B’z TICKET\n対象公演：\n・12/11 三重県
  com/leaflets/resale-schedule-en5-hall
 LOCATION:三重・岐阜 12/11 三重県文化会館 / 12/13 長良川国
  際会議場
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-12-04-env-hall-group-14-resale-deadline@bz-setlist
@@ -975,6 +1043,7 @@ DESCRIPTION:受付元：B’z TICKET\n対象公演：\n・12/11 三重県
  com/leaflets/resale-schedule-en5-hall
 LOCATION:三重・岐阜 12/11 三重県文化会館 / 12/13 長良川国
  際会議場
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-12-04-env-hall-group-15-resale-party-start@bz-setlist
@@ -991,6 +1060,7 @@ DESCRIPTION:受付元：B’z TICKET\n対象公演：\n・12/18 福井フ
  tps://bz-ticket.com/leaflets/resale-schedule-en5-hall
 LOCATION:福井・石川 12/18 福井フェニックス・プラザ / 12/2
  0 本多の森 北電ホール
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-12-05-env-arena-general-sale@bz-setlist
@@ -1004,6 +1074,7 @@ DESCRIPTION:一般発売開始：2026/12/05 10:00\n対象：2027/01/09・0
  ：Koshi Inaba LIVE 2026-2027 ～enV～\nURL：https://bz-vermillion.com/e
  n5/
 LOCATION:2027年アリーナ公演 全8公演
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-12-06-env-hall-group-15-resale-club-gym-start@bz-setlist
@@ -1020,6 +1091,7 @@ DESCRIPTION:受付元：B’z TICKET\n対象公演：\n・12/18 福井フ
  tps://bz-ticket.com/leaflets/resale-schedule-en5-hall
 LOCATION:福井・石川 12/18 福井フェニックス・プラザ / 12/2
  0 本多の森 北電ホール
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-12-10-en-dome-bz-ticket-1-lottery-result@bz-setlist
@@ -1032,6 +1104,7 @@ DESCRIPTION:種別：当落発表\nアーティスト：Koshi Inaba\nツ
  アー：Koshi Inaba LIVE 2027 ～en-DOME～\nURL：https://bz-vermillion.
  com/en-dome/
 LOCATION:
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-12-11-env-hall-group-15-resale-deadline@bz-setlist
@@ -1048,6 +1121,7 @@ DESCRIPTION:受付元：B’z TICKET\n対象公演：\n・12/18 福井フ
  tps://bz-ticket.com/leaflets/resale-schedule-en5-hall
 LOCATION:福井・石川 12/18 福井フェニックス・プラザ / 12/2
  0 本多の森 北電ホール
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-12-25-en-dome-bz-ticket-2-entry-start@bz-setlist
@@ -1061,6 +1135,7 @@ DESCRIPTION:申込期間：2026/12/25 12:00 ～ 2027/1/6 23:59。対象：
  ティスト：Koshi Inaba\nツアー：Koshi Inaba LIVE 2027 ～en-DOME
  ～\nURL：https://bz-vermillion.com/en-dome/
 LOCATION:
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2027-01-06-en-dome-bz-ticket-2-entry-deadline@bz-setlist
@@ -1073,6 +1148,7 @@ DESCRIPTION:種別：受付締切\nアーティスト：Koshi Inaba\nツ
  アー：Koshi Inaba LIVE 2027 ～en-DOME～\nURL：https://bz-vermillion.
  com/en-dome/
 LOCATION:
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2027-01-19-en-dome-bz-ticket-2-lottery-result@bz-setlist
@@ -1085,6 +1161,7 @@ DESCRIPTION:種別：当落発表\nアーティスト：Koshi Inaba\nツ
  アー：Koshi Inaba LIVE 2027 ～en-DOME～\nURL：https://bz-vermillion.
  com/en-dome/
 LOCATION:
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2027-02-22-en-dome-bz-ticket-3-entry-start@bz-setlist
@@ -1099,6 +1176,7 @@ DESCRIPTION:申込期間：2027/2/22 12:00 ～ 2/28 23:59。対象：B’z
  ：Koshi Inaba\nツアー：Koshi Inaba LIVE 2027 ～en-DOME～\nURL：htt
  ps://bz-vermillion.com/en-dome/
 LOCATION:
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2027-02-28-en-dome-bz-ticket-3-entry-deadline@bz-setlist
@@ -1112,6 +1190,7 @@ DESCRIPTION:状況により実施しない可能性あり（公式記載
  ：Koshi Inaba LIVE 2027 ～en-DOME～\nURL：https://bz-vermillion.com/en
  -dome/
 LOCATION:
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2027-03-10-en-dome-bz-ticket-3-lottery-result@bz-setlist
@@ -1125,6 +1204,7 @@ DESCRIPTION:状況により実施しない可能性あり（公式記載
  ：Koshi Inaba LIVE 2027 ～en-DOME～\nURL：https://bz-vermillion.com/en
  -dome/
 LOCATION:
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2027-04-05-en-dome-ponta-pass-entry-start@bz-setlist
@@ -1137,6 +1217,7 @@ DESCRIPTION:申込期間：2027/4/5 12:00 ～ 4/11 23:59（B’z TICKET
  ：Koshi Inaba\nツアー：Koshi Inaba LIVE 2027 ～en-DOME～\nURL：htt
  ps://bz-vermillion.com/en-dome/
 LOCATION:
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2027-04-11-en-dome-ponta-pass-entry-deadline@bz-setlist
@@ -1148,6 +1229,7 @@ DESCRIPTION:種別：受付締切\nアーティスト：Koshi Inaba\nツ
  アー：Koshi Inaba LIVE 2027 ～en-DOME～\nURL：https://bz-vermillion.
  com/en-dome/
 LOCATION:
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2027-04-12-en-dome-ichihaya-entry-start@bz-setlist
@@ -1161,6 +1243,7 @@ DESCRIPTION:申込期間：2027/4/12 12:00 ～ 4/18 23:59。対象：ぴ
  付開始\nアーティスト：Koshi Inaba\nツアー：Koshi Inaba LIVE 
  2027 ～en-DOME～\nURL：https://bz-vermillion.com/en-dome/
 LOCATION:
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2027-04-14-en-dome-seven-eleven-entry-start@bz-setlist
@@ -1172,6 +1255,7 @@ DESCRIPTION:申込期間：2027/4/14 12:00 ～ 4/30 23:59。\n種別：受
  付開始\nアーティスト：Koshi Inaba\nツアー：Koshi Inaba LIVE 
  2027 ～en-DOME～\nURL：https://bz-vermillion.com/en-dome/
 LOCATION:
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2027-04-15-en-dome-ponta-pass-lottery-result@bz-setlist
@@ -1183,6 +1267,7 @@ DESCRIPTION:種別：当落発表\nアーティスト：Koshi Inaba\nツ
  アー：Koshi Inaba LIVE 2027 ～en-DOME～\nURL：https://bz-vermillion.
  com/en-dome/
 LOCATION:
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2027-04-18-en-dome-ichihaya-entry-deadline@bz-setlist
@@ -1194,6 +1279,7 @@ DESCRIPTION:種別：受付締切\nアーティスト：Koshi Inaba\nツ
  アー：Koshi Inaba LIVE 2027 ～en-DOME～\nURL：https://bz-vermillion.
  com/en-dome/
 LOCATION:
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2027-04-22-en-dome-ichihaya-lottery-result@bz-setlist
@@ -1206,6 +1292,7 @@ DESCRIPTION:種別：当落発表\nアーティスト：Koshi Inaba\nツ
  アー：Koshi Inaba LIVE 2027 ～en-DOME～\nURL：https://bz-vermillion.
  com/en-dome/
 LOCATION:
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2027-04-30-en-dome-seven-eleven-entry-deadline@bz-setlist
@@ -1217,6 +1304,7 @@ DESCRIPTION:種別：受付締切\nアーティスト：Koshi Inaba\nツ
  アー：Koshi Inaba LIVE 2027 ～en-DOME～\nURL：https://bz-vermillion.
  com/en-dome/
 LOCATION:
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2027-05-08-en-dome-seven-eleven-lottery-result@bz-setlist
@@ -1229,6 +1317,7 @@ DESCRIPTION:種別：当落発表\nアーティスト：Koshi Inaba\nツ
  アー：Koshi Inaba LIVE 2027 ～en-DOME～\nURL：https://bz-vermillion.
  com/en-dome/
 LOCATION:
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2027-05-15-en-dome-general-sale@bz-setlist
@@ -1241,5 +1330,6 @@ DESCRIPTION:一般発売に関する受付URL等は公式ページで案
  アー：Koshi Inaba LIVE 2027 ～en-DOME～\nURL：https://bz-vermillion.
  com/en-dome/
 LOCATION:
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 END:VCALENDAR
