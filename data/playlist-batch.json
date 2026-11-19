@@ -2,16 +2,11 @@
   "provider": "spotify",
   "repairExisting": false,
   "youtubeAutoMatch": false,
+  "mergeGuest": true,
   "showIds": [
-    "2026-11-16-env-obihiro"
-  ],
-  "guestShowIds": [
-    "2021-09-18-unite01-osaka",
-    "2021-09-19-unite01-osaka",
-    "2021-09-28-unite01-yokohama",
-    "2021-09-29-unite01-yokohama",
     "2025-06-21-unite02-yokohama",
     "2025-06-28-unite02-yokohama",
     "2025-06-29-unite02-yokohama"
-  ]
+  ],
+  "guestShowIds": []
 }

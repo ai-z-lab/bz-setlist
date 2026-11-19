@@ -342,6 +342,47 @@ const adapters = {};
 if (apply && providers.includes("spotify")) adapters.spotify = new SpotifyAdapter(await refreshSpotifyToken());
 if (apply && providers.includes("youtubeMusic")) adapters.youtubeMusic = new YouTubeAdapter(await refreshYouTubeAccessToken());
 
+// 対バン公演: ゲストの曲とB'zの曲を、その日の演奏順（ゲスト → B'z）で1本のプレイリストにまとめる。
+// 既存の本編リストの先頭にゲストの曲を足し、アプリのリンクを各サービス1つにする（ゲスト用リンクは外す）。
+if (hasFlag("merge-guest")) {
+  const mergeIds = showIds;
+  if (!mergeIds.length) throw new Error("--merge-guest には --show-ids が必要です");
+  const mergeReport = { merged: [], skipped: [], errors: [] };
+  for (const showId of mergeIds) {
+    const show = document.data.shows.find((item) => item.id === showId);
+    const guestUrl = show?.guest?.playlists?.spotify;
+    const mainUrl = show?.playlists?.spotify;
+    if (!show || !guestUrl || !mainUrl) { mergeReport.skipped.push({ showId, reason: "Spotifyのゲスト用または本編のリンクがありません" }); continue; }
+    try {
+      const guestId = playlistIdFromUrl("spotify", guestUrl);
+      const mainId = playlistIdFromUrl("spotify", mainUrl);
+      const guestItems = apply ? await adapters.spotify.listItems(guestId) : [];
+      const mainItems = apply ? await adapters.spotify.listItems(mainId) : [];
+      const alreadyMerged = guestItems.length && mainItems.slice(0, guestItems.length).join() === guestItems.join();
+      if (apply && !alreadyMerged) {
+        await adapters.spotify.replaceItems(mainId, [...guestItems, ...mainItems]);
+        await adapters.spotify.updateDescription(mainId, `${playlistDescription(show)} 当日の演奏順（ゲスト ${show.guest.artist} → B'z）で1本にまとめています。`);
+      }
+      const ytm = show.guest.playlists?.youtubeMusic;
+      if (apply) {
+        show.playlists = { ...(show.playlists || {}), ...(ytm ? { youtubeMusic: ytm } : {}) };
+        delete show.guest.playlists;
+      }
+      mergeReport.merged.push({ showId, guestTracks: guestItems.length, mainTracks: mainItems.length, alreadyMerged: Boolean(alreadyMerged), youtubeMusic: Boolean(ytm) });
+    } catch (error) { mergeReport.errors.push({ showId, message: error.message }); }
+  }
+  if (apply && mergeReport.merged.length) {
+    const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Tokyo", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
+    document.data.updated = today;
+    document.data.updateHistory.unshift({ date: today, title: "対バン公演のプレイリストを1本に統一", items: [`ゲストとB'zの曲を当日の演奏順で通して聴けるよう、${mergeReport.merged.length}公演のプレイリストを1本にまとめました`] });
+    validateBzData(document.data);
+    await saveBzData(document, document.data);
+  }
+  await writeFile(reportFile, `${JSON.stringify({ generatedAt: new Date().toISOString(), apply, mode: "merge-guest", ...mergeReport }, null, 2)}\n`, "utf8");
+  process.stdout.write(`${JSON.stringify({ apply, mode: "merge-guest", ...mergeReport }, null, 2)}\n`);
+  process.exit(mergeReport.errors.length ? 1 : 0);
+}
+
 const report = { generatedAt: new Date().toISOString(), apply, provider: providerArg, tour: argValue("tour") || null, created: [], reused: [], unresolved: [], errors: [] };
 let linkedShows = 0;
 let quotaStopped = false;
