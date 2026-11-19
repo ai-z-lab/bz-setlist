@@ -354,31 +354,60 @@ if (hasFlag("merge-guest") || (batchForMerge.mergeGuest === true && process.env.
     const show = document.data.shows.find((item) => item.id === showId);
     const guestUrl = show?.guest?.playlists?.spotify;
     const mainUrl = show?.playlists?.spotify;
-    if (!show || !guestUrl || !mainUrl) { mergeReport.skipped.push({ showId, reason: "Spotifyのゲスト用または本編のリンクがありません" }); continue; }
-    try {
-      const guestId = playlistIdFromUrl("spotify", guestUrl);
-      const mainId = playlistIdFromUrl("spotify", mainUrl);
-      const guestItems = apply ? await adapters.spotify.listItems(guestId) : [];
-      const mainItems = apply ? await adapters.spotify.listItems(mainId) : [];
-      // 読み取りが空のまま書き込むとリストが空になるため、どちらかが空なら中止する
-      if (apply && (!guestItems.length || !mainItems.length)) throw new Error(`曲を読み取れないため中止しました（ゲスト${guestItems.length}曲・本編${mainItems.length}曲）。Spotifyは変更していません`);
-      const alreadyMerged = guestItems.length && mainItems.slice(0, guestItems.length).join() === guestItems.join();
-      if (apply && !alreadyMerged) {
-        await adapters.spotify.replaceItems(mainId, [...guestItems, ...mainItems]);
-        await adapters.spotify.updateDescription(mainId, `${playlistDescription(show)} 当日の演奏順（ゲスト ${show.guest.artist} → B'z）で1本にまとめています。`);
+    if (!show?.guest) { mergeReport.skipped.push({ showId, reason: "ゲストの情報がありません" }); continue; }
+    // Spotify: 本編リストの先頭にゲストの曲を足す
+    if (providers.includes("spotify") && guestUrl && mainUrl) {
+      try {
+        const guestId = playlistIdFromUrl("spotify", guestUrl);
+        const mainId = playlistIdFromUrl("spotify", mainUrl);
+        const guestItems = apply ? await adapters.spotify.listItems(guestId) : [];
+        const mainItems = apply ? await adapters.spotify.listItems(mainId) : [];
+        // 読み取りが空のまま書き込むとリストが空になるため、どちらかが空なら中止する
+        if (apply && (!guestItems.length || !mainItems.length)) throw new Error(`曲を読み取れないため中止しました（ゲスト${guestItems.length}曲・本編${mainItems.length}曲）。Spotifyは変更していません`);
+        const alreadyMerged = guestItems.length && mainItems.slice(0, guestItems.length).join() === guestItems.join();
+        if (apply && !alreadyMerged) {
+          await adapters.spotify.replaceItems(mainId, [...guestItems, ...mainItems]);
+          await adapters.spotify.updateDescription(mainId, `${playlistDescription(show)} 当日の演奏順（ゲスト ${show.guest.artist} → B'z）で1本にまとめています。`);
+        }
+        const ytm = show.guest.playlists?.youtubeMusic;
+        if (apply) {
+          show.playlists = { ...(show.playlists || {}), ...(ytm ? { youtubeMusic: ytm } : {}) };
+          delete show.guest.playlists;
+        }
+        mergeReport.merged.push({ showId, provider: "spotify", guestTracks: guestItems.length, mainTracks: mainItems.length, alreadyMerged: Boolean(alreadyMerged), youtubeMusic: Boolean(ytm) });
+      } catch (error) { mergeReport.errors.push({ showId, provider: "spotify", message: error.message }); }
+    } else if (providers.includes("spotify") && !show.playlists?.spotify) {
+      mergeReport.skipped.push({ showId, provider: "spotify", reason: "Spotifyのゲスト用または本編のリンクがありません" });
+    }
+    // YouTube Music: 当日の演奏順（ゲスト → B'z）で、最初から1本のリストを作る（既存のリンクがある公演は触らない）
+    if (providers.includes("youtubeMusic") && !show.playlists?.youtubeMusic && !show.guest.playlists?.youtubeMusic) {
+      try {
+        const mainSongs = document.data.setlists.filter((row) => row.showId === showId).sort((a, b) => a.order - b.order).map((row) => row.song);
+        const wanted = [
+          ...[...show.guest.songs].sort((a, b) => a.order - b.order).map((row) => ({ artist: show.guest.artist, song: row.song })),
+          ...mainSongs.map((song) => ({ artist: artistForShow(show), song })),
+        ];
+        const ids = [];
+        const missing = [];
+        for (const { artist, song } of wanted) {
+          const id = trackMap.tracks[mapKey(artist, song)]?.youtubeVideoId;
+          if (id) ids.push(id); else missing.push(`${artist} ${song}`);
+        }
+        if (missing.length) { mergeReport.unresolved.push({ showId, provider: "youtubeMusic", tracks: missing }); continue; }
+        if (!apply) { mergeReport.created.push({ showId, provider: "youtubeMusic", dryRun: true, tracks: ids.length }); continue; }
+        const url = await adapters.youtubeMusic.create({ ...show, tour: `B'z Presents ${show.tour} ${show.guest.artist}×B'z（当日の演奏順）` }, ids);
+        show.playlists = { ...(show.playlists || {}), youtubeMusic: url };
+        mergeReport.created.push({ showId, provider: "youtubeMusic", url, tracks: ids.length });
+      } catch (error) {
+        if (isQuotaError(error)) mergeReport.unresolved.push({ showId, provider: "youtubeMusic", reason: "YouTube APIの上限に達しました。上限が戻ってから再実行します", message: error.message });
+        else mergeReport.errors.push({ showId, provider: "youtubeMusic", message: error.message });
       }
-      const ytm = show.guest.playlists?.youtubeMusic;
-      if (apply) {
-        show.playlists = { ...(show.playlists || {}), ...(ytm ? { youtubeMusic: ytm } : {}) };
-        delete show.guest.playlists;
-      }
-      mergeReport.merged.push({ showId, guestTracks: guestItems.length, mainTracks: mainItems.length, alreadyMerged: Boolean(alreadyMerged), youtubeMusic: Boolean(ytm) });
-    } catch (error) { mergeReport.errors.push({ showId, message: error.message }); }
+    }
   }
-  if (apply && mergeReport.merged.length) {
+  if (apply && (mergeReport.merged.length || mergeReport.created.length)) {
     const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Tokyo", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
     document.data.updated = today;
-    document.data.updateHistory.unshift({ date: today, title: "対バン公演のプレイリストを1本に統一", items: [`ゲストとB'zの曲を当日の演奏順で通して聴けるよう、${mergeReport.merged.length}公演のプレイリストを1本にまとめました`] });
+    document.data.updateHistory.unshift({ date: today, title: "対バン公演のプレイリストを1本に統一", items: [`ゲストとB'zの曲を当日の演奏順で通して聴けるよう、${new Set([...mergeReport.merged, ...mergeReport.created].map((item) => item.showId)).size}公演のプレイリストを1本にしました`] });
     validateBzData(document.data);
     await saveBzData(document, document.data);
   }

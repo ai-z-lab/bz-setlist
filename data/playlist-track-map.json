@@ -401,7 +401,8 @@
       "artist": "B'z",
       "lookupArtist": "B'z",
       "song": "ZERO",
-      "spotifyUri": "spotify:track:7jfJw6EnyMaPAryntOKyKI"
+      "spotifyUri": "spotify:track:7jfJw6EnyMaPAryntOKyKI",
+      "youtubeVideoId": "TUmni8kmlN4"
     },
     "B'z\u0000おでかけしましょ": {
       "artist": "B'z",
@@ -413,13 +414,15 @@
       "artist": "B'z",
       "lookupArtist": "B'z",
       "song": "love me, I love you",
-      "spotifyUri": "spotify:track:00GuuqRIM2y5DiMwmmHNVJ"
+      "spotifyUri": "spotify:track:00GuuqRIM2y5DiMwmmHNVJ",
+      "youtubeVideoId": "i_8XBBk8b9g"
     },
     "B'z\u0000今夜月の見える丘に": {
       "artist": "B'z",
       "lookupArtist": "B'z",
       "song": "今夜月の見える丘に",
-      "spotifyUri": "spotify:track:5fnZAPIZZbyM0Az0VBYbB4"
+      "spotifyUri": "spotify:track:5fnZAPIZZbyM0Az0VBYbB4",
+      "youtubeVideoId": "Bz3GfWwhdt0"
     },
     "B'z\u0000ペインキラー": {
       "artist": "B'z",
@@ -474,7 +477,8 @@
       "artist": "B'z",
       "lookupArtist": "B'z",
       "song": "有頂天",
-      "spotifyUri": "spotify:track:5pwWqj6xvpuwsYpC2dz6hN"
+      "spotifyUri": "spotify:track:5pwWqj6xvpuwsYpC2dz6hN",
+      "youtubeVideoId": "9zWKogXzDoU"
     },
     "B'z\u0000Heaven Knows": {
       "artist": "B'z",
@@ -492,7 +496,8 @@
       "artist": "B'z",
       "lookupArtist": "B'z",
       "song": "ultra soul",
-      "spotifyUri": "spotify:track:5QAZVZA3FN1s368XgijXHZ"
+      "spotifyUri": "spotify:track:5QAZVZA3FN1s368XgijXHZ",
+      "youtubeVideoId": "HwU3_6DWoYs"
     },
     "B'z\u0000その先へ": {
       "artist": "B'z",
@@ -504,13 +509,15 @@
       "artist": "B'z",
       "lookupArtist": "B'z",
       "song": "ミエナイチカラ 〜INVISIBLE ONE〜",
-      "spotifyUri": "spotify:track:1B7JdytwORQ3snphFEbPW1"
+      "spotifyUri": "spotify:track:1B7JdytwORQ3snphFEbPW1",
+      "youtubeVideoId": "ZBA7BiUTkyE"
     },
     "B'z\u0000IT'S SHOWTIME!!": {
       "artist": "B'z",
       "lookupArtist": "B'z",
       "song": "IT'S SHOWTIME!!",
-      "spotifyUri": "spotify:track:6C0OQJJD7QoLd2uhdMD4Dx"
+      "spotifyUri": "spotify:track:6C0OQJJD7QoLd2uhdMD4Dx",
+      "youtubeVideoId": "0Bn8J1jyA54"
     },
     "B'z\u0000Hi": {
       "artist": "B'z",
@@ -528,7 +535,8 @@
       "artist": "B'z",
       "lookupArtist": "B'z",
       "song": "イチブトゼンブ",
-      "spotifyUri": "spotify:track:2X0pcKFdtkbjKxtZlyZCkZ"
+      "spotifyUri": "spotify:track:2X0pcKFdtkbjKxtZlyZCkZ",
+      "youtubeVideoId": "Yp0SKg2q5ww"
     },
     "B'z\u0000INTO THE BLUE": {
       "artist": "B'z",
@@ -558,7 +566,8 @@
       "artist": "B'z",
       "lookupArtist": "B'z",
       "song": "さまよえる蒼い弾丸",
-      "spotifyUri": "spotify:track:22vD6sEksRVOGjh4FZW0eK"
+      "spotifyUri": "spotify:track:22vD6sEksRVOGjh4FZW0eK",
+      "youtubeVideoId": "Sb3DRucw_no"
     },
     "B'z\u0000Don't Leave Me": {
       "artist": "B'z",
@@ -607,7 +616,8 @@
       "artist": "B'z",
       "lookupArtist": "B'z",
       "song": "兵、走る",
-      "spotifyUri": "spotify:track:4SvUlGYsyCe5yhs2qRvE8r"
+      "spotifyUri": "spotify:track:4SvUlGYsyCe5yhs2qRvE8r",
+      "youtubeVideoId": "7U1cj2UD9-s"
     },
     "B'z\u0000声明": {
       "artist": "B'z",
@@ -663,19 +673,22 @@
       "artist": "B'z",
       "lookupArtist": "B'z",
       "song": "LOVE PHANTOM",
-      "spotifyUri": "spotify:track:6rcPP3eWwKcUrIEWb1bR5S"
+      "spotifyUri": "spotify:track:6rcPP3eWwKcUrIEWb1bR5S",
+      "youtubeVideoId": "ON4NXPUx-E8"
     },
     "B'z\u0000Still Alive": {
       "artist": "B'z",
       "lookupArtist": "B'z",
       "song": "Still Alive",
-      "spotifyUri": "spotify:track:5rSv2YkdxJHKOXHOI3dTpT"
+      "spotifyUri": "spotify:track:5rSv2YkdxJHKOXHOI3dTpT",
+      "youtubeVideoId": "l60BuSD437g"
     },
     "B'z\u0000juice": {
       "artist": "B'z",
       "lookupArtist": "B'z",
       "song": "juice",
-      "spotifyUri": "spotify:track:5ycG1RtSgd64p9MnHJFv40"
+      "spotifyUri": "spotify:track:5ycG1RtSgd64p9MnHJFv40",
+      "youtubeVideoId": "ZBOWfen-ZYw"
     },
     "B'z\u0000Brotherhood": {
       "artist": "B'z",
@@ -693,7 +706,8 @@
       "artist": "B'z",
       "lookupArtist": "B'z",
       "song": "愛のバクダン",
-      "spotifyUri": "spotify:track:6b2BKq7AZ564QdptHFmvm5"
+      "spotifyUri": "spotify:track:6b2BKq7AZ564QdptHFmvm5",
+      "youtubeVideoId": "pWMxJ0dIegU"
     },
     "B'z\u0000となりでねむらせて": {
       "artist": "B'z",
@@ -711,7 +725,8 @@
       "artist": "B'z",
       "lookupArtist": "B'z",
       "song": "ギリギリchop",
-      "spotifyUri": "spotify:track:1HVjTDgMSHgZNmpCurPRbU"
+      "spotifyUri": "spotify:track:1HVjTDgMSHgZNmpCurPRbU",
+      "youtubeVideoId": "-D6JhgGngVo"
     },
     "B'z\u0000shower": {
       "artist": "B'z",
@@ -775,7 +790,8 @@
       "artist": "B'z",
       "lookupArtist": "B'z",
       "song": "裸足の女神",
-      "spotifyUri": "spotify:track:379BZPfArQmtGt7CNoa9PZ"
+      "spotifyUri": "spotify:track:379BZPfArQmtGt7CNoa9PZ",
+      "youtubeVideoId": "4ryBdD-r06w"
     },
     "B'z\u0000BAD COMMUNICATION": {
       "artist": "B'z",
@@ -787,13 +803,15 @@
       "artist": "B'z",
       "lookupArtist": "B'z",
       "song": "UNITE",
-      "spotifyUri": "spotify:track:5SWOc0rXnhB10hBPFWqkDM"
+      "spotifyUri": "spotify:track:5SWOc0rXnhB10hBPFWqkDM",
+      "youtubeVideoId": "1rHrAwnpt0Q"
     },
     "B'z\u0000Calling": {
       "artist": "B'z",
       "lookupArtist": "B'z",
       "song": "Calling",
-      "spotifyUri": "spotify:track:4yDVcEoYVZRvlHTkKIbyeg"
+      "spotifyUri": "spotify:track:4yDVcEoYVZRvlHTkKIbyeg",
+      "youtubeVideoId": "td8WGpkJt50"
     },
     "B'z\u0000太陽のKomachi Angel": {
       "artist": "B'z",
@@ -811,163 +829,190 @@
       "artist": "B'z",
       "lookupArtist": "B'z",
       "song": "BANZAI",
-      "spotifyUri": "spotify:track:5vDiJnkN3lgM57eMozNBeQ"
+      "spotifyUri": "spotify:track:5vDiJnkN3lgM57eMozNBeQ",
+      "youtubeVideoId": "0o5pgpwR7UE"
     },
     "B'z\u0000恋心（KOI-GOKORO）": {
       "artist": "B'z",
       "lookupArtist": "B'z",
       "song": "恋心（KOI-GOKORO）",
-      "spotifyUri": "spotify:track:5gvOsIUuNj63n4MfFxpzFQ"
+      "spotifyUri": "spotify:track:5gvOsIUuNj63n4MfFxpzFQ",
+      "youtubeVideoId": "bRwgOZ_23Xc"
     },
     "B'z\u0000孤独のRunaway": {
       "artist": "B'z",
       "lookupArtist": "B'z",
       "song": "孤独のRunaway",
-      "spotifyUri": "spotify:track:6T7uNx62gM52UlWj9Ur9h4"
+      "spotifyUri": "spotify:track:6T7uNx62gM52UlWj9Ur9h4",
+      "youtubeVideoId": "ISyxoQ3Ei9E"
     },
     "B'z\u0000さよならなんかは言わせない": {
       "artist": "B'z",
       "lookupArtist": "B'z",
       "song": "さよならなんかは言わせない",
-      "spotifyUri": "spotify:track:06Mukn5JTWYernh2TsfclD"
+      "spotifyUri": "spotify:track:06Mukn5JTWYernh2TsfclD",
+      "youtubeVideoId": "orm8_0X7uJo"
     },
     "Mr.Children\u0000Tomorrow never knows": {
       "artist": "Mr.Children",
       "lookupArtist": "Mr.Children",
       "song": "Tomorrow never knows",
-      "spotifyUri": "spotify:track:42JrgapwGBuPHG9YKjR6dj"
+      "spotifyUri": "spotify:track:42JrgapwGBuPHG9YKjR6dj",
+      "youtubeVideoId": "Nxwt_s1lM04"
     },
     "Mr.Children\u0000GIFT": {
       "artist": "Mr.Children",
       "lookupArtist": "Mr.Children",
       "song": "GIFT",
-      "spotifyUri": "spotify:track:0KuX5JwRcmB7316EcvhmLS"
+      "spotifyUri": "spotify:track:0KuX5JwRcmB7316EcvhmLS",
+      "youtubeVideoId": "wZlgIGsT-Ns"
     },
     "Mr.Children\u0000himawari": {
       "artist": "Mr.Children",
       "lookupArtist": "Mr.Children",
       "song": "himawari",
-      "spotifyUri": "spotify:track:0eSiQJIFz669CfpjVgCg6y"
+      "spotifyUri": "spotify:track:0eSiQJIFz669CfpjVgCg6y",
+      "youtubeVideoId": "_kXE9FHQy9E"
     },
     "Mr.Children\u0000口笛": {
       "artist": "Mr.Children",
       "lookupArtist": "Mr.Children",
       "song": "口笛",
-      "spotifyUri": "spotify:track:5iYaRGXfMHf53TNiPZBbow"
+      "spotifyUri": "spotify:track:5iYaRGXfMHf53TNiPZBbow",
+      "youtubeVideoId": "3mwg3uRxMng"
     },
     "Mr.Children\u0000Everything (It's you)": {
       "artist": "Mr.Children",
       "lookupArtist": "Mr.Children",
       "song": "Everything (It's you)",
-      "spotifyUri": "spotify:track:4OeEJsxbhyXalT2csUCN2i"
+      "spotifyUri": "spotify:track:4OeEJsxbhyXalT2csUCN2i",
+      "youtubeVideoId": "ZMLdS2ZiI8w"
     },
     "Mr.Children\u0000others": {
       "artist": "Mr.Children",
       "lookupArtist": "Mr.Children",
       "song": "others",
-      "spotifyUri": "spotify:track:6lyJKzWHXHfLrJVhZMTtqW"
+      "spotifyUri": "spotify:track:6lyJKzWHXHfLrJVhZMTtqW",
+      "youtubeVideoId": "Mw9f6gWkUH4"
     },
     "Mr.Children\u0000DANCING SHOES": {
       "artist": "Mr.Children",
       "lookupArtist": "Mr.Children",
       "song": "DANCING SHOES",
-      "spotifyUri": "spotify:track:0xBPlIXjkOq4BpKwjPcg6I"
+      "spotifyUri": "spotify:track:0xBPlIXjkOq4BpKwjPcg6I",
+      "youtubeVideoId": "-NVoUzGaGhk"
     },
     "Mr.Children\u0000SINGLES": {
       "artist": "Mr.Children",
       "lookupArtist": "Mr.Children",
       "song": "SINGLES",
-      "spotifyUri": "spotify:track:0BcMpw7lEhzaH9FHqtonRD"
+      "spotifyUri": "spotify:track:0BcMpw7lEhzaH9FHqtonRD",
+      "youtubeVideoId": "yIvXuXOTEPA"
     },
     "Mr.Children\u0000Brand new planet": {
       "artist": "Mr.Children",
       "lookupArtist": "Mr.Children",
       "song": "Brand new planet",
-      "spotifyUri": "spotify:track:5DnF9Fq16bCgCYKb3XxnZN"
+      "spotifyUri": "spotify:track:5DnF9Fq16bCgCYKb3XxnZN",
+      "youtubeVideoId": "pczkqXFlwWc"
     },
     "Mr.Children\u0000innocent world": {
       "artist": "Mr.Children",
       "lookupArtist": "Mr.Children",
       "song": "innocent world",
-      "spotifyUri": "spotify:track:70xcWRujaf34LOu0Vdubtp"
+      "spotifyUri": "spotify:track:70xcWRujaf34LOu0Vdubtp",
+      "youtubeVideoId": "rfVhsgCqG0I"
     },
     "GLAY\u0000サバイバル": {
       "artist": "GLAY",
       "lookupArtist": "GLAY",
       "song": "サバイバル",
-      "spotifyUri": "spotify:track:3o8ONcwSyYI6s3JgrBLWrE"
+      "spotifyUri": "spotify:track:3o8ONcwSyYI6s3JgrBLWrE",
+      "youtubeVideoId": "T_ImimyXfiA"
     },
     "GLAY\u0000FATSOUNDS": {
       "artist": "GLAY",
       "lookupArtist": "GLAY",
       "song": "FATSOUNDS",
-      "spotifyUri": "spotify:track:4ntzxR90tFfdeczARqWJ6Q"
+      "spotifyUri": "spotify:track:4ntzxR90tFfdeczARqWJ6Q",
+      "youtubeVideoId": "dBwZltHoT6w"
     },
     "GLAY\u0000誘惑": {
       "artist": "GLAY",
       "lookupArtist": "GLAY",
       "song": "誘惑",
-      "spotifyUri": "spotify:track:0L6C3KT0px6Opk6LR2iaCQ"
+      "spotifyUri": "spotify:track:0L6C3KT0px6Opk6LR2iaCQ",
+      "youtubeVideoId": "HJVCnwXdwYc"
     },
     "GLAY\u0000グロリアス": {
       "artist": "GLAY",
       "lookupArtist": "GLAY",
       "song": "グロリアス",
-      "spotifyUri": "spotify:track:222hBYlzBQshcDAmzI2Vsi"
+      "spotifyUri": "spotify:track:222hBYlzBQshcDAmzI2Vsi",
+      "youtubeVideoId": "-avwGynk9sM"
     },
     "GLAY\u0000生きてく強さ": {
       "artist": "GLAY",
       "lookupArtist": "GLAY",
       "song": "生きてく強さ",
-      "spotifyUri": "spotify:track:76QKh6F7P7v1gnVHa92s7v"
+      "spotifyUri": "spotify:track:76QKh6F7P7v1gnVHa92s7v",
+      "youtubeVideoId": "dKIjVavthQQ"
     },
     "GLAY\u0000SOUL LOVE": {
       "artist": "GLAY",
       "lookupArtist": "GLAY",
       "song": "SOUL LOVE",
-      "spotifyUri": "spotify:track:28uEz3ea3dyYlNf07Lf69F"
+      "spotifyUri": "spotify:track:28uEz3ea3dyYlNf07Lf69F",
+      "youtubeVideoId": "-Y2nBLPeTr8"
     },
     "GLAY\u0000BAD APPLE": {
       "artist": "GLAY",
       "lookupArtist": "GLAY",
       "song": "BAD APPLE",
-      "spotifyUri": "spotify:track:2QdfRg0jE25efz23FjY1nY"
+      "spotifyUri": "spotify:track:2QdfRg0jE25efz23FjY1nY",
+      "youtubeVideoId": "0sGei6vb-CY"
     },
     "GLAY\u0000pure soul": {
       "artist": "GLAY",
       "lookupArtist": "GLAY",
       "song": "pure soul",
-      "spotifyUri": "spotify:track:4B52nh03c8XcQWDQYcwWKh"
+      "spotifyUri": "spotify:track:4B52nh03c8XcQWDQYcwWKh",
+      "youtubeVideoId": "tP8A1vpmcFc"
     },
     "GLAY\u0000SCREAM": {
       "artist": "GLAY",
       "lookupArtist": "GLAY",
       "song": "SCREAM",
-      "spotifyUri": "spotify:track:4xTNOXxScxJ1Mw46PzrldA"
+      "spotifyUri": "spotify:track:4xTNOXxScxJ1Mw46PzrldA",
+      "youtubeVideoId": "TkfgRJJaqYI"
     },
     "GLAY\u0000彼女の“Modern…”": {
       "artist": "GLAY",
       "lookupArtist": "GLAY",
       "song": "彼女の“Modern…”",
-      "spotifyUri": "spotify:track:4qo7tk5hpxiPUcbqb1IvrR"
+      "spotifyUri": "spotify:track:4qo7tk5hpxiPUcbqb1IvrR",
+      "youtubeVideoId": "0A7bWKQf03I"
     },
     "GLAY\u0000CRAZY DANCE": {
       "artist": "GLAY",
       "lookupArtist": "GLAY",
       "song": "CRAZY DANCE",
-      "spotifyUri": "spotify:track:0PtzwGRg9Ji8qb8hckHeHh"
+      "spotifyUri": "spotify:track:0PtzwGRg9Ji8qb8hckHeHh",
+      "youtubeVideoId": "BRHZX_ZC7_w"
     },
     "GLAY\u0000SHUTTER SPEEDSのテーマ": {
       "artist": "GLAY",
       "lookupArtist": "GLAY",
       "song": "SHUTTER SPEEDSのテーマ",
-      "spotifyUri": "spotify:track:2zP1wRuk0gN1Wefu5HJunc"
+      "spotifyUri": "spotify:track:2zP1wRuk0gN1Wefu5HJunc",
+      "youtubeVideoId": "Tt55xcLY2rE"
     },
     "GLAY\u0000HIGHCOMMUNICATIONS": {
       "artist": "GLAY",
       "lookupArtist": "GLAY",
       "song": "HIGHCOMMUNICATIONS",
-      "spotifyUri": "spotify:track:67EZT38eqQ6GAaZ2jTwbJr"
+      "spotifyUri": "spotify:track:67EZT38eqQ6GAaZ2jTwbJr",
+      "youtubeVideoId": "ymIC-gvZXRk"
     },
     "THE YELLOW MONKEY\u0000ラプソディ": {
       "artist": "THE YELLOW MONKEY",
