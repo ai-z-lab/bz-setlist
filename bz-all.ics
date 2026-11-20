@@ -19,7 +19,7 @@ END:STANDARD
 END:VTIMEZONE
 BEGIN:VEVENT
 UID:2026-10-05-tak-yamaha-guitar-60th-exhibition@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261005T120000
 DTEND;TZID=Asia/Tokyo:20261005T120100
 SUMMARY:Tak Matsumoto⁠‌​‌⁠｜松本孝弘 使用ギター特別
@@ -38,7 +38,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-13-tak-ikebe-special-exhibition@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261013T110000
 DTEND;TZID=Asia/Tokyo:20261013T110100
 SUMMARY:Tak Matsumoto⁠‌​‌⁠｜松本孝弘 実機特別展示（
@@ -55,7 +55,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-13-tmg-shibuya-tsutaya-pickup@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261013T000000
 DTEND;TZID=Asia/Tokyo:20261013T000100
 SUMMARY:TMG⁠‌​‌⁠｜TMG Ⅲ SAYONARA 予約CD店頭受取期間
@@ -71,231 +71,8 @@ LOCATION:東京 SHIBUYA TSUTAYA 地下2F
 X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
-UID:2026-10-20-tmg-hardrock-special-days@bz-setlist
-DTSTAMP:20261119T000000Z
-DTSTART;TZID=Asia/Tokyo:20261020T120000
-DTEND;TZID=Asia/Tokyo:20261020T120100
-SUMMARY:TMG⁠‌​‌⁠｜TMG Special Days（各日3回）
-DESCRIPTION:TMG楽曲・ライブ映像の上映：12:00／14:00／19:00
- （各回約45分）。開催店舗：東京・上野駅東京・横浜・
- 京都・ユニバーサル・シティウォーク大阪。スペシャ
- ルカクテル提供。\n種別：注意事項\nアーティスト：TMG\
- nツアー：TMG Ⅲ SAYONARA\nエリア：全国\n受付元：Hard Rock C
- afe Japan\nURL：https://hardrockjapan.com/event/12459/\n出典：B'zセ
- ットリスト ai-z-lab.github.io/bz-setlist
-LOCATION:全国 Hard Rock Cafe 国内5店舗
-X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
-END:VEVENT
-BEGIN:VEVENT
-UID:2026-tmg-direct-nagoya20-end@bz-setlist
-DTSTAMP:20261119T000000Z
-DTSTART;TZID=Asia/Tokyo:20261020T150000
-DTEND;TZID=Asia/Tokyo:20261020T150100
-SUMMARY:TMG⁠‌​‌⁠｜TMG Zepp Nagoya 直前販売稼働終了
-DESCRIPTION:各公演開場2時間前まで\n種別：受付締切\nアー
- ティスト：TMG\nツアー：TMG LIVE 2026 “SAYONARA”\nエリア：
- 愛知\n受付元：B’z TICKET\nURL：https://bz-ticket.com/news/179cb28
- 4-f1bb-45ad-abd8-4d470b1449b4\n出典：B'zセットリスト ai-z-lab.git
- hub.io/bz-setlist
-LOCATION:愛知 Zepp Nagoya
-X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
-END:VEVENT
-BEGIN:VEVENT
-UID:2026-10-20-tmg-sayonara-meeting-entry-deadline@bz-setlist
-DTSTAMP:20261119T000000Z
-DTSTART;TZID=Asia/Tokyo:20261020T153000
-DTEND;TZID=Asia/Tokyo:20261020T153100
-SUMMARY:TMG⁠‌​‌⁠｜TMG SAYONARA会 応募締切
-DESCRIPTION:受付元：B'z Official Website\n対象公演：2026/10/20 Ze
- pp Nagoya\nTMG SAYONARA会 応募締切：15:30（日本時間）\n詳細
- ：https://bz-vermillion.com/news/261002_2sayonara.html\n種別：受付
- 締切\nアーティスト：TMG\nツアー：TMG LIVE 2026 “SAYONARA”
- \nエリア：愛知\nURL：https://bz-vermillion.com/news/261002_2sayonar
- a.html\n出典：B'zセットリスト ai-z-lab.github.io/bz-setlist
-LOCATION:愛知 Zepp Nagoya
-X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
-END:VEVENT
-BEGIN:VEVENT
-UID:2026-10-20-tmg-sayonara-meeting-lottery-result@bz-setlist
-DTSTAMP:20261119T000000Z
-DTSTART;TZID=Asia/Tokyo:20261020T160000
-DTEND;TZID=Asia/Tokyo:20261020T160100
-SUMMARY:TMG⁠‌​‌⁠｜TMG SAYONARA会 当選発表
-DESCRIPTION:受付元：B'z Official Website\n対象公演：2026/10/20 Ze
- pp Nagoya\nTMG SAYONARA会 当選発表：16:00（日本時間）\n詳細
- ：https://bz-vermillion.com/news/261002_2sayonara.html\n種別：当落
- 発表\nアーティスト：TMG\nツアー：TMG LIVE 2026 “SAYONARA”
- \nエリア：愛知\nURL：https://bz-vermillion.com/news/261002_2sayonar
- a.html\n出典：B'zセットリスト ai-z-lab.github.io/bz-setlist
-LOCATION:愛知 Zepp Nagoya
-X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
-END:VEVENT
-BEGIN:VEVENT
-UID:2026-10-20-tmg-sayonara-愛知-zepp-nagoya@bz-setlist
-DTSTAMP:20261119T000000Z
-DTSTART;TZID=Asia/Tokyo:20261020T180000
-DTEND;TZID=Asia/Tokyo:20261020T200000
-SUMMARY:TMG⁠‌​‌⁠｜愛知公演
-DESCRIPTION:OPEN 17:00 / START 18:00\n種別：公演\nアーティスト
- ：TMG\nツアー：TMG LIVE 2026 “SAYONARA”\nエリア：愛知\nURL
- ：https://bz-vermillion.com/tmg/2026/\n出典：B'zセットリスト ai-
- z-lab.github.io/bz-setlist
-LOCATION:愛知 Zepp Nagoya
-X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
-END:VEVENT
-BEGIN:VEVENT
-UID:2026-10-20-bz-party-calendar-2027-sale-start@bz-setlist
-DTSTAMP:20261119T000000Z
-DTSTART;TZID=Asia/Tokyo:20261020T000000
-DTEND;TZID=Asia/Tokyo:20261020T000100
-SUMMARY:B'z⁠‌​‌⁠｜B'zカレンダー2027 通常販売スター
- ト（B'z PARTY会員限定）
-DESCRIPTION:B'z PARTY正規会員限定（冬季限定）。卓上週め
- くり／壁掛月めくり。11/20(金)までの注文分は12月中旬
- 〜下旬ごろ発送開始、11/21(土)以降の注文分は2027年1月
- 中旬以降に発送予定。新規入会・継続再開を検討中の
- 方は、月末までに入金・決済を完了すると翌々月1日か
- ら正規会員（入金日が開始日ではありません）。 【内
- 容】卓上週めくり：直筆メッセージ・イラストに加え
- 、松本さんと稲葉さんの学生時代やプライベート写真
- （「松本さん×ヨーロッパ」「稲葉さん×モフモフ」な
- ど）の未公開フォトを収録。壁掛月めくり：コンセプ
- トは『B'z×和テイスト』。ロックな雰囲気と和を融合し
- た写真などで構成。収録写真の一部はB'z PARTYサイトのSH
- OPで公開中（B'z PARTY公式LINE 11/19）。\n種別：グッズ\nア
- ーティスト：B'z\nツアー：B'z PARTY ONLINE SHOP\nURL：https://bp
- .bz-party.com/sitenews_det.php?id=21807\n出典：B'zセットリスト ai
- -z-lab.github.io/bz-setlist
-LOCATION:
-X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
-END:VEVENT
-BEGIN:VEVENT
-UID:2026-10-21-tmg-hardrock-special-days@bz-setlist
-DTSTAMP:20261119T000000Z
-DTSTART;TZID=Asia/Tokyo:20261021T120000
-DTEND;TZID=Asia/Tokyo:20261021T120100
-SUMMARY:TMG⁠‌​‌⁠｜TMG Special Days（各日3回）
-DESCRIPTION:TMG楽曲・ライブ映像の上映：12:00／14:00／19:00
- （各回約45分）。開催店舗：東京・上野駅東京・横浜・
- 京都・ユニバーサル・シティウォーク大阪。スペシャ
- ルカクテル提供。\n種別：注意事項\nアーティスト：TMG\
- nツアー：TMG Ⅲ SAYONARA\nエリア：全国\n受付元：Hard Rock C
- afe Japan\nURL：https://hardrockjapan.com/event/12459/\n出典：B'zセ
- ットリスト ai-z-lab.github.io/bz-setlist
-LOCATION:全国 Hard Rock Cafe 国内5店舗
-X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
-END:VEVENT
-BEGIN:VEVENT
-UID:2026-10-21-env-hall-group-07-resale-club-gym-start@bz-setlist
-DTSTAMP:20261119T000000Z
-DTSTART;TZID=Asia/Tokyo:20261021T120000
-DTEND;TZID=Asia/Tokyo:20261021T120100
-SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志 / ～enV～ 沖縄 Club-
- Gymリセール購入受付開始
-DESCRIPTION:受付元：B’z TICKET\n対象公演：\n・10/31 沖縄コ
- ンベンションセンター\n・11/1 沖縄コンベンションセン
- ター\n公式スケジュール：https://bz-ticket.com/leaflets/resale-s
- chedule-en5-hall\n種別：リセール\nアーティスト：Koshi Inaba\
- nツアー：Koshi Inaba LIVE 2026-2027 ～enV～\nエリア：沖縄\nURL
- ：https://bz-ticket.com/leaflets/resale-schedule-en5-hall\n出典：B'z
- セットリスト ai-z-lab.github.io/bz-setlist
-LOCATION:沖縄 10/31 沖縄コンベンションセンター / 11/1 沖
- 縄コンベンションセンター
-X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
-END:VEVENT
-BEGIN:VEVENT
-UID:2026-10-21-env-hall-group-08-resale-party-start@bz-setlist
-DTSTAMP:20261119T000000Z
-DTSTART;TZID=Asia/Tokyo:20261021T120000
-DTEND;TZID=Asia/Tokyo:20261021T120100
-SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志 / ～enV～ 大分・福
- 岡 リセール出品・B’z PARTY購入受付開始
-DESCRIPTION:受付元：B’z TICKET\n対象公演：\n・11/5 iichikoグ
- ランシアタ\n・11/7 福岡市民ホール\n・11/8 福岡市民ホー
- ル\n公式スケジュール：https://bz-ticket.com/leaflets/resale-sche
- dule-en5-hall\n種別：リセール\nアーティスト：Koshi Inaba\n
- ツアー：Koshi Inaba LIVE 2026-2027 ～enV～\nエリア：大分・福
- 岡\nURL：https://bz-ticket.com/leaflets/resale-schedule-en5-hall\n出典
- ：B'zセットリスト ai-z-lab.github.io/bz-setlist
-LOCATION:大分・福岡 11/5 iichikoグランシアタ / 11/7 福岡市
- 民ホール / 11/8 福岡市民ホール
-X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
-END:VEVENT
-BEGIN:VEVENT
-UID:2026-tmg-direct-nagoya21-end@bz-setlist
-DTSTAMP:20261119T000000Z
-DTSTART;TZID=Asia/Tokyo:20261021T150000
-DTEND;TZID=Asia/Tokyo:20261021T150100
-SUMMARY:TMG⁠‌​‌⁠｜TMG Zepp Nagoya 直前販売稼働終了
-DESCRIPTION:各公演開場2時間前まで\n種別：受付締切\nアー
- ティスト：TMG\nツアー：TMG LIVE 2026 “SAYONARA”\nエリア：
- 愛知\n受付元：B’z TICKET\nURL：https://bz-ticket.com/news/179cb28
- 4-f1bb-45ad-abd8-4d470b1449b4\n出典：B'zセットリスト ai-z-lab.git
- hub.io/bz-setlist
-LOCATION:愛知 Zepp Nagoya
-X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
-END:VEVENT
-BEGIN:VEVENT
-UID:2026-10-21-tmg-sayonara-meeting-entry-deadline@bz-setlist
-DTSTAMP:20261119T000000Z
-DTSTART;TZID=Asia/Tokyo:20261021T153000
-DTEND;TZID=Asia/Tokyo:20261021T153100
-SUMMARY:TMG⁠‌​‌⁠｜TMG SAYONARA会 応募締切
-DESCRIPTION:受付元：B'z Official Website\n対象公演：2026/10/21 Ze
- pp Nagoya\nTMG SAYONARA会 応募締切：15:30（日本時間）\n詳細
- ：https://bz-vermillion.com/news/261002_2sayonara.html\n種別：受付
- 締切\nアーティスト：TMG\nツアー：TMG LIVE 2026 “SAYONARA”
- \nエリア：愛知\nURL：https://bz-vermillion.com/news/261002_2sayonar
- a.html\n出典：B'zセットリスト ai-z-lab.github.io/bz-setlist
-LOCATION:愛知 Zepp Nagoya
-X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
-END:VEVENT
-BEGIN:VEVENT
-UID:2026-10-21-tmg-sayonara-meeting-lottery-result@bz-setlist
-DTSTAMP:20261119T000000Z
-DTSTART;TZID=Asia/Tokyo:20261021T160000
-DTEND;TZID=Asia/Tokyo:20261021T160100
-SUMMARY:TMG⁠‌​‌⁠｜TMG SAYONARA会 当選発表
-DESCRIPTION:受付元：B'z Official Website\n対象公演：2026/10/21 Ze
- pp Nagoya\nTMG SAYONARA会 当選発表：16:00（日本時間）\n詳細
- ：https://bz-vermillion.com/news/261002_2sayonara.html\n種別：当落
- 発表\nアーティスト：TMG\nツアー：TMG LIVE 2026 “SAYONARA”
- \nエリア：愛知\nURL：https://bz-vermillion.com/news/261002_2sayonar
- a.html\n出典：B'zセットリスト ai-z-lab.github.io/bz-setlist
-LOCATION:愛知 Zepp Nagoya
-X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
-END:VEVENT
-BEGIN:VEVENT
-UID:2026-tmg-direct-tokyo-start@bz-setlist
-DTSTAMP:20261119T000000Z
-DTSTART;TZID=Asia/Tokyo:20261021T170000
-DTEND;TZID=Asia/Tokyo:20261021T170100
-SUMMARY:TMG⁠‌​‌⁠｜TMG 東京ガーデンシアター 直前販
- 売稼働開始
-DESCRIPTION:開放席が発生した場合のみ先着販売\n種別：受
- 付開始\nアーティスト：TMG\nツアー：TMG LIVE 2026 “SAYONARA
- ”\nエリア：東京\n受付元：B’z TICKET\nURL：https://bz-ticket
- .com/news/179cb284-f1bb-45ad-abd8-4d470b1449b4\n出典：B'zセットリ
- スト ai-z-lab.github.io/bz-setlist
-LOCATION:東京 東京ガーデンシアター
-X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
-END:VEVENT
-BEGIN:VEVENT
-UID:2026-10-21-tmg-sayonara-愛知-zepp-nagoya@bz-setlist
-DTSTAMP:20261119T000000Z
-DTSTART;TZID=Asia/Tokyo:20261021T180000
-DTEND;TZID=Asia/Tokyo:20261021T200000
-SUMMARY:TMG⁠‌​‌⁠｜愛知公演
-DESCRIPTION:OPEN 17:00 / START 18:00\n種別：公演\nアーティスト
- ：TMG\nツアー：TMG LIVE 2026 “SAYONARA”\nエリア：愛知\nURL
- ：https://bz-vermillion.com/tmg/2026/\n出典：B'zセットリスト ai-
- z-lab.github.io/bz-setlist
-LOCATION:愛知 Zepp Nagoya
-X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
-END:VEVENT
-BEGIN:VEVENT
 UID:2026-10-23-tmg-hardrock-special-days@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261023T120000
 DTEND;TZID=Asia/Tokyo:20261023T120100
 SUMMARY:TMG⁠‌​‌⁠｜TMG Special Days（各日3回）
@@ -311,7 +88,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-23-env-hall-group-08-resale-club-gym-start@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261023T120000
 DTEND;TZID=Asia/Tokyo:20261023T120100
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志 / ～enV～ 大分・福
@@ -329,7 +106,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-tmg-direct-tokyo-end@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261023T150000
 DTEND;TZID=Asia/Tokyo:20261023T150100
 SUMMARY:TMG⁠‌​‌⁠｜TMG 東京ガーデンシアター 直前販
@@ -344,7 +121,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-23-tmg-sayonara-meeting-entry-deadline@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261023T153000
 DTEND;TZID=Asia/Tokyo:20261023T153100
 SUMMARY:TMG⁠‌​‌⁠｜TMG SAYONARA会 応募締切
@@ -360,7 +137,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-23-tmg-sayonara-meeting-lottery-result@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261023T160000
 DTEND;TZID=Asia/Tokyo:20261023T160100
 SUMMARY:TMG⁠‌​‌⁠｜TMG SAYONARA会 当選発表
@@ -377,7 +154,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-23-tmg-sayonara-東京-東京ガーデンシアター@bz-setli
  st
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261023T180000
 DTEND;TZID=Asia/Tokyo:20261023T200000
 SUMMARY:TMG⁠‌​‌⁠｜東京公演
@@ -390,7 +167,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-23-1chance-official-goods-postsale-end@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261023T235900
 DTEND;TZID=Asia/Tokyo:20261024T000000
 SUMMARY:稲葉浩志関連⁠‌​‌⁠｜1CHANCE FESTIVAL 2026 グッ
@@ -407,7 +184,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-24-tmg-store-goods-start@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261024T130000
 DTEND;TZID=Asia/Tokyo:20261024T130100
 SUMMARY:TMG⁠‌​‌⁠｜TMG SAYONARA ツアーグッズ通販開始
@@ -424,7 +201,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-24-env-live-栃木-栃木県総合文化センター-メイン
  ホール@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261024T170000
 DTEND;TZID=Asia/Tokyo:20261024T190000
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜栃木公演
@@ -437,7 +214,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-24-tmg-battle-special-fm-cocolo@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261024T210000
 DTEND;TZID=Asia/Tokyo:20261024T210100
 SUMMARY:TMG⁠‌​‌⁠｜TMG出演 BATTLE OF ROCK 特別番組（FM CO
@@ -451,7 +228,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-25-env-yokosuka-direct-sale-start@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261025T010000
 DTEND;TZID=Asia/Tokyo:20261025T010100
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志 10/27横須賀 直前販
@@ -468,7 +245,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-25-tmg3-bonus-entry-deadline@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261025T235900
 DTEND;TZID=Asia/Tokyo:20261026T000000
 SUMMARY:TMG⁠‌​‌⁠｜TMG Ⅲ SAYONARA 封入応募特典 受付締
@@ -486,7 +263,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-26-radio-crazy-radipass-gold-3rd-entry-start@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261026T000000
 DTEND;TZID=Asia/Tokyo:20261026T000100
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜RADIO CRAZY 2026 RADIPASS GOLD第3回
@@ -502,7 +279,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-26-radio-crazy-official-4th-entry-start@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261026T000000
 DTEND;TZID=Asia/Tokyo:20261026T000100
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜RADIO CRAZY 2026 オフィシャル4
@@ -518,7 +295,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-26-env-hall-group-07-resale-deadline@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261026T105900
 DTEND;TZID=Asia/Tokyo:20261026T110000
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志 / ～enV～ 沖縄 リ
@@ -536,7 +313,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-26-env-arena-ponta-pass-entry-start@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261026T120000
 DTEND;TZID=Asia/Tokyo:20261103T235900
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜アリーナ公演 Pontaパス会員
@@ -552,7 +329,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-26-env-yokosuka-direct-sale-deadline@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261026T230000
 DTEND;TZID=Asia/Tokyo:20261026T230100
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志 10/27横須賀 直前販
@@ -569,7 +346,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-27-env-live-神奈川-横須賀芸術劇場-大劇場@bz-setli
  st
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261027T180000
 DTEND;TZID=Asia/Tokyo:20261027T200000
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜神奈川公演
@@ -582,7 +359,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-28-env-hall-group-08-resale-deadline@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261028T105900
 DTEND;TZID=Asia/Tokyo:20261028T110000
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志 / ～enV～ 大分・福
@@ -600,7 +377,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-28-countdown-japan-2nd-entry-start@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261028T121500
 DTEND;TZID=Asia/Tokyo:20261028T121600
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜COUNTDOWN JAPAN 26/27 第2次抽選
@@ -616,7 +393,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-29-env-okinawa-direct-sale-start@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261029T170000
 DTEND;TZID=Asia/Tokyo:20261029T170100
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志 沖縄2公演 直前販
@@ -634,7 +411,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-30-tmg-store-goods-end@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261030T180000
 DTEND;TZID=Asia/Tokyo:20261030T180100
 SUMMARY:TMG⁠‌​‌⁠｜TMG SAYONARA ツアーグッズ通販締切
@@ -650,7 +427,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-31-env-okinawa-goods-start@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261031T130000
 DTEND;TZID=Asia/Tokyo:20261031T130100
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志 enV 会場グッズ販
@@ -667,7 +444,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-31-env-okinawa-direct-sale-deadline@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261031T140000
 DTEND;TZID=Asia/Tokyo:20261031T140100
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志 10/31沖縄 直前販売
@@ -684,7 +461,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-10-31-env-live-沖縄-沖縄コンベンションセンター-劇
  場棟@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261031T170000
 DTEND;TZID=Asia/Tokyo:20261031T190000
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜沖縄公演
@@ -697,7 +474,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-01-env-okinawa-goods-start@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261101T133000
 DTEND;TZID=Asia/Tokyo:20261101T133100
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志 enV 会場グッズ販
@@ -714,7 +491,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-01-env-okinawa-direct-sale-deadline@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261101T140000
 DTEND;TZID=Asia/Tokyo:20261101T140100
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志 11/1沖縄 直前販売
@@ -731,7 +508,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-01-env-live-沖縄-沖縄コンベンションセンター-劇
  場棟@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261101T170000
 DTEND;TZID=Asia/Tokyo:20261101T190000
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜沖縄公演
@@ -744,7 +521,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-02-tmg-tokyo-tshirt-shipping-entry-start@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261102T120000
 DTEND;TZID=Asia/Tokyo:20261111T235900
 SUMMARY:TMG⁠‌​‌⁠｜TMG東京公演限定Tシャツ 発送受付
@@ -763,7 +540,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-02-env-hall-group-09-resale-party-start@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261102T120000
 DTEND;TZID=Asia/Tokyo:20261102T120100
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志 / ～enV～ 北海道 
@@ -781,7 +558,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-02-bz-party-shop-blanket-order-start@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261102T140000
 DTEND;TZID=Asia/Tokyo:20261102T140100
 SUMMARY:B'z⁠‌​‌⁠｜B'z PARTYオリジナルブランケット 
@@ -800,7 +577,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-02-countdown-japan-2nd-entry-deadline@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261102T160000
 DTEND;TZID=Asia/Tokyo:20261102T160100
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜COUNTDOWN JAPAN 26/27 第2次抽選
@@ -815,7 +592,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-03-radio-crazy-radipass-gold-3rd-entry-deadline@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261103T235900
 DTEND;TZID=Asia/Tokyo:20261104T000000
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜RADIO CRAZY 2026 RADIPASS GOLD第3回
@@ -830,7 +607,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-03-radio-crazy-official-4th-entry-deadline@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261103T235900
 DTEND;TZID=Asia/Tokyo:20261104T000000
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜RADIO CRAZY 2026 オフィシャル4
@@ -845,7 +622,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-03-env-arena-ponta-pass-entry-deadline@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261103T235900
 DTEND;TZID=Asia/Tokyo:20261104T000000
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜アリーナ公演 Pontaパス会員
@@ -861,7 +638,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-04-env-ponta-pass-goods-gift-entry-start@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261104T100000
 DTEND;TZID=Asia/Tokyo:20261118T095900
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜Pontaパス会員 ツアーグッズ
@@ -876,7 +653,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-04-tmg-ponta-pass-goods-gift-entry-start@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261104T100000
 DTEND;TZID=Asia/Tokyo:20261118T095900
 SUMMARY:TMG⁠‌​‌⁠｜Pontaパス会員 ツアーグッズプレゼ
@@ -891,7 +668,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-04-env-arena-pia-ichihaya-entry-start@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261104T120000
 DTEND;TZID=Asia/Tokyo:20261110T235900
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜アリーナ公演 チケットぴあ
@@ -907,7 +684,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-04-env-hall-group-09-resale-club-gym-start@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261104T120000
 DTEND;TZID=Asia/Tokyo:20261104T120100
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志 / ～enV～ 北海道 Cl
@@ -925,7 +702,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-05-env-oita-goods-start@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261105T133000
 DTEND;TZID=Asia/Tokyo:20261105T133100
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志 enV 会場グッズ販
@@ -942,7 +719,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-05-env-live-大分-iichikoグランシアタ@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261105T180000
 DTEND;TZID=Asia/Tokyo:20261105T200000
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜大分公演
@@ -955,7 +732,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-06-radio-crazy-lawson-lottery-entry-start@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261106T000000
 DTEND;TZID=Asia/Tokyo:20261106T000100
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜RADIO CRAZY 2026 ローソンチケ
@@ -971,7 +748,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-06-env-hall-group-10-resale-party-start@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261106T120000
 DTEND;TZID=Asia/Tokyo:20261106T120100
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志 / ～enV～ 福島 リ
@@ -987,7 +764,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-07-env-fukuoka-goods-start@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261107T123000
 DTEND;TZID=Asia/Tokyo:20261107T123100
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志 enV 会場グッズ販
@@ -1005,7 +782,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-07-env-live-福岡-福岡市民ホール-大ホール@bz-setli
  st
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261107T170000
 DTEND;TZID=Asia/Tokyo:20261107T190000
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜福岡公演
@@ -1018,7 +795,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-07-env-arena-ponta-pass-lottery-result@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261107T200000
 DTEND;TZID=Asia/Tokyo:20261107T200100
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜アリーナ公演 Pontaパス会員
@@ -1034,7 +811,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-08-env-hall-group-10-resale-club-gym-start@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261108T120000
 DTEND;TZID=Asia/Tokyo:20261108T120100
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志 / ～enV～ 福島 Club-
@@ -1050,7 +827,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-08-env-fukuoka-goods-start@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261108T123000
 DTEND;TZID=Asia/Tokyo:20261108T123100
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志 enV 会場グッズ販
@@ -1068,7 +845,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-08-env-live-福岡-福岡市民ホール-大ホール@bz-setli
  st
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261108T170000
 DTEND;TZID=Asia/Tokyo:20261108T190000
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜福岡公演
@@ -1081,7 +858,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-09-env-hall-group-09-resale-deadline@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261109T105900
 DTEND;TZID=Asia/Tokyo:20261109T110000
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志 / ～enV～ 北海道 
@@ -1099,7 +876,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-09-env-hall-group-11-resale-party-start@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261109T120000
 DTEND;TZID=Asia/Tokyo:20261109T120100
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志 / ～enV～ 宮城・秋
@@ -1117,7 +894,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-10-env-arena-pia-ichihaya-entry-deadline@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261110T235900
 DTEND;TZID=Asia/Tokyo:20261111T000000
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜アリーナ公演 チケットぴあ
@@ -1133,7 +910,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-11-env-arena-pia-seven-eleven-entry-start@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261111T120000
 DTEND;TZID=Asia/Tokyo:20261123T235900
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜アリーナ公演 チケットぴあ
@@ -1150,7 +927,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-11-env-hall-group-11-resale-club-gym-start@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261111T120000
 DTEND;TZID=Asia/Tokyo:20261111T120100
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志 / ～enV～ 宮城・秋
@@ -1168,7 +945,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-11-tmg-tokyo-tshirt-shipping-entry-deadline@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261111T235900
 DTEND;TZID=Asia/Tokyo:20261112T000000
 SUMMARY:TMG⁠‌​‌⁠｜TMG東京公演限定Tシャツ 発送受付
@@ -1187,7 +964,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-13-env-hall-group-10-resale-deadline@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261113T105900
 DTEND;TZID=Asia/Tokyo:20261113T110000
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志 / ～enV～ 福島 リ
@@ -1203,7 +980,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-13-bz-party-shop-blanket-order-deadline@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261113T120000
 DTEND;TZID=Asia/Tokyo:20261113T120100
 SUMMARY:B'z⁠‌​‌⁠｜B'z PARTYオリジナルブランケット 
@@ -1222,7 +999,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-13-env-hall-group-12-resale-party-start@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261113T120000
 DTEND;TZID=Asia/Tokyo:20261113T120100
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志 / ～enV～ 和歌山・
@@ -1240,7 +1017,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-14-env-sapporo-goods-start@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261114T123000
 DTEND;TZID=Asia/Tokyo:20261114T123100
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志 enV 会場グッズ販
@@ -1258,7 +1035,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-14-env-live-北海道-札幌文化芸術劇場hitaru@bz-setlis
  t
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261114T170000
 DTEND;TZID=Asia/Tokyo:20261114T190000
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜北海道公演
@@ -1271,7 +1048,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-14-env-arena-pia-ichihaya-lottery-result@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261114T200000
 DTEND;TZID=Asia/Tokyo:20261114T200100
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜アリーナ公演 チケットぴあ
@@ -1287,7 +1064,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-15-env-hall-group-12-resale-club-gym-start@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261115T120000
 DTEND;TZID=Asia/Tokyo:20261115T120100
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志 / ～enV～ 和歌山・
@@ -1305,7 +1082,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-16-radio-crazy-official-6th-entry-start@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261116T000000
 DTEND;TZID=Asia/Tokyo:20261116T000100
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜RADIO CRAZY 2026 オフィシャル6
@@ -1322,7 +1099,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-16-env-hall-group-11-resale-deadline@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261116T105900
 DTEND;TZID=Asia/Tokyo:20261116T110000
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志 / ～enV～ 宮城・秋
@@ -1340,7 +1117,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-16-env-obihiro-goods-start@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261116T133000
 DTEND;TZID=Asia/Tokyo:20261116T133100
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志 enV 会場グッズ販
@@ -1358,7 +1135,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-16-env-live-北海道-帯広市民文化ホール-大ホール
  @bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261116T180000
 DTEND;TZID=Asia/Tokyo:20261116T200000
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜北海道公演
@@ -1371,7 +1148,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-17-radio-crazy-lawson-lottery-entry-deadline@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261117T235900
 DTEND;TZID=Asia/Tokyo:20261118T000000
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜RADIO CRAZY 2026 ローソンチケ
@@ -1387,7 +1164,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-18-env-ponta-pass-goods-gift-entry-deadline@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261118T095900
 DTEND;TZID=Asia/Tokyo:20261118T100000
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜Pontaパス会員 ツアーグッズ
@@ -1402,7 +1179,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-18-tmg-ponta-pass-goods-gift-entry-deadline@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261118T095900
 DTEND;TZID=Asia/Tokyo:20261118T100000
 SUMMARY:TMG⁠‌​‌⁠｜Pontaパス会員 ツアーグッズプレゼ
@@ -1417,7 +1194,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-20-env-hall-group-12-resale-deadline@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261120T105900
 DTEND;TZID=Asia/Tokyo:20261120T110000
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志 / ～enV～ 和歌山・
@@ -1435,7 +1212,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-20-env-hall-group-13-resale-party-start@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261120T120000
 DTEND;TZID=Asia/Tokyo:20261120T120100
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志 / ～enV～ 愛媛・香
@@ -1453,7 +1230,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-20-env-koriyama-goods-start@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261120T133000
 DTEND;TZID=Asia/Tokyo:20261120T133100
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志 enV 会場グッズ販
@@ -1470,7 +1247,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-20-radio-crazy-lawson-lottery-result@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261120T150000
 DTEND;TZID=Asia/Tokyo:20261120T150100
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜RADIO CRAZY 2026 ローソンチケ
@@ -1486,7 +1263,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-20-env-live-福島-けんしん郡山文化センター郡山
  市民文化センター-大ホール@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261120T180000
 DTEND;TZID=Asia/Tokyo:20261120T200000
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜福島公演
@@ -1501,7 +1278,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-20-bz-party-calendar-2027-december-shipping-deadline@bz-setlis
  t
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261120T000000
 DTEND;TZID=Asia/Tokyo:20261120T000100
 SUMMARY:B'z⁠‌​‌⁠｜B'zカレンダー2027 12月発送分の注
@@ -1528,7 +1305,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-22-env-hall-group-13-resale-club-gym-start@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261122T120000
 DTEND;TZID=Asia/Tokyo:20261122T120100
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志 / ～enV～ 愛媛・香
@@ -1546,7 +1323,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-22-env-sendai-goods-start@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261122T123000
 DTEND;TZID=Asia/Tokyo:20261122T123100
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志 enV 会場グッズ販
@@ -1563,7 +1340,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-22-env-live-宮城-仙台サンプラザホール@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261122T170000
 DTEND;TZID=Asia/Tokyo:20261122T190000
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜宮城公演
@@ -1576,7 +1353,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-23-env-akita-goods-start@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261123T123000
 DTEND;TZID=Asia/Tokyo:20261123T123100
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志 enV 会場グッズ販
@@ -1594,7 +1371,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-23-env-live-秋田-あきた芸術劇場-ミルハス-大ホ
  ール@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261123T170000
 DTEND;TZID=Asia/Tokyo:20261123T190000
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜秋田公演
@@ -1607,7 +1384,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-23-radio-crazy-official-6th-entry-deadline@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261123T235900
 DTEND;TZID=Asia/Tokyo:20261124T000000
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜RADIO CRAZY 2026 オフィシャル6
@@ -1622,7 +1399,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-23-env-arena-pia-seven-eleven-entry-deadline@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261123T235900
 DTEND;TZID=Asia/Tokyo:20261124T000000
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜アリーナ公演 チケットぴあ
@@ -1638,7 +1415,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-24-en-dome-bz-ticket-1-entry-start@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261124T120000
 DTEND;TZID=Asia/Tokyo:20261130T235900
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜B’z TICKET一次・B’z PARTY先
@@ -1654,7 +1431,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-27-env-hall-group-13-resale-deadline@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261127T105900
 DTEND;TZID=Asia/Tokyo:20261127T110000
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志 / ～enV～ 愛媛・香
@@ -1672,7 +1449,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-27-env-arena-pia-seven-eleven-lottery-result@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261127T200000
 DTEND;TZID=Asia/Tokyo:20261127T200100
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜アリーナ公演 チケットぴあ
@@ -1689,7 +1466,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-28-env-live-和歌山-和歌山県民文化会館-大ホール
  @bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261128T170000
 DTEND;TZID=Asia/Tokyo:20261128T190000
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜和歌山公演
@@ -1703,7 +1480,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-30-env-live-京都-京都ロームシアター-メインホー
  ル@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261130T180000
 DTEND;TZID=Asia/Tokyo:20261130T200000
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜京都公演
@@ -1716,7 +1493,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-30-en-dome-bz-ticket-1-entry-deadline@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261130T235900
 DTEND;TZID=Asia/Tokyo:20261201T000000
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜B’z TICKET一次・B’z PARTY先
@@ -1729,7 +1506,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-12-01-env-hall-group-14-resale-party-start@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261201T120000
 DTEND;TZID=Asia/Tokyo:20261201T120100
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志 / ～enV～ 三重・岐
@@ -1747,7 +1524,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-12-03-env-hall-group-14-resale-club-gym-start@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261203T120000
 DTEND;TZID=Asia/Tokyo:20261203T120100
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志 / ～enV～ 三重・岐
@@ -1765,7 +1542,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-12-04-env-hall-group-14-resale-deadline@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261204T105900
 DTEND;TZID=Asia/Tokyo:20261204T110000
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志 / ～enV～ 三重・岐
@@ -1783,7 +1560,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-12-04-env-hall-group-15-resale-party-start@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261204T120000
 DTEND;TZID=Asia/Tokyo:20261204T120100
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志 / ～enV～ 福井・石
@@ -1801,7 +1578,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-12-04-env-live-愛媛-松山市民会館-大ホール@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261204T180000
 DTEND;TZID=Asia/Tokyo:20261204T200000
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜愛媛公演
@@ -1814,7 +1591,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-12-05-env-arena-general-sale@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261205T100000
 DTEND;TZID=Asia/Tokyo:20261205T100100
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜アリーナ公演 一般発売開始
@@ -1828,7 +1605,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-12-06-env-hall-group-15-resale-club-gym-start@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261206T120000
 DTEND;TZID=Asia/Tokyo:20261206T120100
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志 / ～enV～ 福井・石
@@ -1847,7 +1624,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-12-06-env-live-香川-レクザムホール香川県県民ホー
  ル大ホール@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261206T170000
 DTEND;TZID=Asia/Tokyo:20261206T190000
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜香川公演
@@ -1861,7 +1638,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-12-10-en-dome-bz-ticket-1-lottery-result@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261210T120000
 DTEND;TZID=Asia/Tokyo:20261210T120100
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜B’z TICKET一次・B’z PARTY先
@@ -1874,7 +1651,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-12-11-env-hall-group-15-resale-deadline@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261211T105900
 DTEND;TZID=Asia/Tokyo:20261211T110000
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志 / ～enV～ 福井・石
@@ -1893,7 +1670,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-12-11-env-live-三重-三重県文化会館-大ホール@bz-setli
  st
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261211T180000
 DTEND;TZID=Asia/Tokyo:20261211T200000
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜三重公演
@@ -1907,7 +1684,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-12-13-env-live-岐阜-長良川国際会議場-メインホール
  @bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261213T170000
 DTEND;TZID=Asia/Tokyo:20261213T190000
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜岐阜公演
@@ -1921,7 +1698,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-12-18-env-live-福井-福井フェニックス-プラザ-エル
  ピス大ホール@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261218T180000
 DTEND;TZID=Asia/Tokyo:20261218T200000
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜福井公演
@@ -1935,7 +1712,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-12-20-env-live-石川-本多の森-北電ホール@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261220T170000
 DTEND;TZID=Asia/Tokyo:20261220T190000
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜石川公演
@@ -1948,7 +1725,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-12-23-env-arena-general-sale-tba@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261223T000000
 DTEND;TZID=Asia/Tokyo:20261223T000100
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜アリーナ公演 B'z TICKET リセ
@@ -1964,7 +1741,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-12-25-en-dome-bz-ticket-2-entry-start@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261225T120000
 DTEND;TZID=Asia/Tokyo:20270106T235900
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜B’z TICKET二次・B’z PARTY・Cl
@@ -1979,7 +1756,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-12-28-radio-crazy-koshi-inaba-live@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261228T110000
 DTEND;TZID=Asia/Tokyo:20261228T130000
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜FM802 RADIO CRAZY 2026 稲葉浩志
@@ -1996,7 +1773,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-12-29-countdown-japan-koshi-inaba-live@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261229T173500
 DTEND;TZID=Asia/Tokyo:20261229T193500
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜COUNTDOWN JAPAN 26/27 稲葉浩志出
@@ -2014,7 +1791,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-12-31-nhk-kouhaku-koshi-inaba@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20261231T192000
 DTEND;TZID=Asia/Tokyo:20261231T192100
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜第77回NHK紅白歌合戦 稲葉浩
@@ -2030,7 +1807,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2027-01-06-en-dome-bz-ticket-2-entry-deadline@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20270106T235900
 DTEND;TZID=Asia/Tokyo:20270107T000000
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜B’z TICKET二次・B’z PARTY・Cl
@@ -2043,7 +1820,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2027-01-09-env-live-兵庫-glion-arena-kobe@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20270109T170000
 DTEND;TZID=Asia/Tokyo:20270109T190000
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜兵庫公演
@@ -2056,7 +1833,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2027-01-10-env-live-兵庫-glion-arena-kobe@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20270110T170000
 DTEND;TZID=Asia/Tokyo:20270110T190000
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜兵庫公演
@@ -2070,7 +1847,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2027-01-16-env-live-愛知-ポートメッセなごや-第1展示館@b
  z-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20270116T170000
 DTEND;TZID=Asia/Tokyo:20270116T190000
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜愛知公演
@@ -2084,7 +1861,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2027-01-17-env-live-愛知-ポートメッセなごや-第1展示館@b
  z-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20270117T170000
 DTEND;TZID=Asia/Tokyo:20270117T190000
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜愛知公演
@@ -2097,7 +1874,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2027-01-19-en-dome-bz-ticket-2-lottery-result@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20270119T120000
 DTEND;TZID=Asia/Tokyo:20270119T120100
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜B’z TICKET二次・B’z PARTY・Cl
@@ -2111,7 +1888,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2027-01-23-env-live-宮城-宮城-セキスイハイムスーパーア
  リーナ@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20270123T170000
 DTEND;TZID=Asia/Tokyo:20270123T190000
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜宮城公演
@@ -2124,7 +1901,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2027-koshi-analog-2027-01-27@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20270127T000000
 DTEND;TZID=Asia/Tokyo:20270127T000100
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志『マグマ』アナロ
@@ -2139,7 +1916,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2027-01-28-env-live-神奈川-kアリーナ横浜@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20270128T180000
 DTEND;TZID=Asia/Tokyo:20270128T200000
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜神奈川公演
@@ -2152,7 +1929,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2027-01-30-env-live-神奈川-kアリーナ横浜@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20270130T170000
 DTEND;TZID=Asia/Tokyo:20270130T190000
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜神奈川公演
@@ -2165,7 +1942,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2027-01-31-env-live-神奈川-kアリーナ横浜@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20270131T170000
 DTEND;TZID=Asia/Tokyo:20270131T190000
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜神奈川公演
@@ -2178,7 +1955,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2027-02-22-en-dome-bz-ticket-3-entry-start@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20270222T120000
 DTEND;TZID=Asia/Tokyo:20270222T120100
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜B’z TICKET三次・B’z PARTY・Cl
@@ -2194,7 +1971,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2027-koshi-analog-2027-02-24@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20270224T000000
 DTEND;TZID=Asia/Tokyo:20270224T000100
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志『志庵』アナログL
@@ -2209,7 +1986,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2027-02-28-en-dome-bz-ticket-3-entry-deadline@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20270228T235900
 DTEND;TZID=Asia/Tokyo:20270301T000000
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜B’z TICKET三次・B’z PARTY・Cl
@@ -2223,7 +2000,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2027-03-10-en-dome-bz-ticket-3-lottery-result@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20270310T120000
 DTEND;TZID=Asia/Tokyo:20270310T120100
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜B’z TICKET三次・B’z PARTY・Cl
@@ -2237,7 +2014,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2027-koshi-analog-2027-03-10@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20270310T000000
 DTEND;TZID=Asia/Tokyo:20270310T000100
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志『Peace Of Mind』アナ
@@ -2252,7 +2029,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2027-04-05-en-dome-ponta-pass-entry-start@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20270405T120000
 DTEND;TZID=Asia/Tokyo:20270405T120100
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜Pontaパス会員抽選先行 受付
@@ -2267,7 +2044,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2027-koshi-analog-2027-04-07@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20270407T000000
 DTEND;TZID=Asia/Tokyo:20270407T000100
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志『Hadou』アナログLP
@@ -2282,7 +2059,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2027-04-11-en-dome-ponta-pass-entry-deadline@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20270411T235900
 DTEND;TZID=Asia/Tokyo:20270412T000000
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜Pontaパス会員抽選先行 受付
@@ -2295,7 +2072,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2027-04-12-en-dome-ichihaya-entry-start@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20270412T120000
 DTEND;TZID=Asia/Tokyo:20270412T120100
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜いち早プレリザーブ抽選先
@@ -2311,7 +2088,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2027-04-14-en-dome-seven-eleven-entry-start@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20270414T120000
 DTEND;TZID=Asia/Tokyo:20270414T120100
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜セブン-イレブンWEB抽選先行
@@ -2325,7 +2102,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2027-04-15-en-dome-ponta-pass-lottery-result@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20270415T200000
 DTEND;TZID=Asia/Tokyo:20270415T200100
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜Pontaパス会員抽選先行 抽選
@@ -2338,7 +2115,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2027-04-18-en-dome-ichihaya-entry-deadline@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20270418T235900
 DTEND;TZID=Asia/Tokyo:20270419T000000
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜いち早プレリザーブ抽選先
@@ -2351,7 +2128,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2027-04-22-en-dome-ichihaya-lottery-result@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20270422T200000
 DTEND;TZID=Asia/Tokyo:20270422T200100
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜いち早プレリザーブ抽選先
@@ -2364,7 +2141,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2027-04-30-en-dome-seven-eleven-entry-deadline@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20270430T235900
 DTEND;TZID=Asia/Tokyo:20270501T000000
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜セブン-イレブンWEB抽選先行
@@ -2377,7 +2154,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2027-05-08-en-dome-seven-eleven-lottery-result@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20270508T200000
 DTEND;TZID=Asia/Tokyo:20270508T200100
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜セブン-イレブンWEB抽選先行
@@ -2390,7 +2167,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2027-05-15-en-dome-general-sale@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20270515T100000
 DTEND;TZID=Asia/Tokyo:20270515T100100
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜一般発売
@@ -2403,7 +2180,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2027-koshi-analog-2027-05-26@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20270526T000000
 DTEND;TZID=Asia/Tokyo:20270526T000100
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志『Singing Bird』アナ
@@ -2418,7 +2195,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2027-koshi-analog-2027-06-30@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20270630T000000
 DTEND;TZID=Asia/Tokyo:20270630T000100
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜稲葉浩志『只者』アナログL
@@ -2433,7 +2210,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2027-08-14-en-dome-live-東京-東京ドーム@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20270814T170000
 DTEND;TZID=Asia/Tokyo:20270814T190000
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜東京公演（東京ドーム 1日
@@ -2449,7 +2226,7 @@ X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
 UID:2027-08-15-en-dome-live-東京-東京ドーム@bz-setlist
-DTSTAMP:20261119T000000Z
+DTSTAMP:20261121T000000Z
 DTSTART;TZID=Asia/Tokyo:20270815T170000
 DTEND;TZID=Asia/Tokyo:20270815T190000
 SUMMARY:Koshi Inaba⁠‌​‌⁠｜東京公演（東京ドーム 2日
