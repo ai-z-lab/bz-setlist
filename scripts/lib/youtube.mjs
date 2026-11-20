@@ -19,6 +19,7 @@ export function looseTitleKey(value) {
 export const ARTIST_ALIASES = {
   "B'z": ["B'z", "B’z", "Bz"],
   "稲葉浩志": ["稲葉浩志", "Koshi Inaba", "Inaba Koshi", "INABA/SALAS", "Inaba Salas"],
+  "INABA/SALAS": ["INABA/SALAS", "INABA / SALAS", "Inaba Salas", "稲葉浩志"],
   TMG: ["TMG", "TAK MATSUMOTO GROUP", "Tak Matsumoto Group"],
   "松本孝弘": ["松本孝弘", "Tak Matsumoto"],
 };

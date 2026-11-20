@@ -26,6 +26,7 @@ function normalize(value) {
 
 function artistForShow(show) {
   if (show.tour === "TMG SAYONARA") return "TMG";
+  if (show.tour === "INABA/SALAS 2025") return "INABA/SALAS";
   if (show.tour === "enV" || show.tour === "1CHANCE FESTIVAL 2026") return "稲葉浩志";
   if (["FYOP+", "FYOP naked", "FYOP", "FYOD", "SHOWCASE", "ULTRA MISSION", "UNITE #01", "UNITE #02"].includes(show.tour)) return "B'z";
   return "";
