@@ -16,7 +16,8 @@ jobs:
       - name: Fetch official news page
         run: |
           mkdir -p data
-          curl -fsSL --retry 3 -A "Mozilla/5.0 (bz-setlist news fetch)" https://bz-vermillion.com/news/ -o /tmp/news.html
+          curl -fsSL --retry 3 -A "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15" -H "Accept: text/html,application/xhtml+xml" -H "Accept-Language: ja" https://bz-vermillion.com/news/ -o /tmp/news.html
+
           python3 - <<'PY'
           import json, datetime
           html = open('/tmp/news.html', encoding='utf-8', errors='replace').read()
