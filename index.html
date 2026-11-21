@@ -747,15 +747,10 @@ function renderNews(){
 renderUpdateBar(false);
 function updatesHtml(){
  const history=(Array.isArray(window.BZ_DATA.updateHistory)?window.BZ_DATA.updateHistory:[]).slice().sort((a,b)=>updateHistoryTimestamp(b.date)-updateHistoryTimestamp(a.date));
- const days=[...new Set(history.map(e=>String(e.date).replace(/\//g,"-")))].slice(0,5);
- const blocks=days.map(day=>{
-  const list=history.filter(e=>String(e.date).replace(/\//g,"-")===day);
-  return `<div class="card" style="margin-top:12px"><h2>${escapeHtml(day.replace(/-/g,"/"))}</h2>${list.map(e=>{
-   const items=Array.isArray(e.items)?e.items:[];
-   return `<h3>${escapeHtml(e.title||"更新情報")}</h3>${items.length?`<details><summary class="muted">詳細を見る（曲名が出る場合があります）</summary><ul>${items.map(i=>`<li>${escapeHtml(i)}</li>`).join("")}</ul></details>`:""}`;
-  }).join("")}</div>`;
- }).join("");
- return `<section class="card"><h2>🔔 最近の更新</h2><div class="muted">セトリの曲名は、このページには出しません。見たいときは「セトリ（公演別）」を開いてください。更新の詳細には、曲名が含まれる場合があります。</div></section>${blocks||'<div class="card">更新情報はまだありません。</div>'}`;
+ const seen=new Set(), lines=[];
+ for(const e of history){ const d=String(e.date).replace(/\//g,"-"), ti=e.title||"更新情報", k=d+"|"+ti; if(seen.has(k)) continue; seen.add(k); lines.push({d,ti}); if(lines.length>=6) break; }
+ const short=d=>d.slice(5).replace("-","/").replace(/^0/,"").replace("/0","/");
+ return `<section class="card"><h2 style="margin-bottom:6px">🔔 最近の更新</h2>${lines.length?`<ul style="margin:0;padding-left:18px;line-height:1.7">${lines.map(l=>`<li><span class="muted">${escapeHtml(short(l.d))}</span> ${escapeHtml(l.ti)}</li>`).join("")}</ul>`:'<div class="muted">更新情報はまだありません。</div>'}<div class="muted" style="margin-top:6px;font-size:12px">セトリの曲名は、このページには出しません。</div></section>`;
 }
 function render(tab="dash"){ if(tab==="import" && !isAdmin) tab="dash"; if(tab==="dash")renderDash(); if(tab==="shows")renderShows(); if(tab==="songs")renderSongs(); if(tab==="matrix")renderMatrix(); if(tab==="pairs")renderPairs(); if(tab==="calendar")renderCalendar(); if(tab==="news")renderNews(); if(tab==="import")renderImport(); }
 
