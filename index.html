@@ -104,8 +104,8 @@ tr:hover td{background:#1c2130}.pill{display:inline-flex;border:1px solid var(--
   <div class="sub">公演日程・チケット受付・グッズ・ニュース／公演別セトリ・プレイリスト・曲別ランキング</div>
 </header>
 <nav>
-  <button data-tab="shows" class="active">セトリ（公演別）</button>
-  <button data-tab="news">ニュース</button>
+  <button data-tab="news" class="active">ニュース</button>
+  <button data-tab="shows">セトリ（公演別）</button>
   <button data-tab="calendar">カレンダー</button>
   <button data-tab="songs">曲別ランキング</button>
   <button data-tab="dash">Dashboard</button>
@@ -741,10 +741,22 @@ function changesFromPrev(showId){
 }
 function renderNews(){
  const items=(window.BZ_DATA.news||[]).slice().sort((a,b)=>String(b.date).localeCompare(String(a.date)));
- setApp(`<section class="calendarHero card"><div><h2>ニュース</h2><div class="muted">B'z PARTY・公式サイトのお知らせを新しい順に表示します。「会員」のお知らせは、リンク先でB'z PARTYへのログインが必要です。公式サイトのニュース一覧に出たお知らせを掲載しています（9/1以降）。最新情報は公式サイトもご確認ください。</div></div><span class="pill">${items.length}件</span></section>
+ setApp(updatesHtml()+`<section class="calendarHero card" style="margin-top:14px"><div><h2>ニュース</h2><div class="muted">B'z PARTY・公式サイトのお知らせを新しい順に表示します。「会員」のお知らせは、リンク先でB'z PARTYへのログインが必要です。公式サイトのニュース一覧に出たお知らせを掲載しています（9/1以降）。最新情報は公式サイトもご確認ください。</div></div><span class="pill">${items.length}件</span></section>
  <section class="calendarList">${items.map(n=>`<article class="card calendarCard newsCard"><div class="calendarDate"><div class="calendarDay">${escapeHtml(String(n.date).replace(/-/g,"/"))}</div></div><div><div class="calendarBadgeRow"><span class="eventTypeBadge">${n.source.includes("会員")?"会員":"公式"}</span>${isNewNews(n)?'<span class="newMark">NEW</span>':""}${n.calendar?'<span class="pill">カレンダー反映済み</span>':""}</div><div class="calendarTitle">${escapeHtml(n.title)}</div>${n.url?`<a class="calendarLink" href="${escapeHtml(n.url)}" target="_blank" rel="noopener">詳細を見る</a>`:""}</div></article>`).join("")}</section>`,{showTourBar:false});
 }
 renderUpdateBar(false);
+function updatesHtml(){
+ const history=(Array.isArray(window.BZ_DATA.updateHistory)?window.BZ_DATA.updateHistory:[]).slice().sort((a,b)=>updateHistoryTimestamp(b.date)-updateHistoryTimestamp(a.date));
+ const days=[...new Set(history.map(e=>String(e.date).replace(/\//g,"-")))].slice(0,5);
+ const blocks=days.map(day=>{
+  const list=history.filter(e=>String(e.date).replace(/\//g,"-")===day);
+  return `<div class="card" style="margin-top:12px"><h2>${escapeHtml(day.replace(/-/g,"/"))}</h2>${list.map(e=>{
+   const items=Array.isArray(e.items)?e.items:[];
+   return `<h3>${escapeHtml(e.title||"更新情報")}</h3>${items.length?`<details><summary class="muted">詳細を見る（曲名が出る場合があります）</summary><ul>${items.map(i=>`<li>${escapeHtml(i)}</li>`).join("")}</ul></details>`:""}`;
+  }).join("")}</div>`;
+ }).join("");
+ return `<section class="card"><h2>🔔 最近の更新</h2><div class="muted">セトリの曲名は、このページには出しません。見たいときは「セトリ（公演別）」を開いてください。更新の詳細には、曲名が含まれる場合があります。</div></section>${blocks||'<div class="card">更新情報はまだありません。</div>'}`;
+}
 function render(tab="dash"){ if(tab==="import" && !isAdmin) tab="dash"; if(tab==="dash")renderDash(); if(tab==="shows")renderShows(); if(tab==="songs")renderSongs(); if(tab==="matrix")renderMatrix(); if(tab==="pairs")renderPairs(); if(tab==="calendar")renderCalendar(); if(tab==="news")renderNews(); if(tab==="import")renderImport(); }
 
 function updateHistoryTimestamp(value){
@@ -905,7 +917,7 @@ function renderImport(){
  if(!seen){ box.open = true; try{ localStorage.setItem("howtoSeen_v1","1"); }catch(e){} }
  box.addEventListener("toggle",()=>{ if(box.open) gcEvent("howto-open","使い方を開いた"); });
 })();
-render("shows");
+render("news");
 </script>
 <script data-goatcounter="https://bz-setlist.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
