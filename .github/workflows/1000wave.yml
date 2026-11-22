@@ -26,7 +26,7 @@ jobs:
             "source": "https://www.1000wave.net/29396",
             "fetchedAt": datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
             "html": html
-          }, open('data/1000wave-env.json', 'w', encoding='utf-8', ensure_ascii=False)
+          }, open('data/1000wave-env.json', 'w', encoding='utf-8'), ensure_ascii=False)
           PY
       - name: Commit if changed
         run: |
