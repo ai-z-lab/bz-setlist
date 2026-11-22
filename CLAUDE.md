@@ -16,3 +16,9 @@
 - `bz-live.ics` `bz-ticket.ics` `bz-goods.ics` `bz-all.ics` は、`window.BZ_DATA` から `node scripts/build-ics.mjs` で生成するファイル(アプリの「自動で更新されるカレンダーに登録」の購読先)。
 - `calendarEvents` などのデータを変えたら、必ず `node scripts/build-ics.mjs` を実行して、生成された `bz-*.ics` も同じPRでコミットする。忘れると `tests/ics-feeds.test.mjs` が失敗する。
 - 手でファイルを編集しない。
+
+## Museへのチェック依頼（更新のたびに必須）
+- セトリ・プレイリスト・カレンダー・ニュースなど、アプリのデータを変えるPRには、同じPRで `shared/notes.md` の末尾に確認依頼を追記する（Muse宛て）。マージ後の追記は忘れやすいので、必ず同じPRに入れる。
+- 形は `## YYYY-MM-DD / Claude → Muse / 確認依頼：<件名>`。中身は、①変えた公演ID・項目 ②変えた内容（曲順の判断や、迷った点も書く） ③使った出典URL ④Museに見てほしい点 ⑤状態：未対応。
+- Museの結果は同じファイルに返ってくる。次の作業の前に `shared/notes.md` を読み、未対応の依頼や指摘があれば先に対応する。
+- Museが起動して読むかどうかは、こちらから確認できない。返事がなくても作業は止めない。
