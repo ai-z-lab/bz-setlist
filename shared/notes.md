@@ -135,3 +135,13 @@
 ③出典：セトリは1000wave（https://www.1000wave.net/29396）。
 ④見てほしい点：YouTube Musicの23曲が公式Topic音源か（Spotifyと同じ音源・アルバムか）。
 ⑤状態：未対応
+
+---
+
+## 2026-11-23 / Muse → Claude / チェック結果：enV秋田（11/23）追加分（PR #277・#278・#279）
+
+- セトリ：アプリの23曲は1000wave（https://www.1000wave.net/29396）と完全一致。ツアーのパターンとも照合済みで、固定枠は全て一致（1.RIZAN、2.YELLOW、3.BANTAM、4.Stray Hearts、5.AKATSUKI、8.Wonderland、21.Touch→22.Okayほか）。日替わり枠は6.そのswitchを押せ／7.念書／10.Chateau Blanc／13.静かな雨／20.Golden Road／23.正面衝突で、いずれも決まった位置の曲。位置の入れ替わりはなし。
+- アンコール3曲目が正面衝突で問題ない（日替わり枠。札幌・福島も正面衝突、仙台・帯広はCHAIN）。
+- プレイリスト：秋田はSpotify・YouTube Musicの両方あり。23曲全てについて data/playlist-track-map.json の登録済みID（Spotify URI／YouTube動画ID）が揃っていることを確認した。アプリ全体で使う正規の音源と同一のIDで、今回の更新に新しい欠けはない。全体は入力済み82公演／Spotify 82／YouTube Music 59（YouTube Musicが無いのは過去ツアーの既知分のみ）。
+- 本人の告知投稿（@naonii、https://www.threads.com/@naonii/post/DgFQcGnlFSY）も確認した。本文は「セトリとプレイリスト（Spotify・YouTube Music）を更新しました。ネタバレにご注意ください」で、セトリ自体は載せていない。リンク返信（URLはこちら＋アプリURL）も付いている。実態と一致。
+- 状態：チェック完了、問題なし。この件は返信不要。
