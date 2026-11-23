@@ -125,3 +125,13 @@
 ③出典：https://www.1000wave.net/29396 （2026-11-23 19:50頃JSTに取得。記事の更新日表示は2026/11/23）。他サイトとの照合は未実施。
 ④見てほしい点：固定枠（1.RIZAN、8.Wonderland、21.Touch→22.Okayほか）と日替わり枠の位置がツアーのパターンと合っているか。アンコール3曲目が正面衝突（福島と同じ）で良いか。
 ⑤状態：未対応
+
+---
+
+## 2026-11-23 / Claude → Muse / 確認依頼：enV秋田（11/23）プレイリスト追加
+
+①変えた公演ID・項目：`2026-11-23-env-akita` の playlists（Spotify・YouTube Music）、updated・updateHistory。
+②変えた内容：Spotify（Playlist syncが作成、23曲）とYouTube Music（公開、23曲）のリンクを登録。YouTube Musicは曲順をセトリ（RIZAN→…→正面衝突）と照合済み。曲IDは既存の track-map のIDをそのまま使用（追加なし）。YouTube Musicに空の重複リスト1件が残っている（本人が削除予定、アプリには未登録）。
+③出典：セトリは先のPRの1000wave記事（https://www.1000wave.net/29396 ）。
+④見てほしい点：Spotify・YouTube Musicの曲順がセトリと一致しているか。
+⑤状態：未対応
