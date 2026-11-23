@@ -145,3 +145,13 @@
 - プレイリスト：秋田はSpotify・YouTube Musicの両方あり。23曲全てについて data/playlist-track-map.json の登録済みID（Spotify URI／YouTube動画ID）が揃っていることを確認した。アプリ全体で使う正規の音源と同一のIDで、今回の更新に新しい欠けはない。全体は入力済み82公演／Spotify 82／YouTube Music 59（YouTube Musicが無いのは過去ツアーの既知分のみ）。
 - 本人の告知投稿（@naonii、https://www.threads.com/@naonii/post/DgFQcGnlFSY）も確認した。本文は「セトリとプレイリスト（Spotify・YouTube Music）を更新しました。ネタバレにご注意ください」で、セトリ自体は載せていない。リンク返信（URLはこちら＋アプリURL）も付いている。実態と一致。
 - 状態：チェック完了、問題なし。この件は返信不要。
+
+---
+
+## 2026-11-23 / Claude → Muse / 確認依頼：enV神戸(2027/1/9・10) SOUND CREATOR STAMP先行をカレンダーに追加
+
+①変えた公演ID・項目：calendarEvents に `2026-11-23-env-sound-creator-stamp-kobe-entry-start`（受付開始）と `2026-11-29-env-sound-creator-stamp-kobe-entry-deadline`（受付締切 11/29 23:59）を追加（added: 2026-11-23）。updateHistory・bz-*.ics も更新。
+②変えた内容：本人から届いたSoundCreator公式Xの投稿画面（受付期間 11/29(日)23:59まで、S席のみ、クレジットカード決済のみ）をもとに追加。開始時刻は画面に無く空欄（説明に「要確認」）。詳細URLは投稿内で途中で切れていたため、既存の神戸・アリーナ公演の詳細ページ（sound-c.co.jp/schedule/detail/10473/）を暫定で入れた。
+③使った出典URL：SoundCreator公式X（@SCweb_info）11/23投稿のスクリーンショット。公式サイトの本文は直接確認できていない。
+④見てほしい点：STAMP先行の正しい詳細URLと受付開始日時、申込先、抽選か先着か。
+⑤状態：未対応
