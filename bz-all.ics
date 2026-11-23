@@ -1283,6 +1283,23 @@ LOCATION:2027年アリーナ公演 全8公演
 X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-11-23-env-sound-creator-stamp-kobe-entry-start@bz-setlist
+DTSTAMP:20261123T000000Z
+DTSTART;TZID=Asia/Tokyo:20261123T000000
+DTEND;TZID=Asia/Tokyo:20261123T000100
+SUMMARY:Koshi Inaba⁠‌​‌⁠｜Koshi Inaba / Koshi Inaba LIVE 2026-2
+ 027 ～enV～ / SOUND CREATOR STAMP先行 受付開始（神戸）
+DESCRIPTION:受付元：SOUND CREATOR / STAMP先行\n受付期間：2026/1
+ 1/23 ～ 2026/11/29 23:59\n備考：S席のみの受付、クレジット
+ カード決済のみ（出典：SoundCreator公式X 11/23投稿。開始
+ 時刻は要確認）\n種別：受付開始\nアーティスト：Koshi I
+ naba\nツアー：Koshi Inaba LIVE 2026-2027 ～enV～\nエリア：兵庫
+ \nURL：https://www.sound-c.co.jp/schedule/detail/10473/\n出典：B'zセ
+ ットリスト ai-z-lab.github.io/bz-setlist
+LOCATION:兵庫 2027/1/9(土)・10(日) GLION ARENA KOBE
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-11-24-en-dome-bz-ticket-1-entry-start@bz-setlist
 DTSTAMP:20261123T000000Z
 DTSTART;TZID=Asia/Tokyo:20261124T120000
@@ -1344,6 +1361,23 @@ DESCRIPTION:OPEN 16:00 / START 17:00\n種別：公演\nアーティスト
  ア：和歌山\nURL：https://bz-vermillion.com/en5/\n出典：B'zセッ
  トリスト ai-z-lab.github.io/bz-setlist
 LOCATION:和歌山 和歌山県民文化会館 大ホール
+X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-29-env-sound-creator-stamp-kobe-entry-deadline@bz-setlist
+DTSTAMP:20261123T000000Z
+DTSTART;TZID=Asia/Tokyo:20261129T235900
+DTEND;TZID=Asia/Tokyo:20261130T000000
+SUMMARY:Koshi Inaba⁠‌​‌⁠｜Koshi Inaba / Koshi Inaba LIVE 2026-2
+ 027 ～enV～ / SOUND CREATOR STAMP先行 受付締切（神戸）
+DESCRIPTION:受付元：SOUND CREATOR / STAMP先行\n受付期間：2026/1
+ 1/23 ～ 2026/11/29 23:59\n備考：S席のみの受付、クレジット
+ カード決済のみ（出典：SoundCreator公式X 11/23投稿。開始
+ 時刻は要確認）\n種別：受付締切\nアーティスト：Koshi I
+ naba\nツアー：Koshi Inaba LIVE 2026-2027 ～enV～\nエリア：兵庫
+ \nURL：https://www.sound-c.co.jp/schedule/detail/10473/\n出典：B'zセ
+ ットリスト ai-z-lab.github.io/bz-setlist
+LOCATION:兵庫 2027/1/9(土)・10(日) GLION ARENA KOBE
 X-BZSETLIST-ORIGIN:ai-z-lab.github.io/bz-setlist
 END:VEVENT
 BEGIN:VEVENT
