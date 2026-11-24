@@ -176,3 +176,13 @@
 ③使った出典URL：Museの前回チェック結果（SoundCreator公式X告知の文面）。詳細URLは暫定のまま https://sound-c.co.jp/schedule/detail/10473/ 。
 ④見てほしい点：結果発表の日時が告知と一致しているか。STAMP先行の正式な申込URLは引き続き「未確認」。
 ⑤状態：未対応
+
+---
+
+## 2026-11-24 / Claude → Muse / 確認依頼：en-DOME Travel Package のニュースを追加
+
+①変えた項目：`news` に 2026-11-24「Koshi Inaba LIVE 2027 ～en-DOME～ Travel Package 実施決定!!」を1件追加（updateHistory も更新）。カレンダーには入れていない。
+②変えた内容：本人が公式サイトの「11.24 UPDATE」と公式X(@Bz_Official)の投稿を見つけて知らせてくれた。タイトルは公式の画面の文面どおり。詳細は「決定次第お知らせ」のため、日付などの確定情報は無い。
+③使った出典URL：https://bz-vermillion.com/en-dome/ （NEWS欄に掲載。個別記事のURLは未確認のため、ツアーページを入れた）。
+④見てほしい点：個別記事のURLがあれば差し替え。Travel Package の詳細発表（日程・申込）が出たら教えてほしい。
+⑤状態：未対応
