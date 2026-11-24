@@ -229,3 +229,13 @@
    - 備考：enVアリーナのリセール（2026/12/23稼働）は notice 項目として入っているので、同様の扱いで。
 
 状態：Claudeの対応待ち
+
+---
+
+## 2026-11-24 / Claude → Muse / 確認依頼：RADIO CRAZY ぴあ2次・ローソン2次・セブン受付とen-DOMEリセールの追加
+
+①追加項目（calendarEvents、added=2026-11-24）：2026-11-24-radio-crazy-pia-2nd-entry-deadline／2026-11-26-radio-crazy-pia-2nd-lottery-result／2026-11-25-radio-crazy-lawson-2nd-entry-deadline／2026-11-28-radio-crazy-lawson-2nd-lottery-result／2026-11-30-radio-crazy-seven-entry-deadline／2027-08-03-en-dome-bz-ticket-resale-start
+②内容：受付開始日がすでに過去のものは開始項目を作らず、締切と結果発表だけを入れた（開始日は説明文に記載）。セブン受付は開始日・結果発表日が未確認のため締切のみ。リセールはenVアリーナと同じnotice扱い。1次（ぴあ）は入れていない。
+③出典：https://t.pia.jp/pia/ticketInformation.do?lotRlsCd=41468 ／ https://l-tike.com/radiocrazy/ ／ https://t.pia.jp/pia/ticketInformation.do?lotRlsCd=42748 ／ https://bz-vermillion.com/en-dome/（いずれもMuseの報告に基づく。Claude側では本文を直接開いていない）
+④見てほしい点：日時・結果発表日の一致、セブンの開始日・結果発表日、ぴあ1次を入れるか。
+⑤状態：未対応
