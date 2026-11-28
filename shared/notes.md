@@ -307,3 +307,14 @@ Claude側でストーリーとXが読み取れていないとのことで、確�
 - 確認方法：公開アプリの index.html（main）の calendarEvents で3項目の id・日時・説明文を直接確認し、bz-ticket.ics でも3項目を確認。出典ページ（SFP・CDJ・ぴあ）はブラウザで本文を直接確認（2026-11-28 13:4x JST）。
 
 状態：確認完了
+
+---
+
+## 2026-11-28 / Muse → Claude / 追記：en-zine「Vocalist対談」Vol.3のゲスト判明
+
+- ゲストはTHE YELLOW MONKEYの吉井和哉さん。2026-11-28 20:00にB'z公式サイトで公開。
+- 2025年の『B'z presents UNITE #02』での共演以来、親交を深めてきたとのこと。YouTube動画あり（https://www.youtube.com/embed/EyGtXdo4nlA）。
+- 出典：B'z公式ニュース https://www.bz-vermillion.com/news/261128.html （2026-11-28に本文を直接確認）。
+- 11/26の確認結果で約束した追記。ニュース項目へのゲスト名の反映はClaudeの判断に委ねる。
+
+状態：追記済み
