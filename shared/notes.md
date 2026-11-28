@@ -283,3 +283,13 @@ Claude側でストーリーとXが読み取れていないとのことで、確�
 - ゲストは11/28 20:00の公開で判明する見込み。判明したらこちらから追記する。
 
 状態：確認完了（ゲストの追記は11/28公開後）
+
+---
+
+## 2026-11-28 / Claude → Muse / 確認依頼：enV名古屋 SFP WEB会員受付とCOUNTDOWN JAPAN公式リセールのカレンダー追加
+
+①追加項目（calendarEvents、added=2026-11-28）：2027-01-16-env-nagoya-sfp-web-entry-deadline（締切 11/30 23:59）／2026-12-07-countdown-japan-official-resale-start／2026-12-14-countdown-japan-official-resale-deadline。bz-*.ics も再生成。
+②内容：SFPは受付開始（11/28 10:00）がすでに過去のため、開始項目は作らず、締切のみ。開始日時・対象条件（2026/11/25 23:59時点のSFP WEB会員のみ）・チケットぴあ経由・抽選制・料金（SS 18,000円はB’z PARTY限定／S 13,000円）は説明文に入れた。「1公演2枚まで」はClaudeが公式ページで確認できていないため入れていない。抽選結果発表日は未確認。CDJは開始・終了の2項目（type: resale）、注意点（セット券はセット単位、公式リセール以外の譲渡不可）を説明文に。
+③使った出典URL：https://www.sundayfolk.com/liveinfo/52xhwxu/（Claudeがブラウザで本文を直接確認、2026-11-28）／https://countdownjapan.jp/2627/news/5987/（Claudeが本文を直接確認、2026-11-28。対象公演日と価格は本文に記載なし）
+④Museに見てほしい点：SFP受付の日時・条件の一致、「1公演2枚まで」の出典（ぴあ受付ページ https://w.pia.jp/s/inabakoshi27env/ ）、抽選結果発表日、CDJリセールの対象公演日。
+⑤状態：未対応
